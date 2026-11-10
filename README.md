@@ -6,8 +6,9 @@ parametric features and timeline rather than only the final geometry.
 ## Pipeline
 
 1. **Decode** the Fusion file with a fork of [cadmpeg](https://github.com/cadmpeg/cadmpeg)
-   (`cadmpeg dump design.f3d -o design.cadir.json`). The fork lives in `cadmpeg/`
-   (branch `fusion2fc`, not tracked here); see `cadmpeg/FORK.md`.
+   (`cadmpeg dump design.f3d -o design.cadir.json`). The fork is the `cadmpeg/` submodule
+   (branch `fusion2fc`); see `cadmpeg/FORK.md`. Clone with `git clone --recurse-submodules`
+   and build it with `cargo build --release --manifest-path cadmpeg/Cargo.toml -p cadmpeg`.
 2. **Rebuild** the decoded design in FreeCAD with `fusion2fc/rebuild.py`, run by
    `freecadcmd` (inputs via `F2FC_*` environment variables, see the module docstring).
    Sketches become Sketcher sketches; extrudes become profile binder → `Part::Extrusion`

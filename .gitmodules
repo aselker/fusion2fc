@@ -1,0 +1,4 @@
+[submodule "cadmpeg"]
+	path = cadmpeg
+	url = git@github.com:aselker/cadmpeg-fusion2fc.git
+	branch = fusion2fc
