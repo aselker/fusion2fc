@@ -1,0 +1,272 @@
+{
+ "design": "(Unsaved)",
+ "units": "cm",
+ "userParameters": [],
+ "timeline": [
+  {
+   "index": 0,
+   "name": "Sketch1",
+   "group": null,
+   "type": "Sketch",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "name": "Sketch1",
+    "component": "(Unsaved)",
+    "visible": false,
+    "transform": [
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "referencePlane": "ConstructionPlane",
+    "profiles": 2,
+    "curves": [
+     {
+      "type": "SketchCircle",
+      "construction": false,
+      "fixed": false,
+      "reference": false,
+      "center": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "radius": 0.3
+     },
+     {
+      "type": "SketchCircle",
+      "construction": false,
+      "fixed": false,
+      "reference": false,
+      "center": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "radius": 0.30000000000000004
+     }
+    ],
+    "points": [
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      1.0,
+      0.0,
+      0.0
+     ]
+    ],
+    "constraints": {},
+    "dimensions": []
+   },
+   "after": []
+  },
+  {
+   "index": 1,
+   "name": "Extrude1",
+   "group": null,
+   "type": "ExtrudeFeature",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "operation": 3,
+    "extentType": 0,
+    "isSolid": true,
+    "startExtent": {
+     "type": "ProfilePlaneStartDefinition"
+    },
+    "extentOne": {
+     "type": "DistanceExtentDefinition",
+     "distance": {
+      "name": "d1",
+      "expression": "4 mm",
+      "value": 0.4,
+      "unit": "mm"
+     }
+    },
+    "extentTwo": null,
+    "taperOne": {
+     "name": "d2",
+     "expression": "0.0 deg",
+     "value": 0.0,
+     "unit": "deg"
+    },
+    "taperTwo": null,
+    "symmetric": false,
+    "profile": [
+     {
+      "type": "Profile",
+      "sketch": "Sketch1",
+      "component": "(Unsaved)",
+      "index": 0,
+      "area": 0.2827433388230814
+     },
+     {
+      "type": "Profile",
+      "sketch": "Sketch1",
+      "component": "(Unsaved)",
+      "index": 1,
+      "area": 0.28274333882308145
+     }
+    ],
+    "participantBodies": [],
+    "resultBodies": []
+   },
+   "after": [
+    {
+     "component": "(Unsaved)",
+     "name": "Body1",
+     "volume": 0.11309733552923741,
+     "occurrence": null
+    },
+    {
+     "component": "(Unsaved)",
+     "name": "Body2",
+     "volume": 0.11309733552923745,
+     "occurrence": null
+    }
+   ]
+  }
+ ],
+ "bodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 0.11309733552923741,
+   "area": 1.319468914507713,
+   "centroid": [
+    3.137030655787645e-11,
+    0.0,
+    0.2
+   ],
+   "bbox": [
+    [
+     -0.3,
+     -0.3,
+     0.0
+    ],
+    [
+     0.3,
+     0.3,
+     0.4
+    ]
+   ],
+   "faces": 3,
+   "edges": 2
+  },
+  {
+   "component": "(Unsaved)",
+   "name": "Body2",
+   "solid": true,
+   "visible": true,
+   "volume": 0.11309733552923745,
+   "area": 1.3194689145077136,
+   "centroid": [
+    1.0000000000313705,
+    -6.135329246650037e-17,
+    0.19999999999999996
+   ],
+   "bbox": [
+    [
+     0.7,
+     -0.30000000000000004,
+     0.0
+    ],
+    [
+     1.3,
+     0.30000000000000004,
+     0.4
+    ]
+   ],
+   "faces": 3,
+   "edges": 2
+  }
+ ],
+ "worldBodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 0.11309733552923741,
+   "area": 1.319468914507713,
+   "centroid": [
+    3.137030655787645e-11,
+    0.0,
+    0.2
+   ],
+   "bbox": [
+    [
+     -0.3,
+     -0.3,
+     0.0
+    ],
+    [
+     0.3,
+     0.3,
+     0.4
+    ]
+   ],
+   "faces": 3,
+   "edges": 2
+  },
+  {
+   "component": "(Unsaved)",
+   "name": "Body2",
+   "solid": true,
+   "visible": true,
+   "volume": 0.11309733552923745,
+   "area": 1.3194689145077136,
+   "centroid": [
+    1.0000000000313705,
+    -6.135329246650037e-17,
+    0.19999999999999996
+   ],
+   "bbox": [
+    [
+     0.7,
+     -0.30000000000000004,
+     0.0
+    ],
+    [
+     1.3,
+     0.30000000000000004,
+     0.4
+    ]
+   ],
+   "faces": 3,
+   "edges": 2
+  }
+ ],
+ "stats": {
+  "items": 2,
+  "errors": 0,
+  "rolled": 0,
+  "seconds": 0.02
+ },
+ "case": "disjoint_new_body",
+ "doc": ""
+}

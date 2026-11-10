@@ -1,0 +1,5 @@
+.claude/settings.local.json
+cadmpeg/
+tests/out/
+__pycache__/
+*.FCBak
