@@ -196,6 +196,8 @@ class Rebuilder:
 
     def face_points(self, face_ref):
         """Boundary points of historical faces, from the feature input topology."""
+        if face_ref.get("kind") == "resolved":
+            raise NotImplementedError("resolved face reference has no boundary points")
         if face_ref.get("kind") != "historical":
             raise NotImplementedError("face reference " + str(face_ref.get("kind")))
         pts = []
@@ -208,6 +210,18 @@ class Rebuilder:
 
     def plane_offset(self, face_ref, origin, normal):
         """Signed distance along normal from origin to a face parallel to the sketch."""
+        if face_ref.get("kind") == "resolved":
+            planes = [self.slim.get("face_planes", {}).get(fid) for fid in face_ref["value"]["faces"]]
+            if not planes or any(p is None for p in planes):
+                raise NotImplementedError("resolved face without a planar surface")
+            offs = []
+            for p in planes:
+                if abs(abs(vec(p["normal"]).dot(normal)) - 1.0) > 1e-9:
+                    raise NotImplementedError("face not parallel to the sketch plane")
+                offs.append((vec(p["origin"]) - origin).dot(normal))
+            if max(offs) - min(offs) > 1e-5:
+                raise ValueError("resolved faces lie in different planes")
+            return offs[0]
         offs = [(p - origin).dot(normal) for p in self.face_points(face_ref)]
         if max(offs) - min(offs) > 1e-5:
             raise NotImplementedError("face not parallel to the sketch plane")

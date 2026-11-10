@@ -1,7 +1,8 @@
 #!/bin/sh
 # Rebuild one Fusion component's features in FreeCAD (dev helper).
 #   rebuild_component.sh WORKDIR DESIGN COMPONENT
-# Expects WORKDIR/DESIGN.slim.json, DESIGN.topo.json, DESIGN.align.json; writes WORKDIR/out/.
+# Expects WORKDIR/DESIGN.slim.json, DESIGN.topo.json (tools/slim_cadir.py) and
+# DESIGN.align.json (tools/compare_fusion_cadir.py --alignment); writes WORKDIR/out/.
 set -e
 W=$1; D=$2; C=$3; HERE=$(dirname "$0")
 mkdir -p "$W/out"

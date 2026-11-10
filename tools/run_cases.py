@@ -18,20 +18,13 @@ import subprocess
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from slim_cadir import slim  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 CASES = ROOT / "tests" / "cases"
 DEFAULT_CADMPEG = ROOT / "cadmpeg" / "target" / "release" / "cadmpeg"
 TOL = 1e-6
-
-
-def slim(cadir):
-    m = cadir["model"]
-    keep = ("features", "sketches", "sketch_entities", "sketch_constraints", "parameters", "spatial_sketches")
-    s = {k: m.get(k, []) for k in keep}
-    s["bodies"] = [{"id": b.get("id"), "name": b.get("name")} for b in m.get("bodies", [])]
-    topo = [{"id": t["id"], "input_of": t.get("input_of"), "edge_geometry": t.get("edge_geometry")}
-            for t in m.get("feature_input_topologies", [])]
-    return s, topo
 
 
 def vols_match(a, b):

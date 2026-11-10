@@ -8,7 +8,7 @@ restores it at the end; never saves).
 
 All lengths are Fusion internal units (cm); angles radians.
 """
-import adsk.core, adsk.fusion, json, time, traceback, collections
+import adsk.core, adsk.fusion, json, time, traceback, collections, math
 
 OUT = r"__OUT__"
 ROLL = "__ROLL__" == "1"
@@ -49,9 +49,34 @@ def safe(fn, default=None):
         return {"error": str(e).splitlines()[0][:200]} if default is None else default
 
 
+def curve_world(c):
+    """Defining points of a sketch curve in model space (for replicating sketches)."""
+    sk = c.parentSketch
+    w = lambda p: pt(sk.sketchToModelSpace(p))
+    t = short_type(c)
+    try:
+        if t == "SketchLine":
+            return {"start": w(c.startSketchPoint.geometry), "end": w(c.endSketchPoint.geometry)}
+        if t == "SketchArc":
+            ev = c.geometry.evaluator
+            ok, t0, t1 = ev.getParameterExtents()
+            ok, mid = ev.getPointAtParameter((t0 + t1) / 2.0)
+            return {"start": w(c.startSketchPoint.geometry), "mid": w(mid), "end": w(c.endSketchPoint.geometry)}
+        if t == "SketchCircle":
+            return {"center": w(c.geometry.center), "radius": c.geometry.radius}
+        if t in ("SketchFixedSpline", "SketchFittedSpline", "SketchControlPointSpline"):
+            ok, cps, degree, knots, rational, weights, periodic = c.geometry.getData()
+            return {"poles": [w(p) for p in cps], "degree": degree, "knots": list(knots),
+                    "rational": rational, "weights": list(weights), "periodic": periodic}
+    except Exception as e:
+        return {"error": str(e)[:200]}
+    return None
+
+
 def curve_geom(c):
     t = short_type(c)
     d = {"type": t, "construction": safe(lambda: c.isConstruction, False),
+         "world": curve_world(c),
          "fixed": safe(lambda: c.isFixed, False), "reference": safe(lambda: c.isReference, False)}
     g = c.geometry  # sketch space
     if t == "SketchLine":
@@ -74,6 +99,8 @@ def curve_geom(c):
 
 def dump_sketch(sk):
     d = {"name": sk.name, "component": sk.parentComponent.name,
+         "plane": safe(lambda: {"origin": pt(sk.sketchToModelSpace(adsk.core.Point3D.create(0, 0, 0))),
+                                "normal": vec(sk.xDirection.crossProduct(sk.yDirection))}, None),
          "visible": safe(lambda: sk.isVisible, None),
          "transform": matrix(sk.transform),
          "referencePlane": safe(lambda: short_type(sk.referencePlane), None),
@@ -98,8 +125,9 @@ def profile_ref(p):
             if q == p:
                 idx = i
                 break
+        ap = p.areaProperties()
         return {"type": t, "sketch": sk.name, "component": sk.parentComponent.name, "index": idx,
-                "area": safe(lambda: p.areaProperties().area, None)}
+                "area": ap.area, "centroid": pt(sk.sketchToModelSpace(ap.centroid))}
     if t == "ObjectCollection":
         return [profile_ref(p.item(i)) for i in range(p.count)]
     return {"type": t}
