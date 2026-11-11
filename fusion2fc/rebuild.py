@@ -41,6 +41,19 @@ def uv(d):
     return V(d["u"], d["v"], 0)
 
 
+# Fusion's display spelling of stored feature-family names that differ from it.
+FUSION_DISPLAY_FAMILY = {"WorkPlane": "Plane", "WorkAxis": "Axis", "WorkPoint": "Point"}
+
+
+def display_name(feat):
+    """Fusion's browser name: cadmpeg spells a default name '<family> <n>' (Fusion: 'Plane1')."""
+    name, tag = feat.get("name") or "", feat.get("source_tag")
+    m = re.fullmatch(r"(.+) (\d+)", name)
+    if tag and m and m.group(1) == tag:
+        return FUSION_DISPLAY_FAMILY.get(tag, tag) + m.group(2)
+    return name
+
+
 class Rebuilder:
     def __init__(self, slim, topo, wanted):
         self.slim = slim
@@ -249,7 +262,7 @@ class Rebuilder:
         faces = []
         for r in regions:
             if r.get("region") == "trimmed":
-                wires = [loop_wire(r["outer_boundary"])] + [loop_wire(h) for h in r.get("holes", [])]
+                wires = [loop_wire(r["outer_boundary"])] + [loop_wire(h) for h in r.get("hole_boundaries", [])]
             elif r.get("region") == "loops":
                 loops = self.sketch_defs[sid]["profiles"]
                 wires = [loop_wire([{"entity": x["entity"], "parameter_range": self.full_range(ents[x["entity"]])}
@@ -293,16 +306,18 @@ class Rebuilder:
             bb.add(extra.BoundBox)
         return max(bb.DiagonalLength, 1.0) * 2 + 10.0
 
-    def build_extrude(self, feat):
+    def build_extrude(self, feat, suppressed=False):
+        """Build an extrude; a suppressed one keeps its hidden tool out of the boolean chain."""
         d = feat["definition"]
         if not d.get("solid", True):
             raise NotImplementedError("surface extrude")
         prof = d["profile"]
-        sid = prof.get("value", {}).get("sketch")
+        value = prof.get("value")
+        sid = value.get("sketch") if isinstance(value, dict) else None
         if sid not in self.sketch_defs:
             raise NotImplementedError("profile kind " + prof["kind"])
         sk, geo_of, edge_of, normal = self.build_sketch(sid, self.sketch_label(sid))
-        regions = prof.get("value", {}).get("regions") or []
+        regions = value.get("regions") or []
         notes = {}
         if any(r.get("region") == "trimmed" for r in regions):
             base = self.doc.addObject("Part::Feature", "ProfileFace")
@@ -372,6 +387,10 @@ class Rebuilder:
         self.doc.recompute()
         if ex.Shape.isNull() or ex.Shape.Volume <= 0:
             raise ValueError("empty extrusion")
+        if suppressed:
+            ex.Label = feat["name"] + " (suppressed)"
+            ex.Visibility = False
+            return {"tool": ex.Name}
         participants = None
         if through and all(t.get("kind") == "historical" for t in through):
             participants = self.bodies_owning(through)
@@ -433,7 +452,9 @@ class Rebuilder:
             fuse.Label = name + " join"
             fuse.Shapes = targets + [tool]
             fuse.Refine = True
-            self.solids = [s for s in self.solids if s not in targets] + [fuse]
+            self.doc.recompute()
+            # Bodies the join leaves unconnected stay separate bodies.
+            self.solids = [s for s in self.solids if s not in targets] + self.split_solids(fuse, name)
         elif op in ("cut", "intersect"):
             pool = participants if participants else self.solids
             targets = [s for s in pool if self.overlaps(s, tool)]
@@ -508,28 +529,51 @@ class Rebuilder:
         return {}
 
     # ----- driver ---------------------------------------------------------
-    def sketch_label(self, sid):
+    def sketch_label(self, sid, fallback=None):
+        """The sketch's stored name; cadmpeg names a sketch without one by its entity id."""
+        name = (self.sketch_defs.get(sid) or {}).get("name")
+        if name and not re.fullmatch(r"\d+_\d+", name):
+            return name
+        if fallback:
+            return fallback
         for f in self.slim["features"]:
             sk = f["definition"].get("sketch")
             if isinstance(sk, dict) and sk.get("sketch") == sid:
                 return f["name"]
         return sid.rsplit("@", 1)[-1]
 
+    def spatial_sketch_label(self, sid, fallback):
+        for sk in self.slim.get("spatial_sketches", []):
+            if sk["id"] == sid and sk.get("name") and not re.fullmatch(r"\d+_\d+", sk["name"]):
+                return sk["name"]
+        return fallback
+
     def run(self):
         feats = sorted(self.slim["features"], key=lambda f: f["ordinal"])
+        for f in feats:
+            f["name"] = display_name(f)
         if self.wanted is not None:
             feats = [f for f in feats if f["id"] in self.wanted]
         for f in feats:
             kind = f["definition"].get("definition", "native")
             rec = {"name": f["name"], "kind": kind}
             try:
+                if kind == "sketch":
+                    rec["name"] = self.sketch_label(f["definition"]["sketch"]["sketch"], f["name"])
+                elif kind == "spatial_sketch":
+                    rec["name"] = self.spatial_sketch_label(f["definition"]["sketch"], f["name"])
                 if f.get("suppressed"):
                     rec["status"] = "suppressed"
+                    if kind == "extrude":
+                        try:
+                            rec.update(self.build_extrude(f, suppressed=True))
+                        except Exception as e:
+                            rec["reason"] = "tool not built: %s" % e
                 elif kind == "sketch":
                     ref = f["definition"]["sketch"]
                     if ref.get("space") != "planar":
                         raise NotImplementedError("non-planar sketch")
-                    self.build_sketch(ref["sketch"], f["name"])
+                    self.build_sketch(ref["sketch"], rec["name"])
                     rec["status"] = "built"
                 elif kind == "extrude":
                     rec.update(self.build_extrude(f))

@@ -328,10 +328,71 @@ def params_renamed_suppressed(design, root):
     hole.timelineObject.isSuppressed = True
 
 
+def through_all(inp):
+    inp.setOneSideExtent(adsk.fusion.ThroughAllExtentDefinition.create(), POS)
+
+
+def corner_edges(body, xs, ys):
+    """Vertical edges whose endpoints sit on the given x/y corner coordinates (cm)."""
+    def on(v, vals):
+        return any(abs(v - c) < 1e-6 for c in vals)
+    return [e for e in vertical_edges(body)
+            if on(e.startVertex.geometry.x, xs) and on(e.startVertex.geometry.y, ys)]
+
+
+@case
+def suppressed_default_names(design, root):
+    """Suppressed cut and fillet that keep their default names, then an active block."""
+    body = block(root, 0, 0, 2, 1, "5 mm")
+    sk = root.sketches.add(root.xYConstructionPlane)
+    circle(sk, 1, 0.5, 0.2)
+    cut = extrude(root, sk.profiles.item(0), FO.CutFeatureOperation, through_all)
+    cut.timelineObject.isSuppressed = True
+    fil = fillet(root, corner_edges(body, (0, 2), (0, 1)), "2 mm")
+    fil.timelineObject.isSuppressed = True
+    block(root, 3, 0, 4, 1, "3 mm")
+
+
+@case
+def renamed_mixed(design, root):
+    """Renamed sketches and features; the chamfer is suppressed, the others are active."""
+    sk = root.sketches.add(root.xYConstructionPlane)
+    sk.name = "outline"
+    rect(sk, 0, 0, 2, 1)
+    ext = extrude(root, sk.profiles.item(0), FO.NewBodyFeatureOperation, blind("5 mm"))
+    ext.name = "plate"
+    body = ext.bodies.item(0)
+    sk2 = root.sketches.add(root.xYConstructionPlane)
+    sk2.name = "bore_sketch"
+    circle(sk2, 1, 0.5, 0.2)
+    cut = extrude(root, sk2.profiles.item(0), FO.CutFeatureOperation, through_all)
+    cut.name = "bore"
+    ch = chamfer(root, [e for e in top_face(body).edges if short_type(e.geometry) == "Line3D"], "0.5 mm")
+    ch.name = "top_chamfer"
+    ch.timelineObject.isSuppressed = True
+    fil = fillet(root, corner_edges(body, (0, 2), (0, 1)), "1 mm")
+    fil.name = "corner_round"
+
+
+@case
+def rolled_back_marker(design, root):
+    """A renamed through cut left after the timeline marker (rolled back, active)."""
+    block(root, 0, 0, 2, 1, "5 mm")
+    sk = root.sketches.add(root.xYConstructionPlane)
+    circle(sk, 1, 0.5, 0.2)
+    cut = extrude(root, sk.profiles.item(0), FO.CutFeatureOperation, through_all)
+    cut.name = "late_cut"
+
+    def post():
+        design.timeline.markerPosition = 3
+    return post
+
+
 # ---------------------------------------------------------------- driver
 def run(_context: str):
     app = adsk.core.Application.get()
-    names = [n for n in CASES if ONLY in ("", "__ONLY__") or n in ONLY.split(",")]
+    only = [n for n in ONLY.split(",") if n and not n.startswith("__")]
+    names = [n for n in CASES if not only or n in only]
     os.makedirs(OUTDIR, exist_ok=True)
     for name in names:
         doc = app.documents.add(adsk.core.DocumentTypes.FusionDesignDocumentType)
@@ -339,8 +400,10 @@ def run(_context: str):
             design = adsk.fusion.Design.cast(app.activeProduct)
             design.designType = adsk.fusion.DesignTypes.ParametricDesignType
             root = design.rootComponent
-            CASES[name](design, root)
+            post = CASES[name](design, root)
             truth = dump_design(design, roll=True, steps=True)
+            if callable(post):
+                post()
             truth["case"] = name
             truth["doc"] = (CASES[name].__doc__ or "").strip()
             em = design.exportManager

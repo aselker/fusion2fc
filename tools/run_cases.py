@@ -11,6 +11,8 @@ rebuilds it with fusion2fc/rebuild.py under freecadcmd, and reports:
   built   - rebuild feature statuses
   steps   - first timeline step whose volumes differ (rel. tol 1e-6)
   final   - final body volumes match
+  names   - rebuilt feature names equal Fusion's timeline names (spaces ignored: cadmpeg
+            spells a default name "Extrude 1" where Fusion shows "Extrude1")
 """
 import json
 import os
@@ -81,6 +83,9 @@ def run_case(name, cadmpeg, out, verbose):
             break
     if len(steps_c) != len(steps_f):
         res["steps"] += " (step count %d vs %d)" % (len(steps_c), len(steps_f))
+    squash = lambda n: "".join((n or "").split())
+    res["names"] = [(r["name"], f["name"]) for r, f in zip(rep["features"], fus_items)
+                    if squash(r["name"]) != squash(f["name"])]
     want = [b["volume"] * 1000.0 for b in truth["worldBodies"]]
     got = [b["volume"] for b in rep["bodies"]]
     res["final"] = "MATCH" if vols_match(want, got) else "fusion %s rebuilt %s" % (fmt(want), fmt(got))
@@ -98,13 +103,15 @@ def main(argv):
     n_ok = 0
     for name in names:
         r = run_case(name, cadmpeg, out, verbose)
-        ok = r.get("final") == "MATCH" and r.get("steps") == "ok"
+        ok = r.get("final") == "MATCH" and r.get("steps") == "ok" and not r.get("names")
         n_ok += ok
         print("%-27s %-4s decode: %-14s built: %-22s final: %s" % (
             name, "PASS" if ok else "FAIL", r.get("decode", ""), r.get("built", ""), r.get("final", "")))
         if not ok or verbose:
             if r.get("steps") not in (None, "ok"):
                 print("      first divergence %s" % r["steps"])
+            for got, want in r.get("names", []):
+                print("      name %r, fusion %r" % (got, want))
             for prob in r.get("problems", []):
                 print("      " + prob)
     print("\n%d/%d cases pass" % (n_ok, len(names)))
