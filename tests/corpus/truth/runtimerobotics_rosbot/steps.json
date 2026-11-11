@@ -1,0 +1,2569 @@
+{
+"source": "runtimerobotics_rosbot.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 23,
+"diag": 349.42810404386745,
+"deviation_mm": 0.05,
+"steps_total": 26,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.04
+},
+{
+"index": 1,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Sketch3",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.0
+},
+{
+"index": 3,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2000000.0,
+"area": 120000.0,
+"centroid": [
+0.0,
+0.0,
+25.0
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.0
+],
+[
+100.0,
+100.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 4,
+"name": "Sketch4",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2000000.0,
+"area": 120000.0,
+"centroid": [
+0.0,
+0.0,
+25.0
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.0
+],
+[
+100.0,
+100.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 5,
+"name": "Sketch5",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2000000.0,
+"area": 120000.0,
+"centroid": [
+0.0,
+0.0,
+25.0
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.0
+],
+[
+100.0,
+100.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 6,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2000000.0,
+"area": 120000.0,
+"centroid": [
+0.0,
+0.0,
+25.0
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.0
+],
+[
+100.0,
+100.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "right_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-1.1580046200244059e-14,
+-112.5,
+25.000000372529033
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+-24.99999962747097
+],
+[
+50.0,
+-100.0,
+75.00000037252903
+]
+],
+"tri": [
+12,
+280
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 7,
+"name": "Extrude3",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0007.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2000000.0,
+"area": 120000.0,
+"centroid": [
+0.0,
+0.0,
+25.0
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.0
+],
+[
+100.0,
+100.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "right_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-1.1580046200244059e-14,
+-112.5,
+25.000000372529033
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+-24.99999962747097
+],
+[
+50.0,
+-100.0,
+75.00000037252903
+]
+],
+"tri": [
+12,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+25.000000372529033
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+-24.999999627470977
+],
+[
+50.00000000000001,
+125.0,
+75.00000037252904
+]
+],
+"tri": [
+292,
+280
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 8,
+"name": "Move1",
+"group": null,
+"type": "MoveFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0008.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2000000.0,
+"area": 120000.0,
+"centroid": [
+0.0,
+0.0,
+50.0
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+25.0
+],
+[
+100.0,
+100.0,
+75.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "right_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"tri": [
+12,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"tri": [
+292,
+280
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 9,
+"name": "Sketch7",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0008.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2000000.0,
+"area": 120000.0,
+"centroid": [
+0.0,
+0.0,
+50.0
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+25.0
+],
+[
+100.0,
+100.0,
+75.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "right_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"tri": [
+12,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"tri": [
+292,
+280
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 10,
+"name": "Extrude4",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0010.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2010857.3442108068,
+"area": 121809.55736846772,
+"centroid": [
+0.404952055981734,
+0.0,
+49.80022365238568
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+75.0
+]
+],
+"tri": [
+0,
+152
+]
+},
+{
+"name": "right_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"tri": [
+152,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"tri": [
+432,
+280
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 11,
+"name": "Sketch8",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0010.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2010857.3442108068,
+"area": 121809.55736846772,
+"centroid": [
+0.404952055981734,
+0.0,
+49.80022365238568
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+75.0
+]
+],
+"tri": [
+0,
+152
+]
+},
+{
+"name": "right_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"tri": [
+152,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"tri": [
+432,
+280
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 12,
+"name": "Extrude5",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0012.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2021714.6884216135,
+"area": 123619.11473693544,
+"centroid": [
+1.3477896471331599e-11,
+0.0,
+49.60259304826687
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+75.0
+]
+],
+"tri": [
+0,
+292
+]
+},
+{
+"name": "right_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"tri": [
+292,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"tri": [
+572,
+280
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 13,
+"name": "Fillet1",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0013.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2020397.8142490902,
+"area": 123251.02014731105,
+"centroid": [
+-0.04888421587842427,
+-1.8006249964410203e-14,
+49.632677784097304
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+75.0
+]
+],
+"tri": [
+0,
+812
+]
+},
+{
+"name": "right_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"tri": [
+812,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"tri": [
+1092,
+280
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 14,
+"name": "Fillet2",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0014.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2019080.9400765665,
+"area": 122882.92555768669,
+"centroid": [
+1.3477459440538372e-11,
+-1.8017993904463063e-14,
+49.662801763338756
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+75.0
+]
+],
+"tri": [
+0,
+1332
+]
+},
+{
+"name": "right_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"tri": [
+1332,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"tri": [
+1612,
+280
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 15,
+"name": "Sketch9",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0014.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2019080.9400765665,
+"area": 122882.92555768669,
+"centroid": [
+1.3477459440538372e-11,
+-1.8017993904463063e-14,
+49.662801763338756
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+75.0
+]
+],
+"tri": [
+0,
+1332
+]
+},
+{
+"name": "right_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"tri": [
+1332,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"tri": [
+1612,
+280
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 16,
+"name": "Extrude6",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0016.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2208080.9400765663,
+"area": 134582.92555768669,
+"centroid": [
+4.279734419382094,
+0.0,
+53.75741183973183
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+120.0
+]
+],
+"tri": [
+0,
+1348
+]
+},
+{
+"name": "right_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"tri": [
+1348,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"tri": [
+1628,
+280
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 17,
+"name": "Sketch10",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0016.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2208080.9400765663,
+"area": 134582.92555768669,
+"centroid": [
+4.279734419382094,
+0.0,
+53.75741183973183
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+120.0
+]
+],
+"tri": [
+0,
+1348
+]
+},
+{
+"name": "right_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"tri": [
+1348,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"tri": [
+1628,
+280
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 18,
+"name": "Extrude7",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0018.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2208080.9400765663,
+"area": 134582.92555768669,
+"centroid": [
+4.279734419382094,
+0.0,
+53.75741183973183
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+120.0
+]
+],
+"tri": [
+0,
+1348
+]
+},
+{
+"name": "right_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"tri": [
+1348,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"tri": [
+1628,
+280
+]
+},
+{
+"name": "lidar",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 54679.42013573036,
+"area": 9175.02134480899,
+"centroid": [
+50.0,
+0.0,
+129.99999999999997
+],
+"bbox": [
+[
+20.5,
+-29.5,
+120.0
+],
+[
+79.5,
+29.5,
+140.0
+]
+],
+"tri": [
+1908,
+212
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 19,
+"name": "Body->Comp1",
+"group": "Group1",
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0019.stl.gz",
+"bodies": [
+{
+"name": "right_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"tri": [
+0,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"tri": [
+280,
+280
+]
+},
+{
+"name": "lidar",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 54679.42013573036,
+"area": 9175.02134480899,
+"centroid": [
+50.0,
+0.0,
+129.99999999999997
+],
+"bbox": [
+[
+20.5,
+-29.5,
+120.0
+],
+[
+79.5,
+29.5,
+140.0
+]
+],
+"tri": [
+560,
+212
+]
+},
+{
+"name": "base_link",
+"component": "base_link",
+"occurrence": "base_link:1",
+"solid": true,
+"visible": true,
+"volume": 2208080.9400765663,
+"area": 134582.92555768669,
+"centroid": [
+4.279734419382094,
+0.0,
+53.75741183973183
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+120.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0029435515608556063,
+"transposed": false
+},
+"tri": [
+772,
+1348
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 20,
+"name": "Body->Comp2",
+"group": "Group1",
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0020.stl.gz",
+"bodies": [
+{
+"name": "left_wheel",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"tri": [
+0,
+280
+]
+},
+{
+"name": "lidar",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 54679.42013573036,
+"area": 9175.02134480899,
+"centroid": [
+50.0,
+0.0,
+129.99999999999997
+],
+"bbox": [
+[
+20.5,
+-29.5,
+120.0
+],
+[
+79.5,
+29.5,
+140.0
+]
+],
+"tri": [
+280,
+212
+]
+},
+{
+"name": "base_link",
+"component": "base_link",
+"occurrence": "base_link:1",
+"solid": true,
+"visible": true,
+"volume": 2208080.9400765663,
+"area": 134582.92555768669,
+"centroid": [
+4.279734419382094,
+0.0,
+53.75741183973183
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+120.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0029435515608556063,
+"transposed": false
+},
+"tri": [
+492,
+1348
+]
+},
+{
+"name": "right_wheel",
+"component": "right_wheel",
+"occurrence": "right_wheel:1",
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"placement_check": {
+"centroid_error": 4.137326815143641e-07,
+"transposed": false
+},
+"tri": [
+1840,
+280
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 21,
+"name": "Body->Comp3",
+"group": "Group1",
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0021.stl.gz",
+"bodies": [
+{
+"name": "lidar",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 54679.42013573036,
+"area": 9175.02134480899,
+"centroid": [
+50.0,
+0.0,
+129.99999999999997
+],
+"bbox": [
+[
+20.5,
+-29.5,
+120.0
+],
+[
+79.5,
+29.5,
+140.0
+]
+],
+"tri": [
+0,
+212
+]
+},
+{
+"name": "base_link",
+"component": "base_link",
+"occurrence": "base_link:1",
+"solid": true,
+"visible": true,
+"volume": 2208080.9400765663,
+"area": 134582.92555768669,
+"centroid": [
+4.279734419382094,
+0.0,
+53.75741183973183
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+120.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0029435515608556063,
+"transposed": false
+},
+"tri": [
+212,
+1348
+]
+},
+{
+"name": "right_wheel",
+"component": "right_wheel",
+"occurrence": "right_wheel:1",
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"placement_check": {
+"centroid_error": 4.137326815143641e-07,
+"transposed": false
+},
+"tri": [
+1560,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "left_wheel",
+"occurrence": "left_wheel:1",
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"placement_check": {
+"centroid_error": 4.137326946963859e-07,
+"transposed": false
+},
+"tri": [
+1840,
+280
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 22,
+"name": "Body->Comp4",
+"group": "Group1",
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0022.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "base_link",
+"occurrence": "base_link:1",
+"solid": true,
+"visible": true,
+"volume": 2208080.9400765663,
+"area": 134582.92555768669,
+"centroid": [
+4.279734419382094,
+0.0,
+53.75741183973183
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+120.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0029435515608556063,
+"transposed": false
+},
+"tri": [
+0,
+1348
+]
+},
+{
+"name": "right_wheel",
+"component": "right_wheel",
+"occurrence": "right_wheel:1",
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"placement_check": {
+"centroid_error": 4.137326815143641e-07,
+"transposed": false
+},
+"tri": [
+1348,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "left_wheel",
+"occurrence": "left_wheel:1",
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"placement_check": {
+"centroid_error": 4.137326946963859e-07,
+"transposed": false
+},
+"tri": [
+1628,
+280
+]
+},
+{
+"name": "lidar",
+"component": "lidar",
+"occurrence": "lidar:1",
+"solid": true,
+"visible": true,
+"volume": 54679.42013573036,
+"area": 9175.02134480899,
+"centroid": [
+50.0,
+0.0,
+129.99999999999997
+],
+"bbox": [
+[
+20.5,
+-29.5,
+120.0
+],
+[
+79.5,
+29.5,
+140.0
+]
+],
+"placement_check": {
+"centroid_error": 3.836102209223067e-07,
+"transposed": false
+},
+"tri": [
+1908,
+212
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 23,
+"name": "right_wheel_joint",
+"group": null,
+"type": "Joint",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0022.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "base_link",
+"occurrence": "base_link:1",
+"solid": true,
+"visible": true,
+"volume": 2208080.9400765663,
+"area": 134582.92555768669,
+"centroid": [
+4.279734419382094,
+0.0,
+53.75741183973183
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+120.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0029435515608556063,
+"transposed": false
+},
+"tri": [
+0,
+1348
+]
+},
+{
+"name": "right_wheel",
+"component": "right_wheel",
+"occurrence": "right_wheel:1",
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"placement_check": {
+"centroid_error": 4.137326815143641e-07,
+"transposed": false
+},
+"tri": [
+1348,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "left_wheel",
+"occurrence": "left_wheel:1",
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"placement_check": {
+"centroid_error": 4.137326946963859e-07,
+"transposed": false
+},
+"tri": [
+1628,
+280
+]
+},
+{
+"name": "lidar",
+"component": "lidar",
+"occurrence": "lidar:1",
+"solid": true,
+"visible": true,
+"volume": 54679.42013573036,
+"area": 9175.02134480899,
+"centroid": [
+50.0,
+0.0,
+129.99999999999997
+],
+"bbox": [
+[
+20.5,
+-29.5,
+120.0
+],
+[
+79.5,
+29.5,
+140.0
+]
+],
+"placement_check": {
+"centroid_error": 3.836102209223067e-07,
+"transposed": false
+},
+"tri": [
+1908,
+212
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 24,
+"name": "left_wheel_joint",
+"group": null,
+"type": "Joint",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0022.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "base_link",
+"occurrence": "base_link:1",
+"solid": true,
+"visible": true,
+"volume": 2208080.9400765663,
+"area": 134582.92555768669,
+"centroid": [
+4.279734419382094,
+0.0,
+53.75741183973183
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+120.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0029435515608556063,
+"transposed": false
+},
+"tri": [
+0,
+1348
+]
+},
+{
+"name": "right_wheel",
+"component": "right_wheel",
+"occurrence": "right_wheel:1",
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"placement_check": {
+"centroid_error": 4.137326815143641e-07,
+"transposed": false
+},
+"tri": [
+1348,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "left_wheel",
+"occurrence": "left_wheel:1",
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"placement_check": {
+"centroid_error": 4.137326946963859e-07,
+"transposed": false
+},
+"tri": [
+1628,
+280
+]
+},
+{
+"name": "lidar",
+"component": "lidar",
+"occurrence": "lidar:1",
+"solid": true,
+"visible": true,
+"volume": 54679.42013573036,
+"area": 9175.02134480899,
+"centroid": [
+50.0,
+0.0,
+129.99999999999997
+],
+"bbox": [
+[
+20.5,
+-29.5,
+120.0
+],
+[
+79.5,
+29.5,
+140.0
+]
+],
+"placement_check": {
+"centroid_error": 3.836102209223067e-07,
+"transposed": false
+},
+"tri": [
+1908,
+212
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 25,
+"name": "lidar_joint",
+"group": null,
+"type": "Joint",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0022.stl.gz",
+"bodies": [
+{
+"name": "base_link",
+"component": "base_link",
+"occurrence": "base_link:1",
+"solid": true,
+"visible": true,
+"volume": 2208080.9400765663,
+"area": 134582.92555768669,
+"centroid": [
+4.279734419382094,
+0.0,
+53.75741183973183
+],
+"bbox": [
+[
+-100.0,
+-100.0,
+0.9999999999999964
+],
+[
+100.0,
+100.0,
+120.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0029435515608556063,
+"transposed": false
+},
+"tri": [
+0,
+1348
+]
+},
+{
+"name": "right_wheel",
+"component": "right_wheel",
+"occurrence": "right_wheel:1",
+"solid": true,
+"visible": true,
+"volume": 196349.54084936206,
+"area": 23561.94490192345,
+"centroid": [
+-5.790023100122029e-15,
+-112.5,
+50.00000037252904
+],
+"bbox": [
+[
+-50.0,
+-125.0,
+3.725290298461914e-07
+],
+[
+50.0,
+-100.0,
+100.00000037252903
+]
+],
+"placement_check": {
+"centroid_error": 4.137326815143641e-07,
+"transposed": false
+},
+"tri": [
+1348,
+280
+]
+},
+{
+"name": "left_wheel",
+"component": "left_wheel",
+"occurrence": "left_wheel:1",
+"solid": true,
+"visible": true,
+"volume": 196349.54084936212,
+"area": 23561.944901923453,
+"centroid": [
+1.737006930036608e-14,
+112.5,
+50.00000037252903
+],
+"bbox": [
+[
+-50.00000000000001,
+100.0,
+3.725290209644072e-07
+],
+[
+50.00000000000001,
+125.0,
+100.00000037252903
+]
+],
+"placement_check": {
+"centroid_error": 4.137326946963859e-07,
+"transposed": false
+},
+"tri": [
+1628,
+280
+]
+},
+{
+"name": "lidar",
+"component": "lidar",
+"occurrence": "lidar:1",
+"solid": true,
+"visible": true,
+"volume": 54679.42013573036,
+"area": 9175.02134480899,
+"centroid": [
+50.0,
+0.0,
+129.99999999999997
+],
+"bbox": [
+[
+20.5,
+-29.5,
+120.0
+],
+[
+79.5,
+29.5,
+140.0
+]
+],
+"placement_check": {
+"centroid_error": 3.836102209223067e-07,
+"transposed": false
+},
+"tri": [
+1908,
+212
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 2.9
+}

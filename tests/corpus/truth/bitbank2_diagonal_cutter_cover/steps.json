@@ -1,0 +1,173 @@
+{
+"source": "bitbank2_diagonal_cutter_cover.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 3,
+"diag": 53.262502984475226,
+"deviation_mm": 0.010652500596895046,
+"steps_total": 3,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body3",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 510.0439885037509,
+"area": 979.7412181882294,
+"centroid": [
+1.5658820376914515,
+0.6,
+-0.11160467862288523
+],
+"bbox": [
+[
+-16.052108788816373,
+0.0,
+-9.470255031602202
+],
+[
+25.700000000000003,
+1.2,
+9.0297449683978
+]
+],
+"tri": [
+0,
+44
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body3",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 510.0439885037509,
+"area": 979.7412181882294,
+"centroid": [
+1.5658820376914515,
+0.6,
+-0.11160467862288523
+],
+"bbox": [
+[
+-16.052108788816373,
+0.0,
+-9.470255031602202
+],
+[
+25.700000000000003,
+1.2,
+9.0297449683978
+]
+],
+"tri": [
+0,
+44
+]
+},
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 39.725456924396326,
+"area": 84.0064706113149,
+"centroid": [
+-15.994606616744058,
+3.4999999999999987,
+0.08057188530251583
+],
+"bbox": [
+[
+-18.235881640673405,
+0.0,
+-1.1211598527688031
+],
+[
+-13.695829420742395,
+7.000000000000001,
+1.3788401472311969
+]
+],
+"tri": [
+44,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1086.5691690845872,
+"area": 1249.522641594658,
+"centroid": [
+12.287329879316701,
+3.5000000000000004,
+-0.13685799515320438
+],
+"bbox": [
+[
+-2.552108788816374,
+0.0,
+-12.905397772398281
+],
+[
+28.099999999999987,
+7.000000000000001,
+12.4102159225675
+]
+],
+"tri": [
+56,
+84
+]
+}
+],
+"seconds": 0.03
+}
+],
+"seconds": 2.2
+}

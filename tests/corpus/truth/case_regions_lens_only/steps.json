@@ -1,0 +1,69 @@
+{
+"source": "case_regions_lens_only.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 2,
+"diag": 10.198039027185569,
+"deviation_mm": 0.002039607805437114,
+"steps_total": 2,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 86.02498878758988,
+"area": 134.32898580351397,
+"centroid": [
+0.0,
+4.033068763914937e-16,
+1.0000000000000002
+],
+"bbox": [
+[
+-4.0,
+-2.9999999999999987,
+0.0
+],
+[
+4.0,
+3.0,
+2.0
+]
+],
+"tri": [
+0,
+220
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 3.8
+}

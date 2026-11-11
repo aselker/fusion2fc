@@ -24,6 +24,9 @@ parametric features and timeline rather than only the final geometry.
 | `tools/compare_fusion_cadir.py` | feature-by-feature comparison of a decode with a Fusion dump |
 | `tools/check_bodies.py`, `tools/rebuild_component.sh` | helpers for rebuilding one component of a large design |
 | `tests/cases/` | minimal test designs (`.f3d`) and Fusion ground truth (`.truth.json`) |
+| `tests/corpus/` | permissively licensed real-world models with per-step Fusion meshes; see its README |
+| `tools/run_corpus.py`, `tools/corpus_compare.py`, `tools/mesh_compare.py` | step-by-step geometric comparison with Fusion over the corpus |
+| `tools/corpus_truth.py`, `vm/scripts/step_meshes.py` | record the corpus ground truth in Fusion |
 | `vm/mcp_call.py` | client for Fusion's built-in MCP server (runs Fusion API scripts) |
 | `vm/scripts/` | Fusion-side scripts: case generator, timeline/feature/body dumps |
 
@@ -39,3 +42,9 @@ reachable from the host at `http://127.0.0.1:27182/mcp`. Run a Fusion API script
 
     tools/run_cases.py            # all cases, needs cadmpeg/target/release/cadmpeg and freecadcmd
     tools/run_cases.py -v NAME    # one case, verbose
+    tools/run_corpus.py           # every corpus model, compared with Fusion after every timeline step
+
+`run_cases.py` compares step volumes and names. `run_corpus.py` compares geometry after
+each timeline step: body counts, volumes, and Fusion's tessellation against the rebuilt
+bodies' tessellation (two-sided distance within tessellation error). See
+`tests/corpus/README.md`.

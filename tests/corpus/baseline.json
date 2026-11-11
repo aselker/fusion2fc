@@ -1,0 +1,410 @@
+{
+ "AdamLaskoi_SG90_Micro_Servo_9g_v1": {
+  "match": 6,
+  "steps": 19
+ },
+ "PacktPublishing_2BC": {
+  "match": 3,
+  "steps": 10
+ },
+ "PacktPublishing_3_1_Example": {
+  "match": 1,
+  "steps": 6
+ },
+ "PacktPublishing_4_2_S_Hook_Sweep_Final": {
+  "match": 2,
+  "steps": 7
+ },
+ "PacktPublishing_Bicycle_Handlebars_final": {
+  "match": 1,
+  "steps": 27
+ },
+ "PacktPublishing_Bracket_Finished": {
+  "match": 5,
+  "steps": 15
+ },
+ "PacktPublishing_Bracket_Solid": {
+  "match": 3,
+  "steps": 5
+ },
+ "PacktPublishing_Ch12_tealight_ghost_final": {
+  "match": 2,
+  "steps": 32
+ },
+ "PacktPublishing_Clip_Fixed": {
+  "match": 7,
+  "steps": 7
+ },
+ "PacktPublishing_Connector_Bracket": {
+  "match": 0,
+  "steps": 19
+ },
+ "PacktPublishing_Custom_Lattice": {
+  "match": 2,
+  "steps": 7
+ },
+ "PacktPublishing_Example_B": {
+  "match": 1,
+  "steps": 13
+ },
+ "PacktPublishing_Hook": {
+  "match": 1,
+  "steps": 8
+ },
+ "PacktPublishing_L_Brackets": {
+  "match": 8,
+  "steps": 8
+ },
+ "Saurabh_Mudgal_Crusher_Shaft": {
+  "match": 1,
+  "steps": 22
+ },
+ "WilkoV_03_Refinements": {
+  "match": 4,
+  "steps": 10
+ },
+ "adafruit_1739_Pizero_Large": {
+  "match": 2,
+  "steps": 8
+ },
+ "adafruit_2278_RGB_matrix_4mm": {
+  "match": 2,
+  "steps": 5
+ },
+ "adafruit_2831_Photo_Transistor_Light_Sensor": {
+  "match": 1,
+  "steps": 10
+ },
+ "adafruit_4320_PermaProto_Gizmo": {
+  "match": 1,
+  "steps": 6
+ },
+ "adafruit_67_9V_battery_holder": {
+  "match": 4,
+  "steps": 4
+ },
+ "adafruit_727_3xAAA_JST_Battery_Holder": {
+  "match": 5,
+  "steps": 19
+ },
+ "administrativetrick_Parametric_A_s_v1": {
+  "match": 1,
+  "steps": 3
+ },
+ "andyeske_Cake_v2": {
+  "match": 3,
+  "steps": 31
+ },
+ "andyeske_Lego_20x20_plate_v8": {
+  "match": 1,
+  "steps": 16
+ },
+ "andyeske_Lego_2x4_brick_v1": {
+  "match": 1,
+  "steps": 19
+ },
+ "andyeske_N2_Pencil_v1": {
+  "match": 3,
+  "steps": 20
+ },
+ "bitbank2_badger2040_case": {
+  "match": 1,
+  "steps": 10
+ },
+ "bitbank2_co2_01space_box": {
+  "match": 1,
+  "steps": 29
+ },
+ "bitbank2_diagonal_cutter_cover": {
+  "match": 1,
+  "steps": 3
+ },
+ "bitbank2_oled_cover": {
+  "match": 2,
+  "steps": 6
+ },
+ "bitbank2_rack_mount_foot": {
+  "match": 1,
+  "steps": 16
+ },
+ "bowenchristopher_Untitled_v1": {
+  "match": 2,
+  "steps": 3
+ },
+ "busraakgun24_k_recik": {
+  "match": 1,
+  "steps": 6
+ },
+ "busraakgun24_kol": {
+  "match": 2,
+  "steps": 14
+ },
+ "busraakgun24_suborusu": {
+  "match": 1,
+  "steps": 7
+ },
+ "case_chamfer_top_edges": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_component_offset": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_cut_from_top_face": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_cut_participant": {
+  "match": 7,
+  "steps": 7
+ },
+ "case_cut_through_all": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_disjoint_new_body": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_extrude_blind": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_extrude_negative": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_extrude_offset_start": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_extrude_symmetric_full": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_extrude_symmetric_half": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_extrude_taper": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_extrude_to_face": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_extrude_two_sided": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_fillet_vertical_edges": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_join_bridge": {
+  "match": 6,
+  "steps": 6
+ },
+ "case_join_from_face_offset": {
+  "match": 3,
+  "steps": 4
+ },
+ "case_join_touching_only": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_params_renamed_suppressed": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_regions_full_circle": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_regions_lens_and_cap": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_regions_lens_only": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_regions_outer_ring": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_renamed_mixed": {
+  "match": 6,
+  "steps": 6
+ },
+ "case_replica_backplate": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_replica_ecas": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_replica_screwholes": {
+  "match": 4,
+  "steps": 9
+ },
+ "case_rolled_back_marker": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_suppressed_default_names": {
+  "match": 7,
+  "steps": 7
+ },
+ "digitalsputnik_16mm_Claw_P_MPLA000000141_v1": {
+  "match": 1,
+  "steps": 12
+ },
+ "digitalsputnik_Al_Pipe_16x170mm_M_SPPS000000007_v1": {
+  "match": 2,
+  "steps": 2
+ },
+ "digitalsputnik_Al_Pipe_16x200mm_M_SPPS000000046_v1": {
+  "match": 2,
+  "steps": 2
+ },
+ "digitalsputnik_Al_Pipe_16x22mm_M_SPPS000000057_v2": {
+  "match": 2,
+  "steps": 3
+ },
+ "digitalsputnik_Al_Pipe_16x75mm_M_SPPS000000043_v1": {
+  "match": 2,
+  "steps": 3
+ },
+ "digitalsputnik_Apollo_Yoke_Disc_P2_M_SPPS000000053_v1": {
+  "match": 1,
+  "steps": 10
+ },
+ "digitalsputnik_Apollo_Yoke_Int_Corner_P2_P_MPLA000000157_v1": {
+  "match": 1,
+  "steps": 37
+ },
+ "digitalsputnik_Apollo_Yoke_Lamp_Mount_Body_M_SPPS000000036_v2": {
+  "match": 1,
+  "steps": 14
+ },
+ "digitalsputnik_Apollo_Yoke_Lock_B_Side_P_MPLA000000177_v2": {
+  "match": 1,
+  "steps": 19
+ },
+ "digitalsputnik_Apollo_Yoke_Lock_P3_P_MPLA000000158_v2": {
+  "match": 1,
+  "steps": 14
+ },
+ "digitalsputnik_Controller_Cooler_P2_M_SPPS000000003_2_v2": {
+  "match": 1,
+  "steps": 16
+ },
+ "digitalsputnik_Encoder_Button_P_MPLA000000109_v2": {
+  "match": 2,
+  "steps": 18
+ },
+ "digitalsputnik_Front_Transparent_T1_v5": {
+  "match": 1,
+  "steps": 2
+ },
+ "digitalsputnik_Nupud_T1_v1": {
+  "match": 1,
+  "steps": 2
+ },
+ "digitalsputnik_Nupud_T_v2": {
+  "match": 1,
+  "steps": 2
+ },
+ "digitalsputnik_T_bel_T2_v3": {
+  "match": 1,
+  "steps": 26
+ },
+ "digitalsputnik_Tihend_v4": {
+  "match": 1,
+  "steps": 2
+ },
+ "gtgkartik_Dice": {
+  "match": 5,
+  "steps": 27
+ },
+ "gtgkartik_Industrial_Tool_2": {
+  "match": 2,
+  "steps": 13
+ },
+ "homebrew_pinball_Fast_Light_Board": {
+  "match": 6,
+  "steps": 7
+ },
+ "homebrew_pinball_Gate_Bracket_535_5742_00": {
+  "match": 2,
+  "steps": 20
+ },
+ "homebrew_pinball_Metal_Post_1_Inch_02_4434": {
+  "match": 2,
+  "steps": 7
+ },
+ "homebrew_pinball_NeoPixel_Jewel_7_LED": {
+  "match": 1,
+  "steps": 3
+ },
+ "homebrew_pinball_Seven_LED_Insert": {
+  "match": 2,
+  "steps": 18
+ },
+ "intuibase_Co2SensorEnclosure": {
+  "match": 2,
+  "steps": 21
+ },
+ "intuibase_SCD41Chamber": {
+  "match": 5,
+  "steps": 19
+ },
+ "kantoku_code_n_5_ryoji_jp": {
+  "match": 0,
+  "steps": 10
+ },
+ "nick0451_Parametric_Battery_Case_v2": {
+  "match": 0,
+  "steps": 59
+ },
+ "onlinelei_appleScreen_v9": {
+  "match": 1,
+  "steps": 8
+ },
+ "onlinelei_hook_sogou_v1": {
+  "match": 1,
+  "steps": 6
+ },
+ "ravengraves_NEMA17StepperMotor": {
+  "match": 1,
+  "steps": 25
+ },
+ "ravengraves_TimingPulleyBase": {
+  "match": 1,
+  "steps": 7
+ },
+ "rsheldiii_Doom_Keycap_Prototype_Enclosure_v22": {
+  "match": 9,
+  "steps": 29
+ },
+ "runtimerobotics_rosbot": {
+  "match": 3,
+  "steps": 26
+ },
+ "ulikoehler_B10P_VH": {
+  "match": 4,
+  "steps": 9
+ },
+ "ulikoehler_B2PS_VH": {
+  "match": 4,
+  "steps": 11
+ },
+ "uwearzt_DINRailMount": {
+  "match": 1,
+  "steps": 8
+ }
+}

@@ -1,0 +1,82 @@
+{
+"source": "bowenchristopher_Untitled_v1.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 3,
+"diag": 395.2625233603105,
+"deviation_mm": 0.05,
+"steps_total": 3,
+"steps": [
+{
+"index": 0,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 577070.1835112715,
+"area": 125959.61679416824,
+"centroid": [
+-1.877356468666875e-07,
+9.674998344085094e-06,
+-5.092700000000001
+],
+"bbox": [
+[
+-139.70000000000002,
+-139.70000000000002,
+-10.1854
+],
+[
+139.70000000000002,
+139.70000000000002,
+0.0
+]
+],
+"tri": [
+0,
+1368
+]
+}
+],
+"seconds": 0.04
+}
+],
+"seconds": 4.4
+}

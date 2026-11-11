@@ -1,0 +1,289 @@
+{
+"source": "ravengraves_TimingPulleyBase.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 7,
+"diag": 48.865414368217614,
+"deviation_mm": 0.009773082873643523,
+"steps_total": 7,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.05
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1405.3752292738757,
+"area": 2154.908684886609,
+"centroid": [
+-9.479800140198423e-15,
+6.319866760132283e-15,
+5.0
+],
+"bbox": [
+[
+-15.661494309189534,
+-15.661494309189534,
+0.0
+],
+[
+15.661494309189534,
+15.661494309189534,
+10.0
+]
+],
+"tri": [
+0,
+696
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1405.3752292738757,
+"area": 2154.908684886609,
+"centroid": [
+-9.479800140198423e-15,
+6.319866760132283e-15,
+5.0
+],
+"bbox": [
+[
+-15.661494309189534,
+-15.661494309189534,
+0.0
+],
+[
+15.661494309189534,
+15.661494309189534,
+10.0
+]
+],
+"tri": [
+0,
+696
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 3,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1398.0762242752398,
+"area": 2161.4295464091383,
+"centroid": [
+-0.08005470954570755,
+-3.954427665905641e-06,
+4.999999999999803
+],
+"bbox": [
+[
+-15.661494309189534,
+-15.661494309189534,
+0.0
+],
+[
+15.643603721563968,
+15.661494309189534,
+10.0
+]
+],
+"tri": [
+0,
+796
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 4,
+"name": "C-Pattern1",
+"group": null,
+"type": "CircularPatternFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1040.7967211076402,
+"area": 2480.950754915501,
+"centroid": [
+-7.040252735162314e-14,
+-1.0240367614781549e-13,
+4.999999992923401
+],
+"bbox": [
+[
+-15.643603721565986,
+-15.661494309189534,
+0.0
+],
+[
+15.643603721563967,
+15.661494309189534,
+10.0
+]
+],
+"tri": [
+0,
+6140
+]
+}
+],
+"seconds": 0.17
+},
+{
+"index": 5,
+"name": "Sketch5",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1040.7967211076402,
+"area": 2480.950754915501,
+"centroid": [
+-7.040252735162314e-14,
+-1.0240367614781549e-13,
+4.999999992923401
+],
+"bbox": [
+[
+-15.643603721565986,
+-15.661494309189534,
+0.0
+],
+[
+15.643603721563967,
+15.661494309189534,
+10.0
+]
+],
+"tri": [
+0,
+6140
+]
+}
+],
+"seconds": 0.06
+},
+{
+"index": 6,
+"name": "Revolve1",
+"group": null,
+"type": "RevolveFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1428.2989097789482,
+"area": 2861.0379386382547,
+"centroid": [
+9.327652779321783e-15,
+5.59659166759307e-14,
+5.000000002093613
+],
+"bbox": [
+[
+-16.91090151862865,
+-16.91090151862865,
+-7.178298865699242e-16
+],
+[
+16.91090151862865,
+16.91090151862865,
+9.99999999977773
+]
+],
+"tri": [
+0,
+6484
+]
+}
+],
+"seconds": 0.19
+}
+],
+"seconds": 3.1
+}

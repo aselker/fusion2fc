@@ -1,0 +1,333 @@
+{
+"source": "adafruit_1739_Pizero_Large.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 8,
+"diag": 50.72314123776521,
+"deviation_mm": 0.010144628247553043,
+"steps_total": 8,
+"steps": [
+{
+"index": 0,
+"name": "base",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 4045.5388157706266,
+"area": 1900.8049270912366,
+"centroid": [
+1.5319245729519507e-09,
+2.1954514840835554e-15,
+3.0000000000000004
+],
+"bbox": [
+[
+-14.65,
+-14.65,
+0.0
+],
+[
+14.65,
+14.65,
+6.000000000000001
+]
+],
+"tri": [
+0,
+336
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 4175.519027192822,
+"area": 2022.980272114743,
+"centroid": [
+1.4839605927817044e-09,
+0.5237152477183646,
+2.961088606417637
+],
+"bbox": [
+[
+-14.65,
+-14.65,
+0.0
+],
+[
+14.65,
+20.483817131007818,
+6.000000000000001
+]
+],
+"tri": [
+0,
+496
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 3,
+"name": "top circles",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 4175.519027192822,
+"area": 2022.980272114743,
+"centroid": [
+1.4839605927817044e-09,
+0.5237152477183646,
+2.961088606417637
+],
+"bbox": [
+[
+-14.65,
+-14.65,
+0.0
+],
+[
+14.65,
+20.483817131007818,
+6.000000000000001
+]
+],
+"tri": [
+0,
+496
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 4,
+"name": "Extrude3",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 4147.2446924678725,
+"area": 2041.8298283171616,
+"centroid": [
+1.4962171401284451e-09,
+0.5272857388064482,
+2.943779275548033
+],
+"bbox": [
+[
+-14.65,
+-14.65,
+0.0
+],
+[
+14.65,
+20.483817131007818,
+6.000000000000001
+]
+],
+"tri": [
+0,
+652
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 5,
+"name": "Extrude4",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0005.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 4036.3464715151094,
+"area": 2041.8298283171619,
+"centroid": [
+-7.647668800119332e-11,
+0.5417728624416576,
+2.866678638093289
+],
+"bbox": [
+[
+-14.65,
+-14.65,
+0.0
+],
+[
+14.65,
+20.483817131007818,
+6.000000000000001
+]
+],
+"tri": [
+0,
+1168
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 6,
+"name": "Fillet1",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 4030.396731042,
+"area": 2018.0308664247782,
+"centroid": [
+5.645437974041643e-11,
+0.5425726367919258,
+2.8622180453803376
+],
+"bbox": [
+[
+-14.65,
+-14.65,
+0.0
+],
+[
+14.65,
+20.483817131007818,
+6.000000000000001
+]
+],
+"tri": [
+0,
+1966
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 7,
+"name": "Mirror1",
+"group": null,
+"type": "MirrorFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0007.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 4160.376942464195,
+"area": 2140.2062114482837,
+"centroid": [
+5.4415212979061274e-11,
+-4.269701673589491e-15,
+2.827469670729341
+],
+"bbox": [
+[
+-14.65,
+-20.483817131007818,
+0.0
+],
+[
+14.65,
+20.483817131007818,
+6.000000000000001
+]
+],
+"tri": [
+0,
+2128
+]
+}
+],
+"seconds": 0.03
+}
+],
+"seconds": 2.2
+}

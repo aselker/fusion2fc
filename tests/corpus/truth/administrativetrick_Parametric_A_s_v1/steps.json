@@ -1,0 +1,113 @@
+{
+"source": "administrativetrick_Parametric_A_s_v1.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 3,
+"diag": 40.55204782304803,
+"deviation_mm": 0.008110409564609606,
+"steps_total": 3,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2879.9413873774356,
+"area": 2051.045504681666,
+"centroid": [
+12.795292894418939,
+13.633213533755244,
+5.0
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+25.386382956057787,
+30.00000238418579,
+10.0
+]
+],
+"tri": [
+0,
+44
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "R-Pattern1",
+"group": null,
+"type": "RectangularPatternFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2879.9413873774356,
+"area": 2051.045504681666,
+"centroid": [
+12.795292894418939,
+13.633213533755244,
+5.0
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+25.386382956057787,
+30.00000238418579,
+10.0
+]
+],
+"tri": [
+0,
+44
+]
+}
+],
+"seconds": 0.01
+}
+],
+"seconds": 2.1
+}

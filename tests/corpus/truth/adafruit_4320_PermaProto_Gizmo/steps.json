@@ -1,0 +1,5165 @@
+{
+"source": "adafruit_4320_PermaProto_Gizmo.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 6,
+"diag": 76.05525096927892,
+"deviation_mm": 0.015211050193855784,
+"steps_total": 6,
+"steps": [
+{
+"index": 0,
+"name": " PCB Component:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.04
+},
+{
+"index": 1,
+"name": "CPlay Proto Gizmo rev A",
+"group": null,
+"type": "Feature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "PCB Component",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Board",
+"component": "Board",
+"occurrence": "PCB Component:1+Board:1",
+"solid": true,
+"visible": true,
+"volume": 2889.003257250604,
+"area": 5375.687888663313,
+"centroid": [
+-0.005095335521974405,
+-0.017324152333326008,
+0.7849999999999991
+],
+"bbox": [
+[
+-26.67,
+-26.67,
+0.0
+],
+[
+26.67,
+26.67,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 0.0006194586548211332,
+"transposed": false
+},
+"tri": [
+0,
+13740
+]
+},
+{
+"name": "FIDUCIAL_1MM",
+"component": "FIDUCIAL_1MM",
+"occurrence": "PCB Component:1+FIDUCIAL_1MM:U$2",
+"solid": true,
+"visible": false,
+"volume": 0.2250000000000001,
+"area": 5.100000000000001,
+"centroid": [
+16.129,
+19.177,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.379000000000003,
+18.427,
+-0.1000000000000003
+],
+[
+16.879,
+19.927,
+2.7755575615628914e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175868219513794e-09,
+"transposed": false
+},
+"tri": [
+13740,
+12
+]
+},
+{
+"name": "FIDUCIAL_1MM",
+"component": "FIDUCIAL_1MM",
+"occurrence": "PCB Component:1+FIDUCIAL_1MM:U$6",
+"solid": true,
+"visible": false,
+"volume": 0.2250000000000001,
+"area": 5.100000000000001,
+"centroid": [
+-16.002000000000002,
+-19.177,
+-0.05000000000000001
+],
+"bbox": [
+[
+-16.752,
+-19.927,
+-0.1000000000000003
+],
+[
+-15.252,
+-18.427,
+2.7755575615628914e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175868111850267e-09,
+"transposed": false
+},
+"tri": [
+13752,
+12
+]
+},
+{
+"name": "PCBFEAT-REV-040",
+"component": "PCBFEAT-REV-040",
+"occurrence": "PCB Component:1+PCBFEAT-REV-040:U$7",
+"solid": true,
+"visible": false,
+"volume": 0.3225616000000001,
+"area": 7.169632000000001,
+"centroid": [
+-16.002000000000002,
+19.304000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-16.900000000000002,
+18.406000000000002,
+1.5700000000000003
+],
+[
+-15.104,
+20.202000000000005,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1176928988868738e-09,
+"transposed": false
+},
+"tri": [
+13764,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP2",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-11.557000000000002,
+20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+-14.224000000000004,
+17.450000000000003,
+-0.10000000000000099
+],
+[
+-8.89,
+22.784000000000006,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870853766497e-09,
+"transposed": false
+},
+"tri": [
+13776,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP3",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-11.557000000000002,
+-20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+-14.224000000000004,
+-22.784000000000006,
+-0.10000000000000099
+],
+[
+-8.89,
+-17.450000000000003,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923706007e-09,
+"transposed": false
+},
+"tri": [
+13788,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP4",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+11.557000000000002,
+20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+8.89,
+17.450000000000003,
+-0.10000000000000099
+],
+[
+14.224000000000004,
+22.784000000000006,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870992530257e-09,
+"transposed": false
+},
+"tri": [
+13800,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP5",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+11.557000000000002,
+-20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+8.89,
+-22.784000000000006,
+-0.10000000000000099
+],
+[
+14.224000000000004,
+-17.450000000000003,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.117587113137872e-09,
+"transposed": false
+},
+"tri": [
+13812,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP6",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-17.78,
+14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+-20.447000000000003,
+12.267999999999999,
+-0.10000000000000099
+],
+[
+-15.113000000000001,
+17.602000000000004,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175871270368357e-09,
+"transposed": false
+},
+"tri": [
+13824,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP7",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-21.819000000000003,
+7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+-24.486000000000004,
+5.257999999999998,
+-0.10000000000000099
+],
+[
+-19.152,
+10.592000000000002,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175871201208824e-09,
+"transposed": false
+},
+"tri": [
+13836,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP8",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-21.819000000000003,
+-7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+-24.486000000000004,
+-10.592000000000002,
+-0.10000000000000099
+],
+[
+-19.152,
+-5.257999999999998,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923201315e-09,
+"transposed": false
+},
+"tri": [
+13848,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP9",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-17.78,
+-14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+-20.447000000000003,
+-17.602000000000004,
+-0.10000000000000099
+],
+[
+-15.113000000000001,
+-12.267999999999999,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923268373e-09,
+"transposed": false
+},
+"tri": [
+13860,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP10",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+17.78,
+14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.113000000000001,
+12.267999999999999,
+-0.10000000000000099
+],
+[
+20.447000000000003,
+17.602000000000004,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870854486475e-09,
+"transposed": false
+},
+"tri": [
+13872,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP11",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+21.819000000000003,
+7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+19.152,
+5.257999999999998,
+-0.10000000000000099
+],
+[
+24.486000000000004,
+10.592000000000002,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.117587099256202e-09,
+"transposed": false
+},
+"tri": [
+13884,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP12",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+21.819000000000003,
+-7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+19.152,
+-10.592000000000002,
+-0.10000000000000099
+],
+[
+24.486000000000004,
+-5.257999999999998,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923229551e-09,
+"transposed": false
+},
+"tri": [
+13896,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP13",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+17.78,
+-14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.113000000000001,
+-17.602000000000004,
+-0.10000000000000099
+],
+[
+20.447000000000003,
+-12.267999999999999,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923268373e-09,
+"transposed": false
+},
+"tri": [
+13908,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP1",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+12.700000000000003,
+-13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+11.992893218813453,
+-14.67710678118655,
+1.5700000000000003
+],
+[
+13.40710678118655,
+-13.262893218813455,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1174159715572658e-09,
+"transposed": false
+},
+"tri": [
+13920,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP2",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+17.145000000000003,
+-7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+16.645,
+-8.120000000000001,
+1.5700000000000003
+],
+[
+17.645000000000003,
+-7.119999999999999,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1174782196462156e-09,
+"transposed": false
+},
+"tri": [
+13932,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP3",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+17.145000000000003,
+7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+16.645,
+7.119999999999999,
+1.5700000000000003
+],
+[
+17.645000000000003,
+8.120000000000001,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1175685012874748e-09,
+"transposed": false
+},
+"tri": [
+13944,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP4",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+12.700000000000003,
+13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+11.992893218813453,
+13.262893218813455,
+1.5700000000000003
+],
+[
+13.40710678118655,
+14.67710678118655,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1177115836609795e-09,
+"transposed": false
+},
+"tri": [
+13956,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP5",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-12.700000000000003,
+-13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-13.40710678118655,
+-14.67710678118655,
+1.5700000000000003
+],
+[
+-11.992893218813453,
+-13.262893218813455,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1177593784840323e-09,
+"transposed": false
+},
+"tri": [
+13968,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP6",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-17.145000000000003,
+-7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+-17.645000000000003,
+-8.120000000000001,
+1.5700000000000003
+],
+[
+-16.645,
+-7.119999999999999,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.117615609080755e-09,
+"transposed": false
+},
+"tri": [
+13980,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP7",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-17.145000000000003,
+7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+-17.645000000000003,
+7.119999999999999,
+1.5700000000000003
+],
+[
+-16.645,
+8.120000000000001,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.117604021140695e-09,
+"transposed": false
+},
+"tri": [
+13992,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP8",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-12.700000000000003,
+13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-13.40710678118655,
+13.262893218813455,
+1.5700000000000003
+],
+[
+-11.992893218813453,
+14.67710678118655,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1175855976446172e-09,
+"transposed": false
+},
+"tri": [
+14004,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP9",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-6.350000000000001,
+-21.590000000000003,
+1.6200000000000003
+],
+"bbox": [
+[
+-6.850000000000001,
+-22.09,
+1.5700000000000003
+],
+[
+-5.8500000000000005,
+-21.090000000000003,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1176169568941364e-09,
+"transposed": false
+},
+"tri": [
+14016,
+12
+]
+}
+],
+"seconds": 0.23
+},
+{
+"index": 2,
+"name": " Component7:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Board",
+"component": "Board",
+"occurrence": "PCB Component:1+Board:1",
+"solid": true,
+"visible": true,
+"volume": 2889.003257250604,
+"area": 5375.687888663313,
+"centroid": [
+-0.005095335521974405,
+-0.017324152333326008,
+0.7849999999999991
+],
+"bbox": [
+[
+-26.67,
+-26.67,
+0.0
+],
+[
+26.67,
+26.67,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 0.0006194586548211332,
+"transposed": false
+},
+"tri": [
+0,
+13740
+]
+},
+{
+"name": "FIDUCIAL_1MM",
+"component": "FIDUCIAL_1MM",
+"occurrence": "PCB Component:1+FIDUCIAL_1MM:U$2",
+"solid": true,
+"visible": false,
+"volume": 0.2250000000000001,
+"area": 5.100000000000001,
+"centroid": [
+16.129,
+19.177,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.379000000000003,
+18.427,
+-0.1000000000000003
+],
+[
+16.879,
+19.927,
+2.7755575615628914e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175868219513794e-09,
+"transposed": false
+},
+"tri": [
+13740,
+12
+]
+},
+{
+"name": "FIDUCIAL_1MM",
+"component": "FIDUCIAL_1MM",
+"occurrence": "PCB Component:1+FIDUCIAL_1MM:U$6",
+"solid": true,
+"visible": false,
+"volume": 0.2250000000000001,
+"area": 5.100000000000001,
+"centroid": [
+-16.002000000000002,
+-19.177,
+-0.05000000000000001
+],
+"bbox": [
+[
+-16.752,
+-19.927,
+-0.1000000000000003
+],
+[
+-15.252,
+-18.427,
+2.7755575615628914e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175868111850267e-09,
+"transposed": false
+},
+"tri": [
+13752,
+12
+]
+},
+{
+"name": "PCBFEAT-REV-040",
+"component": "PCBFEAT-REV-040",
+"occurrence": "PCB Component:1+PCBFEAT-REV-040:U$7",
+"solid": true,
+"visible": false,
+"volume": 0.3225616000000001,
+"area": 7.169632000000001,
+"centroid": [
+-16.002000000000002,
+19.304000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-16.900000000000002,
+18.406000000000002,
+1.5700000000000003
+],
+[
+-15.104,
+20.202000000000005,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1176928988868738e-09,
+"transposed": false
+},
+"tri": [
+13764,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP2",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-11.557000000000002,
+20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+-14.224000000000004,
+17.450000000000003,
+-0.10000000000000099
+],
+[
+-8.89,
+22.784000000000006,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870853766497e-09,
+"transposed": false
+},
+"tri": [
+13776,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP3",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-11.557000000000002,
+-20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+-14.224000000000004,
+-22.784000000000006,
+-0.10000000000000099
+],
+[
+-8.89,
+-17.450000000000003,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923706007e-09,
+"transposed": false
+},
+"tri": [
+13788,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP4",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+11.557000000000002,
+20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+8.89,
+17.450000000000003,
+-0.10000000000000099
+],
+[
+14.224000000000004,
+22.784000000000006,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870992530257e-09,
+"transposed": false
+},
+"tri": [
+13800,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP5",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+11.557000000000002,
+-20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+8.89,
+-22.784000000000006,
+-0.10000000000000099
+],
+[
+14.224000000000004,
+-17.450000000000003,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.117587113137872e-09,
+"transposed": false
+},
+"tri": [
+13812,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP6",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-17.78,
+14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+-20.447000000000003,
+12.267999999999999,
+-0.10000000000000099
+],
+[
+-15.113000000000001,
+17.602000000000004,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175871270368357e-09,
+"transposed": false
+},
+"tri": [
+13824,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP7",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-21.819000000000003,
+7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+-24.486000000000004,
+5.257999999999998,
+-0.10000000000000099
+],
+[
+-19.152,
+10.592000000000002,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175871201208824e-09,
+"transposed": false
+},
+"tri": [
+13836,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP8",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-21.819000000000003,
+-7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+-24.486000000000004,
+-10.592000000000002,
+-0.10000000000000099
+],
+[
+-19.152,
+-5.257999999999998,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923201315e-09,
+"transposed": false
+},
+"tri": [
+13848,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP9",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-17.78,
+-14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+-20.447000000000003,
+-17.602000000000004,
+-0.10000000000000099
+],
+[
+-15.113000000000001,
+-12.267999999999999,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923268373e-09,
+"transposed": false
+},
+"tri": [
+13860,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP10",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+17.78,
+14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.113000000000001,
+12.267999999999999,
+-0.10000000000000099
+],
+[
+20.447000000000003,
+17.602000000000004,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870854486475e-09,
+"transposed": false
+},
+"tri": [
+13872,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP11",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+21.819000000000003,
+7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+19.152,
+5.257999999999998,
+-0.10000000000000099
+],
+[
+24.486000000000004,
+10.592000000000002,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.117587099256202e-09,
+"transposed": false
+},
+"tri": [
+13884,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP12",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+21.819000000000003,
+-7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+19.152,
+-10.592000000000002,
+-0.10000000000000099
+],
+[
+24.486000000000004,
+-5.257999999999998,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923229551e-09,
+"transposed": false
+},
+"tri": [
+13896,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP13",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+17.78,
+-14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.113000000000001,
+-17.602000000000004,
+-0.10000000000000099
+],
+[
+20.447000000000003,
+-12.267999999999999,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923268373e-09,
+"transposed": false
+},
+"tri": [
+13908,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP1",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+12.700000000000003,
+-13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+11.992893218813453,
+-14.67710678118655,
+1.5700000000000003
+],
+[
+13.40710678118655,
+-13.262893218813455,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1174159715572658e-09,
+"transposed": false
+},
+"tri": [
+13920,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP2",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+17.145000000000003,
+-7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+16.645,
+-8.120000000000001,
+1.5700000000000003
+],
+[
+17.645000000000003,
+-7.119999999999999,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1174782196462156e-09,
+"transposed": false
+},
+"tri": [
+13932,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP3",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+17.145000000000003,
+7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+16.645,
+7.119999999999999,
+1.5700000000000003
+],
+[
+17.645000000000003,
+8.120000000000001,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1175685012874748e-09,
+"transposed": false
+},
+"tri": [
+13944,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP4",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+12.700000000000003,
+13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+11.992893218813453,
+13.262893218813455,
+1.5700000000000003
+],
+[
+13.40710678118655,
+14.67710678118655,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1177115836609795e-09,
+"transposed": false
+},
+"tri": [
+13956,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP5",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-12.700000000000003,
+-13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-13.40710678118655,
+-14.67710678118655,
+1.5700000000000003
+],
+[
+-11.992893218813453,
+-13.262893218813455,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1177593784840323e-09,
+"transposed": false
+},
+"tri": [
+13968,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP6",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-17.145000000000003,
+-7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+-17.645000000000003,
+-8.120000000000001,
+1.5700000000000003
+],
+[
+-16.645,
+-7.119999999999999,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.117615609080755e-09,
+"transposed": false
+},
+"tri": [
+13980,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP7",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-17.145000000000003,
+7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+-17.645000000000003,
+7.119999999999999,
+1.5700000000000003
+],
+[
+-16.645,
+8.120000000000001,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.117604021140695e-09,
+"transposed": false
+},
+"tri": [
+13992,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP8",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-12.700000000000003,
+13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-13.40710678118655,
+13.262893218813455,
+1.5700000000000003
+],
+[
+-11.992893218813453,
+14.67710678118655,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1175855976446172e-09,
+"transposed": false
+},
+"tri": [
+14004,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP9",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-6.350000000000001,
+-21.590000000000003,
+1.6200000000000003
+],
+"bbox": [
+[
+-6.850000000000001,
+-22.09,
+1.5700000000000003
+],
+[
+-5.8500000000000005,
+-21.090000000000003,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1176169568941364e-09,
+"transposed": false
+},
+"tri": [
+14016,
+12
+]
+}
+],
+"seconds": 0.13
+},
+{
+"index": 3,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Component7",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Board",
+"component": "Board",
+"occurrence": "PCB Component:1+Board:1",
+"solid": true,
+"visible": true,
+"volume": 2889.003257250604,
+"area": 5375.687888663313,
+"centroid": [
+-0.005095335521974405,
+-0.017324152333326008,
+0.7849999999999991
+],
+"bbox": [
+[
+-26.67,
+-26.67,
+0.0
+],
+[
+26.67,
+26.67,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 0.0006194586548211332,
+"transposed": false
+},
+"tri": [
+0,
+13740
+]
+},
+{
+"name": "FIDUCIAL_1MM",
+"component": "FIDUCIAL_1MM",
+"occurrence": "PCB Component:1+FIDUCIAL_1MM:U$2",
+"solid": true,
+"visible": false,
+"volume": 0.2250000000000001,
+"area": 5.100000000000001,
+"centroid": [
+16.129,
+19.177,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.379000000000003,
+18.427,
+-0.1000000000000003
+],
+[
+16.879,
+19.927,
+2.7755575615628914e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175868219513794e-09,
+"transposed": false
+},
+"tri": [
+13740,
+12
+]
+},
+{
+"name": "FIDUCIAL_1MM",
+"component": "FIDUCIAL_1MM",
+"occurrence": "PCB Component:1+FIDUCIAL_1MM:U$6",
+"solid": true,
+"visible": false,
+"volume": 0.2250000000000001,
+"area": 5.100000000000001,
+"centroid": [
+-16.002000000000002,
+-19.177,
+-0.05000000000000001
+],
+"bbox": [
+[
+-16.752,
+-19.927,
+-0.1000000000000003
+],
+[
+-15.252,
+-18.427,
+2.7755575615628914e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175868111850267e-09,
+"transposed": false
+},
+"tri": [
+13752,
+12
+]
+},
+{
+"name": "PCBFEAT-REV-040",
+"component": "PCBFEAT-REV-040",
+"occurrence": "PCB Component:1+PCBFEAT-REV-040:U$7",
+"solid": true,
+"visible": false,
+"volume": 0.3225616000000001,
+"area": 7.169632000000001,
+"centroid": [
+-16.002000000000002,
+19.304000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-16.900000000000002,
+18.406000000000002,
+1.5700000000000003
+],
+[
+-15.104,
+20.202000000000005,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1176928988868738e-09,
+"transposed": false
+},
+"tri": [
+13764,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP2",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-11.557000000000002,
+20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+-14.224000000000004,
+17.450000000000003,
+-0.10000000000000099
+],
+[
+-8.89,
+22.784000000000006,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870853766497e-09,
+"transposed": false
+},
+"tri": [
+13776,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP3",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-11.557000000000002,
+-20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+-14.224000000000004,
+-22.784000000000006,
+-0.10000000000000099
+],
+[
+-8.89,
+-17.450000000000003,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923706007e-09,
+"transposed": false
+},
+"tri": [
+13788,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP4",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+11.557000000000002,
+20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+8.89,
+17.450000000000003,
+-0.10000000000000099
+],
+[
+14.224000000000004,
+22.784000000000006,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870992530257e-09,
+"transposed": false
+},
+"tri": [
+13800,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP5",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+11.557000000000002,
+-20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+8.89,
+-22.784000000000006,
+-0.10000000000000099
+],
+[
+14.224000000000004,
+-17.450000000000003,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.117587113137872e-09,
+"transposed": false
+},
+"tri": [
+13812,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP6",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-17.78,
+14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+-20.447000000000003,
+12.267999999999999,
+-0.10000000000000099
+],
+[
+-15.113000000000001,
+17.602000000000004,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175871270368357e-09,
+"transposed": false
+},
+"tri": [
+13824,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP7",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-21.819000000000003,
+7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+-24.486000000000004,
+5.257999999999998,
+-0.10000000000000099
+],
+[
+-19.152,
+10.592000000000002,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175871201208824e-09,
+"transposed": false
+},
+"tri": [
+13836,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP8",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-21.819000000000003,
+-7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+-24.486000000000004,
+-10.592000000000002,
+-0.10000000000000099
+],
+[
+-19.152,
+-5.257999999999998,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923201315e-09,
+"transposed": false
+},
+"tri": [
+13848,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP9",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-17.78,
+-14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+-20.447000000000003,
+-17.602000000000004,
+-0.10000000000000099
+],
+[
+-15.113000000000001,
+-12.267999999999999,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923268373e-09,
+"transposed": false
+},
+"tri": [
+13860,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP10",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+17.78,
+14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.113000000000001,
+12.267999999999999,
+-0.10000000000000099
+],
+[
+20.447000000000003,
+17.602000000000004,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870854486475e-09,
+"transposed": false
+},
+"tri": [
+13872,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP11",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+21.819000000000003,
+7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+19.152,
+5.257999999999998,
+-0.10000000000000099
+],
+[
+24.486000000000004,
+10.592000000000002,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.117587099256202e-09,
+"transposed": false
+},
+"tri": [
+13884,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP12",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+21.819000000000003,
+-7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+19.152,
+-10.592000000000002,
+-0.10000000000000099
+],
+[
+24.486000000000004,
+-5.257999999999998,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923229551e-09,
+"transposed": false
+},
+"tri": [
+13896,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP13",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+17.78,
+-14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.113000000000001,
+-17.602000000000004,
+-0.10000000000000099
+],
+[
+20.447000000000003,
+-12.267999999999999,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923268373e-09,
+"transposed": false
+},
+"tri": [
+13908,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP1",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+12.700000000000003,
+-13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+11.992893218813453,
+-14.67710678118655,
+1.5700000000000003
+],
+[
+13.40710678118655,
+-13.262893218813455,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1174159715572658e-09,
+"transposed": false
+},
+"tri": [
+13920,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP2",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+17.145000000000003,
+-7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+16.645,
+-8.120000000000001,
+1.5700000000000003
+],
+[
+17.645000000000003,
+-7.119999999999999,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1174782196462156e-09,
+"transposed": false
+},
+"tri": [
+13932,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP3",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+17.145000000000003,
+7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+16.645,
+7.119999999999999,
+1.5700000000000003
+],
+[
+17.645000000000003,
+8.120000000000001,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1175685012874748e-09,
+"transposed": false
+},
+"tri": [
+13944,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP4",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+12.700000000000003,
+13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+11.992893218813453,
+13.262893218813455,
+1.5700000000000003
+],
+[
+13.40710678118655,
+14.67710678118655,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1177115836609795e-09,
+"transposed": false
+},
+"tri": [
+13956,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP5",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-12.700000000000003,
+-13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-13.40710678118655,
+-14.67710678118655,
+1.5700000000000003
+],
+[
+-11.992893218813453,
+-13.262893218813455,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1177593784840323e-09,
+"transposed": false
+},
+"tri": [
+13968,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP6",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-17.145000000000003,
+-7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+-17.645000000000003,
+-8.120000000000001,
+1.5700000000000003
+],
+[
+-16.645,
+-7.119999999999999,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.117615609080755e-09,
+"transposed": false
+},
+"tri": [
+13980,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP7",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-17.145000000000003,
+7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+-17.645000000000003,
+7.119999999999999,
+1.5700000000000003
+],
+[
+-16.645,
+8.120000000000001,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.117604021140695e-09,
+"transposed": false
+},
+"tri": [
+13992,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP8",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-12.700000000000003,
+13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-13.40710678118655,
+13.262893218813455,
+1.5700000000000003
+],
+[
+-11.992893218813453,
+14.67710678118655,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1175855976446172e-09,
+"transposed": false
+},
+"tri": [
+14004,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP9",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-6.350000000000001,
+-21.590000000000003,
+1.6200000000000003
+],
+"bbox": [
+[
+-6.850000000000001,
+-22.09,
+1.5700000000000003
+],
+[
+-5.8500000000000005,
+-21.090000000000003,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1176169568941364e-09,
+"transposed": false
+},
+"tri": [
+14016,
+12
+]
+}
+],
+"seconds": 0.11
+},
+{
+"index": 4,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Component7",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Board",
+"component": "Board",
+"occurrence": "PCB Component:1+Board:1",
+"solid": true,
+"visible": true,
+"volume": 2889.003257250604,
+"area": 5375.687888663313,
+"centroid": [
+-0.005095335521974405,
+-0.017324152333326008,
+0.7849999999999991
+],
+"bbox": [
+[
+-26.67,
+-26.67,
+0.0
+],
+[
+26.67,
+26.67,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 0.0006194586548211332,
+"transposed": false
+},
+"tri": [
+0,
+13740
+]
+},
+{
+"name": "FIDUCIAL_1MM",
+"component": "FIDUCIAL_1MM",
+"occurrence": "PCB Component:1+FIDUCIAL_1MM:U$2",
+"solid": true,
+"visible": false,
+"volume": 0.2250000000000001,
+"area": 5.100000000000001,
+"centroid": [
+16.129,
+19.177,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.379000000000003,
+18.427,
+-0.1000000000000003
+],
+[
+16.879,
+19.927,
+2.7755575615628914e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175868219513794e-09,
+"transposed": false
+},
+"tri": [
+13740,
+12
+]
+},
+{
+"name": "FIDUCIAL_1MM",
+"component": "FIDUCIAL_1MM",
+"occurrence": "PCB Component:1+FIDUCIAL_1MM:U$6",
+"solid": true,
+"visible": false,
+"volume": 0.2250000000000001,
+"area": 5.100000000000001,
+"centroid": [
+-16.002000000000002,
+-19.177,
+-0.05000000000000001
+],
+"bbox": [
+[
+-16.752,
+-19.927,
+-0.1000000000000003
+],
+[
+-15.252,
+-18.427,
+2.7755575615628914e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175868111850267e-09,
+"transposed": false
+},
+"tri": [
+13752,
+12
+]
+},
+{
+"name": "PCBFEAT-REV-040",
+"component": "PCBFEAT-REV-040",
+"occurrence": "PCB Component:1+PCBFEAT-REV-040:U$7",
+"solid": true,
+"visible": false,
+"volume": 0.3225616000000001,
+"area": 7.169632000000001,
+"centroid": [
+-16.002000000000002,
+19.304000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-16.900000000000002,
+18.406000000000002,
+1.5700000000000003
+],
+[
+-15.104,
+20.202000000000005,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1176928988868738e-09,
+"transposed": false
+},
+"tri": [
+13764,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP2",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-11.557000000000002,
+20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+-14.224000000000004,
+17.450000000000003,
+-0.10000000000000099
+],
+[
+-8.89,
+22.784000000000006,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870853766497e-09,
+"transposed": false
+},
+"tri": [
+13776,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP3",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-11.557000000000002,
+-20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+-14.224000000000004,
+-22.784000000000006,
+-0.10000000000000099
+],
+[
+-8.89,
+-17.450000000000003,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923706007e-09,
+"transposed": false
+},
+"tri": [
+13788,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP4",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+11.557000000000002,
+20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+8.89,
+17.450000000000003,
+-0.10000000000000099
+],
+[
+14.224000000000004,
+22.784000000000006,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870992530257e-09,
+"transposed": false
+},
+"tri": [
+13800,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP5",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+11.557000000000002,
+-20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+8.89,
+-22.784000000000006,
+-0.10000000000000099
+],
+[
+14.224000000000004,
+-17.450000000000003,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.117587113137872e-09,
+"transposed": false
+},
+"tri": [
+13812,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP6",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-17.78,
+14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+-20.447000000000003,
+12.267999999999999,
+-0.10000000000000099
+],
+[
+-15.113000000000001,
+17.602000000000004,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175871270368357e-09,
+"transposed": false
+},
+"tri": [
+13824,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP7",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-21.819000000000003,
+7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+-24.486000000000004,
+5.257999999999998,
+-0.10000000000000099
+],
+[
+-19.152,
+10.592000000000002,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175871201208824e-09,
+"transposed": false
+},
+"tri": [
+13836,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP8",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-21.819000000000003,
+-7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+-24.486000000000004,
+-10.592000000000002,
+-0.10000000000000099
+],
+[
+-19.152,
+-5.257999999999998,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923201315e-09,
+"transposed": false
+},
+"tri": [
+13848,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP9",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-17.78,
+-14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+-20.447000000000003,
+-17.602000000000004,
+-0.10000000000000099
+],
+[
+-15.113000000000001,
+-12.267999999999999,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923268373e-09,
+"transposed": false
+},
+"tri": [
+13860,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP10",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+17.78,
+14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.113000000000001,
+12.267999999999999,
+-0.10000000000000099
+],
+[
+20.447000000000003,
+17.602000000000004,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870854486475e-09,
+"transposed": false
+},
+"tri": [
+13872,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP11",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+21.819000000000003,
+7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+19.152,
+5.257999999999998,
+-0.10000000000000099
+],
+[
+24.486000000000004,
+10.592000000000002,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.117587099256202e-09,
+"transposed": false
+},
+"tri": [
+13884,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP12",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+21.819000000000003,
+-7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+19.152,
+-10.592000000000002,
+-0.10000000000000099
+],
+[
+24.486000000000004,
+-5.257999999999998,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923229551e-09,
+"transposed": false
+},
+"tri": [
+13896,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP13",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+17.78,
+-14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.113000000000001,
+-17.602000000000004,
+-0.10000000000000099
+],
+[
+20.447000000000003,
+-12.267999999999999,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923268373e-09,
+"transposed": false
+},
+"tri": [
+13908,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP1",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+12.700000000000003,
+-13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+11.992893218813453,
+-14.67710678118655,
+1.5700000000000003
+],
+[
+13.40710678118655,
+-13.262893218813455,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1174159715572658e-09,
+"transposed": false
+},
+"tri": [
+13920,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP2",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+17.145000000000003,
+-7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+16.645,
+-8.120000000000001,
+1.5700000000000003
+],
+[
+17.645000000000003,
+-7.119999999999999,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1174782196462156e-09,
+"transposed": false
+},
+"tri": [
+13932,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP3",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+17.145000000000003,
+7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+16.645,
+7.119999999999999,
+1.5700000000000003
+],
+[
+17.645000000000003,
+8.120000000000001,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1175685012874748e-09,
+"transposed": false
+},
+"tri": [
+13944,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP4",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+12.700000000000003,
+13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+11.992893218813453,
+13.262893218813455,
+1.5700000000000003
+],
+[
+13.40710678118655,
+14.67710678118655,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1177115836609795e-09,
+"transposed": false
+},
+"tri": [
+13956,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP5",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-12.700000000000003,
+-13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-13.40710678118655,
+-14.67710678118655,
+1.5700000000000003
+],
+[
+-11.992893218813453,
+-13.262893218813455,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1177593784840323e-09,
+"transposed": false
+},
+"tri": [
+13968,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP6",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-17.145000000000003,
+-7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+-17.645000000000003,
+-8.120000000000001,
+1.5700000000000003
+],
+[
+-16.645,
+-7.119999999999999,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.117615609080755e-09,
+"transposed": false
+},
+"tri": [
+13980,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP7",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-17.145000000000003,
+7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+-17.645000000000003,
+7.119999999999999,
+1.5700000000000003
+],
+[
+-16.645,
+8.120000000000001,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.117604021140695e-09,
+"transposed": false
+},
+"tri": [
+13992,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP8",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-12.700000000000003,
+13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-13.40710678118655,
+13.262893218813455,
+1.5700000000000003
+],
+[
+-11.992893218813453,
+14.67710678118655,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1175855976446172e-09,
+"transposed": false
+},
+"tri": [
+14004,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP9",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-6.350000000000001,
+-21.590000000000003,
+1.6200000000000003
+],
+"bbox": [
+[
+-6.850000000000001,
+-22.09,
+1.5700000000000003
+],
+[
+-5.8500000000000005,
+-21.090000000000003,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1176169568941364e-09,
+"transposed": false
+},
+"tri": [
+14016,
+12
+]
+},
+{
+"name": "Body1",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 11.388273369263498,
+"area": 50.6778164932204,
+"centroid": [
+-11.557000000287115,
+20.117000000000004,
+0.7699999999999997
+],
+"bbox": [
+[
+-13.682000000000002,
+17.992,
+-0.030000000000000304
+],
+[
+-9.432,
+22.242000000000004,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 2.1775809313824497e-07,
+"transposed": false
+},
+"tri": [
+14028,
+200
+]
+},
+{
+"name": "Body2",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 11.38827336926353,
+"area": 50.67781649322042,
+"centroid": [
+-17.78000000028712,
+14.935000000000006,
+0.7699999999999996
+],
+"bbox": [
+[
+-19.905000000000005,
+12.809999999999999,
+-0.030000000000000304
+],
+[
+-15.655000000000001,
+17.060000000000002,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 2.1207963825176645e-07,
+"transposed": false
+},
+"tri": [
+14228,
+200
+]
+},
+{
+"name": "Body3",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 11.388273369263494,
+"area": 50.67781649322034,
+"centroid": [
+-21.819000000287105,
+7.924999999999996,
+0.7699999999999994
+],
+"bbox": [
+[
+-23.944000000000003,
+5.800000000000001,
+-0.030000000000000304
+],
+[
+-19.694000000000003,
+10.049999999999999,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 4.612372653592513e-07,
+"transposed": false
+},
+"tri": [
+14428,
+200
+]
+},
+{
+"name": "Body4",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 11.388273369263494,
+"area": 50.67781649322034,
+"centroid": [
+-21.819000000287105,
+-7.924999999999997,
+0.7699999999999994
+],
+"bbox": [
+[
+-23.944000000000003,
+-10.049999999999999,
+-0.030000000000000304
+],
+[
+-19.694000000000003,
+-5.800000000000001,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 4.6123734336722406e-07,
+"transposed": false
+},
+"tri": [
+14628,
+200
+]
+},
+{
+"name": "Body5",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 11.388273369263501,
+"area": 50.67781649322034,
+"centroid": [
+21.81899999971288,
+7.924999999999997,
+0.7699999999999995
+],
+"bbox": [
+[
+19.694000000000003,
+5.800000000000001,
+-0.030000000000000304
+],
+[
+23.944000000000003,
+10.049999999999999,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 1.3993543522843584e-07,
+"transposed": false
+},
+"tri": [
+14828,
+200
+]
+},
+{
+"name": "Body6",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 11.388273369263501,
+"area": 50.67781649322034,
+"centroid": [
+21.81899999971288,
+-7.924999999999995,
+0.7699999999999995
+],
+"bbox": [
+[
+19.694000000000003,
+-10.049999999999999,
+-0.030000000000000304
+],
+[
+23.944000000000003,
+-5.800000000000001,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 1.3993543536847604e-07,
+"transposed": false
+},
+"tri": [
+15028,
+200
+]
+},
+{
+"name": "Body7",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 11.38827336926353,
+"area": 50.67781649322042,
+"centroid": [
+-17.78000000028712,
+-14.935000000000006,
+0.7699999999999996
+],
+"bbox": [
+[
+-19.905000000000005,
+-17.060000000000002,
+-0.030000000000000304
+],
+[
+-15.655000000000001,
+-12.809999999999999,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 2.12079560134859e-07,
+"transposed": false
+},
+"tri": [
+15228,
+200
+]
+},
+{
+"name": "Body8",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 11.38827336926351,
+"area": 50.67781649322038,
+"centroid": [
+11.556999999712891,
+-20.117000000000004,
+0.7699999999999998
+],
+"bbox": [
+[
+9.432000000000002,
+-22.242,
+-0.030000000000000304
+],
+[
+13.682000000000002,
+-17.992000000000004,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 4.2019878642366577e-07,
+"transposed": false
+},
+"tri": [
+15428,
+200
+]
+},
+{
+"name": "Body9",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 11.388273369263498,
+"area": 50.6778164932204,
+"centroid": [
+17.77999999971289,
+14.934999999999995,
+0.7699999999999997
+],
+"bbox": [
+[
+15.655000000000001,
+12.809999999999999,
+-0.030000000000000304
+],
+[
+19.905000000000005,
+17.060000000000002,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 5.971032203574309e-07,
+"transposed": false
+},
+"tri": [
+15628,
+200
+]
+},
+{
+"name": "Body10",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 11.388273369263477,
+"area": 50.67781649322035,
+"centroid": [
+11.55699999971289,
+20.117000000000004,
+0.77
+],
+"bbox": [
+[
+9.432000000000002,
+17.992000000000004,
+-0.030000000000000304
+],
+[
+13.682000000000002,
+22.242,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 4.201987804138998e-07,
+"transposed": false
+},
+"tri": [
+15828,
+200
+]
+},
+{
+"name": "Body11",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 11.388273369263498,
+"area": 50.6778164932204,
+"centroid": [
+17.77999999971289,
+-14.935,
+0.7699999999999997
+],
+"bbox": [
+[
+15.655000000000001,
+-17.060000000000002,
+-0.030000000000000304
+],
+[
+19.905000000000005,
+-12.809999999999999,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 5.971032350570654e-07,
+"transposed": false
+},
+"tri": [
+16028,
+200
+]
+},
+{
+"name": "Body12",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 11.388273369263498,
+"area": 50.6778164932204,
+"centroid": [
+-11.557000000287115,
+-20.117000000000004,
+0.7699999999999997
+],
+"bbox": [
+[
+-13.682000000000002,
+-22.242000000000004,
+-0.030000000000000304
+],
+[
+-9.432,
+-17.992,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 2.1775805363505445e-07,
+"transposed": false
+},
+"tri": [
+16228,
+200
+]
+}
+],
+"seconds": 0.16
+},
+{
+"index": 5,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Component7",
+"mesh": "mesh_0005.stl.gz",
+"bodies": [
+{
+"name": "Board",
+"component": "Board",
+"occurrence": "PCB Component:1+Board:1",
+"solid": true,
+"visible": true,
+"volume": 2889.003257250604,
+"area": 5375.687888663313,
+"centroid": [
+-0.005095335521974405,
+-0.017324152333326008,
+0.7849999999999991
+],
+"bbox": [
+[
+-26.67,
+-26.67,
+0.0
+],
+[
+26.67,
+26.67,
+1.57
+]
+],
+"placement_check": {
+"centroid_error": 0.0006194586548211332,
+"transposed": false
+},
+"tri": [
+0,
+13740
+]
+},
+{
+"name": "FIDUCIAL_1MM",
+"component": "FIDUCIAL_1MM",
+"occurrence": "PCB Component:1+FIDUCIAL_1MM:U$2",
+"solid": true,
+"visible": false,
+"volume": 0.2250000000000001,
+"area": 5.100000000000001,
+"centroid": [
+16.129,
+19.177,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.379000000000003,
+18.427,
+-0.1000000000000003
+],
+[
+16.879,
+19.927,
+2.7755575615628914e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175868219513794e-09,
+"transposed": false
+},
+"tri": [
+13740,
+12
+]
+},
+{
+"name": "FIDUCIAL_1MM",
+"component": "FIDUCIAL_1MM",
+"occurrence": "PCB Component:1+FIDUCIAL_1MM:U$6",
+"solid": true,
+"visible": false,
+"volume": 0.2250000000000001,
+"area": 5.100000000000001,
+"centroid": [
+-16.002000000000002,
+-19.177,
+-0.05000000000000001
+],
+"bbox": [
+[
+-16.752,
+-19.927,
+-0.1000000000000003
+],
+[
+-15.252,
+-18.427,
+2.7755575615628914e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175868111850267e-09,
+"transposed": false
+},
+"tri": [
+13752,
+12
+]
+},
+{
+"name": "PCBFEAT-REV-040",
+"component": "PCBFEAT-REV-040",
+"occurrence": "PCB Component:1+PCBFEAT-REV-040:U$7",
+"solid": true,
+"visible": false,
+"volume": 0.3225616000000001,
+"area": 7.169632000000001,
+"centroid": [
+-16.002000000000002,
+19.304000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-16.900000000000002,
+18.406000000000002,
+1.5700000000000003
+],
+[
+-15.104,
+20.202000000000005,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1176928988868738e-09,
+"transposed": false
+},
+"tri": [
+13764,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP2",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-11.557000000000002,
+20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+-14.224000000000004,
+17.450000000000003,
+-0.10000000000000099
+],
+[
+-8.89,
+22.784000000000006,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870853766497e-09,
+"transposed": false
+},
+"tri": [
+13776,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP3",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-11.557000000000002,
+-20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+-14.224000000000004,
+-22.784000000000006,
+-0.10000000000000099
+],
+[
+-8.89,
+-17.450000000000003,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923706007e-09,
+"transposed": false
+},
+"tri": [
+13788,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP4",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+11.557000000000002,
+20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+8.89,
+17.450000000000003,
+-0.10000000000000099
+],
+[
+14.224000000000004,
+22.784000000000006,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870992530257e-09,
+"transposed": false
+},
+"tri": [
+13800,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP5",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+11.557000000000002,
+-20.117000000000004,
+-0.05000000000000001
+],
+"bbox": [
+[
+8.89,
+-22.784000000000006,
+-0.10000000000000099
+],
+[
+14.224000000000004,
+-17.450000000000003,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.117587113137872e-09,
+"transposed": false
+},
+"tri": [
+13812,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP6",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-17.78,
+14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+-20.447000000000003,
+12.267999999999999,
+-0.10000000000000099
+],
+[
+-15.113000000000001,
+17.602000000000004,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175871270368357e-09,
+"transposed": false
+},
+"tri": [
+13824,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP7",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-21.819000000000003,
+7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+-24.486000000000004,
+5.257999999999998,
+-0.10000000000000099
+],
+[
+-19.152,
+10.592000000000002,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175871201208824e-09,
+"transposed": false
+},
+"tri": [
+13836,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP8",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-21.819000000000003,
+-7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+-24.486000000000004,
+-10.592000000000002,
+-0.10000000000000099
+],
+[
+-19.152,
+-5.257999999999998,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923201315e-09,
+"transposed": false
+},
+"tri": [
+13848,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP9",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+-17.78,
+-14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+-20.447000000000003,
+-17.602000000000004,
+-0.10000000000000099
+],
+[
+-15.113000000000001,
+-12.267999999999999,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923268373e-09,
+"transposed": false
+},
+"tri": [
+13860,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP10",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+17.78,
+14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.113000000000001,
+12.267999999999999,
+-0.10000000000000099
+],
+[
+20.447000000000003,
+17.602000000000004,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870854486475e-09,
+"transposed": false
+},
+"tri": [
+13872,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP11",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+21.819000000000003,
+7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+19.152,
+5.257999999999998,
+-0.10000000000000099
+],
+[
+24.486000000000004,
+10.592000000000002,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.117587099256202e-09,
+"transposed": false
+},
+"tri": [
+13884,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP12",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+21.819000000000003,
+-7.924999999999999,
+-0.05000000000000001
+],
+"bbox": [
+[
+19.152,
+-10.592000000000002,
+-0.10000000000000099
+],
+[
+24.486000000000004,
+-5.257999999999998,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923229551e-09,
+"transposed": false
+},
+"tri": [
+13896,
+12
+]
+},
+{
+"name": "SMT_NUT_3MM",
+"component": "SMT_NUT_3MM",
+"occurrence": "PCB Component:1+SMT_NUT_3MM:TP13",
+"solid": true,
+"visible": false,
+"volume": 2.845155600000002,
+"area": 59.03671200000002,
+"centroid": [
+17.78,
+-14.935,
+-0.05000000000000001
+],
+"bbox": [
+[
+15.113000000000001,
+-17.602000000000004,
+-0.10000000000000099
+],
+[
+20.447000000000003,
+-12.267999999999999,
+9.71445146547012e-16
+]
+],
+"placement_check": {
+"centroid_error": 1.1175870923268373e-09,
+"transposed": false
+},
+"tri": [
+13908,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP1",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+12.700000000000003,
+-13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+11.992893218813453,
+-14.67710678118655,
+1.5700000000000003
+],
+[
+13.40710678118655,
+-13.262893218813455,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1174159715572658e-09,
+"transposed": false
+},
+"tri": [
+13920,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP2",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+17.145000000000003,
+-7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+16.645,
+-8.120000000000001,
+1.5700000000000003
+],
+[
+17.645000000000003,
+-7.119999999999999,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1174782196462156e-09,
+"transposed": false
+},
+"tri": [
+13932,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP3",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+17.145000000000003,
+7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+16.645,
+7.119999999999999,
+1.5700000000000003
+],
+[
+17.645000000000003,
+8.120000000000001,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1175685012874748e-09,
+"transposed": false
+},
+"tri": [
+13944,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP4",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+12.700000000000003,
+13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+11.992893218813453,
+13.262893218813455,
+1.5700000000000003
+],
+[
+13.40710678118655,
+14.67710678118655,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1177115836609795e-09,
+"transposed": false
+},
+"tri": [
+13956,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP5",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-12.700000000000003,
+-13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-13.40710678118655,
+-14.67710678118655,
+1.5700000000000003
+],
+[
+-11.992893218813453,
+-13.262893218813455,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1177593784840323e-09,
+"transposed": false
+},
+"tri": [
+13968,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP6",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-17.145000000000003,
+-7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+-17.645000000000003,
+-8.120000000000001,
+1.5700000000000003
+],
+[
+-16.645,
+-7.119999999999999,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.117615609080755e-09,
+"transposed": false
+},
+"tri": [
+13980,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP7",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-17.145000000000003,
+7.62,
+1.6200000000000003
+],
+"bbox": [
+[
+-17.645000000000003,
+7.119999999999999,
+1.5700000000000003
+],
+[
+-16.645,
+8.120000000000001,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.117604021140695e-09,
+"transposed": false
+},
+"tri": [
+13992,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP8",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-12.700000000000003,
+13.970000000000002,
+1.6200000000000003
+],
+"bbox": [
+[
+-13.40710678118655,
+13.262893218813455,
+1.5700000000000003
+],
+[
+-11.992893218813453,
+14.67710678118655,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1175855976446172e-09,
+"transposed": false
+},
+"tri": [
+14004,
+12
+]
+},
+{
+"name": "1X01_OVAL",
+"component": "1X01_OVAL",
+"occurrence": "PCB Component:1+1X01_OVAL:JP9",
+"solid": true,
+"visible": false,
+"volume": 0.10000000000000003,
+"area": 2.4000000000000004,
+"centroid": [
+-6.350000000000001,
+-21.590000000000003,
+1.6200000000000003
+],
+"bbox": [
+[
+-6.850000000000001,
+-22.09,
+1.5700000000000003
+],
+[
+-5.8500000000000005,
+-21.090000000000003,
+1.6700000000000004
+]
+],
+"placement_check": {
+"centroid_error": 1.1176169568941364e-09,
+"transposed": false
+},
+"tri": [
+14016,
+12
+]
+},
+{
+"name": "Body1",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 144.9059611468228,
+"area": 283.45019717013906,
+"centroid": [
+-11.55699999932293,
+20.116999999999997,
+-3.652764227642277
+],
+"bbox": [
+[
+-14.307,
+17.367000000000004,
+-8.030000000000001
+],
+[
+-8.807000000000002,
+22.867,
+1.5700000000000003
+]
+],
+"placement_check": {
+"centroid_error": 0.0001740535457539207,
+"transposed": false
+},
+"tri": [
+14028,
+320
+]
+},
+{
+"name": "Body2",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 144.90596114682324,
+"area": 283.4501971701391,
+"centroid": [
+-17.77999999932294,
+14.935000000000006,
+-3.652764227642276
+],
+"bbox": [
+[
+-20.530000000000005,
+12.184999999999999,
+-8.030000000000001
+],
+[
+-15.030000000000001,
+17.685000000000002,
+1.5700000000000003
+]
+],
+"placement_check": {
+"centroid_error": 0.00017390239232402947,
+"transposed": false
+},
+"tri": [
+14348,
+320
+]
+},
+{
+"name": "Body3",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 144.9059611468229,
+"area": 283.450197170139,
+"centroid": [
+-21.81899999932293,
+7.925000000000001,
+-3.652764227642277
+],
+"bbox": [
+[
+-24.569000000000003,
+5.175000000000001,
+-8.030000000000001
+],
+[
+-19.069000000000003,
+10.674999999999999,
+1.5700000000000003
+]
+],
+"placement_check": {
+"centroid_error": 0.00017384768245275254,
+"transposed": false
+},
+"tri": [
+14668,
+320
+]
+},
+{
+"name": "Body4",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 144.90596114682293,
+"area": 283.450197170139,
+"centroid": [
+-21.818999999322934,
+-7.925000000000003,
+-3.652764227642278
+],
+"bbox": [
+[
+-24.569000000000003,
+-10.674999999999999,
+-8.030000000000001
+],
+[
+-19.069000000000003,
+-5.175000000000001,
+1.5700000000000003
+]
+],
+"placement_check": {
+"centroid_error": 0.00017384768245271953,
+"transposed": false
+},
+"tri": [
+14988,
+320
+]
+},
+{
+"name": "Body5",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 144.90596114682293,
+"area": 283.450197170139,
+"centroid": [
+21.819000000677068,
+7.925,
+-3.652764227642278
+],
+"bbox": [
+[
+19.069000000000003,
+5.175000000000001,
+-8.030000000000001
+],
+[
+24.569000000000003,
+10.674999999999999,
+1.5700000000000003
+]
+],
+"placement_check": {
+"centroid_error": 0.0001738808825570988,
+"transposed": false
+},
+"tri": [
+15308,
+320
+]
+},
+{
+"name": "Body6",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 144.90596114682293,
+"area": 283.450197170139,
+"centroid": [
+21.819000000677068,
+-7.9250000000000025,
+-3.652764227642278
+],
+"bbox": [
+[
+19.069000000000003,
+-10.674999999999999,
+-8.030000000000001
+],
+[
+24.569000000000003,
+-5.175000000000001,
+1.5700000000000003
+]
+],
+"placement_check": {
+"centroid_error": 0.00017388088256242815,
+"transposed": false
+},
+"tri": [
+15628,
+320
+]
+},
+{
+"name": "Body7",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 144.90596114682324,
+"area": 283.4501971701391,
+"centroid": [
+-17.77999999932294,
+-14.935000000000008,
+-3.652764227642276
+],
+"bbox": [
+[
+-20.530000000000005,
+-17.685000000000002,
+-8.030000000000001
+],
+[
+-15.030000000000001,
+-12.184999999999999,
+1.5700000000000003
+]
+],
+"placement_check": {
+"centroid_error": 0.0001739023923297979,
+"transposed": false
+},
+"tri": [
+15948,
+320
+]
+},
+{
+"name": "Body8",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 144.90596114682344,
+"area": 283.4501971701393,
+"centroid": [
+11.557000000677071,
+-20.116999999999994,
+-3.652764227642278
+],
+"bbox": [
+[
+8.806999999999999,
+-22.867000000000004,
+-8.030000000000001
+],
+[
+14.307000000000002,
+-17.366999999999997,
+1.5700000000000003
+]
+],
+"placement_check": {
+"centroid_error": 0.00017400641651408273,
+"transposed": false
+},
+"tri": [
+16268,
+320
+]
+},
+{
+"name": "Body9",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 144.90596114682276,
+"area": 283.45019717013906,
+"centroid": [
+17.78000000067708,
+14.935000000000006,
+-3.6527642276422774
+],
+"bbox": [
+[
+15.030000000000003,
+12.185000000000002,
+-8.030000000000001
+],
+[
+20.53,
+17.685,
+1.5700000000000003
+]
+],
+"placement_check": {
+"centroid_error": 0.0001739386059707515,
+"transposed": false
+},
+"tri": [
+16588,
+320
+]
+},
+{
+"name": "Body10",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 144.90596114682288,
+"area": 283.4501971701392,
+"centroid": [
+11.557000000677071,
+20.117000000000004,
+-3.6527642276422783
+],
+"bbox": [
+[
+8.807000000000002,
+17.367000000000004,
+-8.030000000000001
+],
+[
+14.307000000000002,
+22.867,
+1.5700000000000003
+]
+],
+"placement_check": {
+"centroid_error": 0.00017400641651853165,
+"transposed": false
+},
+"tri": [
+16908,
+320
+]
+},
+{
+"name": "Body11",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 144.90596114682302,
+"area": 283.4501971701393,
+"centroid": [
+17.78000000067707,
+-14.935000000000011,
+-3.652764227642277
+],
+"bbox": [
+[
+15.030000000000001,
+-17.685000000000002,
+-8.030000000000001
+],
+[
+20.530000000000005,
+-12.184999999999999,
+1.5700000000000003
+]
+],
+"placement_check": {
+"centroid_error": 0.00017393860596457079,
+"transposed": false
+},
+"tri": [
+17228,
+320
+]
+},
+{
+"name": "Body12",
+"component": "Component7",
+"occurrence": "PCB Component:1+Component7:1",
+"solid": true,
+"visible": true,
+"volume": 144.90596114682302,
+"area": 283.4501971701393,
+"centroid": [
+-11.556999999322937,
+-20.117000000000008,
+-3.6527642276422787
+],
+"bbox": [
+[
+-14.307000000000002,
+-22.867000000000004,
+-8.030000000000001
+],
+[
+-8.807,
+-17.367,
+1.5700000000000003
+]
+],
+"placement_check": {
+"centroid_error": 0.00017405354576769262,
+"transposed": false
+},
+"tri": [
+17548,
+320
+]
+}
+],
+"seconds": 0.18
+}
+],
+"seconds": 3.7
+}

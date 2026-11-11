@@ -1,0 +1,113 @@
+{
+"source": "digitalsputnik_Al_Pipe_16x75mm_M_SPPS000000043_v1.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 3,
+"diag": 78.33900688673555,
+"deviation_mm": 0.01566780137734711,
+"steps_total": 3,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 3534.2917352885197,
+"area": 7162.831250184728,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-8.0,
+-37.5,
+-8.0
+],
+[
+8.0,
+37.5,
+8.0
+]
+],
+"tri": [
+0,
+392
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 2,
+"name": "Chamfer1",
+"group": null,
+"type": "ChamferFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 3526.3832993818946,
+"area": 7138.858966970196,
+"centroid": [
+3.538222983909422e-11,
+-1.007466681067603e-14,
+0.0
+],
+"bbox": [
+[
+-8.0,
+-37.5,
+-8.0
+],
+[
+8.0,
+37.5,
+8.0
+]
+],
+"tri": [
+0,
+588
+]
+}
+],
+"seconds": 0.03
+}
+],
+"seconds": 5.0
+}

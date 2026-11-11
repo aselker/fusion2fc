@@ -1,0 +1,69 @@
+{
+"source": "digitalsputnik_Nupud_T_v2.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 2,
+"diag": 93.56769206291459,
+"deviation_mm": 0.018713538412582918,
+"steps_total": 2,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 805.2963842235409,
+"area": 2804.4214900851434,
+"centroid": [
+41.11064456826037,
+-75.90418477927413,
+0.30000000000000004
+],
+"bbox": [
+[
+33.199999999999996,
+-124.5171572875254,
+-1.5454375119192503e-47
+],
+[
+49.80000000000005,
+-32.435709655657625,
+0.6
+]
+],
+"tri": [
+0,
+96
+]
+}
+],
+"seconds": 0.05
+}
+],
+"seconds": 9.4
+}

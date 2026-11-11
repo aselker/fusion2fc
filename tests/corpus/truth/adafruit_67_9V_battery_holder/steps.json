@@ -1,0 +1,157 @@
+{
+"source": "adafruit_67_9V_battery_holder.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 4,
+"diag": 78.44743462982075,
+"deviation_mm": 0.01568948692596415,
+"steps_total": 4,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 47124.000000000015,
+"area": 8730.000000000002,
+"centroid": [
+34.0,
+16.500000000000004,
+10.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+68.0,
+33.0,
+21.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Fillet1",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 46890.51320177643,
+"area": 8489.645943005145,
+"centroid": [
+34.000000000000014,
+16.500000000000007,
+10.500000000000004
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+68.0,
+33.0,
+21.0
+]
+],
+"tri": [
+0,
+124
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 3,
+"name": "Fillet2",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 46846.23530252591,
+"area": 8398.995749401687,
+"centroid": [
+34.000000000000014,
+16.50000000000001,
+10.499999999999998
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+68.0,
+33.0,
+21.0
+]
+],
+"tri": [
+0,
+732
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 4.5
+}

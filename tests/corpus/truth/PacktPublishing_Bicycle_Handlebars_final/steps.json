@@ -1,0 +1,3429 @@
+{
+"source": "PacktPublishing_Bicycle_Handlebars_final.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 27,
+"diag": 352.845575287547,
+"deviation_mm": 0.05,
+"steps_total": 27,
+"steps": [
+{
+"index": 0,
+"name": " Handlebar Reference:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.04
+},
+{
+"index": 1,
+"name": "CylinderPrimitive2",
+"group": null,
+"type": "CylinderFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Handlebar Reference",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "CylinderPrimitive5",
+"group": null,
+"type": "CylinderFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Handlebar Reference",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 45238.93421169109,
+"area": 8444.601052849366,
+"centroid": [
+50.0,
+0.0,
+269.9999999974904
+],
+"bbox": [
+[
+0.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3710404068191553e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 3,
+"name": "Mirror2",
+"group": null,
+"type": "MirrorFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Handlebar Reference",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 4,
+"name": " Parametric Handlebar Ref:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 5,
+"name": "Bottom Plane",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 6,
+"name": "Plane1",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 7,
+"name": "Plane2",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 8,
+"name": "Top Plane",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 9,
+"name": "Loft1",
+"group": null,
+"type": "LoftFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0009.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 10,
+"name": "163mm",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0009.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 11,
+"name": "Plane3",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0009.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 12,
+"name": "-14.7mm",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0009.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 13,
+"name": "Loft5",
+"group": null,
+"type": "LoftFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0013.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+},
+{
+"name": "Body5",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 15892.443211107957,
+"area": 3876.4861157414553,
+"centroid": [
+-1.8745295378572095e-09,
+-2.2354735716893087e-15,
+155.59450067150945
+],
+"bbox": [
+[
+-18.76048206278027,
+-18.76048206278027,
+148.3
+],
+[
+18.76048206278027,
+18.76048206278027,
+163.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0032677366681364514,
+"transposed": false
+},
+"tri": [
+476,
+170
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 14,
+"name": "Shell3",
+"group": null,
+"type": "ShellFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0014.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+},
+{
+"name": "Body5",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 4726.219653538552,
+"area": 3793.8361844731235,
+"centroid": [
+3.758515197384617e-15,
+1.1275545592153851e-14,
+155.6198066921651
+],
+"bbox": [
+[
+-18.76048206278027,
+-18.76048206278027,
+148.3
+],
+[
+18.76048206278027,
+18.76048206278027,
+163.0
+]
+],
+"placement_check": {
+"centroid_error": 0.01877778479465859,
+"transposed": false
+},
+"tri": [
+476,
+332
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 15,
+"name": "Sketch5",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0014.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+},
+{
+"name": "Body5",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 4726.219653538552,
+"area": 3793.8361844731235,
+"centroid": [
+3.758515197384617e-15,
+1.1275545592153851e-14,
+155.6198066921651
+],
+"bbox": [
+[
+-18.76048206278027,
+-18.76048206278027,
+148.3
+],
+[
+18.76048206278027,
+18.76048206278027,
+163.0
+]
+],
+"placement_check": {
+"centroid_error": 0.01877778479465859,
+"transposed": false
+},
+"tri": [
+476,
+332
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 16,
+"name": "Plane1",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0014.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+},
+{
+"name": "Body5",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 4726.219653538552,
+"area": 3793.8361844731235,
+"centroid": [
+3.758515197384617e-15,
+1.1275545592153851e-14,
+155.6198066921651
+],
+"bbox": [
+[
+-18.76048206278027,
+-18.76048206278027,
+148.3
+],
+[
+18.76048206278027,
+18.76048206278027,
+163.0
+]
+],
+"placement_check": {
+"centroid_error": 0.01877778479465859,
+"transposed": false
+},
+"tri": [
+476,
+332
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 17,
+"name": "Sketch8",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0014.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+},
+{
+"name": "Body5",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 4726.219653538552,
+"area": 3793.8361844731235,
+"centroid": [
+3.758515197384617e-15,
+1.1275545592153851e-14,
+155.6198066921651
+],
+"bbox": [
+[
+-18.76048206278027,
+-18.76048206278027,
+148.3
+],
+[
+18.76048206278027,
+18.76048206278027,
+163.0
+]
+],
+"placement_check": {
+"centroid_error": 0.01877778479465859,
+"transposed": false
+},
+"tri": [
+476,
+332
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 18,
+"name": "Loft7",
+"group": null,
+"type": "LoftFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0018.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+},
+{
+"name": "Body5",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 6995.782680724069,
+"area": 5356.395320335827,
+"centroid": [
+5.701328316131074,
+-4.1621508500003594,
+154.76146033027928
+],
+"bbox": [
+[
+-18.76048206278027,
+-32.0,
+145.4801908043922
+],
+[
+25.82317612636881,
+18.760482062780277,
+163.0
+]
+],
+"placement_check": {
+"centroid_error": 0.012235231222195336,
+"transposed": false
+},
+"tri": [
+476,
+528
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 19,
+"name": "Sketch9",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0018.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+},
+{
+"name": "Body5",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 6995.782680724069,
+"area": 5356.395320335827,
+"centroid": [
+5.701328316131074,
+-4.1621508500003594,
+154.76146033027928
+],
+"bbox": [
+[
+-18.76048206278027,
+-32.0,
+145.4801908043922
+],
+[
+25.82317612636881,
+18.760482062780277,
+163.0
+]
+],
+"placement_check": {
+"centroid_error": 0.012235231222195336,
+"transposed": false
+},
+"tri": [
+476,
+528
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 20,
+"name": "Sketch10",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0018.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+},
+{
+"name": "Body5",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 6995.782680724069,
+"area": 5356.395320335827,
+"centroid": [
+5.701328316131074,
+-4.1621508500003594,
+154.76146033027928
+],
+"bbox": [
+[
+-18.76048206278027,
+-32.0,
+145.4801908043922
+],
+[
+25.82317612636881,
+18.760482062780277,
+163.0
+]
+],
+"placement_check": {
+"centroid_error": 0.012235231222195336,
+"transposed": false
+},
+"tri": [
+476,
+528
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 21,
+"name": "Plane2",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0018.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+},
+{
+"name": "Body5",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 6995.782680724069,
+"area": 5356.395320335827,
+"centroid": [
+5.701328316131074,
+-4.1621508500003594,
+154.76146033027928
+],
+"bbox": [
+[
+-18.76048206278027,
+-32.0,
+145.4801908043922
+],
+[
+25.82317612636881,
+18.760482062780277,
+163.0
+]
+],
+"placement_check": {
+"centroid_error": 0.012235231222195336,
+"transposed": false
+},
+"tri": [
+476,
+528
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 22,
+"name": "Sketch11",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0018.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+},
+{
+"name": "Body5",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 6995.782680724069,
+"area": 5356.395320335827,
+"centroid": [
+5.701328316131074,
+-4.1621508500003594,
+154.76146033027928
+],
+"bbox": [
+[
+-18.76048206278027,
+-32.0,
+145.4801908043922
+],
+[
+25.82317612636881,
+18.760482062780277,
+163.0
+]
+],
+"placement_check": {
+"centroid_error": 0.012235231222195336,
+"transposed": false
+},
+"tri": [
+476,
+528
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 23,
+"name": "Loft8",
+"group": null,
+"type": "LoftFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0023.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+},
+{
+"name": "Body5",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 6995.782680724069,
+"area": 5356.395320335827,
+"centroid": [
+5.701328316131074,
+-4.1621508500003594,
+154.76146033027928
+],
+"bbox": [
+[
+-18.76048206278027,
+-32.0,
+145.4801908043922
+],
+[
+25.82317612636881,
+18.760482062780277,
+163.0
+]
+],
+"placement_check": {
+"centroid_error": 0.012235231222195336,
+"transposed": false
+},
+"tri": [
+476,
+528
+]
+},
+{
+"name": "Body9",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 44611.047126364254,
+"area": 8139.879065862586,
+"centroid": [
+-7.842226294649024e-11,
+0.0,
+223.5869632528436
+],
+"bbox": [
+[
+-12.7,
+-12.7,
+178.4
+],
+[
+12.7,
+12.7,
+270.0
+]
+],
+"placement_check": {
+"centroid_error": 0.003705045062304095,
+"transposed": false
+},
+"tri": [
+1004,
+138
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 24,
+"name": "Sketch12",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0023.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+},
+{
+"name": "Body5",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 6995.782680724069,
+"area": 5356.395320335827,
+"centroid": [
+5.701328316131074,
+-4.1621508500003594,
+154.76146033027928
+],
+"bbox": [
+[
+-18.76048206278027,
+-32.0,
+145.4801908043922
+],
+[
+25.82317612636881,
+18.760482062780277,
+163.0
+]
+],
+"placement_check": {
+"centroid_error": 0.012235231222195336,
+"transposed": false
+},
+"tri": [
+476,
+528
+]
+},
+{
+"name": "Body9",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 44611.047126364254,
+"area": 8139.879065862586,
+"centroid": [
+-7.842226294649024e-11,
+0.0,
+223.5869632528436
+],
+"bbox": [
+[
+-12.7,
+-12.7,
+178.4
+],
+[
+12.7,
+12.7,
+270.0
+]
+],
+"placement_check": {
+"centroid_error": 0.003705045062304095,
+"transposed": false
+},
+"tri": [
+1004,
+138
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 25,
+"name": "Revolve1",
+"group": null,
+"type": "RevolveFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0025.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+},
+{
+"name": "Body5",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 6995.782680724069,
+"area": 5356.395320335827,
+"centroid": [
+5.701328316131074,
+-4.1621508500003594,
+154.76146033027928
+],
+"bbox": [
+[
+-18.76048206278027,
+-32.0,
+145.4801908043922
+],
+[
+25.82317612636881,
+18.760482062780277,
+163.0
+]
+],
+"placement_check": {
+"centroid_error": 0.012235231222195336,
+"transposed": false
+},
+"tri": [
+476,
+528
+]
+},
+{
+"name": "Body9",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 44611.047126364254,
+"area": 8139.879065862586,
+"centroid": [
+-7.842226294649024e-11,
+0.0,
+223.5869632528436
+],
+"bbox": [
+[
+-12.7,
+-12.7,
+178.4
+],
+[
+12.7,
+12.7,
+270.0
+]
+],
+"placement_check": {
+"centroid_error": 0.003705045062304095,
+"transposed": false
+},
+"tri": [
+1004,
+138
+]
+},
+{
+"name": "Body10",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 53951.6178376464,
+"area": 9492.539692766224,
+"centroid": [
+43.95186335403723,
+0.0,
+269.99999999718835
+],
+"bbox": [
+[
+3.0198581527991858e-30,
+-16.000000000000014,
+254.0
+],
+[
+100.0,
+16.000000000000014,
+286.0
+]
+],
+"placement_check": {
+"centroid_error": 0.016251568604209385,
+"transposed": false
+},
+"tri": [
+1142,
+296
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 26,
+"name": "Mirror1",
+"group": null,
+"type": "MirrorFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Parametric Handlebar Ref",
+"mesh": "mesh_0026.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 251327.4122871781,
+"area": 27646.015351590184,
+"centroid": [
+2.091358605491895e-09,
+0.0,
+99.99999999999892
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+200.0
+]
+],
+"placement_check": {
+"centroid_error": 1.8501104216462398e-07,
+"transposed": false
+},
+"tri": [
+0,
+176
+]
+},
+{
+"name": "Body5",
+"component": "Handlebar Reference",
+"occurrence": "Handlebar Reference:1",
+"solid": true,
+"visible": false,
+"volume": 90477.86842338412,
+"area": 15984.423421464871,
+"centroid": [
+-1.0680381152569074e-12,
+0.0,
+269.99999999874524
+],
+"bbox": [
+[
+-100.0,
+-12.000000000000002,
+258.0
+],
+[
+100.0,
+12.000000000000002,
+282.0
+]
+],
+"placement_check": {
+"centroid_error": 3.3835902968518395e-07,
+"transposed": false
+},
+"tri": [
+176,
+136
+]
+},
+{
+"name": "Body1",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 171876.30788322343,
+"area": 21522.151580414044,
+"centroid": [
+1.4519459803654257e-09,
+0.0,
+80.57144813643235
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+178.4
+]
+],
+"placement_check": {
+"centroid_error": 0.010071796551787977,
+"transposed": false
+},
+"tri": [
+312,
+164
+]
+},
+{
+"name": "Body5",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 6995.782680724069,
+"area": 5356.395320335827,
+"centroid": [
+5.701328316131074,
+-4.1621508500003594,
+154.76146033027928
+],
+"bbox": [
+[
+-18.76048206278027,
+-32.0,
+145.4801908043922
+],
+[
+25.82317612636881,
+18.760482062780277,
+163.0
+]
+],
+"placement_check": {
+"centroid_error": 0.012235231222195336,
+"transposed": false
+},
+"tri": [
+476,
+528
+]
+},
+{
+"name": "Body9",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 44611.047126364254,
+"area": 8139.879065862586,
+"centroid": [
+-7.842226294649024e-11,
+0.0,
+223.5869632528436
+],
+"bbox": [
+[
+-12.7,
+-12.7,
+178.4
+],
+[
+12.7,
+12.7,
+270.0
+]
+],
+"placement_check": {
+"centroid_error": 0.003705045062304095,
+"transposed": false
+},
+"tri": [
+1004,
+138
+]
+},
+{
+"name": "Body10",
+"component": "Parametric Handlebar Ref",
+"occurrence": "Parametric Handlebar Ref:1",
+"solid": true,
+"visible": true,
+"volume": 107903.23567529282,
+"area": 17376.583946894472,
+"centroid": [
+0.0,
+-2.633999736201782e-15,
+269.9999999971883
+],
+"bbox": [
+[
+-100.0,
+-16.000000000000014,
+254.0
+],
+[
+100.0,
+16.000000000000014,
+286.0
+]
+],
+"placement_check": {
+"centroid_error": 2.3919255909277126e-07,
+"transposed": false
+},
+"tri": [
+1142,
+436
+]
+}
+],
+"seconds": 0.04
+}
+],
+"seconds": 3.0
+}

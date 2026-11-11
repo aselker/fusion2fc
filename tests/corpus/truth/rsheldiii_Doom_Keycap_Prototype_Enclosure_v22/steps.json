@@ -1,0 +1,1291 @@
+{
+"source": "rsheldiii_Doom_Keycap_Prototype_Enclosure_v22.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 29,
+"diag": 43.99973811310544,
+"deviation_mm": 0.008799947622621087,
+"steps_total": 29,
+"steps": [
+{
+"index": 0,
+"name": "Bottom Of Keycap",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.05
+},
+{
+"index": 1,
+"name": "UNTILTED Top Of Keycap",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "UNTILTED Bottom of Top Of Keycap",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 3,
+"name": "Top Of Keycap",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 4,
+"name": "FINAL Top Of Keycap",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 5,
+"name": "FINAL Bottom Of Top Of Keycap",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 6,
+"name": "Second Top Of Keycap For Whatever Reason",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 7,
+"name": "Bottom of PCB",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 8,
+"name": "Sketch7",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 9,
+"name": "Outside keycap shape",
+"group": null,
+"type": "LoftFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0009.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 8471.807042238896,
+"area": 2685.1302724242796,
+"centroid": [
+5.409708486988236e-12,
+0.11453439914229106,
+6.5340885364929875
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+4746
+]
+}
+],
+"seconds": 0.05
+},
+{
+"index": 10,
+"name": "Inside keycap shape",
+"group": null,
+"type": "LoftFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0010.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1387.8744001719936,
+"area": 2980.8708910500723,
+"centroid": [
+-8.358022653531498e-05,
+0.24919726694680636,
+6.672880851726777
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7272
+]
+}
+],
+"seconds": 0.06
+},
+{
+"index": 11,
+"name": "Bottom of Top of Keycap Sketch",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0010.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1387.8744001719936,
+"area": 2980.8708910500723,
+"centroid": [
+-8.358022653531498e-05,
+0.24919726694680636,
+6.672880851726777
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7272
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 12,
+"name": "Loft5",
+"group": null,
+"type": "LoftFeature",
+"suppressed": false,
+"health": 1,
+"message": "Profile 1 missing<b>1 Reference Failures</b><br/>The profile reference is lost and this feature is using cached geometry.<br/>Edit this feature and select new profile references.Loft5",
+"component": "Untitled",
+"mesh": "mesh_0012.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1857.2791666449273,
+"area": 3824.4299319478864,
+"centroid": [
+-0.00030525994067028044,
+0.18443750228083353,
+8.270657976315071
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7152
+]
+}
+],
+"seconds": 0.06
+},
+{
+"index": 13,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0013.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1543.1191666449292,
+"area": 3272.7099319478866,
+"centroid": [
+-0.0003674070937226894,
+0.21488592119363653,
+7.307574397762124
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7172
+]
+}
+],
+"seconds": 0.05
+},
+{
+"index": 14,
+"name": "Sketch6",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0013.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1543.1191666449292,
+"area": 3272.7099319478866,
+"centroid": [
+-0.0003674070937226894,
+0.21488592119363653,
+7.307574397762124
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7172
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 15,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0015.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1596.3659243797563,
+"area": 3315.412051308029,
+"centroid": [
+-0.5156061401472907,
+0.18964484802236617,
+7.452569299219089
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7268
+]
+}
+],
+"seconds": 0.06
+},
+{
+"index": 16,
+"name": "Top of PCB",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0015.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1596.3659243797563,
+"area": 3315.412051308029,
+"centroid": [
+-0.5156061401472907,
+0.18964484802236617,
+7.452569299219089
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7268
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 17,
+"name": "Sketch3",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0015.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1596.3659243797563,
+"area": 3315.412051308029,
+"centroid": [
+-0.5156061401472907,
+0.18964484802236617,
+7.452569299219089
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7268
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 18,
+"name": "Extrude3",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0018.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1571.0165220560411,
+"area": 3290.9666017360487,
+"centroid": [
+-0.33675203166398726,
+0.0722122012762608,
+7.478475022098369
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7448
+]
+}
+],
+"seconds": 0.05
+},
+{
+"index": 19,
+"name": "Sketch4",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0018.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1571.0165220560411,
+"area": 3290.9666017360487,
+"centroid": [
+-0.33675203166398726,
+0.0722122012762608,
+7.478475022098369
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7448
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 20,
+"name": "Loft3",
+"group": null,
+"type": "LoftFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0020.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1571.0165220560411,
+"area": 3290.9666017360487,
+"centroid": [
+-0.33675203166398726,
+0.0722122012762608,
+7.478475022098369
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7448
+]
+},
+{
+"name": "DoomKeycap Inner Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": false,
+"volume": 2352.157333333335,
+"area": 1528.687596379587,
+"centroid": [
+3.776016200589153e-15,
+9.440040501472883e-15,
+2.123639886900989
+],
+"bbox": [
+[
+-17.4,
+-8.149999999999999,
+0.0
+],
+[
+17.4,
+8.149999999999999,
+4.299999999999998
+]
+],
+"tri": [
+7448,
+12
+]
+}
+],
+"seconds": 0.05
+},
+{
+"index": 21,
+"name": "Loft4",
+"group": null,
+"type": "LoftFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0021.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1571.0165220560411,
+"area": 3290.9666017360487,
+"centroid": [
+-0.33675203166398726,
+0.0722122012762608,
+7.478475022098369
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7448
+]
+},
+{
+"name": "DoomKeycap Inner Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": false,
+"volume": 892.9380000000021,
+"area": 1261.3185365383342,
+"centroid": [
+-2.486674381928317e-15,
+2.2380069437354856e-14,
+2.477721596198914
+],
+"bbox": [
+[
+-17.4,
+-8.149999999999999,
+0.0
+],
+[
+17.4,
+8.149999999999999,
+4.299999999999998
+]
+],
+"tri": [
+7448,
+32
+]
+}
+],
+"seconds": 0.05
+},
+{
+"index": 22,
+"name": "Extrude4",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0022.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1571.0165220560411,
+"area": 3290.9666017360487,
+"centroid": [
+-0.33675203166398726,
+0.0722122012762608,
+7.478475022098369
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7448
+]
+},
+{
+"name": "DoomKeycap Inner Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": false,
+"volume": 1146.119629709755,
+"area": 1680.413233244094,
+"centroid": [
+9.686798793475959e-15,
+2.131095734564711e-14,
+2.766332437328864
+],
+"bbox": [
+[
+-17.4,
+-8.149999999999999,
+0.0
+],
+[
+17.4,
+8.149999999999999,
+4.299999999999998
+]
+],
+"tri": [
+7448,
+28
+]
+}
+],
+"seconds": 0.05
+},
+{
+"index": 23,
+"name": "Extrude8",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0023.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1571.0165220560411,
+"area": 3290.9666017360487,
+"centroid": [
+-0.33675203166398726,
+0.0722122012762608,
+7.478475022098369
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7448
+]
+},
+{
+"name": "DoomKeycap Inner Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": false,
+"volume": 1117.2371756248178,
+"area": 1654.7562883421701,
+"centroid": [
+-0.18453290169266323,
+2.086815944348566e-14,
+2.739610397846744
+],
+"bbox": [
+[
+-17.4,
+-8.149999999999999,
+0.0
+],
+[
+17.4,
+8.149999999999999,
+4.299999999999998
+]
+],
+"tri": [
+7448,
+236
+]
+}
+],
+"seconds": 0.06
+},
+{
+"index": 24,
+"name": "Extrude5",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0024.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1571.0165220560411,
+"area": 3290.9666017360487,
+"centroid": [
+-0.33675203166398726,
+0.0722122012762608,
+7.478475022098369
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7448
+]
+},
+{
+"name": "DoomKeycap Inner Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": false,
+"volume": 1160.7695589531393,
+"area": 1755.7925671264022,
+"centroid": [
+-0.1776123574970418,
+2.0085540094758386e-14,
+2.7043721546460606
+],
+"bbox": [
+[
+-17.4,
+-8.149999999999999,
+0.0
+],
+[
+17.4,
+8.149999999999999,
+4.299999999999998
+]
+],
+"tri": [
+7448,
+396
+]
+}
+],
+"seconds": 0.06
+},
+{
+"index": 25,
+"name": "Extrude6",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0025.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1571.0165220560411,
+"area": 3290.9666017360487,
+"centroid": [
+-0.33675203166398726,
+0.0722122012762608,
+7.478475022098369
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7448
+]
+},
+{
+"name": "DoomKeycap Inner Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": false,
+"volume": 1384.75115160673,
+"area": 2191.278937740761,
+"centroid": [
+-0.14888380315644376,
+1.6034982506957477e-14,
+2.186069369470782
+],
+"bbox": [
+[
+-18.5,
+-9.249999999999998,
+-1.0
+],
+[
+18.500000000000004,
+9.249999999999998,
+4.299999999999998
+]
+],
+"tri": [
+7448,
+516
+]
+}
+],
+"seconds": 0.05
+},
+{
+"index": 26,
+"name": "Extrude9",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0026.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1571.0165220560411,
+"area": 3290.9666017360487,
+"centroid": [
+-0.33675203166398726,
+0.0722122012762608,
+7.478475022098369
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+14.054563966265404
+]
+],
+"tri": [
+0,
+7448
+]
+},
+{
+"name": "DoomKeycap Inner Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": false,
+"volume": 1344.8328675714802,
+"area": 2171.999730929355,
+"centroid": [
+0.3172517346253137,
+-0.19598974484061427,
+2.195800780355062
+],
+"bbox": [
+[
+-18.5,
+-9.249999999999998,
+-0.9999999999999998
+],
+[
+18.500000000000004,
+9.249999999999998,
+4.299999999999998
+]
+],
+"tri": [
+7448,
+656
+]
+}
+],
+"seconds": 0.07
+},
+{
+"index": 27,
+"name": "Fillet2",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0027.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1554.0158439696572,
+"area": 3256.204436875489,
+"centroid": [
+-0.34042003642532437,
+0.062027099335734776,
+7.414046740504738
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+13.990895704455532
+]
+],
+"tri": [
+0,
+7772
+]
+},
+{
+"name": "DoomKeycap Inner Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": false,
+"volume": 1344.8328675714802,
+"area": 2171.999730929355,
+"centroid": [
+0.3172517346253137,
+-0.19598974484061427,
+2.195800780355062
+],
+"bbox": [
+[
+-18.5,
+-9.249999999999998,
+-0.9999999999999998
+],
+[
+18.500000000000004,
+9.249999999999998,
+4.299999999999998
+]
+],
+"tri": [
+7772,
+656
+]
+}
+],
+"seconds": 0.11
+},
+{
+"index": 28,
+"name": "Extrude7",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0028.stl.gz",
+"bodies": [
+{
+"name": "DoomKeycap Outer Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1868.1758439696562,
+"area": 3807.9244368754894,
+"centroid": [
+-0.2831736273206238,
+0.057461636905261265,
+8.353608035365758
+],
+"bbox": [
+[
+-18.5,
+-9.25,
+0.0
+],
+[
+18.500000000000004,
+9.25,
+13.990895704455532
+]
+],
+"tri": [
+0,
+7752
+]
+},
+{
+"name": "DoomKeycap Inner Body",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": false,
+"volume": 1344.8328675714802,
+"area": 2171.999730929355,
+"centroid": [
+0.3172517346253137,
+-0.19598974484061427,
+2.195800780355062
+],
+"bbox": [
+[
+-18.5,
+-9.249999999999998,
+-0.9999999999999998
+],
+[
+18.500000000000004,
+9.249999999999998,
+4.299999999999998
+]
+],
+"tri": [
+7752,
+656
+]
+}
+],
+"seconds": 0.11
+}
+],
+"seconds": 3.8
+}

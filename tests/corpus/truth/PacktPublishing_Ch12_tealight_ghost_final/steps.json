@@ -1,0 +1,7016 @@
+{
+"source": "PacktPublishing_Ch12_tealight_ghost_final.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 32,
+"diag": 140.5789663223248,
+"deviation_mm": 0.02811579326446496,
+"steps_total": 32,
+"steps": [
+{
+"index": 0,
+"name": " tealight:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.04
+},
+{
+"index": 1,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "tealight",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "tealight",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 3,
+"name": "SurfacePatch1",
+"group": null,
+"type": "PatchFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "tealight",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 4,
+"name": "SurfacePatch2",
+"group": null,
+"type": "PatchFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "tealight",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 5,
+"name": "Sketch5",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "tealight",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 6,
+"name": "Revolve1",
+"group": null,
+"type": "RevolveFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "tealight",
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 7,
+"name": " Ghost:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 8,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 9,
+"name": "Revolve1",
+"group": null,
+"type": "RevolveFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0009.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13863.745965385866,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10746
+]
+}
+],
+"seconds": 0.11
+},
+{
+"index": 10,
+"name": "Sketch3",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0009.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13863.745965385866,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10746
+]
+}
+],
+"seconds": 0.07
+},
+{
+"index": 11,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0011.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13863.745965385866,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10746
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 1110.5807712438448,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-11.0,
+-35.0,
+49.0
+],
+[
+-2.999999999999999,
+0.0,
+61.0
+]
+],
+"tri": [
+12741,
+80
+]
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 1110.5807712438448,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+3.000000000000006,
+-35.0,
+49.0
+],
+[
+11.00000000000001,
+0.0,
+61.0
+]
+],
+"tri": [
+12821,
+80
+]
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 2339.7344572538573,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-2.999999999999998,
+-35.0,
+17.0
+],
+[
+3.000000000000003,
+0.0,
+47.0
+]
+],
+"tri": [
+12901,
+52
+]
+}
+],
+"seconds": 0.11
+},
+{
+"index": 12,
+"name": "SurfaceTrim1",
+"group": null,
+"type": "TrimFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0012.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13783.172625176112,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10766
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 1110.5807712438448,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-11.0,
+-35.0,
+49.0
+],
+[
+-2.999999999999999,
+0.0,
+61.0
+]
+],
+"tri": [
+12761,
+80
+]
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 1110.5807712438448,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+3.000000000000006,
+-35.0,
+49.0
+],
+[
+11.00000000000001,
+0.0,
+61.0
+]
+],
+"tri": [
+12841,
+80
+]
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 2339.7344572538573,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-2.999999999999998,
+-35.0,
+17.0
+],
+[
+3.000000000000003,
+0.0,
+47.0
+]
+],
+"tri": [
+12921,
+52
+]
+}
+],
+"seconds": 0.14
+},
+{
+"index": 13,
+"name": "SurfaceTrim2",
+"group": null,
+"type": "TrimFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0013.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13702.565252882798,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10788
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 1110.5807712438448,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-11.0,
+-35.0,
+49.0
+],
+[
+-2.999999999999999,
+0.0,
+61.0
+]
+],
+"tri": [
+12783,
+80
+]
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 1110.5807712438448,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+3.000000000000006,
+-35.0,
+49.0
+],
+[
+11.00000000000001,
+0.0,
+61.0
+]
+],
+"tri": [
+12863,
+80
+]
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 2339.7344572538573,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-2.999999999999998,
+-35.0,
+17.0
+],
+[
+3.000000000000003,
+0.0,
+47.0
+]
+],
+"tri": [
+12943,
+52
+]
+}
+],
+"seconds": 0.11
+},
+{
+"index": 14,
+"name": "SurfaceTrim3",
+"group": null,
+"type": "TrimFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0014.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13527.13911517189,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10710
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 1110.5807712438448,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-11.0,
+-35.0,
+49.0
+],
+[
+-2.999999999999999,
+0.0,
+61.0
+]
+],
+"tri": [
+12705,
+80
+]
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 1110.5807712438448,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+3.000000000000006,
+-35.0,
+49.0
+],
+[
+11.00000000000001,
+0.0,
+61.0
+]
+],
+"tri": [
+12785,
+80
+]
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 2339.7344572538573,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-2.999999999999998,
+-35.0,
+17.0
+],
+[
+3.000000000000003,
+0.0,
+47.0
+]
+],
+"tri": [
+12865,
+52
+]
+}
+],
+"seconds": 0.09
+},
+{
+"index": 15,
+"name": "SurfaceTrim4",
+"group": null,
+"type": "TrimFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0015.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13527.13911517189,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10710
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 668.6997965985659,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-11.0,
+-22.63050946354857,
+49.0
+],
+[
+-2.999999999999999,
+0.0,
+61.0
+]
+],
+"tri": [
+12705,
+82
+]
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 669.0710549814055,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+3.000000000000006,
+-22.63050946354857,
+49.0
+],
+[
+11.00000000000001,
+0.0,
+61.0
+]
+],
+"tri": [
+12787,
+82
+]
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 1679.7768691576587,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-2.999999999999998,
+-28.35834136054554,
+16.999999999999996
+],
+[
+3.000000000000003,
+0.0,
+47.0
+]
+],
+"tri": [
+12869,
+72
+]
+}
+],
+"seconds": 0.11
+},
+{
+"index": 16,
+"name": "SurfaceTrim5",
+"group": null,
+"type": "TrimFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0016.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13527.13911517189,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10710
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+}
+],
+"seconds": 0.09
+},
+{
+"index": 17,
+"name": "Sketch5",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0016.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13527.13911517189,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10710
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+}
+],
+"seconds": 0.07
+},
+{
+"index": 18,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0018.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13527.13911517189,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10710
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body5",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1366.4746069257858,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+20.0,
+-17.0,
+30.0
+],
+[
+35.91611184780779,
+17.0,
+50.228603408178586
+]
+],
+"tri": [
+12705,
+92
+]
+}
+],
+"seconds": 0.1
+},
+{
+"index": 19,
+"name": "Sketch6",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0018.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13527.13911517189,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10710
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body5",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1366.4746069257858,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+20.0,
+-17.0,
+30.0
+],
+[
+35.91611184780779,
+17.0,
+50.228603408178586
+]
+],
+"tri": [
+12705,
+92
+]
+}
+],
+"seconds": 0.07
+},
+{
+"index": 20,
+"name": "Extrude3",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0020.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13527.13911517189,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10710
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body5",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1366.4746069257858,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+20.0,
+-17.0,
+30.0
+],
+[
+35.91611184780779,
+17.0,
+50.228603408178586
+]
+],
+"tri": [
+12705,
+92
+]
+},
+{
+"name": "Body6",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 2206.589072955407,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+18.000000000000004,
+-4.0,
+0.0
+],
+[
+37.0,
+4.0,
+56.00000000000001
+]
+],
+"tri": [
+12797,
+64
+]
+}
+],
+"seconds": 0.26
+},
+{
+"index": 21,
+"name": "SurfaceTrim6",
+"group": null,
+"type": "TrimFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0021.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13527.13911517189,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10710
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body5",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 193.75046628488562,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+20.0,
+-3.772285805191566,
+30.0
+],
+[
+35.9161118478078,
+3.772285805190872,
+50.228603408178586
+]
+],
+"tri": [
+12705,
+92
+]
+},
+{
+"name": "Body6",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 2206.589072955407,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+18.000000000000004,
+-4.0,
+0.0
+],
+[
+37.0,
+4.0,
+56.00000000000001
+]
+],
+"tri": [
+12797,
+64
+]
+}
+],
+"seconds": 0.12
+},
+{
+"index": 22,
+"name": "SurfaceTrim7",
+"group": null,
+"type": "TrimFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0022.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13527.13911517189,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10710
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body5",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 193.75046628488562,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+20.0,
+-3.772285805191566,
+30.0
+],
+[
+35.9161118478078,
+3.772285805190872,
+50.228603408178586
+]
+],
+"tri": [
+12705,
+92
+]
+},
+{
+"name": "Body6",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 452.6562611552486,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+18.000000000000004,
+-4.0,
+0.0
+],
+[
+35.9161118478078,
+-0.9194025659239446,
+51.24073606970134
+]
+],
+"tri": [
+12797,
+52
+]
+},
+{
+"name": "Body7",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 452.6233431906967,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+18.000000000000004,
+0.9194025659186894,
+0.0
+],
+[
+35.9161118478078,
+4.0,
+51.24073611412544
+]
+],
+"tri": [
+12849,
+51
+]
+}
+],
+"seconds": 0.12
+},
+{
+"index": 23,
+"name": "SurfaceTrim8",
+"group": null,
+"type": "TrimFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0023.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13527.13911517189,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10710
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body5",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 138.96229891253827,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+22.9320162746044,
+-3.4149763886747984,
+34.39138284953157
+],
+[
+35.9161118478078,
+3.4149763886730797,
+50.2286034081786
+]
+],
+"tri": [
+12705,
+156
+]
+},
+{
+"name": "Body6",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 130.48763156266756,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+22.932016274604155,
+-3.414976388674798,
+34.39138284953088
+],
+[
+35.9161118478078,
+-0.9194025659239446,
+50.228603408178586
+]
+],
+"tri": [
+12861,
+37
+]
+},
+{
+"name": "Body7",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 130.4863629116896,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+22.9320162746044,
+0.9194025659186894,
+34.39138284953155
+],
+[
+35.9161118478078,
+3.4149763886730797,
+50.2286034081786
+]
+],
+"tri": [
+12898,
+39
+]
+}
+],
+"seconds": 0.1
+},
+{
+"index": 24,
+"name": "Reverse Normal3",
+"group": null,
+"type": "ReverseNormalFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0023.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13527.13911517189,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10710
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body5",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 138.96229891253827,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+22.9320162746044,
+-3.4149763886747984,
+34.39138284953157
+],
+[
+35.9161118478078,
+3.4149763886730797,
+50.2286034081786
+]
+],
+"tri": [
+12705,
+156
+]
+},
+{
+"name": "Body6",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 130.48763156266756,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+22.932016274604155,
+-3.414976388674798,
+34.39138284953088
+],
+[
+35.9161118478078,
+-0.9194025659239446,
+50.228603408178586
+]
+],
+"tri": [
+12861,
+37
+]
+},
+{
+"name": "Body7",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 130.4863629116896,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+22.9320162746044,
+0.9194025659186894,
+34.39138284953155
+],
+[
+35.9161118478078,
+3.4149763886730797,
+50.2286034081786
+]
+],
+"tri": [
+12898,
+39
+]
+}
+],
+"seconds": 0.07
+},
+{
+"index": 25,
+"name": "SurfaceStitch2",
+"group": null,
+"type": "StitchFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0025.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13527.13911517189,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10710
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body9",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 399.93629345779533,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+22.932016274604155,
+-3.414976388674798,
+34.39138284953088
+],
+[
+35.9161118478078,
+3.4149763886730806,
+50.228603408178586
+]
+],
+"tri": [
+12705,
+232
+]
+}
+],
+"seconds": 0.1
+},
+{
+"index": 26,
+"name": "Mirror1",
+"group": null,
+"type": "MirrorFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0026.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13527.13911517189,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10710
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body9",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 399.93629345779533,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+22.932016274604155,
+-3.414976388674798,
+34.39138284953088
+],
+[
+35.9161118478078,
+3.4149763886730806,
+50.228603408178586
+]
+],
+"tri": [
+12705,
+232
+]
+},
+{
+"name": "Body10",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 399.93629345779533,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-35.9161118478078,
+-3.414976388674798,
+34.39138284953088
+],
+[
+-22.932016274604155,
+3.4149763886730806,
+50.228603408178586
+]
+],
+"tri": [
+12937,
+232
+]
+}
+],
+"seconds": 0.1
+},
+{
+"index": 27,
+"name": "SurfaceTrim10",
+"group": null,
+"type": "TrimFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0027.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13431.320298741937,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10742
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body9",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 399.93629345779533,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+22.932016274604155,
+-3.414976388674798,
+34.39138284953088
+],
+[
+35.9161118478078,
+3.4149763886730806,
+50.228603408178586
+]
+],
+"tri": [
+12737,
+232
+]
+},
+{
+"name": "Body10",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 399.93629345779533,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-35.9161118478078,
+-3.414976388674798,
+34.39138284953088
+],
+[
+-22.932016274604155,
+3.4149763886730806,
+50.228603408178586
+]
+],
+"tri": [
+12969,
+232
+]
+}
+],
+"seconds": 0.12
+},
+{
+"index": 28,
+"name": "SurfaceTrim11",
+"group": null,
+"type": "TrimFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0028.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body1",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 13335.501482311995,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+10762
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body9",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 399.93629345779533,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+22.932016274604155,
+-3.414976388674798,
+34.39138284953088
+],
+[
+35.9161118478078,
+3.4149763886730806,
+50.228603408178586
+]
+],
+"tri": [
+12757,
+232
+]
+},
+{
+"name": "Body10",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 399.93629345779533,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-35.9161118478078,
+-3.414976388674798,
+34.39138284953088
+],
+[
+-22.932016274604155,
+3.4149763886730806,
+50.228603408178586
+]
+],
+"tri": [
+12989,
+232
+]
+}
+],
+"seconds": 0.13
+},
+{
+"index": 29,
+"name": "SurfaceStitch3",
+"group": null,
+"type": "StitchFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0029.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body11",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 14135.37818214161,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+11226
+]
+}
+],
+"seconds": 0.11
+},
+{
+"index": 30,
+"name": "Thicken1",
+"group": null,
+"type": "ThickenFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0030.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body11",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 14135.37818214161,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+11226
+]
+},
+{
+"name": "Body12",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": true,
+"visible": true,
+"volume": 14423.916069543822,
+"area": 29232.720124361345,
+"centroid": [
+7.045732850709966e-05,
+0.5646566813291592,
+35.431087306146026
+],
+"bbox": [
+[
+-40.62241649054947,
+-40.62241649054947,
+2.3303752327085554e-31
+],
+[
+40.62241649054947,
+40.62241649054947,
+81.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0892122343539259,
+"transposed": false
+},
+"tri": [
+13221,
+27326
+]
+}
+],
+"seconds": 0.42
+},
+{
+"index": 31,
+"name": "Fillet1",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Ghost",
+"mesh": "mesh_0031.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1413.7166941154073,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+0,
+116
+]
+},
+{
+"name": "Body2",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+0.0
+],
+[
+18.75,
+18.75,
+0.0
+]
+],
+"tri": [
+116,
+56
+]
+},
+{
+"name": "Body3",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 1104.4661672776617,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-18.75,
+-18.75,
+12.000000000000002
+],
+[
+18.75,
+18.75,
+12.000000000000002
+]
+],
+"tri": [
+172,
+56
+]
+},
+{
+"name": "Body4",
+"component": "tealight",
+"occurrence": "tealight:1",
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 167.97427818273013,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-3.521491786770249,
+-3.521491786770251,
+12.000000000000002
+],
+[
+3.521491786770249,
+3.5214917867702464,
+22.0
+]
+],
+"tri": [
+228,
+1767
+]
+},
+{
+"name": "Body2",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body3",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body4",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 0.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+5.0,
+5.0,
+5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"mesh_error": "2 : InternalValidationError : facesToFacet_.size() > 0"
+},
+{
+"name": "Body11",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": false,
+"visible": false,
+"volume": 0.0,
+"area": 14135.37818214161,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-40.0,
+-40.0,
+2.3303752327085554e-31
+],
+[
+40.0,
+40.0,
+80.0
+]
+],
+"tri": [
+1995,
+11226
+]
+},
+{
+"name": "Body12",
+"component": "Ghost",
+"occurrence": "Ghost:1",
+"solid": true,
+"visible": true,
+"volume": 14375.899363641536,
+"area": 29112.045112168584,
+"centroid": [
+-1.4092787853281766e-05,
+0.5665594442594599,
+35.40742189311167
+],
+"bbox": [
+[
+-40.62241649054947,
+-40.62241649054947,
+2.3303752327085554e-31
+],
+[
+40.62241649054947,
+40.62241649054947,
+81.0
+]
+],
+"placement_check": {
+"centroid_error": 0.08917985689390191,
+"transposed": false
+},
+"tri": [
+13221,
+30430
+]
+}
+],
+"seconds": 0.31
+}
+],
+"seconds": 5.9
+}

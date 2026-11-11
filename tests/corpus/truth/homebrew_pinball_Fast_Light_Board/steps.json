@@ -1,0 +1,280 @@
+{
+"source": "homebrew_pinball_Fast_Light_Board.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 7,
+"diag": 32.41037838336858,
+"deviation_mm": 0.0064820756766737165,
+"steps_total": 7,
+"steps": [
+{
+"index": 0,
+"name": " Fast Light Board:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.08
+},
+{
+"index": 1,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Fast Light Board",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Fast Light Board",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Fast Light Board",
+"occurrence": "Fast Light Board:1",
+"solid": true,
+"visible": true,
+"volume": 480.95497331378635,
+"area": 755.5088332119386,
+"centroid": [
+15.709131260604664,
+0.79375,
+-5.159374999999999
+],
+"bbox": [
+[
+0.0,
+0.0,
+-10.318750000000001
+],
+[
+30.559375000000003,
+1.5875,
+0.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0019306219207585002,
+"transposed": false
+},
+"tri": [
+0,
+172
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 3,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Fast Light Board",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Fast Light Board",
+"occurrence": "Fast Light Board:1",
+"solid": true,
+"visible": true,
+"volume": 480.95497331378635,
+"area": 755.5088332119386,
+"centroid": [
+15.709131260604664,
+0.79375,
+-5.159374999999999
+],
+"bbox": [
+[
+0.0,
+0.0,
+-10.318750000000001
+],
+[
+30.559375000000003,
+1.5875,
+0.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0019306219207585002,
+"transposed": false
+},
+"tri": [
+0,
+172
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 4,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Fast Light Board",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Fast Light Board",
+"occurrence": "Fast Light Board:1",
+"solid": true,
+"visible": true,
+"volume": 516.9617057356614,
+"area": 785.7507082119386,
+"centroid": [
+16.57760510724199,
+0.9043204486145335,
+-5.159375000000002
+],
+"bbox": [
+[
+0.0,
+0.0,
+-10.318750000000001
+],
+[
+30.559375000000003,
+3.175,
+0.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0019389258893228714,
+"transposed": false
+},
+"tri": [
+0,
+188
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 5,
+"name": "Sketch3",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Fast Light Board",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Fast Light Board",
+"occurrence": "Fast Light Board:1",
+"solid": true,
+"visible": true,
+"volume": 516.9617057356614,
+"area": 785.7507082119386,
+"centroid": [
+16.57760510724199,
+0.9043204486145335,
+-5.159375000000002
+],
+"bbox": [
+[
+0.0,
+0.0,
+-10.318750000000001
+],
+[
+30.559375000000003,
+3.175,
+0.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0019389258893228714,
+"transposed": false
+},
+"tri": [
+0,
+188
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 6,
+"name": "Extrude3",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Fast Light Board",
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Fast Light Board",
+"occurrence": "Fast Light Board:1",
+"solid": true,
+"visible": true,
+"volume": 506.3568476678795,
+"area": 808.0181267269653,
+"centroid": [
+16.550760426755886,
+0.9066361750028479,
+-5.159375000000001
+],
+"bbox": [
+[
+0.0,
+0.0,
+-10.318750000000001
+],
+[
+30.559375000000003,
+3.175,
+0.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0016043032378526886,
+"transposed": false
+},
+"tri": [
+0,
+740
+]
+}
+],
+"seconds": 0.06
+}
+],
+"seconds": 10.1
+}

@@ -1,0 +1,187 @@
+{
+"source": "case_join_from_face_offset.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 4,
+"diag": 24.1039415863879,
+"deviation_mm": 0.00482078831727758,
+"steps_total": 4,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.03
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1200.0000000000002,
+"area": 760.0,
+"centroid": [
+10.0,
+5.0,
+3.0000000000000004
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+6.000000000000001
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 2,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1200.0000000000002,
+"area": 760.0,
+"centroid": [
+10.0,
+5.0,
+3.0000000000000004
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+6.000000000000001
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 3,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1200.0000000000002,
+"area": 760.0,
+"centroid": [
+10.0,
+5.0,
+3.0000000000000004
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+6.000000000000001
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 56.54866776461873,
+"area": 94.24777960769383,
+"centroid": [
+10.000000000313705,
+5.0,
+8.000000000000002
+],
+"bbox": [
+[
+7.0,
+1.9999999999999996,
+7.000000000000001
+],
+[
+13.0,
+8.0,
+9.000000000000002
+]
+],
+"tri": [
+12,
+220
+]
+}
+],
+"seconds": 0.04
+}
+],
+"seconds": 4.7
+}

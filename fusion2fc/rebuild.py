@@ -8,6 +8,8 @@ because freecadcmd treats extra command-line arguments as files to open:
   F2FC_FEATURES=ids.json          # optional: JSON list of CADIR feature ids to build
   F2FC_OUT=design.FCStd
   F2FC_REPORT=report.json
+  F2FC_STEPS=dir/                 # optional: write the bodies after every feature as
+                                  #   dir/step_NNNN.brep (compound, world coordinates)
   freecadcmd fusion2fc/rebuild.py
 
 v0 scope: planar sketches (lines, arcs, circles, B-splines; coincidence from shared
@@ -75,7 +77,49 @@ class Rebuilder:
                     self.topo_edges.setdefault(fid, []).append(eg)
         self.sketches = {}  # cadir sketch id -> (sketch object, entity->geo, entity->edge name)
         self.solids = []  # current result objects (FreeCAD objects), one per Fusion body
+        self.body_component = {}  # solid object name -> CADIR component id (product definition)
+        self.component = None  # component of the feature being built
+        self.world = self.component_placements(slim.get("occurrences") or [])
         self.report = {"features": [], "sketches": {}}
+        self.steps_dir = os.environ.get("F2FC_STEPS")
+        if self.steps_dir:
+            os.makedirs(self.steps_dir, exist_ok=True)
+
+    # ----- components -----------------------------------------------------
+    @staticmethod
+    def component_placements(occurrences):
+        """Component id -> world matrices, one per occurrence (parents composed). Bodies are
+        built in their component's coordinates and placed by these on output."""
+        by_id = {o["id"]: o for o in occurrences}
+
+        def matrix(o):
+            t = o.get("transform") or [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0]]
+            m = App.Matrix(*(t[0] + t[1] + t[2] + [0, 0, 0, 1]))
+            parent = (o.get("parent") or {}).get("occurrence")
+            if parent in by_id and parent != o["id"]:
+                m = matrix(by_id[parent]).multiply(m)
+            return m
+
+        world = defaultdict(list)
+        for o in occurrences:
+            comp = (o.get("prototype") or {}).get("definition")
+            if comp:
+                world[comp].append(matrix(o))
+        return world
+
+    def same_component(self, solids):
+        return [s for s in solids if self.body_component.get(s.Name) == self.component]
+
+    def world_shapes(self):
+        """Every body as placed in the root: one copy per occurrence of its component."""
+        out = []
+        for s in self.solids:
+            if s.Shape.isNull():
+                continue
+            mats = self.world.get(self.body_component.get(s.Name)) or [None]
+            for m in mats:
+                out.append(s.Shape if m is None or m.isUnity() else s.Shape.transformGeometry(m))
+        return out
 
     # ----- sketches -------------------------------------------------------
     def placement(self, frame):
@@ -444,7 +488,7 @@ class Rebuilder:
             self.solids += parts
             return {"op": op, "targets": 0, "bodies": len(parts)}
         if op == "join":
-            targets = [s for s in self.solids if self.touches(s, tool)]
+            targets = [s for s in self.same_component(self.solids) if self.touches(s, tool)]
             if not targets:
                 self.solids += self.split_solids(tool, name)
                 return {"op": op, "targets": 0}
@@ -456,7 +500,7 @@ class Rebuilder:
             # Bodies the join leaves unconnected stay separate bodies.
             self.solids = [s for s in self.solids if s not in targets] + self.split_solids(fuse, name)
         elif op in ("cut", "intersect"):
-            pool = participants if participants else self.solids
+            pool = participants if participants else self.same_component(self.solids)
             targets = [s for s in pool if self.overlaps(s, tool)]
             for t in targets:
                 b = self.doc.addObject("Part::Cut" if op == "cut" else "Part::Common", op.capitalize())
@@ -557,6 +601,7 @@ class Rebuilder:
         for f in feats:
             kind = f["definition"].get("definition", "native")
             rec = {"name": f["name"], "kind": kind}
+            self.component = f.get("product_definition")
             try:
                 if kind == "sketch":
                     rec["name"] = self.sketch_label(f["definition"]["sketch"]["sketch"], f["name"])
@@ -591,20 +636,41 @@ class Rebuilder:
             except Exception as e:
                 rec["status"], rec["reason"] = "failed", "%s: %s" % (type(e).__name__, e)
                 rec["trace"] = traceback.format_exc()[-800:]
-            rec["volumes"] = sorted((o.Shape.Volume for o in self.solids), reverse=True)
+            for o in self.solids:
+                self.body_component.setdefault(o.Name, self.component)
+            world = self.world_shapes()
+            rec["volumes"] = []
+            for w in world:
+                try:
+                    rec["volumes"].append(w.Volume)
+                except Exception as e:  # an invalid result shape (OCC refuses its properties)
+                    rec.setdefault("invalid_bodies", []).append(str(e))
+            rec["volumes"].sort(reverse=True)
+            if self.steps_dir:
+                rec["step_file"] = "step_%04d.brep" % len(self.report["features"])
+                Part.Compound(world).exportBrep(os.path.join(self.steps_dir, rec["step_file"]))
             self.report["features"].append(rec)
         self.doc.recompute()
         bodies = []
         for s in self.solids:
-            shp = s.Shape
-            bb = shp.BoundBox
-            bodies.append({"object": s.Name, "label": s.Label, "valid": shp.isValid(),
-                           "volume": shp.Volume, "area": shp.Area,
-                           "solids": len(shp.Solids),
-                           "centroid": list(shp.Solids[0].CenterOfMass) if len(shp.Solids) == 1 else None,
-                           "bbox": [[bb.XMin, bb.YMin, bb.ZMin], [bb.XMax, bb.YMax, bb.ZMax]]})
+            mats = self.world.get(self.body_component.get(s.Name)) or [None]
+            for m in mats:
+                bodies.append(self.body_record(s, m))
         self.report["bodies"] = bodies
         return self.report
+
+    @staticmethod
+    def body_record(s, m):
+        """Report entry for one placed copy of a body (m: occurrence world matrix or None)."""
+        if s.Shape.isNull():
+            return {"object": s.Name, "label": s.Label, "valid": False, "null": True}
+        shp = s.Shape if m is None or m.isUnity() else s.Shape.transformGeometry(m)
+        bb = shp.BoundBox
+        return {"object": s.Name, "label": s.Label, "valid": shp.isValid(),
+                "volume": shp.Volume, "area": shp.Area,
+                "solids": len(shp.Solids),
+                "centroid": list(shp.Solids[0].CenterOfMass) if len(shp.Solids) == 1 else None,
+                "bbox": [[bb.XMin, bb.YMin, bb.ZMin], [bb.XMax, bb.YMax, bb.ZMax]]}
 
 
 def main():

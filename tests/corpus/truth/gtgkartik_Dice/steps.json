@@ -1,0 +1,1240 @@
+{
+"source": "gtgkartik_Dice.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 27,
+"diag": 27.712812921102035,
+"deviation_mm": 0.005542562584220407,
+"steps_total": 27,
+"steps": [
+{
+"index": 0,
+"name": " Dice:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.03
+},
+{
+"index": 1,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": null,
+"bodies": [],
+"seconds": 0.0
+},
+{
+"index": 2,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 4096.000000000001,
+"area": 1536.0000000000002,
+"centroid": [
+8.0,
+8.0,
+8.0
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 2.064765452105627e-07,
+"transposed": false
+},
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 3,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 4096.000000000001,
+"area": 1536.0000000000002,
+"centroid": [
+8.0,
+8.0,
+8.0
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 2.064765452105627e-07,
+"transposed": false
+},
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 4,
+"name": "Fillet1",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3941.899663755222,
+"area": 1366.654824574367,
+"centroid": [
+8.000000000000002,
+8.000000000000004,
+8.000000000000002
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 2.9905523620905187e-07,
+"transposed": false
+},
+"tri": [
+0,
+1772
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 5,
+"name": "Hole1",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0005.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3861.4676819182223,
+"area": 1444.1470252866598,
+"centroid": [
+8.0,
+8.099844508091715,
+8.000000000009802
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.00031493605021316987,
+"transposed": false
+},
+"tri": [
+0,
+1946
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 6,
+"name": "Hole2",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3838.1383147865995,
+"area": 1473.5992212461704,
+"centroid": [
+7.9614456410848256,
+8.111918260676573,
+8.000337885246157
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0004075565824054633,
+"transposed": false
+},
+"tri": [
+0,
+2096
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 7,
+"name": "Hole3",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0007.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3814.8089476549776,
+"area": 1503.0514172056808,
+"centroid": [
+7.922419725766171,
+8.098631113334445,
+8.000679908633217
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.00046612958268097543,
+"transposed": false
+},
+"tri": [
+0,
+2246
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 8,
+"name": "Hole4",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0008.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3791.479580523362,
+"area": 1532.5036131651914,
+"centroid": [
+7.921808679391407,
+8.060209183950834,
+7.987960046740264
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0003819261300290163,
+"transposed": false
+},
+"tri": [
+0,
+2396
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 9,
+"name": "Hole5",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0009.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3768.150213391743,
+"area": 1561.9558091247018,
+"centroid": [
+7.940675771262224,
+8.021311498960365,
+7.999028977117419
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0002689063631647094,
+"transposed": false
+},
+"tri": [
+0,
+2546
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 10,
+"name": "Hole6",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0010.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3744.8208462601237,
+"area": 1591.408005084212,
+"centroid": [
+7.925052111465379,
+7.981929166820695,
+8.010235823463734
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.00040184878287104854,
+"transposed": false
+},
+"tri": [
+0,
+2696
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 11,
+"name": "Hole7",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0011.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3721.4914791284928,
+"area": 1620.8602010437226,
+"centroid": [
+7.964345087458233,
+7.962264315473385,
+7.9906807534457105
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0003445552788979875,
+"transposed": false
+},
+"tri": [
+0,
+2846
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 12,
+"name": "R-Pattern1",
+"group": null,
+"type": "RectangularPatternFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0012.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3651.5033777336275,
+"area": 1709.2167889222544,
+"centroid": [
+8.08523651796347,
+7.978429813248459,
+7.9944060601006015
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0004598515381292352,
+"transposed": false
+},
+"tri": [
+0,
+3296
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 13,
+"name": "Hole8",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0013.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3628.1740106020106,
+"area": 1738.668984881765,
+"centroid": [
+8.085784593667412,
+7.978291115710915,
+7.953584571159692
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0005128596465257934,
+"transposed": false
+},
+"tri": [
+0,
+3446
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 14,
+"name": "Hole9",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0014.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3604.8446434703887,
+"area": 1768.1211808412752,
+"centroid": [
+8.059941030566248,
+8.003856744007441,
+7.91223471576319
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0005136015133665616,
+"transposed": false
+},
+"tri": [
+0,
+3596
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 15,
+"name": "Hole10",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0015.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3581.5152763387673,
+"area": 1797.5733768007856,
+"centroid": [
+8.08668231345967,
+8.030400065615693,
+7.8703461688448275
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0007393833232278762,
+"transposed": false
+},
+"tri": [
+0,
+3746
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 16,
+"name": "Hole11",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0016.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3558.185909207146,
+"area": 1827.0255727602962,
+"centroid": [
+8.114106284644972,
+8.003978166586638,
+7.827908334556666
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.000991898555550238,
+"transposed": false
+},
+"tri": [
+0,
+3896
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 17,
+"name": "Hole12",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0017.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3534.8565420755235,
+"area": 1856.4777687198066,
+"centroid": [
+8.087741423944442,
+7.97672185543901,
+7.7849103373285935
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0011425816112559794,
+"transposed": false
+},
+"tri": [
+0,
+4046
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 18,
+"name": "Hole13",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0018.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3511.52717494389,
+"area": 1885.9299646793174,
+"centroid": [
+8.115536814083573,
+7.949592256548597,
+7.825621700027923
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0010802450844039694,
+"transposed": false
+},
+"tri": [
+0,
+4196
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 19,
+"name": "R-Pattern2",
+"group": null,
+"type": "RectangularPatternFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0019.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3524.6124923984917,
+"area": 1870.9723563385487,
+"centroid": [
+8.09923539322032,
+7.964852006860799,
+7.805296602427001
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.001093690794092116,
+"transposed": false
+},
+"tri": [
+0,
+4248
+]
+}
+],
+"seconds": 0.05
+},
+{
+"index": 20,
+"name": "DeleteFace1",
+"group": null,
+"type": "DeleteFaceFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0020.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3534.856542075524,
+"area": 1856.4777687198066,
+"centroid": [
+8.087741423944442,
+7.976721855439007,
+7.784910337328597
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.001142581616095651,
+"transposed": false
+},
+"tri": [
+0,
+4046
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 21,
+"name": "Hole14",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0021.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3511.52717494389,
+"area": 1885.9299646793174,
+"centroid": [
+8.112820842499838,
+7.952570477297208,
+7.825621700027923
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0010685051443713805,
+"transposed": false
+},
+"tri": [
+0,
+4196
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 22,
+"name": "Hole15",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0022.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3488.1978078122684,
+"area": 1915.3821606388278,
+"centroid": [
+8.11458295585519,
+7.9284258301825,
+7.866877624921928
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0009830498273906726,
+"transposed": false
+},
+"tri": [
+0,
+4346
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 23,
+"name": "Hole16",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0023.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3464.868440680646,
+"area": 1944.8343565983378,
+"centroid": [
+8.090800931774604,
+7.904537144496181,
+7.908689111814712
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0008746870785910661,
+"transposed": false
+},
+"tri": [
+0,
+4496
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 24,
+"name": "Hole17",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0024.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3441.539073549024,
+"area": 1974.2865525578488,
+"centroid": [
+8.066501476273285,
+7.931806921670289,
+7.951067458770508
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0006260696466639354,
+"transposed": false
+},
+"tri": [
+0,
+4646
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 25,
+"name": "Hole18",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0025.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3418.2097064174027,
+"area": 2003.738748517359,
+"centroid": [
+8.067983531282897,
+7.9590562583839635,
+7.994024272291829
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0004825650289076093,
+"transposed": false
+},
+"tri": [
+0,
+4796
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 26,
+"name": "Hole19",
+"group": null,
+"type": "HoleFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Dice",
+"mesh": "mesh_0026.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Dice",
+"occurrence": "Dice:1",
+"solid": true,
+"visible": true,
+"volume": 3394.880339285781,
+"area": 2033.1909444768698,
+"centroid": [
+8.093801712924265,
+7.985889349774494,
+8.037571477917314
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+16.0,
+16.0,
+16.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0005478218799305185,
+"transposed": false
+},
+"tri": [
+0,
+4946
+]
+}
+],
+"seconds": 0.04
+}
+],
+"seconds": 3.0
+}

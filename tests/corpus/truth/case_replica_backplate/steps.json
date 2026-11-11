@@ -1,0 +1,172 @@
+{
+"source": "case_replica_backplate.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 5,
+"diag": 83.09632964216111,
+"deviation_mm": 0.01661926592843222,
+"steps_total": 5,
+"steps": [
+{
+"index": 0,
+"name": "Plane1",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 1,
+"name": "body",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "Extrusion1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 18423.97011889134,
+"area": 7588.391913568476,
+"centroid": [
+-7.867121566761681e-11,
+23.0,
+-6.1054202893477125
+],
+"bbox": [
+[
+-27.499999999989818,
+20.0,
+-38.949999999998596
+],
+[
+27.499999999999986,
+26.0,
+23.049999999999997
+]
+],
+"tri": [
+0,
+364
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 3,
+"name": "Extrusion2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 18308.799332210725,
+"area": 7637.400758964478,
+"centroid": [
+-8.868201437048321e-11,
+22.990564308620883,
+-5.933237954810239
+],
+"bbox": [
+[
+-27.499999999989818,
+20.0,
+-38.949999999998596
+],
+[
+27.499999999999986,
+26.0,
+23.049999999999997
+]
+],
+"tri": [
+0,
+604
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 4,
+"name": "Extrusion3",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 18165.660516931533,
+"area": 7764.635261434864,
+"centroid": [
+-9.123482901244842e-11,
+22.996399686733078,
+-6.114337532723463
+],
+"bbox": [
+[
+-27.499999999989818,
+20.0,
+-38.949999999998596
+],
+[
+27.499999999999986,
+26.0,
+23.049999999999997
+]
+],
+"tri": [
+0,
+812
+]
+}
+],
+"seconds": 0.04
+}
+],
+"seconds": 4.2
+}

@@ -1,0 +1,1103 @@
+{
+"source": "adafruit_2831_Photo_Transistor_Light_Sensor.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 10,
+"diag": 35.390853338115484,
+"deviation_mm": 0.007078170667623097,
+"steps_total": 10,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 1,
+"name": "Extrude4",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Collector",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7.250000000000006,
+"area": 58.50000000000002,
+"centroid": [
+0.0,
+-14.500000000000002,
+-1.2500000000000002
+],
+"bbox": [
+[
+-0.2500000000000002,
+-29.000000000000004,
+-1.5
+],
+[
+0.2500000000000002,
+0.0,
+-1.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Extrude3",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Collector",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7.250000000000006,
+"area": 58.50000000000002,
+"centroid": [
+0.0,
+-14.500000000000002,
+-1.2500000000000002
+],
+"bbox": [
+[
+-0.2500000000000002,
+-29.000000000000004,
+-1.5
+],
+[
+0.2500000000000002,
+0.0,
+-1.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Emitter",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 6.749999999999999,
+"area": 54.49999999999999,
+"centroid": [
+0.0,
+-13.5,
+1.25
+],
+"bbox": [
+[
+-0.25,
+-27.0,
+1.0
+],
+[
+0.25,
+0.0,
+1.5
+]
+],
+"tri": [
+12,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 3,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Collector",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7.250000000000006,
+"area": 58.50000000000002,
+"centroid": [
+0.0,
+-14.500000000000002,
+-1.2500000000000002
+],
+"bbox": [
+[
+-0.2500000000000002,
+-29.000000000000004,
+-1.5
+],
+[
+0.2500000000000002,
+0.0,
+-1.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Emitter",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 6.749999999999999,
+"area": 54.49999999999999,
+"centroid": [
+0.0,
+-13.5,
+1.25
+],
+"bbox": [
+[
+-0.25,
+-27.0,
+1.0
+],
+[
+0.25,
+0.0,
+1.5
+]
+],
+"tri": [
+12,
+12
+]
+},
+{
+"name": "Base",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 3.3084695223776115,
+"area": 29.95580573809361,
+"centroid": [
+-2.9493454560697125e-15,
+0.2499999999999997,
+-0.3763579136600451
+],
+"bbox": [
+[
+-2.9,
+0.0,
+-2.9
+],
+[
+2.9,
+0.5,
+2.4499999999999993
+]
+],
+"tri": [
+24,
+320
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 4,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Collector",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7.250000000000006,
+"area": 58.50000000000002,
+"centroid": [
+0.0,
+-14.500000000000002,
+-1.2500000000000002
+],
+"bbox": [
+[
+-0.2500000000000002,
+-29.000000000000004,
+-1.5
+],
+[
+0.2500000000000002,
+0.0,
+-1.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Emitter",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 6.749999999999999,
+"area": 54.49999999999999,
+"centroid": [
+0.0,
+-13.5,
+1.25
+],
+"bbox": [
+[
+-0.25,
+-27.0,
+1.0
+],
+[
+0.25,
+0.0,
+1.5
+]
+],
+"tri": [
+12,
+12
+]
+},
+{
+"name": "Base",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 3.3084695223776115,
+"area": 29.95580573809361,
+"centroid": [
+-2.9493454560697125e-15,
+0.2499999999999997,
+-0.3763579136600451
+],
+"bbox": [
+[
+-2.9,
+0.0,
+-2.9
+],
+[
+2.9,
+0.5,
+2.4499999999999993
+]
+],
+"tri": [
+24,
+320
+]
+},
+{
+"name": "Sensor",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 103.7157544674545,
+"area": 122.3807418205904,
+"centroid": [
+2.5619161295856775e-10,
+2.7499999999999996,
+0.0
+],
+"bbox": [
+[
+-2.45,
+0.0,
+-2.45
+],
+[
+2.45,
+5.5,
+2.45
+]
+],
+"tri": [
+344,
+164
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 5,
+"name": " Sensor:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Collector",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7.250000000000006,
+"area": 58.50000000000002,
+"centroid": [
+0.0,
+-14.500000000000002,
+-1.2500000000000002
+],
+"bbox": [
+[
+-0.2500000000000002,
+-29.000000000000004,
+-1.5
+],
+[
+0.2500000000000002,
+0.0,
+-1.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Emitter",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 6.749999999999999,
+"area": 54.49999999999999,
+"centroid": [
+0.0,
+-13.5,
+1.25
+],
+"bbox": [
+[
+-0.25,
+-27.0,
+1.0
+],
+[
+0.25,
+0.0,
+1.5
+]
+],
+"tri": [
+12,
+12
+]
+},
+{
+"name": "Base",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 3.3084695223776115,
+"area": 29.95580573809361,
+"centroid": [
+-2.9493454560697125e-15,
+0.2499999999999997,
+-0.3763579136600451
+],
+"bbox": [
+[
+-2.9,
+0.0,
+-2.9
+],
+[
+2.9,
+0.5,
+2.4499999999999993
+]
+],
+"tri": [
+24,
+320
+]
+},
+{
+"name": "Sensor",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 103.7157544674545,
+"area": 122.3807418205904,
+"centroid": [
+2.5619161295856775e-10,
+2.7499999999999996,
+0.0
+],
+"bbox": [
+[
+-2.45,
+0.0,
+-2.45
+],
+[
+2.45,
+5.5,
+2.45
+]
+],
+"tri": [
+344,
+164
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 6,
+"name": "CutPasteBodies1",
+"group": null,
+"type": "CutPasteBody",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Sensor",
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "Collector",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7.250000000000006,
+"area": 58.50000000000002,
+"centroid": [
+0.0,
+-14.500000000000002,
+-1.2500000000000002
+],
+"bbox": [
+[
+-0.2500000000000002,
+-29.000000000000004,
+-1.5
+],
+[
+0.2500000000000002,
+0.0,
+-1.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Emitter",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 6.749999999999999,
+"area": 54.49999999999999,
+"centroid": [
+0.0,
+-13.5,
+1.25
+],
+"bbox": [
+[
+-0.25,
+-27.0,
+1.0
+],
+[
+0.25,
+0.0,
+1.5
+]
+],
+"tri": [
+12,
+12
+]
+},
+{
+"name": "Base",
+"component": "Sensor",
+"occurrence": "Sensor:1",
+"solid": true,
+"visible": true,
+"volume": 3.3084695223776115,
+"area": 29.95580573809361,
+"centroid": [
+-2.9493454560697125e-15,
+0.2499999999999997,
+-0.3763579136600451
+],
+"bbox": [
+[
+-2.9,
+0.0,
+-2.9
+],
+[
+2.9,
+0.5,
+2.4499999999999993
+]
+],
+"placement_check": {
+"centroid_error": 0.006380825950785906,
+"transposed": false
+},
+"tri": [
+24,
+320
+]
+},
+{
+"name": "Sensor",
+"component": "Sensor",
+"occurrence": "Sensor:1",
+"solid": true,
+"visible": true,
+"volume": 103.7157544674545,
+"area": 122.3807418205904,
+"centroid": [
+2.5619161295856775e-10,
+2.7499999999999996,
+0.0
+],
+"bbox": [
+[
+-2.45,
+0.0,
+-2.45
+],
+[
+2.45,
+5.5,
+2.45
+]
+],
+"placement_check": {
+"centroid_error": 5.960519490784867e-08,
+"transposed": false
+},
+"tri": [
+344,
+164
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 7,
+"name": " Leads:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "Collector",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7.250000000000006,
+"area": 58.50000000000002,
+"centroid": [
+0.0,
+-14.500000000000002,
+-1.2500000000000002
+],
+"bbox": [
+[
+-0.2500000000000002,
+-29.000000000000004,
+-1.5
+],
+[
+0.2500000000000002,
+0.0,
+-1.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Emitter",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 6.749999999999999,
+"area": 54.49999999999999,
+"centroid": [
+0.0,
+-13.5,
+1.25
+],
+"bbox": [
+[
+-0.25,
+-27.0,
+1.0
+],
+[
+0.25,
+0.0,
+1.5
+]
+],
+"tri": [
+12,
+12
+]
+},
+{
+"name": "Base",
+"component": "Sensor",
+"occurrence": "Sensor:1",
+"solid": true,
+"visible": true,
+"volume": 3.3084695223776115,
+"area": 29.95580573809361,
+"centroid": [
+-2.9493454560697125e-15,
+0.2499999999999997,
+-0.3763579136600451
+],
+"bbox": [
+[
+-2.9,
+0.0,
+-2.9
+],
+[
+2.9,
+0.5,
+2.4499999999999993
+]
+],
+"placement_check": {
+"centroid_error": 0.006380825950785906,
+"transposed": false
+},
+"tri": [
+24,
+320
+]
+},
+{
+"name": "Sensor",
+"component": "Sensor",
+"occurrence": "Sensor:1",
+"solid": true,
+"visible": true,
+"volume": 103.7157544674545,
+"area": 122.3807418205904,
+"centroid": [
+2.5619161295856775e-10,
+2.7499999999999996,
+0.0
+],
+"bbox": [
+[
+-2.45,
+0.0,
+-2.45
+],
+[
+2.45,
+5.5,
+2.45
+]
+],
+"placement_check": {
+"centroid_error": 5.960519490784867e-08,
+"transposed": false
+},
+"tri": [
+344,
+164
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 8,
+"name": "CutPasteBodies1",
+"group": null,
+"type": "CutPasteBody",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Leads",
+"mesh": "mesh_0008.stl.gz",
+"bodies": [
+{
+"name": "Base",
+"component": "Sensor",
+"occurrence": "Sensor:1",
+"solid": true,
+"visible": true,
+"volume": 3.3084695223776115,
+"area": 29.95580573809361,
+"centroid": [
+-2.9493454560697125e-15,
+0.2499999999999997,
+-0.3763579136600451
+],
+"bbox": [
+[
+-2.9,
+0.0,
+-2.9
+],
+[
+2.9,
+0.5,
+2.4499999999999993
+]
+],
+"placement_check": {
+"centroid_error": 0.006380825950785906,
+"transposed": false
+},
+"tri": [
+0,
+320
+]
+},
+{
+"name": "Sensor",
+"component": "Sensor",
+"occurrence": "Sensor:1",
+"solid": true,
+"visible": true,
+"volume": 103.7157544674545,
+"area": 122.3807418205904,
+"centroid": [
+2.5619161295856775e-10,
+2.7499999999999996,
+0.0
+],
+"bbox": [
+[
+-2.45,
+0.0,
+-2.45
+],
+[
+2.45,
+5.5,
+2.45
+]
+],
+"placement_check": {
+"centroid_error": 5.960519490784867e-08,
+"transposed": false
+},
+"tri": [
+320,
+164
+]
+},
+{
+"name": "Collector",
+"component": "Leads",
+"occurrence": "Leads:1",
+"solid": true,
+"visible": true,
+"volume": 7.250000000000006,
+"area": 58.50000000000002,
+"centroid": [
+0.0,
+-14.500000000000002,
+-1.2500000000000002
+],
+"bbox": [
+[
+-0.2500000000000002,
+-29.000000000000004,
+-1.5
+],
+[
+0.2500000000000002,
+0.0,
+-1.0
+]
+],
+"placement_check": {
+"centroid_error": 4.78290136013142e-07,
+"transposed": false
+},
+"tri": [
+484,
+12
+]
+},
+{
+"name": "Emitter",
+"component": "Leads",
+"occurrence": "Leads:1",
+"solid": true,
+"visible": true,
+"volume": 6.749999999999999,
+"area": 54.49999999999999,
+"centroid": [
+0.0,
+-13.5,
+1.25
+],
+"bbox": [
+[
+-0.25,
+-27.0,
+1.0
+],
+[
+0.25,
+0.0,
+1.5
+]
+],
+"placement_check": {
+"centroid_error": 2.4131141044530016e-07,
+"transposed": false
+},
+"tri": [
+496,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 9,
+"name": "Rigid Group 1",
+"group": null,
+"type": "RigidGroup",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0008.stl.gz",
+"bodies": [
+{
+"name": "Base",
+"component": "Sensor",
+"occurrence": "Sensor:1",
+"solid": true,
+"visible": true,
+"volume": 3.3084695223776115,
+"area": 29.95580573809361,
+"centroid": [
+-2.9493454560697125e-15,
+0.2499999999999997,
+-0.3763579136600451
+],
+"bbox": [
+[
+-2.9,
+0.0,
+-2.9
+],
+[
+2.9,
+0.5,
+2.4499999999999993
+]
+],
+"placement_check": {
+"centroid_error": 0.006380825950785906,
+"transposed": false
+},
+"tri": [
+0,
+320
+]
+},
+{
+"name": "Sensor",
+"component": "Sensor",
+"occurrence": "Sensor:1",
+"solid": true,
+"visible": true,
+"volume": 103.7157544674545,
+"area": 122.3807418205904,
+"centroid": [
+2.5619161295856775e-10,
+2.7499999999999996,
+0.0
+],
+"bbox": [
+[
+-2.45,
+0.0,
+-2.45
+],
+[
+2.45,
+5.5,
+2.45
+]
+],
+"placement_check": {
+"centroid_error": 5.960519490784867e-08,
+"transposed": false
+},
+"tri": [
+320,
+164
+]
+},
+{
+"name": "Collector",
+"component": "Leads",
+"occurrence": "Leads:1",
+"solid": true,
+"visible": true,
+"volume": 7.250000000000006,
+"area": 58.50000000000002,
+"centroid": [
+0.0,
+-14.500000000000002,
+-1.2500000000000002
+],
+"bbox": [
+[
+-0.2500000000000002,
+-29.000000000000004,
+-1.5
+],
+[
+0.2500000000000002,
+0.0,
+-1.0
+]
+],
+"placement_check": {
+"centroid_error": 4.78290136013142e-07,
+"transposed": false
+},
+"tri": [
+484,
+12
+]
+},
+{
+"name": "Emitter",
+"component": "Leads",
+"occurrence": "Leads:1",
+"solid": true,
+"visible": true,
+"volume": 6.749999999999999,
+"area": 54.49999999999999,
+"centroid": [
+0.0,
+-13.5,
+1.25
+],
+"bbox": [
+[
+-0.25,
+-27.0,
+1.0
+],
+[
+0.25,
+0.0,
+1.5
+]
+],
+"placement_check": {
+"centroid_error": 2.4131141044530016e-07,
+"transposed": false
+},
+"tri": [
+496,
+12
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 273.1
+}

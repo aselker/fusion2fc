@@ -1,0 +1,88 @@
+{
+"source": "case_component_offset.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 3,
+"diag": 29.51965720522133,
+"deviation_mm": 0.005903931441044266,
+"steps_total": 3,
+"steps": [
+{
+"index": 0,
+"name": " offset_part:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 1,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "offset_part",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "offset_part",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "offset_part",
+"occurrence": "offset_part:1",
+"solid": true,
+"visible": true,
+"volume": 1000.0,
+"area": 700.0,
+"centroid": [
+36.16025403784439,
+19.33012701892219,
+7.5
+],
+"bbox": [
+[
+25.0,
+10.0,
+5.0
+],
+[
+47.32050807568878,
+28.660254037844382,
+10.0
+]
+],
+"placement_check": {
+"centroid_error": 7.993605777301127e-15,
+"transposed": false
+},
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 4.0
+}

@@ -1,0 +1,69 @@
+{
+"source": "digitalsputnik_Al_Pipe_16x200mm_M_SPPS000000046_v1.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 2,
+"diag": 201.275930006546,
+"deviation_mm": 0.0402551860013092,
+"steps_total": 2,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 9424.777960769383,
+"area": 18943.803701146455,
+"centroid": [
+3.769546289141945e-15,
+-1.507818515656778e-14,
+3.769546289141945e-15
+],
+"bbox": [
+[
+-8.0,
+-100.0,
+-8.0
+],
+[
+8.0,
+100.0,
+8.0
+]
+],
+"tri": [
+0,
+248
+]
+}
+],
+"seconds": 0.03
+}
+],
+"seconds": 4.6
+}

@@ -1,0 +1,914 @@
+{
+"source": "homebrew_pinball_Seven_LED_Insert.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 18,
+"diag": 60.59723664079887,
+"deviation_mm": 0.012119447328159774,
+"steps_total": 18,
+"steps": [
+{
+"index": 0,
+"name": " Seven LED Mount:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.04
+},
+{
+"index": 1,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Mount",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Mount",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 2823.554863968367,
+"area": 2299.249576122469,
+"centroid": [
+-5.772182509884422e-12,
+1.5875000000000004,
+0.0
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+3.175,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 2.39313573466902e-08,
+"transposed": false
+},
+"tri": [
+0,
+548
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 3,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Mount",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 2920.9624491835375,
+"area": 2544.6860113103194,
+"centroid": [
+-1.3433529217364573e-10,
+1.6669093783569446,
+0.0
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+4.7625,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 1.567342683027671e-05,
+"transposed": false
+},
+"tri": [
+0,
+1116
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 4,
+"name": "Extrude3",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Mount",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 3373.4363934090197,
+"area": 2576.355228753913,
+"centroid": [
+1.5897047941742392e-09,
+1.975651795166081,
+0.0
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+4.7625,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 0.0008097412111446121,
+"transposed": false
+},
+"tri": [
+0,
+870
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 5,
+"name": "Extrude4",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Mount",
+"mesh": "mesh_0005.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 3544.0960537959327,
+"area": 3436.3724149565023,
+"centroid": [
+-2.529585879357583e-10,
+2.214956993234148,
+7.518236578962084e-15
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+9.128125,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 0.001669076607925611,
+"transposed": false
+},
+"tri": [
+0,
+1190
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 6,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Mount",
+"mesh": "mesh_0005.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 3544.0960537959327,
+"area": 3436.3724149565023,
+"centroid": [
+-2.529585879357583e-10,
+2.214956993234148,
+7.518236578962084e-15
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+9.128125,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 0.001669076607925611,
+"transposed": false
+},
+"tri": [
+0,
+1190
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 7,
+"name": "Sweep1",
+"group": null,
+"type": "SweepFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Mount",
+"mesh": "mesh_0007.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 3900.5349746603815,
+"area": 3250.3280437527033,
+"centroid": [
+4.47161547018863e-10,
+2.540085704511977,
+2.2770682110790675e-15
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+9.128125,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 0.004648068839830273,
+"transposed": false
+},
+"tri": [
+0,
+2630
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 8,
+"name": "Sketch3",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Mount",
+"mesh": "mesh_0007.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 3900.5349746603815,
+"area": 3250.3280437527033,
+"centroid": [
+4.47161547018863e-10,
+2.540085704511977,
+2.2770682110790675e-15
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+9.128125,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 0.004648068839830273,
+"transposed": false
+},
+"tri": [
+0,
+2630
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 9,
+"name": "Extrude5",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Mount",
+"mesh": "mesh_0009.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 3903.441704076502,
+"area": 3257.9429285773485,
+"centroid": [
+-1.8066589998487934e-05,
+2.5408540347507254,
+0.0
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+9.128125,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 0.0046291889572220735,
+"transposed": false
+},
+"tri": [
+0,
+2774
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 10,
+"name": "Sketch4",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Mount",
+"mesh": "mesh_0009.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 3903.441704076502,
+"area": 3257.9429285773485,
+"centroid": [
+-1.8066589998487934e-05,
+2.5408540347507254,
+0.0
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+9.128125,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 0.0046291889572220735,
+"transposed": false
+},
+"tri": [
+0,
+2774
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 11,
+"name": "Extrude6",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Mount",
+"mesh": "mesh_0011.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 3143.0341033644327,
+"area": 2953.12671068276,
+"centroid": [
+-2.243729602034968e-05,
+2.7715030287969453,
+2.825863132536114e-15
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+9.128125,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 0.0050612235796682415,
+"transposed": false
+},
+"tri": [
+0,
+3018
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 12,
+"name": "Extrude7",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Mount",
+"mesh": "mesh_0012.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 3144.4874680724924,
+"area": 2956.9341530950824,
+"centroid": [
+-3.3640776163544694e-05,
+2.772148106436666,
+2.824557034232866e-15
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+9.128125,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 0.005045745550118254,
+"transposed": false
+},
+"tri": [
+0,
+3018
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 13,
+"name": " Seven LED Board:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0012.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 3144.4874680724924,
+"area": 2956.9341530950824,
+"centroid": [
+-3.3640776163544694e-05,
+2.772148106436666,
+2.824557034232866e-15
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+9.128125,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 0.005045745550118254,
+"transposed": false
+},
+"tri": [
+0,
+3018
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 14,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Board",
+"mesh": "mesh_0012.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 3144.4874680724924,
+"area": 2956.9341530950824,
+"centroid": [
+-3.3640776163544694e-05,
+2.772148106436666,
+2.824557034232866e-15
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+9.128125,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 0.005045745550118254,
+"transposed": false
+},
+"tri": [
+0,
+3018
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 15,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Board",
+"mesh": "mesh_0015.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 3144.4874680724924,
+"area": 2956.9341530950824,
+"centroid": [
+-3.3640776163544694e-05,
+2.772148106436666,
+2.824557034232866e-15
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+9.128125,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 0.005045745550118254,
+"transposed": false
+},
+"tri": [
+0,
+3018
+]
+},
+{
+"name": "Body1",
+"component": "Seven LED Board",
+"occurrence": "Seven LED Board:1",
+"solid": true,
+"visible": true,
+"volume": 193.3638110503722,
+"area": 676.7087849320629,
+"centroid": [
+76.22121398210884,
+0.3968750000000003,
+0.0011525787147815497
+],
+"bbox": [
+[
+64.69062385559083,
+0.0,
+-11.509374999999995
+],
+[
+87.70937385559081,
+0.79375,
+11.509374999999995
+]
+],
+"placement_check": {
+"centroid_error": 0.0005367039991163267,
+"transposed": false
+},
+"tri": [
+3018,
+936
+]
+}
+],
+"seconds": 0.05
+},
+{
+"index": 16,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Seven LED Board",
+"mesh": "mesh_0016.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 3144.4874680724924,
+"area": 2956.9341530950824,
+"centroid": [
+-3.3640776163544694e-05,
+2.772148106436666,
+2.824557034232866e-15
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+9.128125,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 0.005045745550118254,
+"transposed": false
+},
+"tri": [
+0,
+3018
+]
+},
+{
+"name": "Body1",
+"component": "Seven LED Board",
+"occurrence": "Seven LED Board:1",
+"solid": true,
+"visible": true,
+"volume": 571.4345014800597,
+"area": 1100.0950349320633,
+"centroid": [
+76.20717769709375,
+0.9220333685466993,
+0.00039001322504759084
+],
+"bbox": [
+[
+64.69062385559083,
+0.0,
+-11.509374999999995
+],
+[
+87.70937385559081,
+2.38125,
+11.509374999999995
+]
+],
+"placement_check": {
+"centroid_error": 0.00030014197808123175,
+"transposed": false
+},
+"tri": [
+3018,
+908
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 17,
+"name": "Position1",
+"group": null,
+"type": "Snapshot",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Snapshot' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0017.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Seven LED Mount",
+"occurrence": "Seven LED Mount:1",
+"solid": true,
+"visible": true,
+"volume": 3144.4874680724924,
+"area": 2956.9341530950824,
+"centroid": [
+-3.3640776163544694e-05,
+2.772148106436666,
+2.824557034232866e-15
+],
+"bbox": [
+[
+-25.399999618530273,
+0.0,
+-15.875
+],
+[
+25.399999618530273,
+9.128125,
+15.875
+]
+],
+"placement_check": {
+"centroid_error": 0.005045745550118254,
+"transposed": false
+},
+"tri": [
+0,
+3018
+]
+},
+{
+"name": "Body1",
+"component": "Seven LED Board",
+"occurrence": "Seven LED Board:1",
+"solid": true,
+"visible": true,
+"volume": 571.4345014800597,
+"area": 1100.0950349320633,
+"centroid": [
+0.00717884150294168,
+4.097033368546699,
+0.00039001322504759084
+],
+"bbox": [
+[
+-11.509374999999995,
+3.1749999999999994,
+-11.509374999999995
+],
+[
+11.509374999999995,
+5.5562499999999995,
+11.509374999999995
+]
+],
+"placement_check": {
+"centroid_error": 0.0003001419780499791,
+"transposed": false
+},
+"tri": [
+3018,
+908
+]
+}
+],
+"seconds": 0.04
+}
+],
+"seconds": 2.8
+}

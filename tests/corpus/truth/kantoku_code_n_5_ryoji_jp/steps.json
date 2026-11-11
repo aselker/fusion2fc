@@ -1,0 +1,1026 @@
+{
+"source": "kantoku_code_n_5_ryoji_jp.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 10,
+"diag": 173.20508075688875,
+"deviation_mm": 0.034641016151377754,
+"steps_total": 10,
+"steps": [
+{
+"index": 0,
+"name": "基準フィーチャ1",
+"group": null,
+"type": "BaseFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0000.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 60000.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-50.0,
+-50.0,
+-50.0
+],
+[
+50.0,
+50.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 1,
+"name": "Plane1",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0000.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 60000.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-50.0,
+-50.0,
+-50.0
+],
+[
+50.0,
+50.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0000.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 60000.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-50.0,
+-50.0,
+-50.0
+],
+[
+50.0,
+50.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 3,
+"name": "回転1",
+"group": null,
+"type": "RevolveFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 60000.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-50.0,
+-50.0,
+-50.0
+],
+[
+50.0,
+50.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752001,
+"area": 8323.186781348115,
+"centroid": [
+-24.264068711928523,
+-24.264068711928523,
+-24.264068711928513
+],
+"bbox": [
+[
+-50.000000000000014,
+-50.000000000000014,
+-50.000000000000014
+],
+[
+1.4718625761429749,
+1.4718625761429749,
+1.4718625761429749
+]
+],
+"tri": [
+12,
+3720
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 4,
+"name": "回転2",
+"group": null,
+"type": "RevolveFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 60000.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-50.0,
+-50.0,
+-50.0
+],
+[
+50.0,
+50.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752001,
+"area": 8323.186781348115,
+"centroid": [
+-24.264068711928523,
+-24.264068711928523,
+-24.264068711928513
+],
+"bbox": [
+[
+-50.000000000000014,
+-50.000000000000014,
+-50.000000000000014
+],
+[
+1.4718625761429749,
+1.4718625761429749,
+1.4718625761429749
+]
+],
+"tri": [
+12,
+3720
+]
+},
+{
+"name": "Body3",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752004,
+"area": 8323.186781348117,
+"centroid": [
+-12.132034355964251,
+-12.132034355964251,
+24.26406871192853
+],
+"bbox": [
+[
+-37.86796564403575,
+-37.86796564403575,
+-1.4718625761429704
+],
+[
+13.603896932107249,
+13.603896932107249,
+50.000000000000036
+]
+],
+"tri": [
+3732,
+3720
+]
+}
+],
+"seconds": 0.05
+},
+{
+"index": 5,
+"name": "Plane2",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 60000.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-50.0,
+-50.0,
+-50.0
+],
+[
+50.0,
+50.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752001,
+"area": 8323.186781348115,
+"centroid": [
+-24.264068711928523,
+-24.264068711928523,
+-24.264068711928513
+],
+"bbox": [
+[
+-50.000000000000014,
+-50.000000000000014,
+-50.000000000000014
+],
+[
+1.4718625761429749,
+1.4718625761429749,
+1.4718625761429749
+]
+],
+"tri": [
+12,
+3720
+]
+},
+{
+"name": "Body3",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752004,
+"area": 8323.186781348117,
+"centroid": [
+-12.132034355964251,
+-12.132034355964251,
+24.26406871192853
+],
+"bbox": [
+[
+-37.86796564403575,
+-37.86796564403575,
+-1.4718625761429704
+],
+[
+13.603896932107249,
+13.603896932107249,
+50.000000000000036
+]
+],
+"tri": [
+3732,
+3720
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 6,
+"name": "Sketch3",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 60000.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-50.0,
+-50.0,
+-50.0
+],
+[
+50.0,
+50.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752001,
+"area": 8323.186781348115,
+"centroid": [
+-24.264068711928523,
+-24.264068711928523,
+-24.264068711928513
+],
+"bbox": [
+[
+-50.000000000000014,
+-50.000000000000014,
+-50.000000000000014
+],
+[
+1.4718625761429749,
+1.4718625761429749,
+1.4718625761429749
+]
+],
+"tri": [
+12,
+3720
+]
+},
+{
+"name": "Body3",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752004,
+"area": 8323.186781348117,
+"centroid": [
+-12.132034355964251,
+-12.132034355964251,
+24.26406871192853
+],
+"bbox": [
+[
+-37.86796564403575,
+-37.86796564403575,
+-1.4718625761429704
+],
+[
+13.603896932107249,
+13.603896932107249,
+50.000000000000036
+]
+],
+"tri": [
+3732,
+3720
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 7,
+"name": "回転3",
+"group": null,
+"type": "RevolveFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0007.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 60000.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-50.0,
+-50.0,
+-50.0
+],
+[
+50.0,
+50.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752001,
+"area": 8323.186781348115,
+"centroid": [
+-24.264068711928523,
+-24.264068711928523,
+-24.264068711928513
+],
+"bbox": [
+[
+-50.000000000000014,
+-50.000000000000014,
+-50.000000000000014
+],
+[
+1.4718625761429749,
+1.4718625761429749,
+1.4718625761429749
+]
+],
+"tri": [
+12,
+3720
+]
+},
+{
+"name": "Body3",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752004,
+"area": 8323.186781348117,
+"centroid": [
+-12.132034355964251,
+-12.132034355964251,
+24.26406871192853
+],
+"bbox": [
+[
+-37.86796564403575,
+-37.86796564403575,
+-1.4718625761429704
+],
+[
+13.603896932107249,
+13.603896932107249,
+50.000000000000036
+]
+],
+"tri": [
+3732,
+3720
+]
+},
+{
+"name": "Body4",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752001,
+"area": 8323.186781348115,
+"centroid": [
+-12.132034355964299,
+24.264068711928513,
+-12.132034355963095
+],
+"bbox": [
+[
+-37.86796564403579,
+-1.4718625761429838,
+-37.86796564403459
+],
+[
+13.603896932107205,
+50.00000000000001,
+13.603896932108398
+]
+],
+"tri": [
+7452,
+3720
+]
+}
+],
+"seconds": 0.06
+},
+{
+"index": 8,
+"name": "回転4",
+"group": null,
+"type": "RevolveFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0008.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 60000.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-50.0,
+-50.0,
+-50.0
+],
+[
+50.0,
+50.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752001,
+"area": 8323.186781348115,
+"centroid": [
+-24.264068711928523,
+-24.264068711928523,
+-24.264068711928513
+],
+"bbox": [
+[
+-50.000000000000014,
+-50.000000000000014,
+-50.000000000000014
+],
+[
+1.4718625761429749,
+1.4718625761429749,
+1.4718625761429749
+]
+],
+"tri": [
+12,
+3720
+]
+},
+{
+"name": "Body3",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752004,
+"area": 8323.186781348117,
+"centroid": [
+-12.132034355964251,
+-12.132034355964251,
+24.26406871192853
+],
+"bbox": [
+[
+-37.86796564403575,
+-37.86796564403575,
+-1.4718625761429704
+],
+[
+13.603896932107249,
+13.603896932107249,
+50.000000000000036
+]
+],
+"tri": [
+3732,
+3720
+]
+},
+{
+"name": "Body4",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752001,
+"area": 8323.186781348115,
+"centroid": [
+-12.132034355964299,
+24.264068711928513,
+-12.132034355963095
+],
+"bbox": [
+[
+-37.86796564403579,
+-1.4718625761429838,
+-37.86796564403459
+],
+[
+13.603896932107205,
+50.00000000000001,
+13.603896932108398
+]
+],
+"tri": [
+7452,
+3720
+]
+},
+{
+"name": "Body5",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752024,
+"area": 8323.186781348133,
+"centroid": [
+24.264068711928566,
+24.264068711928566,
+24.264068711930015
+],
+"bbox": [
+[
+-1.4718625761429571,
+-1.4718625761429571,
+-1.4718625761415094
+],
+[
+50.000000000000085,
+50.000000000000085,
+50.000000000001535
+]
+],
+"tri": [
+11172,
+3720
+]
+}
+],
+"seconds": 0.07
+},
+{
+"index": 9,
+"name": "ミラー1",
+"group": null,
+"type": "MirrorFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0009.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": false,
+"visible": true,
+"volume": 0.0,
+"area": 60000.0,
+"centroid": [
+0.0,
+0.0,
+0.0
+],
+"bbox": [
+[
+-50.0,
+-50.0,
+-50.0
+],
+[
+50.0,
+50.0,
+50.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752001,
+"area": 8323.186781348115,
+"centroid": [
+-24.264068711928523,
+-24.264068711928523,
+-24.264068711928513
+],
+"bbox": [
+[
+-50.000000000000014,
+-50.000000000000014,
+-50.000000000000014
+],
+[
+1.4718625761429749,
+1.4718625761429749,
+1.4718625761429749
+]
+],
+"tri": [
+12,
+3720
+]
+},
+{
+"name": "Body3",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752004,
+"area": 8323.186781348117,
+"centroid": [
+-12.132034355964251,
+-12.132034355964251,
+24.26406871192853
+],
+"bbox": [
+[
+-37.86796564403575,
+-37.86796564403575,
+-1.4718625761429704
+],
+[
+13.603896932107249,
+13.603896932107249,
+50.000000000000036
+]
+],
+"tri": [
+3732,
+3720
+]
+},
+{
+"name": "Body4",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752001,
+"area": 8323.186781348115,
+"centroid": [
+-12.132034355964299,
+24.264068711928513,
+-12.132034355963095
+],
+"bbox": [
+[
+-37.86796564403579,
+-1.4718625761429838,
+-37.86796564403459
+],
+[
+13.603896932107205,
+50.00000000000001,
+13.603896932108398
+]
+],
+"tri": [
+7452,
+3720
+]
+},
+{
+"name": "Body5",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752024,
+"area": 8323.186781348133,
+"centroid": [
+24.264068711928566,
+24.264068711928566,
+24.264068711930015
+],
+"bbox": [
+[
+-1.4718625761429571,
+-1.4718625761429571,
+-1.4718625761415094
+],
+[
+50.000000000000085,
+50.000000000000085,
+50.000000000001535
+]
+],
+"tri": [
+11172,
+3720
+]
+},
+{
+"name": "Body6",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 71401.65436752001,
+"area": 8323.186781348115,
+"centroid": [
+24.264068711928516,
+-12.132034355964299,
+-12.132034355963095
+],
+"bbox": [
+[
+-1.4718625761429793,
+-37.86796564403579,
+-37.86796564403459
+],
+[
+50.000000000000014,
+13.603896932107205,
+13.603896932108398
+]
+],
+"tri": [
+14892,
+3720
+]
+}
+],
+"seconds": 0.09
+}
+],
+"seconds": 2.7
+}

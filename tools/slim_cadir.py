@@ -4,7 +4,7 @@
   slim_cadir.py MODEL.cadir.json SLIM.json TOPO.json
 
 slim: features, sketches, sketch entities/constraints, parameters, spatial sketches,
-bodies, and `face_planes` (resolved face id -> plane of its surface).
+bodies, occurrences (placement of each component), components, and `face_planes` (resolved face id -> plane of its surface).
 topo: feature input topologies (history edge geometry).
 """
 import json
@@ -16,6 +16,9 @@ def slim(cadir):
     keep = ("features", "sketches", "sketch_entities", "sketch_constraints", "parameters", "spatial_sketches")
     s = {k: m.get(k, []) for k in keep}
     s["bodies"] = [{"id": b.get("id"), "name": b.get("name")} for b in m.get("bodies", [])]
+    s["occurrences"] = [{k: o.get(k) for k in ("id", "prototype", "parent", "transform")}
+                        for o in m.get("occurrences", [])]
+    s["components"] = [{"id": d.get("id"), "name": d.get("source_name")} for d in m.get("product_definitions", [])]
     planes = {sf["id"]: sf["geometry"] for sf in m.get("surfaces", [])
               if (sf.get("geometry") or {}).get("kind") == "plane"}
     s["face_planes"] = {}

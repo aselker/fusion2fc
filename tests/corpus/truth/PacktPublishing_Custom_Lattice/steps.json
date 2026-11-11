@@ -1,0 +1,439 @@
+{
+"source": "PacktPublishing_Custom_Lattice.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 7,
+"diag": 36.599375048549526,
+"deviation_mm": 0.007319875009709906,
+"steps_total": 7,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.03
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196.34954084935364,
+"area": 196.34954084936206,
+"centroid": [
+-5.22839722051978e-10,
+0.0,
+0.0
+],
+"bbox": [
+[
+-2.5,
+-2.5,
+-5.0
+],
+[
+2.5,
+2.5,
+5.0
+]
+],
+"tri": [
+0,
+164
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "C-Pattern1",
+"group": null,
+"type": "CircularPatternFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196.34954084935364,
+"area": 196.34954084936206,
+"centroid": [
+-5.22839722051978e-10,
+0.0,
+0.0
+],
+"bbox": [
+[
+-2.5,
+-2.5,
+-5.0
+],
+[
+2.5,
+2.5,
+5.0
+]
+],
+"tri": [
+0,
+164
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196.34954084937053,
+"area": 196.34954084936206,
+"centroid": [
+2.6142003772344875e-10,
+0.0,
+0.0
+],
+"bbox": [
+[
+-2.5,
+-5.0,
+-2.5000000000000004
+],
+[
+2.5,
+5.0,
+2.4999999999999996
+]
+],
+"tri": [
+164,
+164
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 3,
+"name": "C-Pattern2",
+"group": null,
+"type": "CircularPatternFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196.34954084935364,
+"area": 196.34954084936206,
+"centroid": [
+-5.22839722051978e-10,
+0.0,
+0.0
+],
+"bbox": [
+[
+-2.5,
+-2.5,
+-5.0
+],
+[
+2.5,
+2.5,
+5.0
+]
+],
+"tri": [
+0,
+164
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196.34954084937053,
+"area": 196.34954084936206,
+"centroid": [
+2.6142003772344875e-10,
+0.0,
+0.0
+],
+"bbox": [
+[
+-2.5,
+-5.0,
+-2.5000000000000004
+],
+[
+2.5,
+5.0,
+2.4999999999999996
+]
+],
+"tri": [
+164,
+164
+]
+},
+{
+"name": "Body3",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 196.34954084935364,
+"area": 196.34954084936206,
+"centroid": [
+0.0,
+0.0,
+5.22839722051978e-10
+],
+"bbox": [
+[
+-5.0,
+-2.5,
+-2.5000000000000004
+],
+[
+5.0,
+2.5,
+2.4999999999999996
+]
+],
+"tri": [
+328,
+164
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 4,
+"name": "Combine1",
+"group": null,
+"type": "CombineFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 412.2719272514523,
+"area": 376.916588192122,
+"centroid": [
+4.40187758635678e-11,
+0.0,
+8.048520516471202e-11
+],
+"bbox": [
+[
+-5.0,
+-5.0,
+-5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"tri": [
+0,
+876
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 5,
+"name": "BoxPrimitive1",
+"group": null,
+"type": "BoxFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0005.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 412.2719272514523,
+"area": 376.916588192122,
+"centroid": [
+4.40187758635678e-11,
+0.0,
+8.048520516471202e-11
+],
+"bbox": [
+[
+-5.0,
+-5.0,
+-5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"tri": [
+0,
+876
+]
+},
+{
+"name": "Body4",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1000.0,
+"area": 600.0,
+"centroid": [
+20.427008504455184,
+3.7372270642295655,
+5.0
+],
+"bbox": [
+[
+15.427008504455184,
+-1.2627729357704343,
+0.0
+],
+[
+25.427008504455184,
+8.737227064229566,
+10.0
+]
+],
+"tri": [
+876,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 6,
+"name": "Create Volumetric Lattice1",
+"group": null,
+"type": "Feature",
+"suppressed": false,
+"health": 4,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0005.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 412.2719272514523,
+"area": 376.916588192122,
+"centroid": [
+4.40187758635678e-11,
+0.0,
+8.048520516471202e-11
+],
+"bbox": [
+[
+-5.0,
+-5.0,
+-5.0
+],
+[
+5.0,
+5.0,
+5.0
+]
+],
+"tri": [
+0,
+876
+]
+},
+{
+"name": "Body4",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1000.0,
+"area": 600.0,
+"centroid": [
+20.427008504455184,
+3.7372270642295655,
+5.0
+],
+"bbox": [
+[
+15.427008504455184,
+-1.2627729357704343,
+0.0
+],
+[
+25.427008504455184,
+8.737227064229566,
+10.0
+]
+],
+"tri": [
+876,
+12
+]
+}
+],
+"seconds": 0.06
+}
+],
+"seconds": 5.0
+}

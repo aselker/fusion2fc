@@ -1,0 +1,647 @@
+{
+"source": "ulikoehler_B2PS_VH.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 11,
+"diag": 21.281045557020924,
+"deviation_mm": 0.004256209111404185,
+"steps_total": 11,
+"steps": [
+{
+"index": 0,
+"name": "Bottom plate",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 1,
+"name": "Extrusion1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Bottom plate",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 171.03360000000006,
+"area": 200.72,
+"centroid": [
+0.0,
+1.6000000000000003,
+0.0
+],
+"bbox": [
+[
+-3.93,
+0.0,
+-3.4000000000000004
+],
+[
+3.93,
+3.2000000000000006,
+3.4000000000000004
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Back plate",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Bottom plate",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 171.03360000000006,
+"area": 200.72,
+"centroid": [
+0.0,
+1.6000000000000003,
+0.0
+],
+"bbox": [
+[
+-3.93,
+0.0,
+-3.4000000000000004
+],
+[
+3.93,
+3.2000000000000006,
+3.4000000000000004
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 3,
+"name": "Pin extrusion",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Bottom plate",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 171.03360000000006,
+"area": 200.72,
+"centroid": [
+0.0,
+1.6000000000000003,
+0.0
+],
+"bbox": [
+[
+-3.93,
+0.0,
+-3.4000000000000004
+],
+[
+3.93,
+3.2000000000000006,
+3.4000000000000004
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 4,
+"name": "Extrusion3",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Bottom plate",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 237.79940810208265,
+"area": 306.9432213232995,
+"centroid": [
+0.0,
+2.492382142073015,
+-1.1511901287702455
+],
+"bbox": [
+[
+-3.93,
+0.0,
+-5.150000000000001
+],
+[
+3.93,
+9.4,
+3.400000000000001
+]
+],
+"tri": [
+0,
+48
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 5,
+"name": "Plane1",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Bottom plate",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 237.79940810208265,
+"area": 306.9432213232995,
+"centroid": [
+0.0,
+2.492382142073015,
+-1.1511901287702455
+],
+"bbox": [
+[
+-3.93,
+0.0,
+-5.150000000000001
+],
+[
+3.93,
+9.4,
+3.400000000000001
+]
+],
+"tri": [
+0,
+48
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 6,
+"name": "Pin path",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Bottom plate",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 237.79940810208265,
+"area": 306.9432213232995,
+"centroid": [
+0.0,
+2.492382142073015,
+-1.1511901287702455
+],
+"bbox": [
+[
+-3.93,
+0.0,
+-5.150000000000001
+],
+[
+3.93,
+9.4,
+3.400000000000001
+]
+],
+"tri": [
+0,
+48
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 7,
+"name": "Sweeping1",
+"group": null,
+"type": "SweepFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0007.stl.gz",
+"bodies": [
+{
+"name": "Bottom plate",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 237.79940810208265,
+"area": 306.9432213232995,
+"centroid": [
+0.0,
+2.492382142073015,
+-1.1511901287702455
+],
+"bbox": [
+[
+-3.93,
+0.0,
+-5.150000000000001
+],
+[
+3.93,
+9.4,
+3.400000000000001
+]
+],
+"tri": [
+0,
+48
+]
+},
+{
+"name": "Body4",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 29.386025812605297,
+"area": 105.70806250036941,
+"centroid": [
+-1.9799999999999995,
+0.9169418099139849,
+0.23178843137888386
+],
+"bbox": [
+[
+-2.5499999999999994,
+-4.57,
+-1.9699999999999986
+],
+[
+-1.4099999999999997,
+10.9,
+7.170000000000001
+]
+],
+"tri": [
+48,
+120
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 8,
+"name": "Fase3",
+"group": null,
+"type": "ChamferFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0008.stl.gz",
+"bodies": [
+{
+"name": "Bottom plate",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 237.79940810208265,
+"area": 306.9432213232995,
+"centroid": [
+0.0,
+2.492382142073015,
+-1.1511901287702455
+],
+"bbox": [
+[
+-3.93,
+0.0,
+-5.150000000000001
+],
+[
+3.93,
+9.4,
+3.400000000000001
+]
+],
+"tri": [
+0,
+48
+]
+},
+{
+"name": "Body4",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 28.456279453861857,
+"area": 102.06935395147039,
+"centroid": [
+-1.9799999999999998,
+0.8389068367530911,
+0.1498277107791932
+],
+"bbox": [
+[
+-2.5499999999999994,
+-4.570000000000001,
+-1.9699999999999986
+],
+[
+-1.4099999999999997,
+10.9,
+7.17
+]
+],
+"tri": [
+48,
+136
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 9,
+"name": "R-Anordnung1",
+"group": null,
+"type": "RectangularPatternFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0009.stl.gz",
+"bodies": [
+{
+"name": "Bottom plate",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 237.79940810208265,
+"area": 306.9432213232995,
+"centroid": [
+0.0,
+2.492382142073015,
+-1.1511901287702455
+],
+"bbox": [
+[
+-3.93,
+0.0,
+-5.150000000000001
+],
+[
+3.93,
+9.4,
+3.400000000000001
+]
+],
+"tri": [
+0,
+48
+]
+},
+{
+"name": "Body4",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 28.456279453861857,
+"area": 102.06935395147039,
+"centroid": [
+-1.9799999999999998,
+0.8389068367530911,
+0.1498277107791932
+],
+"bbox": [
+[
+-2.5499999999999994,
+-4.570000000000001,
+-1.9699999999999986
+],
+[
+-1.4099999999999997,
+10.9,
+7.17
+]
+],
+"tri": [
+48,
+136
+]
+},
+{
+"name": "Body5",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 28.456279453861857,
+"area": 102.06935395147039,
+"centroid": [
+1.9800000000000004,
+0.8389068367530911,
+0.1498277107791932
+],
+"bbox": [
+[
+1.4100000000000006,
+-4.570000000000001,
+-1.9699999999999986
+],
+[
+2.5500000000000007,
+10.9,
+7.17
+]
+],
+"tri": [
+184,
+136
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 10,
+"name": "Abrundung1",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0010.stl.gz",
+"bodies": [
+{
+"name": "Bottom plate",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 237.3599035407206,
+"area": 304.471008165638,
+"centroid": [
+5.846727943851576e-16,
+2.494034510548349,
+-1.1533217158877076
+],
+"bbox": [
+[
+-3.93,
+0.0,
+-5.150000000000001
+],
+[
+3.93,
+9.4,
+3.400000000000001
+]
+],
+"tri": [
+0,
+144
+]
+},
+{
+"name": "Body4",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 28.456279453861857,
+"area": 102.06935395147039,
+"centroid": [
+-1.9799999999999998,
+0.8389068367530911,
+0.1498277107791932
+],
+"bbox": [
+[
+-2.5499999999999994,
+-4.570000000000001,
+-1.9699999999999986
+],
+[
+-1.4099999999999997,
+10.9,
+7.17
+]
+],
+"tri": [
+144,
+136
+]
+},
+{
+"name": "Body5",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 28.456279453861857,
+"area": 102.06935395147039,
+"centroid": [
+1.9800000000000004,
+0.8389068367530911,
+0.1498277107791932
+],
+"bbox": [
+[
+1.4100000000000006,
+-4.570000000000001,
+-1.9699999999999986
+],
+[
+2.5500000000000007,
+10.9,
+7.17
+]
+],
+"tri": [
+280,
+136
+]
+}
+],
+"seconds": 0.03
+}
+],
+"seconds": 2.0
+}

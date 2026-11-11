@@ -1,0 +1,877 @@
+{
+"source": "AdamLaskoi_SG90_Micro_Servo_9g_v1.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 19,
+"diag": 45.817136532088085,
+"deviation_mm": 0.009163427306417617,
+"steps_total": 19,
+"steps": [
+{
+"index": 0,
+"name": "alap",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.03
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 4503.680000000001,
+"area": 1686.1600000000003,
+"centroid": [
+11.35,
+6.200000000000001,
+8.0
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+22.7,
+12.400000000000002,
+16.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "felso_alap",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 4503.680000000001,
+"area": 1686.1600000000003,
+"centroid": [
+11.35,
+6.200000000000001,
+8.0
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+22.7,
+12.400000000000002,
+16.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 3,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 5395.736000000001,
+"area": 2132.600000000001,
+"centroid": [
+11.349999999999998,
+6.200000000000001,
+9.504467527692238
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+18.2
+]
+],
+"tri": [
+0,
+28
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 4,
+"name": "felso_teto",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 5395.736000000001,
+"area": 2132.600000000001,
+"centroid": [
+11.349999999999998,
+6.200000000000001,
+9.504467527692238
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+18.2
+]
+],
+"tri": [
+0,
+28
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 5,
+"name": "Extrude3",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0005.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 5395.736000000001,
+"area": 2132.600000000001,
+"centroid": [
+11.349999999999998,
+6.200000000000001,
+9.504467527692238
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+18.2
+]
+],
+"tri": [
+0,
+28
+]
+},
+{
+"name": "towerPro SG90",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1127.151258293239,
+"area": 844.5742191939161,
+"centroid": [
+11.337587614659428,
+6.200000000000001,
+20.200000000000003
+],
+"bbox": [
+[
+-0.024824263296605587,
+0.0,
+18.2
+],
+[
+22.69999949261546,
+12.400000000000002,
+22.200000000000003
+]
+],
+"tri": [
+28,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 6,
+"name": "Combine1",
+"group": null,
+"type": "CombineFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "towerPro SG90",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 6522.887258293239,
+"area": 2413.5985900472965,
+"centroid": [
+11.347855146777642,
+6.200000000000001,
+11.352649537729354
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+22.200000000000003
+]
+],
+"tri": [
+0,
+44
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 7,
+"name": "gear_haus",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "towerPro SG90",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 6522.887258293239,
+"area": 2413.5985900472965,
+"centroid": [
+11.347855146777642,
+6.200000000000001,
+11.352649537729354
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+22.200000000000003
+]
+],
+"tri": [
+0,
+44
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 8,
+"name": "Extrude4",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0008.stl.gz",
+"bodies": [
+{
+"name": "towerPro SG90",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7030.536207783165,
+"area": 2577.353197124264,
+"centroid": [
+11.696231334665484,
+6.200064273783506,
+12.280309075088747
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+26.200000000000003
+]
+],
+"tri": [
+0,
+318
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 9,
+"name": "Sketch7",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0008.stl.gz",
+"bodies": [
+{
+"name": "towerPro SG90",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7030.536207783165,
+"area": 2577.353197124264,
+"centroid": [
+11.696231334665484,
+6.200064273783506,
+12.280309075088747
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+26.200000000000003
+]
+],
+"tri": [
+0,
+318
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 10,
+"name": "Extrude5",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0010.stl.gz",
+"bodies": [
+{
+"name": "towerPro SG90",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7084.610871333078,
+"area": 2625.4195647241877,
+"centroid": [
+11.732897026398902,
+6.200063783201415,
+12.399529388929253
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+29.6
+]
+],
+"tri": [
+0,
+458
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 11,
+"name": "Sketch8",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0010.stl.gz",
+"bodies": [
+{
+"name": "towerPro SG90",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7084.610871333078,
+"area": 2625.4195647241877,
+"centroid": [
+11.732897026398902,
+6.200063783201415,
+12.399529388929253
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+29.6
+]
+],
+"tri": [
+0,
+458
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 12,
+"name": "Extrude6",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0012.stl.gz",
+"bodies": [
+{
+"name": "towerPro SG90",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7077.5422878625,
+"area": 2644.2691206457266,
+"centroid": [
+11.728135957965018,
+6.200063846903879,
+12.38434815921189
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+29.6
+]
+],
+"tri": [
+0,
+542
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 13,
+"name": "Fillet1",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0013.stl.gz",
+"bodies": [
+{
+"name": "towerPro SG90",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7077.423342867348,
+"area": 2643.037782792142,
+"centroid": [
+11.728055760796652,
+6.200063847976907,
+12.384059585644405
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+29.6
+]
+],
+"tri": [
+0,
+750
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 14,
+"name": "Sketch10",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0013.stl.gz",
+"bodies": [
+{
+"name": "towerPro SG90",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7077.423342867348,
+"area": 2643.037782792142,
+"centroid": [
+11.728055760796652,
+6.200063847976907,
+12.384059585644405
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+29.6
+]
+],
+"tri": [
+0,
+750
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 15,
+"name": "Extrude7",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0015.stl.gz",
+"bodies": [
+{
+"name": "towerPro SG90",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7067.336384785319,
+"area": 2649.936482705582,
+"centroid": [
+11.707931163532535,
+6.20006393914061,
+12.377328691473393
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+29.6
+]
+],
+"tri": [
+0,
+842
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 16,
+"name": "Extrude8",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0016.stl.gz",
+"bodies": [
+{
+"name": "towerPro SG90",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7057.250960210301,
+"area": 2656.833509701824,
+"centroid": [
+11.729133835424122,
+6.200064030550986,
+12.370579583989008
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+29.6
+]
+],
+"tri": [
+0,
+934
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 17,
+"name": "vezetek",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0016.stl.gz",
+"bodies": [
+{
+"name": "towerPro SG90",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7057.250960210301,
+"area": 2656.833509701824,
+"centroid": [
+11.729133835424122,
+6.200064030550986,
+12.370579583989008
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+29.6
+]
+],
+"tri": [
+0,
+934
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 18,
+"name": "Extrude9",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0018.stl.gz",
+"bodies": [
+{
+"name": "towerPro SG90",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 7057.250960210301,
+"area": 2656.833509701824,
+"centroid": [
+11.729133835424122,
+6.200064030550986,
+12.370579583989008
+],
+"bbox": [
+[
+-5.0,
+0.0,
+0.0
+],
+[
+27.7,
+12.400000000000002,
+29.6
+]
+],
+"tri": [
+0,
+934
+]
+},
+{
+"name": "vezetek",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 4.712388910164498,
+"area": 23.561944691263278,
+"centroid": [
+23.700000000000003,
+6.500000307957329,
+3.9999998758236703
+],
+"bbox": [
+[
+22.7,
+5.00000008195639,
+3.4999998137354984
+],
+[
+24.700000000000003,
+8.00000040978193,
+4.499999813735499
+]
+],
+"tri": [
+934,
+196
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 2.5
+}

@@ -1,0 +1,105 @@
+{
+"source": "PacktPublishing_Clip_Fixed.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 7,
+"diag": 10.0,
+"deviation_mm": 0.002,
+"steps_total": 7,
+"steps": [
+{
+"index": 0,
+"name": "Base Mesh Feature1",
+"group": null,
+"type": "Feature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 1,
+"name": "MeshRepair1",
+"group": null,
+"type": "MeshRepairFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.0
+},
+{
+"index": 2,
+"name": "MeshPlaneCut1",
+"group": null,
+"type": "MeshPlaneCutFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.0
+},
+{
+"index": 3,
+"name": "Body->Comp1",
+"group": null,
+"type": "Feature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 4,
+"name": "MirrorComponent1",
+"group": null,
+"type": "MirrorFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 5,
+"name": " Component3:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.0
+},
+{
+"index": 6,
+"name": "MeshCombine1",
+"group": null,
+"type": "MeshCombineFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Component3",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+}
+],
+"seconds": 2.3
+}

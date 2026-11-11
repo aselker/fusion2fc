@@ -1,0 +1,289 @@
+{
+"source": "busraakgun24_suborusu.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 7,
+"diag": 818.8271256147282,
+"deviation_mm": 0.05,
+"steps_total": 7,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 1,
+"name": "Pipe1",
+"group": null,
+"type": "PipeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 3077563.2038519657,
+"area": 625571.4323230676,
+"centroid": [
+-250.7270154684765,
+0.00013514499452204462,
+98.80949659984962
+],
+"bbox": [
+[
+-434.28699625498615,
+-85.0,
+-85.0
+],
+[
+7.105427357601002e-14,
+85.0,
+348.18899776263765
+]
+],
+"tri": [
+0,
+31216
+]
+}
+],
+"seconds": 0.2
+},
+{
+"index": 2,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 3077563.2038519657,
+"area": 625571.4323230676,
+"centroid": [
+-250.7270154684765,
+0.00013514499452204462,
+98.80949659984962
+],
+"bbox": [
+[
+-434.28699625498615,
+-85.0,
+-85.0
+],
+[
+7.105427357601002e-14,
+85.0,
+348.18899776263765
+]
+],
+"tri": [
+0,
+31216
+]
+}
+],
+"seconds": 0.09
+},
+{
+"index": 3,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 5755924.405320026,
+"area": 835018.0272210548,
+"centroid": [
+-124.75199834753484,
+-0.00020489876967423408,
+52.83123266562596
+],
+"bbox": [
+[
+-434.28699625498615,
+-149.99999999999997,
+-149.99999999999997
+],
+[
+40.0,
+149.99999999999997,
+348.18899776263765
+]
+],
+"tri": [
+0,
+32160
+]
+}
+],
+"seconds": 0.16
+},
+{
+"index": 4,
+"name": "Sketch3",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 5755924.405320026,
+"area": 835018.0272210548,
+"centroid": [
+-124.75199834753484,
+-0.00020489876967423408,
+52.83123266562596
+],
+"bbox": [
+[
+-434.28699625498615,
+-149.99999999999997,
+-149.99999999999997
+],
+[
+40.0,
+149.99999999999997,
+348.18899776263765
+]
+],
+"tri": [
+0,
+32160
+]
+}
+],
+"seconds": 0.08
+},
+{
+"index": 5,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0005.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 8448001.330605274,
+"area": 1046524.7908501886,
+"centroid": [
+-196.30333438880268,
+-0.00011159371227670044,
+153.32456060216313
+],
+"bbox": [
+[
+-499.28699625498615,
+-150.0,
+-149.99999999999997
+],
+[
+40.0,
+150.0,
+388.18899776263765
+]
+],
+"tri": [
+0,
+32912
+]
+}
+],
+"seconds": 0.19
+},
+{
+"index": 6,
+"name": "Chamfer1",
+"group": null,
+"type": "ChamferFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 8435958.36213772,
+"area": 1043829.3694332355,
+"centroid": [
+-196.3616232037552,
+-0.00011016471841019312,
+153.26754200720555
+],
+"bbox": [
+[
+-499.28699625498615,
+-149.99999999999997,
+-150.0
+],
+[
+40.0,
+150.00000000000003,
+388.18899776263765
+]
+],
+"tri": [
+0,
+33268
+]
+}
+],
+"seconds": 0.32
+}
+],
+"seconds": 3.2
+}

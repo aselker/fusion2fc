@@ -1,0 +1,1737 @@
+{
+"source": "PacktPublishing_Example_B.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 13,
+"diag": 215.45262627529144,
+"deviation_mm": 0.04309052525505829,
+"steps_total": 13,
+"steps": [
+{
+"index": 0,
+"name": " Connector Bracket v9:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.03
+},
+{
+"index": 1,
+"name": "Base Feature1",
+"group": null,
+"type": "BaseFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Connector Bracket v9",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Connector Bracket v9",
+"occurrence": "Connector Bracket v9:1",
+"solid": true,
+"visible": true,
+"volume": 19058.44244431741,
+"area": 9571.863757460578,
+"centroid": [
+-153.14361523757233,
+-3.4316628812416,
+98.5541319944956
+],
+"bbox": [
+[
+-197.1240193219852,
+-27.5850926210094,
+44.603334074243946
+],
+[
+-104.73433969281764,
+20.89331316980868,
+135.20821313069757
+]
+],
+"placement_check": {
+"centroid_error": 0.0085047596997755,
+"transposed": false
+},
+"tri": [
+0,
+1344
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 2,
+"name": " Spur Gear (12 teeth):1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Connector Bracket v9",
+"occurrence": "Connector Bracket v9:1",
+"solid": true,
+"visible": true,
+"volume": 19058.44244431741,
+"area": 9571.863757460578,
+"centroid": [
+-153.14361523757233,
+-3.4316628812416,
+98.5541319944956
+],
+"bbox": [
+[
+-197.1240193219852,
+-27.5850926210094,
+44.603334074243946
+],
+[
+-104.73433969281764,
+20.89331316980868,
+135.20821313069757
+]
+],
+"placement_check": {
+"centroid_error": 0.0085047596997755,
+"transposed": false
+},
+"tri": [
+0,
+1344
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 3,
+"name": "Base Feature1",
+"group": null,
+"type": "BaseFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Spur Gear (12 teeth)",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Connector Bracket v9",
+"occurrence": "Connector Bracket v9:1",
+"solid": true,
+"visible": true,
+"volume": 19058.44244431741,
+"area": 9571.863757460578,
+"centroid": [
+-153.14361523757233,
+-3.4316628812416,
+98.5541319944956
+],
+"bbox": [
+[
+-197.1240193219852,
+-27.5850926210094,
+44.603334074243946
+],
+[
+-104.73433969281764,
+20.89331316980868,
+135.20821313069757
+]
+],
+"placement_check": {
+"centroid_error": 0.0085047596997755,
+"transposed": false
+},
+"tri": [
+0,
+1344
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth)",
+"occurrence": "Spur Gear (12 teeth):1",
+"solid": true,
+"visible": true,
+"volume": 2362.6589022542353,
+"area": 1836.3338057363994,
+"centroid": [
+-176.85673297087956,
+-20.30544451204357,
+103.58830773181663
+],
+"bbox": [
+[
+-198.34305363010515,
+-46.73626619334168,
+82.5462893048176
+],
+[
+-158.73725641904468,
+2.9940378943138413,
+121.25259040970776
+]
+],
+"placement_check": {
+"centroid_error": 0.0036071510243438124,
+"transposed": false
+},
+"tri": [
+1344,
+880
+]
+}
+],
+"seconds": 0.06
+},
+{
+"index": 4,
+"name": " Spur Gear (12 teeth) (1):1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Connector Bracket v9",
+"occurrence": "Connector Bracket v9:1",
+"solid": true,
+"visible": true,
+"volume": 19058.44244431741,
+"area": 9571.863757460578,
+"centroid": [
+-153.14361523757233,
+-3.4316628812416,
+98.5541319944956
+],
+"bbox": [
+[
+-197.1240193219852,
+-27.5850926210094,
+44.603334074243946
+],
+[
+-104.73433969281764,
+20.89331316980868,
+135.20821313069757
+]
+],
+"placement_check": {
+"centroid_error": 0.0085047596997755,
+"transposed": false
+},
+"tri": [
+0,
+1344
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth)",
+"occurrence": "Spur Gear (12 teeth):1",
+"solid": true,
+"visible": true,
+"volume": 2362.6589022542353,
+"area": 1836.3338057363994,
+"centroid": [
+-176.85673297087956,
+-20.30544451204357,
+103.58830773181663
+],
+"bbox": [
+[
+-198.34305363010515,
+-46.73626619334168,
+82.5462893048176
+],
+[
+-158.73725641904468,
+2.9940378943138413,
+121.25259040970776
+]
+],
+"placement_check": {
+"centroid_error": 0.0036071510243438124,
+"transposed": false
+},
+"tri": [
+1344,
+880
+]
+}
+],
+"seconds": 0.04
+},
+{
+"index": 5,
+"name": "Base Feature1",
+"group": null,
+"type": "BaseFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Spur Gear (12 teeth) (1)",
+"mesh": "mesh_0005.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Connector Bracket v9",
+"occurrence": "Connector Bracket v9:1",
+"solid": true,
+"visible": true,
+"volume": 19058.44244431741,
+"area": 9571.863757460578,
+"centroid": [
+-153.14361523757233,
+-3.4316628812416,
+98.5541319944956
+],
+"bbox": [
+[
+-197.1240193219852,
+-27.5850926210094,
+44.603334074243946
+],
+[
+-104.73433969281764,
+20.89331316980868,
+135.20821313069757
+]
+],
+"placement_check": {
+"centroid_error": 0.0085047596997755,
+"transposed": false
+},
+"tri": [
+0,
+1344
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth)",
+"occurrence": "Spur Gear (12 teeth):1",
+"solid": true,
+"visible": true,
+"volume": 2362.6589022542353,
+"area": 1836.3338057363994,
+"centroid": [
+-176.85673297087956,
+-20.30544451204357,
+103.58830773181663
+],
+"bbox": [
+[
+-198.34305363010515,
+-46.73626619334168,
+82.5462893048176
+],
+[
+-158.73725641904468,
+2.9940378943138413,
+121.25259040970776
+]
+],
+"placement_check": {
+"centroid_error": 0.0036071510243438124,
+"transposed": false
+},
+"tri": [
+1344,
+880
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth) (1)",
+"occurrence": "Spur Gear (12 teeth) (1):1",
+"solid": true,
+"visible": true,
+"volume": 2363.875740732103,
+"area": 1837.104613969383,
+"centroid": [
+-177.9091218943854,
+11.713948008107538,
+103.77055481084524
+],
+"bbox": [
+[
+-190.51801110901386,
+-7.244584429742029,
+92.32384059393793
+],
+[
+-163.9438969113466,
+38.132575862659756,
+116.81055566085034
+]
+],
+"placement_check": {
+"centroid_error": 0.00445622669199414,
+"transposed": false
+},
+"tri": [
+2224,
+872
+]
+}
+],
+"seconds": 0.08
+},
+{
+"index": 6,
+"name": " SmallYoke v4:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0005.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Connector Bracket v9",
+"occurrence": "Connector Bracket v9:1",
+"solid": true,
+"visible": true,
+"volume": 19058.44244431741,
+"area": 9571.863757460578,
+"centroid": [
+-153.14361523757233,
+-3.4316628812416,
+98.5541319944956
+],
+"bbox": [
+[
+-197.1240193219852,
+-27.5850926210094,
+44.603334074243946
+],
+[
+-104.73433969281764,
+20.89331316980868,
+135.20821313069757
+]
+],
+"placement_check": {
+"centroid_error": 0.0085047596997755,
+"transposed": false
+},
+"tri": [
+0,
+1344
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth)",
+"occurrence": "Spur Gear (12 teeth):1",
+"solid": true,
+"visible": true,
+"volume": 2362.6589022542353,
+"area": 1836.3338057363994,
+"centroid": [
+-176.85673297087956,
+-20.30544451204357,
+103.58830773181663
+],
+"bbox": [
+[
+-198.34305363010515,
+-46.73626619334168,
+82.5462893048176
+],
+[
+-158.73725641904468,
+2.9940378943138413,
+121.25259040970776
+]
+],
+"placement_check": {
+"centroid_error": 0.0036071510243438124,
+"transposed": false
+},
+"tri": [
+1344,
+880
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth) (1)",
+"occurrence": "Spur Gear (12 teeth) (1):1",
+"solid": true,
+"visible": true,
+"volume": 2363.875740732103,
+"area": 1837.104613969383,
+"centroid": [
+-177.9091218943854,
+11.713948008107538,
+103.77055481084524
+],
+"bbox": [
+[
+-190.51801110901386,
+-7.244584429742029,
+92.32384059393793
+],
+[
+-163.9438969113466,
+38.132575862659756,
+116.81055566085034
+]
+],
+"placement_check": {
+"centroid_error": 0.00445622669199414,
+"transposed": false
+},
+"tri": [
+2224,
+872
+]
+}
+],
+"seconds": 0.05
+},
+{
+"index": 7,
+"name": "Base Feature1",
+"group": null,
+"type": "BaseFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "SmallYoke v4",
+"mesh": "mesh_0007.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Connector Bracket v9",
+"occurrence": "Connector Bracket v9:1",
+"solid": true,
+"visible": true,
+"volume": 19058.44244431741,
+"area": 9571.863757460578,
+"centroid": [
+-153.14361523757233,
+-3.4316628812416,
+98.5541319944956
+],
+"bbox": [
+[
+-197.1240193219852,
+-27.5850926210094,
+44.603334074243946
+],
+[
+-104.73433969281764,
+20.89331316980868,
+135.20821313069757
+]
+],
+"placement_check": {
+"centroid_error": 0.0085047596997755,
+"transposed": false
+},
+"tri": [
+0,
+1344
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth)",
+"occurrence": "Spur Gear (12 teeth):1",
+"solid": true,
+"visible": true,
+"volume": 2362.6589022542353,
+"area": 1836.3338057363994,
+"centroid": [
+-176.85673297087956,
+-20.30544451204357,
+103.58830773181663
+],
+"bbox": [
+[
+-198.34305363010515,
+-46.73626619334168,
+82.5462893048176
+],
+[
+-158.73725641904468,
+2.9940378943138413,
+121.25259040970776
+]
+],
+"placement_check": {
+"centroid_error": 0.0036071510243438124,
+"transposed": false
+},
+"tri": [
+1344,
+880
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth) (1)",
+"occurrence": "Spur Gear (12 teeth) (1):1",
+"solid": true,
+"visible": true,
+"volume": 2363.875740732103,
+"area": 1837.104613969383,
+"centroid": [
+-177.9091218943854,
+11.713948008107538,
+103.77055481084524
+],
+"bbox": [
+[
+-190.51801110901386,
+-7.244584429742029,
+92.32384059393793
+],
+[
+-163.9438969113466,
+38.132575862659756,
+116.81055566085034
+]
+],
+"placement_check": {
+"centroid_error": 0.00445622669199414,
+"transposed": false
+},
+"tri": [
+2224,
+872
+]
+},
+{
+"name": "Body1",
+"component": "SmallYoke v4",
+"occurrence": "SmallYoke v4:1",
+"solid": true,
+"visible": true,
+"volume": 652.4889357189079,
+"area": 683.7831702350029,
+"centroid": [
+-194.86594099777813,
+-34.49349459830252,
+85.61694193391409
+],
+"bbox": [
+[
+-202.94487740709016,
+-49.01543238337845,
+77.22616584856362
+],
+[
+-186.78700458845537,
+-19.971556813196454,
+94.00771801927604
+]
+],
+"placement_check": {
+"centroid_error": 3.381112210426271e-07,
+"transposed": false
+},
+"tri": [
+3096,
+196
+]
+}
+],
+"seconds": 0.07
+},
+{
+"index": 8,
+"name": " SmallYoke v4:2",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0008.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Connector Bracket v9",
+"occurrence": "Connector Bracket v9:1",
+"solid": true,
+"visible": true,
+"volume": 19058.44244431741,
+"area": 9571.863757460578,
+"centroid": [
+-153.14361523757233,
+-3.4316628812416,
+98.5541319944956
+],
+"bbox": [
+[
+-197.1240193219852,
+-27.5850926210094,
+44.603334074243946
+],
+[
+-104.73433969281764,
+20.89331316980868,
+135.20821313069757
+]
+],
+"placement_check": {
+"centroid_error": 0.0085047596997755,
+"transposed": false
+},
+"tri": [
+0,
+1344
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth)",
+"occurrence": "Spur Gear (12 teeth):1",
+"solid": true,
+"visible": true,
+"volume": 2362.6589022542353,
+"area": 1836.3338057363994,
+"centroid": [
+-176.85673297087956,
+-20.30544451204357,
+103.58830773181663
+],
+"bbox": [
+[
+-198.34305363010515,
+-46.73626619334168,
+82.5462893048176
+],
+[
+-158.73725641904468,
+2.9940378943138413,
+121.25259040970776
+]
+],
+"placement_check": {
+"centroid_error": 0.0036071510243438124,
+"transposed": false
+},
+"tri": [
+1344,
+880
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth) (1)",
+"occurrence": "Spur Gear (12 teeth) (1):1",
+"solid": true,
+"visible": true,
+"volume": 2363.875740732103,
+"area": 1837.104613969383,
+"centroid": [
+-177.9091218943854,
+11.713948008107538,
+103.77055481084524
+],
+"bbox": [
+[
+-190.51801110901386,
+-7.244584429742029,
+92.32384059393793
+],
+[
+-163.9438969113466,
+38.132575862659756,
+116.81055566085034
+]
+],
+"placement_check": {
+"centroid_error": 0.00445622669199414,
+"transposed": false
+},
+"tri": [
+2224,
+872
+]
+},
+{
+"name": "Body1",
+"component": "SmallYoke v4",
+"occurrence": "SmallYoke v4:1",
+"solid": true,
+"visible": true,
+"volume": 652.4889357189079,
+"area": 683.7831702350029,
+"centroid": [
+-194.86594099777813,
+-34.49349459830252,
+85.61694193391409
+],
+"bbox": [
+[
+-202.94487740709016,
+-49.01543238337845,
+77.22616584856362
+],
+[
+-186.78700458845537,
+-19.971556813196454,
+94.00771801927604
+]
+],
+"placement_check": {
+"centroid_error": 3.381112210426271e-07,
+"transposed": false
+},
+"tri": [
+3096,
+196
+]
+},
+{
+"name": "Body1",
+"component": "SmallYoke v4",
+"occurrence": "SmallYoke v4:2",
+"solid": true,
+"visible": true,
+"volume": 652.4889357189079,
+"area": 683.7831702350029,
+"centroid": [
+-197.14426329940744,
+24.308755059837004,
+85.61691916550302
+],
+"bbox": [
+[
+-206.14407520289134,
+10.070877428345888,
+77.22611829157015
+],
+[
+-188.14445139593656,
+38.546632691357345,
+94.00772003942441
+]
+],
+"placement_check": {
+"centroid_error": 3.381055176609758e-07,
+"transposed": false
+},
+"tri": [
+3292,
+196
+]
+}
+],
+"seconds": 0.07
+},
+{
+"index": 9,
+"name": " Gripper v5:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0008.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Connector Bracket v9",
+"occurrence": "Connector Bracket v9:1",
+"solid": true,
+"visible": true,
+"volume": 19058.44244431741,
+"area": 9571.863757460578,
+"centroid": [
+-153.14361523757233,
+-3.4316628812416,
+98.5541319944956
+],
+"bbox": [
+[
+-197.1240193219852,
+-27.5850926210094,
+44.603334074243946
+],
+[
+-104.73433969281764,
+20.89331316980868,
+135.20821313069757
+]
+],
+"placement_check": {
+"centroid_error": 0.0085047596997755,
+"transposed": false
+},
+"tri": [
+0,
+1344
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth)",
+"occurrence": "Spur Gear (12 teeth):1",
+"solid": true,
+"visible": true,
+"volume": 2362.6589022542353,
+"area": 1836.3338057363994,
+"centroid": [
+-176.85673297087956,
+-20.30544451204357,
+103.58830773181663
+],
+"bbox": [
+[
+-198.34305363010515,
+-46.73626619334168,
+82.5462893048176
+],
+[
+-158.73725641904468,
+2.9940378943138413,
+121.25259040970776
+]
+],
+"placement_check": {
+"centroid_error": 0.0036071510243438124,
+"transposed": false
+},
+"tri": [
+1344,
+880
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth) (1)",
+"occurrence": "Spur Gear (12 teeth) (1):1",
+"solid": true,
+"visible": true,
+"volume": 2363.875740732103,
+"area": 1837.104613969383,
+"centroid": [
+-177.9091218943854,
+11.713948008107538,
+103.77055481084524
+],
+"bbox": [
+[
+-190.51801110901386,
+-7.244584429742029,
+92.32384059393793
+],
+[
+-163.9438969113466,
+38.132575862659756,
+116.81055566085034
+]
+],
+"placement_check": {
+"centroid_error": 0.00445622669199414,
+"transposed": false
+},
+"tri": [
+2224,
+872
+]
+},
+{
+"name": "Body1",
+"component": "SmallYoke v4",
+"occurrence": "SmallYoke v4:1",
+"solid": true,
+"visible": true,
+"volume": 652.4889357189079,
+"area": 683.7831702350029,
+"centroid": [
+-194.86594099777813,
+-34.49349459830252,
+85.61694193391409
+],
+"bbox": [
+[
+-202.94487740709016,
+-49.01543238337845,
+77.22616584856362
+],
+[
+-186.78700458845537,
+-19.971556813196454,
+94.00771801927604
+]
+],
+"placement_check": {
+"centroid_error": 3.381112210426271e-07,
+"transposed": false
+},
+"tri": [
+3096,
+196
+]
+},
+{
+"name": "Body1",
+"component": "SmallYoke v4",
+"occurrence": "SmallYoke v4:2",
+"solid": true,
+"visible": true,
+"volume": 652.4889357189079,
+"area": 683.7831702350029,
+"centroid": [
+-197.14426329940744,
+24.308755059837004,
+85.61691916550302
+],
+"bbox": [
+[
+-206.14407520289134,
+10.070877428345888,
+77.22611829157015
+],
+[
+-188.14445139593656,
+38.546632691357345,
+94.00772003942441
+]
+],
+"placement_check": {
+"centroid_error": 3.381055176609758e-07,
+"transposed": false
+},
+"tri": [
+3292,
+196
+]
+}
+],
+"seconds": 0.06
+},
+{
+"index": 10,
+"name": "Base Feature1",
+"group": null,
+"type": "BaseFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Gripper v5",
+"mesh": "mesh_0010.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Connector Bracket v9",
+"occurrence": "Connector Bracket v9:1",
+"solid": true,
+"visible": true,
+"volume": 19058.44244431741,
+"area": 9571.863757460578,
+"centroid": [
+-153.14361523757233,
+-3.4316628812416,
+98.5541319944956
+],
+"bbox": [
+[
+-197.1240193219852,
+-27.5850926210094,
+44.603334074243946
+],
+[
+-104.73433969281764,
+20.89331316980868,
+135.20821313069757
+]
+],
+"placement_check": {
+"centroid_error": 0.0085047596997755,
+"transposed": false
+},
+"tri": [
+0,
+1344
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth)",
+"occurrence": "Spur Gear (12 teeth):1",
+"solid": true,
+"visible": true,
+"volume": 2362.6589022542353,
+"area": 1836.3338057363994,
+"centroid": [
+-176.85673297087956,
+-20.30544451204357,
+103.58830773181663
+],
+"bbox": [
+[
+-198.34305363010515,
+-46.73626619334168,
+82.5462893048176
+],
+[
+-158.73725641904468,
+2.9940378943138413,
+121.25259040970776
+]
+],
+"placement_check": {
+"centroid_error": 0.0036071510243438124,
+"transposed": false
+},
+"tri": [
+1344,
+880
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth) (1)",
+"occurrence": "Spur Gear (12 teeth) (1):1",
+"solid": true,
+"visible": true,
+"volume": 2363.875740732103,
+"area": 1837.104613969383,
+"centroid": [
+-177.9091218943854,
+11.713948008107538,
+103.77055481084524
+],
+"bbox": [
+[
+-190.51801110901386,
+-7.244584429742029,
+92.32384059393793
+],
+[
+-163.9438969113466,
+38.132575862659756,
+116.81055566085034
+]
+],
+"placement_check": {
+"centroid_error": 0.00445622669199414,
+"transposed": false
+},
+"tri": [
+2224,
+872
+]
+},
+{
+"name": "Body1",
+"component": "SmallYoke v4",
+"occurrence": "SmallYoke v4:1",
+"solid": true,
+"visible": true,
+"volume": 652.4889357189079,
+"area": 683.7831702350029,
+"centroid": [
+-194.86594099777813,
+-34.49349459830252,
+85.61694193391409
+],
+"bbox": [
+[
+-202.94487740709016,
+-49.01543238337845,
+77.22616584856362
+],
+[
+-186.78700458845537,
+-19.971556813196454,
+94.00771801927604
+]
+],
+"placement_check": {
+"centroid_error": 3.381112210426271e-07,
+"transposed": false
+},
+"tri": [
+3096,
+196
+]
+},
+{
+"name": "Body1",
+"component": "SmallYoke v4",
+"occurrence": "SmallYoke v4:2",
+"solid": true,
+"visible": true,
+"volume": 652.4889357189079,
+"area": 683.7831702350029,
+"centroid": [
+-197.14426329940744,
+24.308755059837004,
+85.61691916550302
+],
+"bbox": [
+[
+-206.14407520289134,
+10.070877428345888,
+77.22611829157015
+],
+[
+-188.14445139593656,
+38.546632691357345,
+94.00772003942441
+]
+],
+"placement_check": {
+"centroid_error": 3.381055176609758e-07,
+"transposed": false
+},
+"tri": [
+3292,
+196
+]
+},
+{
+"name": "Body1",
+"component": "Gripper v5",
+"occurrence": "Gripper v5:1",
+"solid": true,
+"visible": true,
+"volume": 5925.692815395118,
+"area": 3691.185885464486,
+"centroid": [
+-211.78892252456563,
+-37.92711438215677,
+75.94811498881809
+],
+"bbox": [
+[
+-241.7939750860583,
+-74.66239269068133,
+43.7195001085458
+],
+[
+-174.6429101297071,
+5.358123787882256,
+108.60549765654491
+]
+],
+"placement_check": {
+"centroid_error": 0.0045021149629004,
+"transposed": false
+},
+"tri": [
+3488,
+588
+]
+}
+],
+"seconds": 0.07
+},
+{
+"index": 11,
+"name": "Plane1",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0010.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Connector Bracket v9",
+"occurrence": "Connector Bracket v9:1",
+"solid": true,
+"visible": true,
+"volume": 19058.44244431741,
+"area": 9571.863757460578,
+"centroid": [
+-153.14361523757233,
+-3.4316628812416,
+98.5541319944956
+],
+"bbox": [
+[
+-197.1240193219852,
+-27.5850926210094,
+44.603334074243946
+],
+[
+-104.73433969281764,
+20.89331316980868,
+135.20821313069757
+]
+],
+"placement_check": {
+"centroid_error": 0.0085047596997755,
+"transposed": false
+},
+"tri": [
+0,
+1344
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth)",
+"occurrence": "Spur Gear (12 teeth):1",
+"solid": true,
+"visible": true,
+"volume": 2362.6589022542353,
+"area": 1836.3338057363994,
+"centroid": [
+-176.85673297087956,
+-20.30544451204357,
+103.58830773181663
+],
+"bbox": [
+[
+-198.34305363010515,
+-46.73626619334168,
+82.5462893048176
+],
+[
+-158.73725641904468,
+2.9940378943138413,
+121.25259040970776
+]
+],
+"placement_check": {
+"centroid_error": 0.0036071510243438124,
+"transposed": false
+},
+"tri": [
+1344,
+880
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth) (1)",
+"occurrence": "Spur Gear (12 teeth) (1):1",
+"solid": true,
+"visible": true,
+"volume": 2363.875740732103,
+"area": 1837.104613969383,
+"centroid": [
+-177.9091218943854,
+11.713948008107538,
+103.77055481084524
+],
+"bbox": [
+[
+-190.51801110901386,
+-7.244584429742029,
+92.32384059393793
+],
+[
+-163.9438969113466,
+38.132575862659756,
+116.81055566085034
+]
+],
+"placement_check": {
+"centroid_error": 0.00445622669199414,
+"transposed": false
+},
+"tri": [
+2224,
+872
+]
+},
+{
+"name": "Body1",
+"component": "SmallYoke v4",
+"occurrence": "SmallYoke v4:1",
+"solid": true,
+"visible": true,
+"volume": 652.4889357189079,
+"area": 683.7831702350029,
+"centroid": [
+-194.86594099777813,
+-34.49349459830252,
+85.61694193391409
+],
+"bbox": [
+[
+-202.94487740709016,
+-49.01543238337845,
+77.22616584856362
+],
+[
+-186.78700458845537,
+-19.971556813196454,
+94.00771801927604
+]
+],
+"placement_check": {
+"centroid_error": 3.381112210426271e-07,
+"transposed": false
+},
+"tri": [
+3096,
+196
+]
+},
+{
+"name": "Body1",
+"component": "SmallYoke v4",
+"occurrence": "SmallYoke v4:2",
+"solid": true,
+"visible": true,
+"volume": 652.4889357189079,
+"area": 683.7831702350029,
+"centroid": [
+-197.14426329940744,
+24.308755059837004,
+85.61691916550302
+],
+"bbox": [
+[
+-206.14407520289134,
+10.070877428345888,
+77.22611829157015
+],
+[
+-188.14445139593656,
+38.546632691357345,
+94.00772003942441
+]
+],
+"placement_check": {
+"centroid_error": 3.381055176609758e-07,
+"transposed": false
+},
+"tri": [
+3292,
+196
+]
+},
+{
+"name": "Body1",
+"component": "Gripper v5",
+"occurrence": "Gripper v5:1",
+"solid": true,
+"visible": true,
+"volume": 5925.692815395118,
+"area": 3691.185885464486,
+"centroid": [
+-211.78892252456563,
+-37.92711438215677,
+75.94811498881809
+],
+"bbox": [
+[
+-241.7939750860583,
+-74.66239269068133,
+43.7195001085458
+],
+[
+-174.6429101297071,
+5.358123787882256,
+108.60549765654491
+]
+],
+"placement_check": {
+"centroid_error": 0.0045021149629004,
+"transposed": false
+},
+"tri": [
+3488,
+588
+]
+}
+],
+"seconds": 0.06
+},
+{
+"index": 12,
+"name": "MirrorComponent1",
+"group": null,
+"type": "MirrorFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0012.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Connector Bracket v9",
+"occurrence": "Connector Bracket v9:1",
+"solid": true,
+"visible": true,
+"volume": 19058.44244431741,
+"area": 9571.863757460578,
+"centroid": [
+-153.14361523757233,
+-3.4316628812416,
+98.5541319944956
+],
+"bbox": [
+[
+-197.1240193219852,
+-27.5850926210094,
+44.603334074243946
+],
+[
+-104.73433969281764,
+20.89331316980868,
+135.20821313069757
+]
+],
+"placement_check": {
+"centroid_error": 0.0085047596997755,
+"transposed": false
+},
+"tri": [
+0,
+1344
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth)",
+"occurrence": "Spur Gear (12 teeth):1",
+"solid": true,
+"visible": true,
+"volume": 2362.6589022542353,
+"area": 1836.3338057363994,
+"centroid": [
+-176.85673297087956,
+-20.30544451204357,
+103.58830773181663
+],
+"bbox": [
+[
+-198.34305363010515,
+-46.73626619334168,
+82.5462893048176
+],
+[
+-158.73725641904468,
+2.9940378943138413,
+121.25259040970776
+]
+],
+"placement_check": {
+"centroid_error": 0.0036071510243438124,
+"transposed": false
+},
+"tri": [
+1344,
+880
+]
+},
+{
+"name": "Body1",
+"component": "Spur Gear (12 teeth) (1)",
+"occurrence": "Spur Gear (12 teeth) (1):1",
+"solid": true,
+"visible": true,
+"volume": 2363.875740732103,
+"area": 1837.104613969383,
+"centroid": [
+-177.9091218943854,
+11.713948008107538,
+103.77055481084524
+],
+"bbox": [
+[
+-190.51801110901386,
+-7.244584429742029,
+92.32384059393793
+],
+[
+-163.9438969113466,
+38.132575862659756,
+116.81055566085034
+]
+],
+"placement_check": {
+"centroid_error": 0.00445622669199414,
+"transposed": false
+},
+"tri": [
+2224,
+872
+]
+},
+{
+"name": "Body1",
+"component": "SmallYoke v4",
+"occurrence": "SmallYoke v4:1",
+"solid": true,
+"visible": true,
+"volume": 652.4889357189079,
+"area": 683.7831702350029,
+"centroid": [
+-194.86594099777813,
+-34.49349459830252,
+85.61694193391409
+],
+"bbox": [
+[
+-202.94487740709016,
+-49.01543238337845,
+77.22616584856362
+],
+[
+-186.78700458845537,
+-19.971556813196454,
+94.00771801927604
+]
+],
+"placement_check": {
+"centroid_error": 3.381112210426271e-07,
+"transposed": false
+},
+"tri": [
+3096,
+196
+]
+},
+{
+"name": "Body1",
+"component": "SmallYoke v4",
+"occurrence": "SmallYoke v4:2",
+"solid": true,
+"visible": true,
+"volume": 652.4889357189079,
+"area": 683.7831702350029,
+"centroid": [
+-197.14426329940744,
+24.308755059837004,
+85.61691916550302
+],
+"bbox": [
+[
+-206.14407520289134,
+10.070877428345888,
+77.22611829157015
+],
+[
+-188.14445139593656,
+38.546632691357345,
+94.00772003942441
+]
+],
+"placement_check": {
+"centroid_error": 3.381055176609758e-07,
+"transposed": false
+},
+"tri": [
+3292,
+196
+]
+},
+{
+"name": "Body1",
+"component": "Gripper v5",
+"occurrence": "Gripper v5:1",
+"solid": true,
+"visible": true,
+"volume": 5925.692815395118,
+"area": 3691.185885464486,
+"centroid": [
+-211.78892252456563,
+-37.92711438215677,
+75.94811498881809
+],
+"bbox": [
+[
+-241.7939750860583,
+-74.66239269068133,
+43.7195001085458
+],
+[
+-174.6429101297071,
+5.358123787882256,
+108.60549765654491
+]
+],
+"placement_check": {
+"centroid_error": 0.0045021149629004,
+"transposed": false
+},
+"tri": [
+3488,
+588
+]
+},
+{
+"name": "Body1",
+"component": "Gripper v5(Mirror)",
+"occurrence": "Gripper v5(Mirror):1",
+"solid": true,
+"visible": true,
+"volume": 5925.695195453232,
+"area": 3691.185885464486,
+"centroid": [
+-214.2821607828468,
+26.422700876458826,
+75.94811508199638
+],
+"bbox": [
+[
+-243.34938747763442,
+-15.712556426425648,
+43.71950010854485
+],
+[
+-177.588588025976,
+62.580159333403174,
+108.60549765654312
+]
+],
+"placement_check": {
+"centroid_error": 0.004501627751610629,
+"transposed": false
+},
+"tri": [
+4076,
+588
+]
+}
+],
+"seconds": 0.08
+}
+],
+"seconds": 3.1
+}

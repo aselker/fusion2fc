@@ -1,0 +1,316 @@
+{
+"source": "PacktPublishing_4_2_S_Hook_Sweep_Final.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 7,
+"diag": 99.62536329191902,
+"deviation_mm": 0.019925072658383804,
+"steps_total": 7,
+"steps": [
+{
+"index": 0,
+"name": " S-Hook_Pipe:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Sketch4",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "S-Hook_Pipe",
+"mesh": null,
+"bodies": [],
+"seconds": 0.0
+},
+{
+"index": 2,
+"name": "Pipe1",
+"group": null,
+"type": "PipeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "S-Hook_Pipe",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "S-Hook_Pipe",
+"occurrence": "S-Hook_Pipe:1",
+"solid": true,
+"visible": false,
+"volume": 3513.1124113254127,
+"area": 2806.7668434659586,
+"centroid": [
+0.25979848422143154,
+36.77518424496646,
+-9.480678907791873e-16
+],
+"bbox": [
+[
+-27.491165186697405,
+5.367366135953486,
+-2.540000000000004
+],
+[
+27.19605122452798,
+68.21897551827806,
+2.540000000000004
+]
+],
+"placement_check": {
+"centroid_error": 0.0014730936238476675,
+"transposed": false
+},
+"tri": [
+0,
+4116
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 3,
+"name": " S-Hook_Sweep:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "S-Hook_Pipe",
+"occurrence": "S-Hook_Pipe:1",
+"solid": true,
+"visible": false,
+"volume": 3513.1124113254127,
+"area": 2806.7668434659586,
+"centroid": [
+0.25979848422143154,
+36.77518424496646,
+-9.480678907791873e-16
+],
+"bbox": [
+[
+-27.491165186697405,
+5.367366135953486,
+-2.540000000000004
+],
+[
+27.19605122452798,
+68.21897551827806,
+2.540000000000004
+]
+],
+"placement_check": {
+"centroid_error": 0.0014730936238476675,
+"transposed": false
+},
+"tri": [
+0,
+4116
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 4,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "S-Hook_Sweep",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "S-Hook_Pipe",
+"occurrence": "S-Hook_Pipe:1",
+"solid": true,
+"visible": false,
+"volume": 3513.1124113254127,
+"area": 2806.7668434659586,
+"centroid": [
+0.25979848422143154,
+36.77518424496646,
+-9.480678907791873e-16
+],
+"bbox": [
+[
+-27.491165186697405,
+5.367366135953486,
+-2.540000000000004
+],
+[
+27.19605122452798,
+68.21897551827806,
+2.540000000000004
+]
+],
+"placement_check": {
+"centroid_error": 0.0014730936238476675,
+"transposed": false
+},
+"tri": [
+0,
+4116
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 5,
+"name": "Sketch7",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "S-Hook_Sweep",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "S-Hook_Pipe",
+"occurrence": "S-Hook_Pipe:1",
+"solid": true,
+"visible": false,
+"volume": 3513.1124113254127,
+"area": 2806.7668434659586,
+"centroid": [
+0.25979848422143154,
+36.77518424496646,
+-9.480678907791873e-16
+],
+"bbox": [
+[
+-27.491165186697405,
+5.367366135953486,
+-2.540000000000004
+],
+[
+27.19605122452798,
+68.21897551827806,
+2.540000000000004
+]
+],
+"placement_check": {
+"centroid_error": 0.0014730936238476675,
+"transposed": false
+},
+"tri": [
+0,
+4116
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 6,
+"name": "Sweep1",
+"group": null,
+"type": "SweepFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "S-Hook_Sweep",
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "S-Hook_Pipe",
+"occurrence": "S-Hook_Pipe:1",
+"solid": true,
+"visible": false,
+"volume": 3513.1124113254127,
+"area": 2806.7668434659586,
+"centroid": [
+0.25979848422143154,
+36.77518424496646,
+-9.480678907791873e-16
+],
+"bbox": [
+[
+-27.491165186697405,
+5.367366135953486,
+-2.540000000000004
+],
+[
+27.19605122452798,
+68.21897551827806,
+2.540000000000004
+]
+],
+"placement_check": {
+"centroid_error": 0.0014730936238476675,
+"transposed": false
+},
+"tri": [
+0,
+4116
+]
+},
+{
+"name": "Body1",
+"component": "S-Hook_Sweep",
+"occurrence": "S-Hook_Sweep:1",
+"solid": true,
+"visible": true,
+"volume": 881.638246721094,
+"area": 835.1204718873314,
+"centroid": [
+0.0,
+0.0,
+3.1481818896644784e-16
+],
+"bbox": [
+[
+-14.899704525612474,
+-14.899704525612474,
+-2.5399999999999996
+],
+[
+14.899704525612474,
+14.899704525612478,
+2.5400000000000005
+]
+],
+"placement_check": {
+"centroid_error": 2.2724384049240364e-15,
+"transposed": false
+},
+"tri": [
+4116,
+508
+]
+}
+],
+"seconds": 0.04
+}
+],
+"seconds": 2.3
+}

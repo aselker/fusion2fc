@@ -1,0 +1,333 @@
+{
+"source": "onlinelei_appleScreen_v9.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 1,
+"diag": 89.41605589345744,
+"deviation_mm": 0.017883211178691488,
+"steps_total": 8,
+"steps": [
+{
+"index": 0,
+"name": "主体",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 1,
+"name": "拉伸3",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 90282.60759804802,
+"area": 12142.84723744372,
+"centroid": [
+0.0,
+26.654058155671176,
+26.433075149610005
+],
+"bbox": [
+[
+-20.0,
+1.970645868709653e-14,
+1.9620700660870956e-17
+],
+[
+20.0,
+53.89745057673204,
+58.00000000000001
+]
+],
+"tri": [
+0,
+44
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "拉伸4",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 94085.27426471465,
+"area": 12288.650411399049,
+"centroid": [
+0.0,
+25.828775057487192,
+26.70957968871108
+],
+"bbox": [
+[
+-20.0,
+-1.371248680242615,
+1.9620700660870956e-17
+],
+[
+20.0,
+53.89745057673204,
+58.00000000000001
+]
+],
+"tri": [
+0,
+52
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 3,
+"name": "抽壳3",
+"group": null,
+"type": "ShellFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 44956.36120200975,
+"area": 18718.373918009594,
+"centroid": [
+6.3220662594759625e-15,
+26.00264980734947,
+29.011578758554787
+],
+"bbox": [
+[
+-20.0,
+-1.371248680242615,
+0.0
+],
+[
+20.0,
+53.89745057673204,
+58.00000000000001
+]
+],
+"tri": [
+0,
+104
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 4,
+"name": "屏幕",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 44956.36120200975,
+"area": 18718.373918009594,
+"centroid": [
+6.3220662594759625e-15,
+26.00264980734947,
+29.011578758554787
+],
+"bbox": [
+[
+-20.0,
+-1.371248680242615,
+0.0
+],
+[
+20.0,
+53.89745057673204,
+58.00000000000001
+]
+],
+"tri": [
+0,
+104
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 5,
+"name": "拉伸5",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0005.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 41212.236157307,
+"area": 17816.616122553074,
+"centroid": [
+1.0344637447693355e-14,
+27.532375908593608,
+28.133563852834058
+],
+"bbox": [
+[
+-20.0,
+-1.371248680242615,
+0.0
+],
+[
+20.0,
+53.89745057673204,
+58.00000000000001
+]
+],
+"tri": [
+0,
+124
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 6,
+"name": "圆角1",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0006.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 41209.36478583185,
+"area": 17802.60929450424,
+"centroid": [
+1.2345009082970886e-08,
+27.53386426593281,
+28.133116935370527
+],
+"bbox": [
+[
+-20.0,
+-1.341430414546082,
+-9.82013713956942e-17
+],
+[
+20.0,
+53.89745057673204,
+57.970181734303466
+]
+],
+"tri": [
+0,
+250
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 7,
+"name": "圆角2",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0007.stl.gz",
+"bodies": [
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 41044.77726365449,
+"area": 17624.98553812607,
+"centroid": [
+7.693941347976254e-07,
+27.48921556705215,
+28.115694319156717
+],
+"bbox": [
+[
+-20.0,
+-1.3414304145460818,
+-9.82013713956942e-17
+],
+[
+20.0,
+53.74658172270328,
+57.97018173430346
+]
+],
+"tri": [
+0,
+3502
+]
+}
+],
+"seconds": 0.09
+}
+],
+"seconds": 2.9
+}

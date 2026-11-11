@@ -1,0 +1,245 @@
+{
+"source": "case_renamed_mixed.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 6,
+"diag": 22.9128784747792,
+"deviation_mm": 0.00458257569495584,
+"steps_total": 6,
+"steps": [
+{
+"index": 0,
+"name": "outline",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.03
+},
+{
+"index": 1,
+"name": "plate",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1000.0,
+"area": 700.0,
+"centroid": [
+10.0,
+5.0,
+2.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+5.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 2,
+"name": "bore_sketch",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1000.0,
+"area": 700.0,
+"centroid": [
+10.0,
+5.0,
+2.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+5.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 3,
+"name": "bore",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 937.1681469282015,
+"area": 737.6991118430775,
+"centroid": [
+9.999999999985977,
+5.0,
+2.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+5.0
+]
+],
+"tri": [
+0,
+204
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 4,
+"name": "top_chamfer",
+"group": null,
+"type": "ChamferFeature",
+"suppressed": true,
+"health": 3,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 937.1681469282015,
+"area": 737.6991118430775,
+"centroid": [
+9.999999999985977,
+5.0,
+2.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+5.0
+]
+],
+"tri": [
+0,
+204
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 5,
+"name": "corner_round",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0005.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 932.8761101961504,
+"area": 727.3982236861549,
+"centroid": [
+9.999999999985915,
+5.0,
+2.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+5.0
+]
+],
+"tri": [
+0,
+348
+]
+}
+],
+"seconds": 0.03
+}
+],
+"seconds": 4.9
+}

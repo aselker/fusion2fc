@@ -1,0 +1,113 @@
+{
+"source": "homebrew_pinball_NeoPixel_Jewel_7_LED.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 3,
+"diag": 32.640405246986425,
+"deviation_mm": 0.0065280810493972856,
+"steps_total": 3,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.03
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 193.36381105037222,
+"area": 676.7087849320629,
+"centroid": [
+76.22121398210884,
+0.3968750000000003,
+0.0011525787147772435
+],
+"bbox": [
+[
+64.69062385559083,
+0.0,
+-11.509374999999995
+],
+[
+87.70937385559081,
+0.79375,
+11.509374999999995
+]
+],
+"tri": [
+0,
+1220
+]
+}
+],
+"seconds": 0.06
+},
+{
+"index": 2,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 571.4345014800598,
+"area": 1100.0950349320633,
+"centroid": [
+76.20717769709375,
+0.9220333685466993,
+0.00039001322504370506
+],
+"bbox": [
+[
+64.69062385559083,
+0.0,
+-11.509374999999995
+],
+[
+87.70937385559081,
+2.38125,
+11.509374999999995
+]
+],
+"tri": [
+0,
+1192
+]
+}
+],
+"seconds": 0.06
+}
+],
+"seconds": 6.1
+}

@@ -1,0 +1,1751 @@
+[
+ {
+  "id": "case_chamfer_top_edges",
+  "tier": "generated",
+  "file": "../cases/chamfer_top_edges.f3d",
+  "sha256": "96157025bca83d9f6d140a4848248e54493449a212c61d945ebe37e3f543e8ca",
+  "bytes": 77456,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_component_offset",
+  "tier": "generated",
+  "file": "../cases/component_offset.f3d",
+  "sha256": "f425835b3febe4ce3c7a550b061d47751417edf87df22e70eefdb1360bd67bbd",
+  "bytes": 64613,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_cut_from_top_face",
+  "tier": "generated",
+  "file": "../cases/cut_from_top_face.f3d",
+  "sha256": "60a02151d16a7d4f47cfd3df3904025c9b56c28d0cdf12d20796825405e44d03",
+  "bytes": 122174,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_cut_participant",
+  "tier": "generated",
+  "file": "../cases/cut_participant.f3d",
+  "sha256": "1a053a1d1230287bc612dac9bfa409d65b5090acb664beb56502198b504c572c",
+  "bytes": 106554,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_cut_through_all",
+  "tier": "generated",
+  "file": "../cases/cut_through_all.f3d",
+  "sha256": "aee7bd65c372042282d426d6ef069429e3bb10b44856133dcbc29ab17da40307",
+  "bytes": 97466,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_disjoint_new_body",
+  "tier": "generated",
+  "file": "../cases/disjoint_new_body.f3d",
+  "sha256": "655915ad85d37827dd00328624d8afd6a7a742fbc389c1472b71fda382a1abb3",
+  "bytes": 160233,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_extrude_blind",
+  "tier": "generated",
+  "file": "../cases/extrude_blind.f3d",
+  "sha256": "39a7c191ab630c7c7e261dcc20ef59261f8bc55789e21949298931d27637df4b",
+  "bytes": 63876,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_extrude_negative",
+  "tier": "generated",
+  "file": "../cases/extrude_negative.f3d",
+  "sha256": "9fda84663afdd6f80d344a9eb181bbdbeda77a247ab918a94671513fa4bd0d92",
+  "bytes": 63968,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_extrude_offset_start",
+  "tier": "generated",
+  "file": "../cases/extrude_offset_start.f3d",
+  "sha256": "b34b3c0f8449c6b114d99ccab9064c14201fc5e633b3c68de717a482abda2704",
+  "bytes": 64373,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_extrude_symmetric_full",
+  "tier": "generated",
+  "file": "../cases/extrude_symmetric_full.f3d",
+  "sha256": "d7865ca16ee3a93cacb986f4a6c92b51ec12c89ca77f5a0da754a349f18edd61",
+  "bytes": 63472,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_extrude_symmetric_half",
+  "tier": "generated",
+  "file": "../cases/extrude_symmetric_half.f3d",
+  "sha256": "578f1d38f889b71edfb8f89ea7b7f2488f32cdf6195e716a40945dc01244ce0c",
+  "bytes": 67107,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_extrude_taper",
+  "tier": "generated",
+  "file": "../cases/extrude_taper.f3d",
+  "sha256": "9ac21b8688038ef96f30c358f9139f509eb731bfe365a57030721bc431a27a5f",
+  "bytes": 66291,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_extrude_to_face",
+  "tier": "generated",
+  "file": "../cases/extrude_to_face.f3d",
+  "sha256": "54bcc143559a0ad7d450cab9e3570e57231c670e20d75b17a30f45f1795086dd",
+  "bytes": 77683,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_extrude_two_sided",
+  "tier": "generated",
+  "file": "../cases/extrude_two_sided.f3d",
+  "sha256": "c44844713c27ff58e75276c2554a353496179a7190d1aff831f47b680a9c595a",
+  "bytes": 65556,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_vertical_edges",
+  "tier": "generated",
+  "file": "../cases/fillet_vertical_edges.f3d",
+  "sha256": "5ac437c5900a1d33e9754a2fa7b0e17e1f9a0ba0e986b100deda05aed6c8f623",
+  "bytes": 100601,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_join_bridge",
+  "tier": "generated",
+  "file": "../cases/join_bridge.f3d",
+  "sha256": "340b12e394cfb416e0b3ece2a923aa294f0c9f46e46bc3f1dce91e9427943bba",
+  "bytes": 86096,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_join_from_face_offset",
+  "tier": "generated",
+  "file": "../cases/join_from_face_offset.f3d",
+  "sha256": "4d579d71b9b26c53078a0e8736ecdbebd0c8d087cf25d0d71215333d075abb45",
+  "bytes": 90636,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_join_touching_only",
+  "tier": "generated",
+  "file": "../cases/join_touching_only.f3d",
+  "sha256": "66c17bdcde2e3f24e9095ea83e9c71d3dd6d9a0999e6892643ec4d889418bfdf",
+  "bytes": 68075,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_params_renamed_suppressed",
+  "tier": "generated",
+  "file": "../cases/params_renamed_suppressed.f3d",
+  "sha256": "449745f10e5341020b791be3a9ec18b1b4361cb7f824eef5790897f9aad29229",
+  "bytes": 69475,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_regions_full_circle",
+  "tier": "generated",
+  "file": "../cases/regions_full_circle.f3d",
+  "sha256": "37d6ea3f8b072d0406e219cc1f069e39e4ec6433281676fe42d1b7c09107bb65",
+  "bytes": 102887,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_regions_lens_and_cap",
+  "tier": "generated",
+  "file": "../cases/regions_lens_and_cap.f3d",
+  "sha256": "60bf8af590b6348d53d46533a4f69923424c620d867ac740d0918b580faedbc0",
+  "bytes": 111437,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_regions_lens_only",
+  "tier": "generated",
+  "file": "../cases/regions_lens_only.f3d",
+  "sha256": "d9f9007828ab9b28932db04c3cc0ac94e4415a97861da2b8a5ddd49ec967f8c9",
+  "bytes": 101536,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_regions_outer_ring",
+  "tier": "generated",
+  "file": "../cases/regions_outer_ring.f3d",
+  "sha256": "07d218d2c131fb7ec16dbe38f0f01c0ef3ecf7c03e3169fca75a1e53f3118fa8",
+  "bytes": 102519,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_renamed_mixed",
+  "tier": "generated",
+  "file": "../cases/renamed_mixed.f3d",
+  "sha256": "95501a32968675fe3920421ed946e8809890c902fe753554714206f9780cec6c",
+  "bytes": 113786,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_replica_backplate",
+  "tier": "generated",
+  "file": "../cases/replica_backplate.f3d",
+  "sha256": "d7b1c8c684af47269a6b3b2aaa092c99155da6bc86de2eeffbc6d523393b230d",
+  "bytes": 101097,
+  "source": {
+   "generated": "vm/scripts/replicate.py",
+   "license": "GPL-3.0 (derived from Burninator, see tests/cases/README.md)"
+  }
+ },
+ {
+  "id": "case_replica_ecas",
+  "tier": "generated",
+  "file": "../cases/replica_ecas.f3d",
+  "sha256": "c7dbd8d94a58d2eb6355c9b09c070f7c0f51910c68a921d7711c392cafda41de",
+  "bytes": 163634,
+  "source": {
+   "generated": "vm/scripts/replicate.py",
+   "license": "GPL-3.0 (derived from Burninator, see tests/cases/README.md)"
+  }
+ },
+ {
+  "id": "case_replica_screwholes",
+  "tier": "generated",
+  "file": "../cases/replica_screwholes.f3d",
+  "sha256": "6de46125892d9f099bf8952b247db1877eac549383886cc6b359def629864144",
+  "bytes": 166258,
+  "source": {
+   "generated": "vm/scripts/replicate.py",
+   "license": "GPL-3.0 (derived from Burninator, see tests/cases/README.md)"
+  }
+ },
+ {
+  "id": "case_rolled_back_marker",
+  "tier": "generated",
+  "file": "../cases/rolled_back_marker.f3d",
+  "sha256": "a1f3b7638f0d459fea7630906d7e9ef45c794c2dc2923280082460d7ec4d4365",
+  "bytes": 67508,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_suppressed_default_names",
+  "tier": "generated",
+  "file": "../cases/suppressed_default_names.f3d",
+  "sha256": "e663c50bcec109fbacd8a6d841f940fc2b0610ef47dcb4e2fc61405f451f083e",
+  "bytes": 72953,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "andyeske_N2_Pencil_v1",
+  "tier": "supported",
+  "file": "models/andyeske_N2_Pencil_v1.f3d",
+  "sha256": "d7adb2ced1d4b8295a3baeb81251526fcb8336386678b71c12b09344012d274b",
+  "bytes": 667496,
+  "decoded_features": {
+   "fillet": 3,
+   "sketch": 8,
+   "chamfer": 1,
+   "extrude": 8
+  },
+  "source": {
+   "repo": "andyeske/How-to-CAD-Fusion-360",
+   "commit": "482b7bae438c5b3b6a4ebd0363b0b13c17dbdd24",
+   "path": "Session Files/Session 1/N2 Pencil v1.f3d",
+   "url": "https://raw.githubusercontent.com/andyeske/How-to-CAD-Fusion-360/482b7bae438c5b3b6a4ebd0363b0b13c17dbdd24/Session%20Files/Session%201/N2%20Pencil%20v1.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "bitbank2_badger2040_case",
+  "tier": "supported",
+  "file": "models/bitbank2_badger2040_case.f3d",
+  "sha256": "5aa72766a8c9c23752dfc9c66ac7be49dc73514e23e3a3aa236322dbada27f13",
+  "bytes": 102557,
+  "decoded_features": {
+   "fillet": 3,
+   "sketch": 2,
+   "extrude": 5
+  },
+  "source": {
+   "repo": "bitbank2/Fusion_360_Projects",
+   "commit": "d6230f583f435baa7cbfc37d8c765a19ab87fcd5",
+   "path": "badger2040_case/badger2040_case.f3d",
+   "url": "https://raw.githubusercontent.com/bitbank2/Fusion_360_Projects/d6230f583f435baa7cbfc37d8c765a19ab87fcd5/badger2040_case/badger2040_case.f3d",
+   "license": "apache-2.0"
+  }
+ },
+ {
+  "id": "bitbank2_co2_01space_box",
+  "tier": "supported",
+  "file": "models/bitbank2_co2_01space_box.f3d",
+  "sha256": "6a42da3b534e2816f9ceb5a58a0114b79c445aaf2c36041429fee0ecf20df637",
+  "bytes": 261926,
+  "decoded_features": {
+   "fillet": 4,
+   "sketch": 9,
+   "chamfer": 2,
+   "extrude": 14
+  },
+  "source": {
+   "repo": "bitbank2/Fusion_360_Projects",
+   "commit": "d6230f583f435baa7cbfc37d8c765a19ab87fcd5",
+   "path": "co2_01space_box/co2_01space_box.f3d",
+   "url": "https://raw.githubusercontent.com/bitbank2/Fusion_360_Projects/d6230f583f435baa7cbfc37d8c765a19ab87fcd5/co2_01space_box/co2_01space_box.f3d",
+   "license": "apache-2.0"
+  }
+ },
+ {
+  "id": "bitbank2_diagonal_cutter_cover",
+  "tier": "supported",
+  "file": "models/bitbank2_diagonal_cutter_cover.f3d",
+  "sha256": "538ac6f144ee6b8b9ac1a8c7448e75ad0461af0f053f95e517b7b8ba7e1b4b88",
+  "bytes": 76816,
+  "decoded_features": {
+   "sketch": 1,
+   "extrude": 2
+  },
+  "source": {
+   "repo": "bitbank2/Fusion_360_Projects",
+   "commit": "d6230f583f435baa7cbfc37d8c765a19ab87fcd5",
+   "path": "diagonal_cutter_cover/diagonal_cutter_cover.f3d",
+   "url": "https://raw.githubusercontent.com/bitbank2/Fusion_360_Projects/d6230f583f435baa7cbfc37d8c765a19ab87fcd5/diagonal_cutter_cover/diagonal_cutter_cover.f3d",
+   "license": "apache-2.0"
+  }
+ },
+ {
+  "id": "bitbank2_oled_cover",
+  "tier": "supported",
+  "file": "models/bitbank2_oled_cover.f3d",
+  "sha256": "576b2cd6974239362950406b90d4132b60e8756d9eebaa577b4a878c293d8c22",
+  "bytes": 116269,
+  "decoded_features": {
+   "fillet": 1,
+   "sketch": 1,
+   "extrude": 4
+  },
+  "source": {
+   "repo": "bitbank2/Fusion_360_Projects",
+   "commit": "d6230f583f435baa7cbfc37d8c765a19ab87fcd5",
+   "path": "oled_cover/oled_cover.f3d",
+   "url": "https://raw.githubusercontent.com/bitbank2/Fusion_360_Projects/d6230f583f435baa7cbfc37d8c765a19ab87fcd5/oled_cover/oled_cover.f3d",
+   "license": "apache-2.0"
+  }
+ },
+ {
+  "id": "bitbank2_rack_mount_foot",
+  "tier": "supported",
+  "file": "models/bitbank2_rack_mount_foot.f3d",
+  "sha256": "a280a3632da2ef36af03dff3b18ead3257897f60113ec8e7003ef36a29291ad9",
+  "bytes": 170199,
+  "decoded_features": {
+   "fillet": 3,
+   "sketch": 6,
+   "extrude": 7
+  },
+  "source": {
+   "repo": "bitbank2/Fusion_360_Projects",
+   "commit": "d6230f583f435baa7cbfc37d8c765a19ab87fcd5",
+   "path": "rack_mount_foot/rack_mount_foot.f3d",
+   "url": "https://raw.githubusercontent.com/bitbank2/Fusion_360_Projects/d6230f583f435baa7cbfc37d8c765a19ab87fcd5/rack_mount_foot/rack_mount_foot.f3d",
+   "license": "apache-2.0"
+  }
+ },
+ {
+  "id": "bowenchristopher_Untitled_v1",
+  "tier": "supported",
+  "file": "models/bowenchristopher_Untitled_v1.f3d",
+  "sha256": "92ea6961410fdf3ce72811b4c8954097dae8d695d6679656a6a7862872c389cb",
+  "bytes": 306642,
+  "decoded_features": {
+   "sketch": 2,
+   "extrude": 1
+  },
+  "source": {
+   "repo": "bowenchristopher/Fusion360_API",
+   "commit": "ef94a4dd276a05fe486ae5dcc97e64f5b2778cdb",
+   "path": "Test Files/Untitled v1.f3d",
+   "url": "https://raw.githubusercontent.com/bowenchristopher/Fusion360_API/ef94a4dd276a05fe486ae5dcc97e64f5b2778cdb/Test%20Files/Untitled%20v1.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "gtgkartik_Industrial_Tool_2",
+  "tier": "supported",
+  "file": "models/gtgkartik_Industrial_Tool_2.f3d",
+  "sha256": "08920919683912e7509886aa4ba9e014486191793d81a340be261af1744df8ea",
+  "bytes": 103646,
+  "decoded_features": {
+   "sketch": 6,
+   "extrude": 6
+  },
+  "source": {
+   "repo": "gtgkartik/3D-Printing-Fusion-360",
+   "commit": "28fd4001ea594a2ec038a6f8ddb08812aea545c7",
+   "path": "Fusion 360 Project Files/Industrial Tool 2.f3d",
+   "url": "https://raw.githubusercontent.com/gtgkartik/3D-Printing-Fusion-360/28fd4001ea594a2ec038a6f8ddb08812aea545c7/Fusion%20360%20Project%20Files/Industrial%20Tool%202.f3d",
+   "license": "apache-2.0"
+  }
+ },
+ {
+  "id": "digitalsputnik_Al_Pipe_16x200mm_M_SPPS000000046_v1",
+  "tier": "supported",
+  "file": "models/digitalsputnik_Al_Pipe_16x200mm_M_SPPS000000046_v1.f3d",
+  "sha256": "5e805942f144acf14bc4dac90732b455c8e56236dec88a147023259cde204281",
+  "bytes": 149755,
+  "decoded_features": {
+   "sketch": 1,
+   "extrude": 1
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/metal/Al Pipe 16x200mm [(M)SPPS000000046] v1.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/metal/Al%20Pipe%2016x200mm%20%5B%28M%29SPPS000000046%5D%20v1.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "digitalsputnik_Al_Pipe_16x170mm_M_SPPS000000007_v1",
+  "tier": "supported",
+  "file": "models/digitalsputnik_Al_Pipe_16x170mm_M_SPPS000000007_v1.f3d",
+  "sha256": "bfc9b3532e955f761ea2df71f712e99651228cd743477ebe8bb20a53efa95e8a",
+  "bytes": 150167,
+  "decoded_features": {
+   "sketch": 1,
+   "extrude": 1
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/metal/Al. Pipe 16x170mm  [(M)SPPS000000007] v1.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/metal/Al.%20Pipe%2016x170mm%20%20%5B%28M%29SPPS000000007%5D%20v1.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "digitalsputnik_Al_Pipe_16x22mm_M_SPPS000000057_v2",
+  "tier": "supported",
+  "file": "models/digitalsputnik_Al_Pipe_16x22mm_M_SPPS000000057_v2.f3d",
+  "sha256": "468cf78472abfda521aedb948ece40646b1e77215bf8ce89276ade62e2f30b80",
+  "bytes": 164700,
+  "decoded_features": {
+   "sketch": 1,
+   "chamfer": 1,
+   "extrude": 1
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/metal/Al. Pipe 16x22mm [(M)SPPS000000057] v2.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/metal/Al.%20Pipe%2016x22mm%20%5B%28M%29SPPS000000057%5D%20v2.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "digitalsputnik_Al_Pipe_16x75mm_M_SPPS000000043_v1",
+  "tier": "supported",
+  "file": "models/digitalsputnik_Al_Pipe_16x75mm_M_SPPS000000043_v1.f3d",
+  "sha256": "d5ecc5cdb04535f7923034fab30059af9ef591d4d4afa424c2c9dcc6a402d1ef",
+  "bytes": 155829,
+  "decoded_features": {
+   "sketch": 1,
+   "chamfer": 1,
+   "extrude": 1
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/metal/Al. Pipe 16x75mm [(M)SPPS000000043] v1.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/metal/Al.%20Pipe%2016x75mm%20%5B%28M%29SPPS000000043%5D%20v1.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "digitalsputnik_Controller_Cooler_P2_M_SPPS000000003_2_v2",
+  "tier": "supported",
+  "file": "models/digitalsputnik_Controller_Cooler_P2_M_SPPS000000003_2_v2.f3d",
+  "sha256": "cd4497f18111aad59894c6e02c9afd071367d73fa5b47896a49c04a50b8bbab0",
+  "bytes": 416114,
+  "decoded_features": {
+   "fillet": 2,
+   "sketch": 5,
+   "chamfer": 4,
+   "extrude": 5
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/metal/Controller Cooler (P2) [(M)SPPS000000003.2] v2.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/metal/Controller%20Cooler%20%28P2%29%20%5B%28M%29SPPS000000003.2%5D%20v2.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "digitalsputnik_Apollo_Yoke_Lock_P3_P_MPLA000000158_v2",
+  "tier": "supported",
+  "file": "models/digitalsputnik_Apollo_Yoke_Lock_P3_P_MPLA000000158_v2.f3d",
+  "sha256": "ffdcc9e8c16253f818cfeb45b3d3f5e646c5bda742f0c9d40e2dade9cfcfd6d2",
+  "bytes": 336599,
+  "decoded_features": {
+   "fillet": 3,
+   "sketch": 4,
+   "chamfer": 1,
+   "extrude": 6
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/plastic/Apollo Yoke Lock P3 [(P)MPLA000000158] v2.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/plastic/Apollo%20Yoke%20Lock%20P3%20%5B%28P%29MPLA000000158%5D%20v2.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "digitalsputnik_Front_Transparent_T1_v5",
+  "tier": "supported",
+  "file": "models/digitalsputnik_Front_Transparent_T1_v5.f3d",
+  "sha256": "59b2e37c4957968faff05fa9655e8db2be77bdfe656bf7dd19d5b408f9a3fe7d",
+  "bytes": 565405,
+  "decoded_features": {
+   "sketch": 1,
+   "extrude": 1
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/plastic/Front Transparent-T1 v5.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/plastic/Front%20Transparent-T1%20v5.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "digitalsputnik_Nupud_T_v2",
+  "tier": "supported",
+  "file": "models/digitalsputnik_Nupud_T_v2.f3d",
+  "sha256": "3856d9c02b1379dacf1c18bfa62c814f5f218e9d883068953afd3141e8c4956c",
+  "bytes": 132811,
+  "decoded_features": {
+   "sketch": 1,
+   "extrude": 1
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/plastic/Nupud-T v2.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/plastic/Nupud-T%20v2.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "digitalsputnik_Nupud_T1_v1",
+  "tier": "supported",
+  "file": "models/digitalsputnik_Nupud_T1_v1.f3d",
+  "sha256": "37470ad0ed44092d062540f394bbc251949c0c70486b6b629511270ff16ef5ba",
+  "bytes": 132785,
+  "decoded_features": {
+   "sketch": 1,
+   "extrude": 1
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/plastic/Nupud-T1 v1.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/plastic/Nupud-T1%20v1.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "digitalsputnik_Tihend_v4",
+  "tier": "supported",
+  "file": "models/digitalsputnik_Tihend_v4.f3d",
+  "sha256": "2adc230f4afae4ccf7c20e974846529ab71b6e54ee7dc31225d969506543a217",
+  "bytes": 134636,
+  "decoded_features": {
+   "sketch": 1,
+   "extrude": 1
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/plastic/Tihend v4.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/plastic/Tihend%20v4.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "homebrew_pinball_Fast_Light_Board",
+  "tier": "supported",
+  "file": "models/homebrew_pinball_Fast_Light_Board.f3d",
+  "sha256": "3bbe45ac10859beff143f22a480b96723365649bd15aa3175b8478877f009877",
+  "bytes": 71296,
+  "decoded_features": {
+   "sketch": 3,
+   "extrude": 3
+  },
+  "source": {
+   "repo": "homebrew-pinball/fusion360-models",
+   "commit": "5a0f50bd0e74fec1416ede9cc8fa8d175e1f403c",
+   "path": "lights/Fast Light Board.f3d",
+   "url": "https://raw.githubusercontent.com/homebrew-pinball/fusion360-models/5a0f50bd0e74fec1416ede9cc8fa8d175e1f403c/lights/Fast%20Light%20Board.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "homebrew_pinball_NeoPixel_Jewel_7_LED",
+  "tier": "supported",
+  "file": "models/homebrew_pinball_NeoPixel_Jewel_7_LED.f3d",
+  "sha256": "6edeaaedda316ea499a380365c014c4dd71d37b44032240d4bfc9e1c44b10d66",
+  "bytes": 101775,
+  "decoded_features": {
+   "sketch": 1,
+   "extrude": 2
+  },
+  "source": {
+   "repo": "homebrew-pinball/fusion360-models",
+   "commit": "5a0f50bd0e74fec1416ede9cc8fa8d175e1f403c",
+   "path": "lights/NeoPixel Jewel 7 LED.f3d",
+   "url": "https://raw.githubusercontent.com/homebrew-pinball/fusion360-models/5a0f50bd0e74fec1416ede9cc8fa8d175e1f403c/lights/NeoPixel%20Jewel%207%20LED.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "intuibase_SCD41Chamber",
+  "tier": "supported",
+  "file": "models/intuibase_SCD41Chamber.f3d",
+  "sha256": "f766b876c16edc36851b1f24a7009942cc8f012d72421be5c008e9d3e60c23a5",
+  "bytes": 161029,
+  "decoded_features": {
+   "sketch": 7,
+   "chamfer": 2,
+   "extrude": 10
+  },
+  "source": {
+   "repo": "intuibase/esp32_co2_monitor",
+   "commit": "0db87bfa69f07b834a7db9a201e80b22cb5c5fc1",
+   "path": "enclosure/f3d/SCD41Chamber.f3d",
+   "url": "https://raw.githubusercontent.com/intuibase/esp32_co2_monitor/0db87bfa69f07b834a7db9a201e80b22cb5c5fc1/enclosure/f3d/SCD41Chamber.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "PacktPublishing_L_Brackets",
+  "tier": "supported",
+  "file": "models/PacktPublishing_L_Brackets.f3d",
+  "sha256": "18c8318a4a014ce69a9a80b1774ae9a656f89e87afa713683c9e12e03109ae32",
+  "bytes": 941132,
+  "decoded_features": {
+   "sketch": 2,
+   "extrude": 3
+  },
+  "source": {
+   "repo": "PacktPublishing/3D-Printing-with-Fusion-360",
+   "commit": "4c80cda6d17d5d8a9a8dc8a01e14e605708d8447",
+   "path": "Chapter13/L Brackets.f3d",
+   "url": "https://raw.githubusercontent.com/PacktPublishing/3D-Printing-with-Fusion-360/4c80cda6d17d5d8a9a8dc8a01e14e605708d8447/Chapter13/L%20Brackets.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "onlinelei_hook_sogou_v1",
+  "tier": "supported",
+  "file": "models/onlinelei_hook_sogou_v1.f3d",
+  "sha256": "ebf5cbd772c2568b7a26ad11c1d146558aeade49e9e731d3b2622873d1f1bea0",
+  "bytes": 198622,
+  "decoded_features": {
+   "fillet": 2,
+   "extrude": 2,
+   "sketch": 2
+  },
+  "source": {
+   "repo": "onlinelei/Autodesk-Fusion-360",
+   "commit": "a38000ecea3c303c01d03522f6fc7002a58bf90a",
+   "path": "small/hook-sogou-v1.f3d",
+   "url": "https://raw.githubusercontent.com/onlinelei/Autodesk-Fusion-360/a38000ecea3c303c01d03522f6fc7002a58bf90a/small/hook-sogou-v1.f3d",
+   "license": "apache-2.0"
+  }
+ },
+ {
+  "id": "PacktPublishing_3_1_Example",
+  "tier": "supported",
+  "file": "models/PacktPublishing_3_1_Example.f3d",
+  "sha256": "b553554f23d46463ebb6aa8459d448dd43044e9dc9014dbc877e8de8da3f3590",
+  "bytes": 70374,
+  "decoded_features": {
+   "sketch": 3,
+   "extrude": 3
+  },
+  "source": {
+   "repo": "PacktPublishing/Improving-CAD-Designs-with-Autodesk-Fusion-360",
+   "commit": "04ccbf639ed71272dd324d050315f66b1518436b",
+   "path": "Ch03/3.1_Example.f3d",
+   "url": "https://raw.githubusercontent.com/PacktPublishing/Improving-CAD-Designs-with-Autodesk-Fusion-360/04ccbf639ed71272dd324d050315f66b1518436b/Ch03/3.1_Example.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "uwearzt_DINRailMount",
+  "tier": "supported",
+  "file": "models/uwearzt_DINRailMount.f3d",
+  "sha256": "292f495a6a1ad06f584490aa38f73359b55c677203b1b3faf822effbc6f66ba8",
+  "bytes": 279815,
+  "decoded_features": {
+   "fillet": 4,
+   "sketch": 1,
+   "extrude": 3
+  },
+  "source": {
+   "repo": "uwearzt/fusion360",
+   "commit": "72b08c3b8e36cb97b551ca27ba05529bf4188892",
+   "path": "parts/Lab/RaspberryPi/DINRailMount.f3d",
+   "url": "https://raw.githubusercontent.com/uwearzt/fusion360/72b08c3b8e36cb97b551ca27ba05529bf4188892/parts/Lab/RaspberryPi/DINRailMount.f3d",
+   "license": "apache-2.0"
+  }
+ },
+ {
+  "id": "adafruit_4320_PermaProto_Gizmo",
+  "tier": "supported",
+  "file": "models/adafruit_4320_PermaProto_Gizmo.f3d",
+  "sha256": "6ddee65c92454b4bee2ed3822b24eee6f97aa1356f1df961bdd2288ce45d643f",
+  "bytes": 826181,
+  "decoded_features": {
+   "sketch": 1,
+   "extrude": 2
+  },
+  "source": {
+   "repo": "adafruit/Adafruit_CAD_Parts",
+   "commit": "9f2a89f3d5c3491886d58cb7fe83385417563cf4",
+   "path": "4320 PermaProto Gizmo/4320 PermaProto Gizmo.f3d",
+   "url": "https://raw.githubusercontent.com/adafruit/Adafruit_CAD_Parts/9f2a89f3d5c3491886d58cb7fe83385417563cf4/4320%20PermaProto%20Gizmo/4320%20PermaProto%20Gizmo.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "adafruit_67_9V_battery_holder",
+  "tier": "supported",
+  "file": "models/adafruit_67_9V_battery_holder.f3d",
+  "sha256": "207fc048ea2a6bab19d96957ee5b5039f2430c4ec20580d1b3aa5555e62026a4",
+  "bytes": 69325,
+  "decoded_features": {
+   "fillet": 2,
+   "sketch": 1,
+   "extrude": 1
+  },
+  "source": {
+   "repo": "adafruit/Adafruit_CAD_Parts",
+   "commit": "9f2a89f3d5c3491886d58cb7fe83385417563cf4",
+   "path": "67 9V Battery Holder/67 9V battery holder.f3d",
+   "url": "https://raw.githubusercontent.com/adafruit/Adafruit_CAD_Parts/9f2a89f3d5c3491886d58cb7fe83385417563cf4/67%209V%20Battery%20Holder/67%209V%20battery%20holder.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "adafruit_2278_RGB_matrix_4mm",
+  "tier": "supported",
+  "file": "models/adafruit_2278_RGB_matrix_4mm.f3d",
+  "sha256": "47e76465360a37c105a024e10d227b0cfe7d4df2d06fdffcba9067ee8f72e1e6",
+  "bytes": 124423,
+  "decoded_features": {
+   "fillet": 1,
+   "sketch": 1,
+   "extrude": 3
+  },
+  "source": {
+   "repo": "adafruit/Adafruit_CAD_Parts",
+   "commit": "9f2a89f3d5c3491886d58cb7fe83385417563cf4",
+   "path": "2278 RGB Matrix 4mm/2278 RGB matrix 4mm.f3d",
+   "url": "https://raw.githubusercontent.com/adafruit/Adafruit_CAD_Parts/9f2a89f3d5c3491886d58cb7fe83385417563cf4/2278%20RGB%20Matrix%204mm/2278%20RGB%20matrix%204mm.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "administrativetrick_Parametric_A_s_v1",
+  "tier": "extended",
+  "file": "models/administrativetrick_Parametric_A_s_v1.f3d",
+  "sha256": "070c3d8f6f04d66982353fb14faff89abae10bf2cd4bb911db61885d571a2962",
+  "bytes": 53249,
+  "decoded_features": {
+   "sketch": 1,
+   "extrude": 1,
+   "pattern": 1
+  },
+  "source": {
+   "repo": "administrativetrick/Parametric_3D_Models_Alphabet",
+   "commit": "0532628e6f670ac1734faa6f997aadc37a642241",
+   "path": "fusion 360 files/Parametric A's v1.f3d",
+   "url": "https://raw.githubusercontent.com/administrativetrick/Parametric_3D_Models_Alphabet/0532628e6f670ac1734faa6f997aadc37a642241/fusion%20360%20files/Parametric%20A%27s%20v1.f3d",
+   "license": "apache-2.0"
+  }
+ },
+ {
+  "id": "adafruit_1739_Pizero_Large",
+  "tier": "extended",
+  "file": "models/adafruit_1739_Pizero_Large.f3d",
+  "sha256": "6fa0ea7ddd153cb185745f3ed8e92d83884b031be0b0d7a4d4d28e2d5c1d30e2",
+  "bytes": 77617,
+  "decoded_features": {
+   "fillet": 1,
+   "pattern": 1,
+   "sketch": 2,
+   "extrude": 4
+  },
+  "source": {
+   "repo": "adafruit/Adafruit_CAD_Parts",
+   "commit": "9f2a89f3d5c3491886d58cb7fe83385417563cf4",
+   "path": "1739 Pizero Large/1739 Pizero Large.f3d",
+   "url": "https://raw.githubusercontent.com/adafruit/Adafruit_CAD_Parts/9f2a89f3d5c3491886d58cb7fe83385417563cf4/1739%20Pizero%20Large/1739%20Pizero%20Large.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "ulikoehler_B10P_VH",
+  "tier": "extended",
+  "file": "models/ulikoehler_B10P_VH.f3d",
+  "sha256": "4701a4e4730ba111e85258016e64595c34f7ad7bf0347ab66286a969778d4e1f",
+  "bytes": 121739,
+  "decoded_features": {
+   "pattern": 1,
+   "chamfer": 1,
+   "sketch": 3,
+   "fillet": 1,
+   "extrude": 3
+  },
+  "source": {
+   "repo": "ulikoehler/JST-3D",
+   "commit": "7a64d02069d31d4dce04d1619f9950333e89fc13",
+   "path": "models/VH/B10P-VH/B10P-VH.f3d",
+   "url": "https://raw.githubusercontent.com/ulikoehler/JST-3D/7a64d02069d31d4dce04d1619f9950333e89fc13/models/VH/B10P-VH/B10P-VH.f3d",
+   "license": "cc0-1.0"
+  }
+ },
+ {
+  "id": "ulikoehler_B2PS_VH",
+  "tier": "extended",
+  "file": "models/ulikoehler_B2PS_VH.f3d",
+  "sha256": "302e13b42a81932be38d417959194b020922e55b02e7587828b50f51ac8facc3",
+  "bytes": 110600,
+  "decoded_features": {
+   "pattern": 1,
+   "datum_plane": 1,
+   "chamfer": 1,
+   "sketch": 2,
+   "sweep": 1,
+   "fillet": 1,
+   "extrude": 2
+  },
+  "source": {
+   "repo": "ulikoehler/JST-3D",
+   "commit": "7a64d02069d31d4dce04d1619f9950333e89fc13",
+   "path": "models/VH/B2PS-VH/B2PS-VH.f3d",
+   "url": "https://raw.githubusercontent.com/ulikoehler/JST-3D/7a64d02069d31d4dce04d1619f9950333e89fc13/models/VH/B2PS-VH/B2PS-VH.f3d",
+   "license": "cc0-1.0"
+  }
+ },
+ {
+  "id": "digitalsputnik_Encoder_Button_P_MPLA000000109_v2",
+  "tier": "extended",
+  "file": "models/digitalsputnik_Encoder_Button_P_MPLA000000109_v2.f3d",
+  "sha256": "ceaac6e314d0bc166c297348597075019d8a89b7721cd128a8e1cccbd7fb7398",
+  "bytes": 461124,
+  "decoded_features": {
+   "fillet": 3,
+   "sketch": 5,
+   "chamfer": 2,
+   "extrude": 7,
+   "pattern": 1
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/plastic/Encoder Button [(P)MPLA000000109] v2.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/plastic/Encoder%20Button%20%5B%28P%29MPLA000000109%5D%20v2.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "andyeske_Cake_v2",
+  "tier": "extended",
+  "file": "models/andyeske_Cake_v2.f3d",
+  "sha256": "f162aca4f07a96ae79bee01438c0b4982ee642fcaef3bf1fe34a334d9479e5f1",
+  "bytes": 249070,
+  "decoded_features": {
+   "fillet": 2,
+   "sketch": 13,
+   "extrude": 13,
+   "pattern": 3
+  },
+  "source": {
+   "repo": "andyeske/How-to-CAD-Fusion-360",
+   "commit": "482b7bae438c5b3b6a4ebd0363b0b13c17dbdd24",
+   "path": "Session Files/Session 1/Cake v2.f3d",
+   "url": "https://raw.githubusercontent.com/andyeske/How-to-CAD-Fusion-360/482b7bae438c5b3b6a4ebd0363b0b13c17dbdd24/Session%20Files/Session%201/Cake%20v2.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "nick0451_Parametric_Battery_Case_v2",
+  "tier": "extended",
+  "file": "models/nick0451_Parametric_Battery_Case_v2.f3d",
+  "sha256": "9df40eb62932502c9035888cbdb534046caf28bfe3d1390d72d49ef9b5dc1d58",
+  "bytes": 273245,
+  "decoded_features": {
+   "block": 2,
+   "fillet": 24,
+   "sketch": 16,
+   "extrude": 11,
+   "pattern": 6
+  },
+  "source": {
+   "repo": "nick0451/fusion-360-parametric-battery-case-generator",
+   "commit": "041eac5d58ebc1c86f5dcb83d7cdfb228d79fd79",
+   "path": "Parametric Battery Case v2.f3d",
+   "url": "https://raw.githubusercontent.com/nick0451/fusion-360-parametric-battery-case-generator/041eac5d58ebc1c86f5dcb83d7cdfb228d79fd79/Parametric%20Battery%20Case%20v2.f3d",
+   "license": "cc0-1.0"
+  }
+ },
+ {
+  "id": "PacktPublishing_Custom_Lattice",
+  "tier": "extended",
+  "file": "models/PacktPublishing_Custom_Lattice.f3d",
+  "sha256": "b212648f1cd945de3ec54ab9a3a4530e7a6bff818fc89c177273a63436ec7441",
+  "bytes": 60120,
+  "decoded_features": {
+   "block": 1,
+   "sketch": 1,
+   "combine": 1,
+   "extrude": 1,
+   "pattern": 2
+  },
+  "source": {
+   "repo": "PacktPublishing/3D-Printing-with-Fusion-360",
+   "commit": "4c80cda6d17d5d8a9a8dc8a01e14e605708d8447",
+   "path": "Chapter04/Custom Lattice.f3d",
+   "url": "https://raw.githubusercontent.com/PacktPublishing/3D-Printing-with-Fusion-360/4c80cda6d17d5d8a9a8dc8a01e14e605708d8447/Chapter04/Custom%20Lattice.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "digitalsputnik_Apollo_Yoke_Disc_P2_M_SPPS000000053_v1",
+  "tier": "extended",
+  "file": "models/digitalsputnik_Apollo_Yoke_Disc_P2_M_SPPS000000053_v1.f3d",
+  "sha256": "4984fd15c18bb93ab3acf4b03911fdd06b712fb2ec72b11e4ae7a010f014a2c7",
+  "bytes": 245616,
+  "decoded_features": {
+   "hole": 1,
+   "fillet": 1,
+   "sketch": 4,
+   "chamfer": 1,
+   "extrude": 3
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/metal/Apollo Yoke Disc P2 [(M)SPPS000000053] v1.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/metal/Apollo%20Yoke%20Disc%20P2%20%5B%28M%29SPPS000000053%5D%20v1.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "digitalsputnik_Apollo_Yoke_Lamp_Mount_Body_M_SPPS000000036_v2",
+  "tier": "extended",
+  "file": "models/digitalsputnik_Apollo_Yoke_Lamp_Mount_Body_M_SPPS000000036_v2.f3d",
+  "sha256": "f67132c3f54e6d361cf26d7995363a3ec9be485107c9e9ab72bee5df4c81bfc9",
+  "bytes": 262774,
+  "decoded_features": {
+   "hole": 1,
+   "fillet": 1,
+   "sketch": 3,
+   "chamfer": 4,
+   "extrude": 5
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/metal/Apollo Yoke Lamp Mount Body [(M)SPPS000000036] v2.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/metal/Apollo%20Yoke%20Lamp%20Mount%20Body%20%5B%28M%29SPPS000000036%5D%20v2.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "digitalsputnik_Apollo_Yoke_Int_Corner_P2_P_MPLA000000157_v1",
+  "tier": "extended",
+  "file": "models/digitalsputnik_Apollo_Yoke_Int_Corner_P2_P_MPLA000000157_v1.f3d",
+  "sha256": "e79dcb22662335e46dfe1c1df64dfa9841a7121d9f5f0628122b967b92e0e339",
+  "bytes": 474333,
+  "decoded_features": {
+   "hole": 2,
+   "fillet": 3,
+   "sketch": 12,
+   "chamfer": 7,
+   "extrude": 13
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/plastic/Apollo Yoke Int. Corner P2 [(P)MPLA000000157] v1.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/plastic/Apollo%20Yoke%20Int.%20Corner%20P2%20%5B%28P%29MPLA000000157%5D%20v1.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "PacktPublishing_Bracket_Finished",
+  "tier": "extended",
+  "file": "models/PacktPublishing_Bracket_Finished.f3d",
+  "sha256": "61b1e7bdc03e4965738b6cf4a2f5f6b7bbff156a270a5f33760e3546f7b016fd",
+  "bytes": 623787,
+  "decoded_features": {
+   "hole": 2,
+   "fillet": 1,
+   "pattern": 1,
+   "sketch": 5,
+   "extrude": 5,
+   "datum_plane": 1
+  },
+  "source": {
+   "repo": "PacktPublishing/3D-Printing-with-Fusion-360",
+   "commit": "4c80cda6d17d5d8a9a8dc8a01e14e605708d8447",
+   "path": "Chapter10/Bracket-Finished.f3d",
+   "url": "https://raw.githubusercontent.com/PacktPublishing/3D-Printing-with-Fusion-360/4c80cda6d17d5d8a9a8dc8a01e14e605708d8447/Chapter10/Bracket-Finished.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "gtgkartik_Dice",
+  "tier": "extended",
+  "file": "models/gtgkartik_Dice.f3d",
+  "sha256": "0965a1f83fee31c95b7d70a3e139d83a9152aa66482e046772b723d1a86aaeaf",
+  "bytes": 145887,
+  "decoded_features": {
+   "delete_face": 1,
+   "hole": 19,
+   "fillet": 1,
+   "sketch": 2,
+   "extrude": 1,
+   "pattern": 2
+  },
+  "source": {
+   "repo": "gtgkartik/3D-Printing-Fusion-360",
+   "commit": "28fd4001ea594a2ec038a6f8ddb08812aea545c7",
+   "path": "Fusion 360 Project Files/Dice.f3d",
+   "url": "https://raw.githubusercontent.com/gtgkartik/3D-Printing-Fusion-360/28fd4001ea594a2ec038a6f8ddb08812aea545c7/Fusion%20360%20Project%20Files/Dice.f3d",
+   "license": "apache-2.0"
+  }
+ },
+ {
+  "id": "ravengraves_NEMA17StepperMotor",
+  "tier": "extended",
+  "file": "models/ravengraves_NEMA17StepperMotor.f3d",
+  "sha256": "93c660658e1d3bd8da756cf50df513e424b84597c87f417c6d76f8ba7c70374d",
+  "bytes": 167314,
+  "decoded_features": {
+   "hole": 1,
+   "fillet": 3,
+   "sketch": 8,
+   "chamfer": 1,
+   "extrude": 11,
+   "pattern": 1
+  },
+  "source": {
+   "repo": "ravengraves/Fusion360NEMA17StepperMotor",
+   "commit": "56d341f807bb4738d8d5dedc9f7ad14e43405627",
+   "path": "NEMA17StepperMotor.f3d",
+   "url": "https://raw.githubusercontent.com/ravengraves/Fusion360NEMA17StepperMotor/56d341f807bb4738d8d5dedc9f7ad14e43405627/NEMA17StepperMotor.f3d",
+   "license": "unlicense"
+  }
+ },
+ {
+  "id": "WilkoV_03_Refinements",
+  "tier": "extended",
+  "file": "models/WilkoV_03_Refinements.f3d",
+  "sha256": "515ea3695168765bcf2e9a32e3558d0c160da0f44b6041907d3ce4a751380dde",
+  "bytes": 83212,
+  "decoded_features": {
+   "fillet": 1,
+   "sketch": 1,
+   "extrude": 3,
+   "revolve": 2
+  },
+  "source": {
+   "repo": "WilkoV/Fusion360_ExportIt",
+   "commit": "e7b12a2deeafe181a53a5e6dfa9361942cd240ed",
+   "path": "tests/cases/03-Refinements.f3d",
+   "url": "https://raw.githubusercontent.com/WilkoV/Fusion360_ExportIt/e7b12a2deeafe181a53a5e6dfa9361942cd240ed/tests/cases/03-Refinements.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "ravengraves_TimingPulleyBase",
+  "tier": "extended",
+  "file": "models/ravengraves_TimingPulleyBase.f3d",
+  "sha256": "02f78d15ed30cde8d859a49567f306f6ac22a3d1130da1b05b08ff8f3c0623bf",
+  "bytes": 863086,
+  "decoded_features": {
+   "sketch": 3,
+   "extrude": 2,
+   "revolve": 1,
+   "pattern": 1
+  },
+  "source": {
+   "repo": "ravengraves/Fusion360GTTimingPulley",
+   "commit": "6bf077836a1a4f4abe496199d33e8def933e4cac",
+   "path": "TimingPulleyBase.f3d",
+   "url": "https://raw.githubusercontent.com/ravengraves/Fusion360GTTimingPulley/6bf077836a1a4f4abe496199d33e8def933e4cac/TimingPulleyBase.f3d",
+   "license": "unlicense"
+  }
+ },
+ {
+  "id": "busraakgun24_k_recik",
+  "tier": "extended",
+  "file": "models/busraakgun24_k_recik.f3d",
+  "sha256": "4d6d0a5a1fafdf0c0547c33bc38bce3d6f6d07e0dfdc9465440ccf73d641f33c",
+  "bytes": 102656,
+  "decoded_features": {
+   "hole": 1,
+   "sketch": 2,
+   "revolve": 1,
+   "pattern": 1,
+   "datum_plane": 1
+  },
+  "source": {
+   "repo": "busraakgun24/Fusion360-Projects",
+   "commit": "867caaed0dab0f2b897b17bf71fb80f278b0dd07",
+   "path": "kürecik.f3d",
+   "url": "https://raw.githubusercontent.com/busraakgun24/Fusion360-Projects/867caaed0dab0f2b897b17bf71fb80f278b0dd07/k%C3%BCrecik.f3d",
+   "license": "cc0-1.0"
+  }
+ },
+ {
+  "id": "kantoku_code_n_5_ryoji_jp",
+  "tier": "extended",
+  "file": "models/kantoku_code_n_5_ryoji_jp.f3d",
+  "sha256": "75ec2688d22f7824bd4424859bf175ab2cd16b29279d15e9f09c6c0f7a32f153",
+  "bytes": 112020,
+  "decoded_features": {
+   "sketch": 2,
+   "datum_plane": 2,
+   "base_feature": 1,
+   "revolve": 4,
+   "pattern": 1
+  },
+  "source": {
+   "repo": "kantoku-code/Fusion360-CSSPP",
+   "commit": "ee97f8069014ba5b7cafed8d187ef1dc43b37c45",
+   "path": "answer/n=5_ryoji.jp.f3d",
+   "url": "https://raw.githubusercontent.com/kantoku-code/Fusion360-CSSPP/ee97f8069014ba5b7cafed8d187ef1dc43b37c45/answer/n%3D5_ryoji.jp.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "PacktPublishing_4_2_S_Hook_Sweep_Final",
+  "tier": "extended",
+  "file": "models/PacktPublishing_4_2_S_Hook_Sweep_Final.f3d",
+  "sha256": "9d174c380993d98f73d09eda35e96dc46182e9784b8e688c9af0d8fb467ae8e5",
+  "bytes": 74015,
+  "decoded_features": {
+   "sweep": 2,
+   "sketch": 3
+  },
+  "source": {
+   "repo": "PacktPublishing/Improving-CAD-Designs-with-Autodesk-Fusion-360",
+   "commit": "04ccbf639ed71272dd324d050315f66b1518436b",
+   "path": "Ch04/4.2_S-Hook_Sweep_Final.f3d",
+   "url": "https://raw.githubusercontent.com/PacktPublishing/Improving-CAD-Designs-with-Autodesk-Fusion-360/04ccbf639ed71272dd324d050315f66b1518436b/Ch04/4.2_S-Hook_Sweep_Final.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "busraakgun24_suborusu",
+  "tier": "extended",
+  "file": "models/busraakgun24_suborusu.f3d",
+  "sha256": "ac8349e18c61faf33f7b8e630a39e6f12c344bec660998ee52658f102ed252e4",
+  "bytes": 240059,
+  "decoded_features": {
+   "sweep": 1,
+   "sketch": 3,
+   "chamfer": 1,
+   "extrude": 2
+  },
+  "source": {
+   "repo": "busraakgun24/Fusion360-Projects",
+   "commit": "867caaed0dab0f2b897b17bf71fb80f278b0dd07",
+   "path": "suborusu.f3d",
+   "url": "https://raw.githubusercontent.com/busraakgun24/Fusion360-Projects/867caaed0dab0f2b897b17bf71fb80f278b0dd07/suborusu.f3d",
+   "license": "cc0-1.0"
+  }
+ },
+ {
+  "id": "homebrew_pinball_Metal_Post_1_Inch_02_4434",
+  "tier": "extended",
+  "file": "models/homebrew_pinball_Metal_Post_1_Inch_02_4434.f3d",
+  "sha256": "87ee4225b3f9d00a5cef68cecb0ecf65134bb51ce5c864e136a95319b6c4c6c7",
+  "bytes": 81730,
+  "decoded_features": {
+   "sweep": 1,
+   "fillet": 2,
+   "sketch": 3,
+   "extrude": 1
+  },
+  "source": {
+   "repo": "homebrew-pinball/fusion360-models",
+   "commit": "5a0f50bd0e74fec1416ede9cc8fa8d175e1f403c",
+   "path": "posts/Metal Post 1 Inch 02-4434.f3d",
+   "url": "https://raw.githubusercontent.com/homebrew-pinball/fusion360-models/5a0f50bd0e74fec1416ede9cc8fa8d175e1f403c/posts/Metal%20Post%201%20Inch%2002-4434.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "homebrew_pinball_Seven_LED_Insert",
+  "tier": "extended",
+  "file": "models/homebrew_pinball_Seven_LED_Insert.f3d",
+  "sha256": "edc14abb894f8941869082776625ca3f549759211718f9acbc5352139b952a00",
+  "bytes": 178768,
+  "decoded_features": {
+   "sweep": 1,
+   "sketch": 5,
+   "extrude": 9
+  },
+  "source": {
+   "repo": "homebrew-pinball/fusion360-models",
+   "commit": "5a0f50bd0e74fec1416ede9cc8fa8d175e1f403c",
+   "path": "lights/Seven LED Insert.f3d",
+   "url": "https://raw.githubusercontent.com/homebrew-pinball/fusion360-models/5a0f50bd0e74fec1416ede9cc8fa8d175e1f403c/lights/Seven%20LED%20Insert.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "rsheldiii_Doom_Keycap_Prototype_Enclosure_v22",
+  "tier": "extended",
+  "file": "models/rsheldiii_Doom_Keycap_Prototype_Enclosure_v22.f3d",
+  "sha256": "24181281414a9681fd9309fbc8cd52ebe7c96cb5eb4273e59c796298caad6a9e",
+  "bytes": 438016,
+  "decoded_features": {
+   "loft": 3,
+   "fillet": 1,
+   "sketch": 8,
+   "extrude": 9,
+   "datum_plane": 6
+  },
+  "source": {
+   "repo": "rsheldiii/doom-keycap-hardware",
+   "commit": "95f0ed07d233525fd8bb7f478ff4aa3d22090668",
+   "path": "Doom Keycap Case/Doom Keycap Prototype Enclosure v22.f3d",
+   "url": "https://raw.githubusercontent.com/rsheldiii/doom-keycap-hardware/95f0ed07d233525fd8bb7f478ff4aa3d22090668/Doom%20Keycap%20Case/Doom%20Keycap%20Prototype%20Enclosure%20v22.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "PacktPublishing_Bicycle_Handlebars_final",
+  "tier": "extended",
+  "file": "models/PacktPublishing_Bicycle_Handlebars_final.f3d",
+  "sha256": "d00b4a3bb41ab49c4705e911fb151a519dabd7142071f9c8f5f2f427a8da6586",
+  "bytes": 103894,
+  "decoded_features": {
+   "primitive": 2,
+   "loft": 4,
+   "shell": 1,
+   "pattern": 2,
+   "sketch": 10,
+   "unresolved": 1,
+   "datum_plane": 5
+  },
+  "source": {
+   "repo": "PacktPublishing/Improving-CAD-Designs-with-Autodesk-Fusion-360",
+   "commit": "04ccbf639ed71272dd324d050315f66b1518436b",
+   "path": "Ch07/Bicycle Handlebars_final.f3d",
+   "url": "https://raw.githubusercontent.com/PacktPublishing/Improving-CAD-Designs-with-Autodesk-Fusion-360/04ccbf639ed71272dd324d050315f66b1518436b/Ch07/Bicycle%20Handlebars_final.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "onlinelei_appleScreen_v9",
+  "tier": "extended",
+  "file": "models/onlinelei_appleScreen_v9.f3d",
+  "sha256": "d0f17fa7ac282239a8203fc7c236d4d6a754f39d26f86382bfbcac233bce005e",
+  "bytes": 81163,
+  "decoded_features": {
+   "fillet": 2,
+   "shell": 1,
+   "extrude": 3,
+   "sketch": 2
+  },
+  "source": {
+   "repo": "onlinelei/Autodesk-Fusion-360",
+   "commit": "a38000ecea3c303c01d03522f6fc7002a58bf90a",
+   "path": "appleScreen/appleScreen v9.f3d",
+   "url": "https://raw.githubusercontent.com/onlinelei/Autodesk-Fusion-360/a38000ecea3c303c01d03522f6fc7002a58bf90a/appleScreen/appleScreen%20v9.f3d",
+   "license": "apache-2.0"
+  }
+ },
+ {
+  "id": "andyeske_Lego_20x20_plate_v8",
+  "tier": "extended",
+  "file": "models/andyeske_Lego_20x20_plate_v8.f3d",
+  "sha256": "0a20e79f79116658aea524e4bbc82718b47558ed7736ad3ee6f2f63c2d0d0416",
+  "bytes": 581813,
+  "decoded_features": {
+   "shell": 1,
+   "fillet": 2,
+   "sketch": 6,
+   "extrude": 6,
+   "pattern": 1
+  },
+  "source": {
+   "repo": "andyeske/How-to-CAD-Fusion-360",
+   "commit": "482b7bae438c5b3b6a4ebd0363b0b13c17dbdd24",
+   "path": "Session Files/Session 5/Lego 20x20 plate v8.f3d",
+   "url": "https://raw.githubusercontent.com/andyeske/How-to-CAD-Fusion-360/482b7bae438c5b3b6a4ebd0363b0b13c17dbdd24/Session%20Files/Session%205/Lego%2020x20%20plate%20v8.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "andyeske_Lego_2x4_brick_v1",
+  "tier": "extended",
+  "file": "models/andyeske_Lego_2x4_brick_v1.f3d",
+  "sha256": "16b74c8991fe2f99d624daeeefbc7e2d53f1025ac4fa44099da8520a375de27a",
+  "bytes": 939798,
+  "decoded_features": {
+   "shell": 1,
+   "fillet": 2,
+   "pattern": 4,
+   "sketch": 6,
+   "extrude": 6
+  },
+  "source": {
+   "repo": "andyeske/How-to-CAD-Fusion-360",
+   "commit": "482b7bae438c5b3b6a4ebd0363b0b13c17dbdd24",
+   "path": "Session Files/Session 5/Lego 2x4 brick v1.f3d",
+   "url": "https://raw.githubusercontent.com/andyeske/How-to-CAD-Fusion-360/482b7bae438c5b3b6a4ebd0363b0b13c17dbdd24/Session%20Files/Session%205/Lego%202x4%20brick%20v1.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "digitalsputnik_16mm_Claw_P_MPLA000000141_v1",
+  "tier": "extended",
+  "file": "models/digitalsputnik_16mm_Claw_P_MPLA000000141_v1.f3d",
+  "sha256": "468a30617d8247d7b2b760014121b9ff11d25cae659fd2106b2d2216f81eb3c6",
+  "bytes": 171873,
+  "decoded_features": {
+   "draft": 1,
+   "sketch": 4,
+   "chamfer": 3,
+   "extrude": 4
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/plastic/16mm Claw [(P)MPLA000000141] v1.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/plastic/16mm%20Claw%20%5B%28P%29MPLA000000141%5D%20v1.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "digitalsputnik_T_bel_T2_v3",
+  "tier": "extended",
+  "file": "models/digitalsputnik_T_bel_T2_v3.f3d",
+  "sha256": "77837f52c4cb93d8ab5a386558c8fb37d0581e95133800b9990c8316d9fa0f0c",
+  "bytes": 346196,
+  "decoded_features": {
+   "hole": 1,
+   "draft": 2,
+   "sketch": 6,
+   "chamfer": 4,
+   "extrude": 11,
+   "unresolved": 1,
+   "pattern": 1
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/plastic/Tüübel-T2 v3.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/plastic/T%C3%BC%C3%BCbel-T2%20v3.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "PacktPublishing_Hook",
+  "tier": "extended",
+  "file": "models/PacktPublishing_Hook.f3d",
+  "sha256": "ef4e8fda9a16fa3501e64af2f9e31eb9d736ddaafb470aa3bade7a14c99b2656",
+  "bytes": 195634,
+  "decoded_features": {
+   "fillet": 3,
+   "sketch": 1,
+   "extrude": 3,
+   "thicken": 1
+  },
+  "source": {
+   "repo": "PacktPublishing/3D-Printing-with-Fusion-360",
+   "commit": "4c80cda6d17d5d8a9a8dc8a01e14e605708d8447",
+   "path": "Chapter04/Hook.f3d",
+   "url": "https://raw.githubusercontent.com/PacktPublishing/3D-Printing-with-Fusion-360/4c80cda6d17d5d8a9a8dc8a01e14e605708d8447/Chapter04/Hook.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "PacktPublishing_2BC",
+  "tier": "extended",
+  "file": "models/PacktPublishing_2BC.f3d",
+  "sha256": "3fb6a83ed65c5f0b6cfe0cccd98cccd616ab86c4c66573b3d814417b7588c132",
+  "bytes": 463784,
+  "decoded_features": {
+   "pattern": 1,
+   "sketch": 4,
+   "combine": 1,
+   "extrude": 4
+  },
+  "source": {
+   "repo": "PacktPublishing/3D-Printing-with-Fusion-360",
+   "commit": "4c80cda6d17d5d8a9a8dc8a01e14e605708d8447",
+   "path": "Chapter09/2BC.f3d",
+   "url": "https://raw.githubusercontent.com/PacktPublishing/3D-Printing-with-Fusion-360/4c80cda6d17d5d8a9a8dc8a01e14e605708d8447/Chapter09/2BC.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "PacktPublishing_Bracket_Solid",
+  "tier": "extended",
+  "file": "models/PacktPublishing_Bracket_Solid.f3d",
+  "sha256": "857bd5b77343c86bf9b5ecb3969396bee8f9a79d6af2cc6ecfdec1c36d0730a3",
+  "bytes": 110493,
+  "decoded_features": {
+   "native": 1,
+   "fillet": 1,
+   "sketch": 1,
+   "chamfer": 1,
+   "extrude": 1
+  },
+  "source": {
+   "repo": "PacktPublishing/3D-Printing-with-Fusion-360",
+   "commit": "4c80cda6d17d5d8a9a8dc8a01e14e605708d8447",
+   "path": "Chapter05/Bracket-Solid.f3d",
+   "url": "https://raw.githubusercontent.com/PacktPublishing/3D-Printing-with-Fusion-360/4c80cda6d17d5d8a9a8dc8a01e14e605708d8447/Chapter05/Bracket-Solid.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "PacktPublishing_Clip_Fixed",
+  "tier": "extended",
+  "file": "models/PacktPublishing_Clip_Fixed.f3d",
+  "sha256": "63f1c712b40af838b4a85ab84177c6409056ad5ebf9ce301247f289f697d0879",
+  "bytes": 410676,
+  "decoded_features": {
+   "native": 5
+  },
+  "source": {
+   "repo": "PacktPublishing/3D-Printing-with-Fusion-360",
+   "commit": "4c80cda6d17d5d8a9a8dc8a01e14e605708d8447",
+   "path": "Chapter01/Clip_Fixed.f3d",
+   "url": "https://raw.githubusercontent.com/PacktPublishing/3D-Printing-with-Fusion-360/4c80cda6d17d5d8a9a8dc8a01e14e605708d8447/Chapter01/Clip_Fixed.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "PacktPublishing_Example_B",
+  "tier": "extended",
+  "file": "models/PacktPublishing_Example_B.f3d",
+  "sha256": "a265d560eadca8951a6620d13cf84ffc2714bf2b85a344bceae0d47b2b7d4b6d",
+  "bytes": 445033,
+  "decoded_features": {
+   "native": 6,
+   "datum_plane": 1
+  },
+  "source": {
+   "repo": "PacktPublishing/3D-Printing-with-Fusion-360",
+   "commit": "4c80cda6d17d5d8a9a8dc8a01e14e605708d8447",
+   "path": "Chapter06/Example B.f3d",
+   "url": "https://raw.githubusercontent.com/PacktPublishing/3D-Printing-with-Fusion-360/4c80cda6d17d5d8a9a8dc8a01e14e605708d8447/Chapter06/Example%20B.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "homebrew_pinball_Gate_Bracket_535_5742_00",
+  "tier": "extended",
+  "file": "models/homebrew_pinball_Gate_Bracket_535_5742_00.f3d",
+  "sha256": "64d2d9f4d7a0268ee6e3728b18913cce75c64b91e309a944e3bb9594590a10a0",
+  "bytes": 140158,
+  "decoded_features": {
+   "native": 6,
+   "sketch": 8,
+   "extrude": 5
+  },
+  "source": {
+   "repo": "homebrew-pinball/fusion360-models",
+   "commit": "5a0f50bd0e74fec1416ede9cc8fa8d175e1f403c",
+   "path": "gates/Gate Bracket 535-5742-00.f3d",
+   "url": "https://raw.githubusercontent.com/homebrew-pinball/fusion360-models/5a0f50bd0e74fec1416ede9cc8fa8d175e1f403c/gates/Gate%20Bracket%20535-5742-00.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "digitalsputnik_Apollo_Yoke_Lock_B_Side_P_MPLA000000177_v2",
+  "tier": "extended",
+  "file": "models/digitalsputnik_Apollo_Yoke_Lock_B_Side_P_MPLA000000177_v2.f3d",
+  "sha256": "a7b8d29e4e51b9861a366620e3285fdd3b41a2c7e4e9c9c3cb723b5e510847e0",
+  "bytes": 235112,
+  "decoded_features": {
+   "fillet": 1,
+   "sketch": 6,
+   "chamfer": 4,
+   "extrude": 3,
+   "native": 5
+  },
+  "source": {
+   "repo": "digitalsputnik/ApolloHardware",
+   "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
+   "path": "hw/custom/plastic/Apollo Yoke Lock B Side [(P)MPLA000000177] v2.f3d",
+   "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/plastic/Apollo%20Yoke%20Lock%20B%20Side%20%5B%28P%29MPLA000000177%5D%20v2.f3d",
+   "license": "bsd-3-clause"
+  }
+ },
+ {
+  "id": "AdamLaskoi_SG90_Micro_Servo_9g_v1",
+  "tier": "extended",
+  "file": "models/AdamLaskoi_SG90_Micro_Servo_9g_v1.f3d",
+  "sha256": "aec737f67adef60fff388748bcab7b1cff688d6d61e16601771909a54c748191",
+  "bytes": 120860,
+  "decoded_features": {
+   "fillet": 1,
+   "sketch": 8,
+   "native": 1,
+   "extrude": 9
+  },
+  "source": {
+   "repo": "AdamLaskoi/my_3Dmodels",
+   "commit": "2984c0ff7a6cd6549c9471aae0a20cc2c6f324a0",
+   "path": "SG90_Micro Servo 9g v1.f3d",
+   "url": "https://raw.githubusercontent.com/AdamLaskoi/my_3Dmodels/2984c0ff7a6cd6549c9471aae0a20cc2c6f324a0/SG90_Micro%20Servo%209g%20v1.f3d",
+   "license": "cc0-1.0"
+  }
+ },
+ {
+  "id": "PacktPublishing_Connector_Bracket",
+  "tier": "extended",
+  "file": "models/PacktPublishing_Connector_Bracket.f3d",
+  "sha256": "24c794770aa175a8826f0599e5656461294323fca15e30d8ea96045b2ddc6e32",
+  "bytes": 231659,
+  "decoded_features": {
+   "native": 1,
+   "move_body": 1,
+   "fillet": 5,
+   "sketch": 5,
+   "extrude": 5,
+   "datum_plane": 1
+  },
+  "source": {
+   "repo": "PacktPublishing/3D-Printing-with-Fusion-360",
+   "commit": "4c80cda6d17d5d8a9a8dc8a01e14e605708d8447",
+   "path": "Chapter08/Connector Bracket.f3d",
+   "url": "https://raw.githubusercontent.com/PacktPublishing/3D-Printing-with-Fusion-360/4c80cda6d17d5d8a9a8dc8a01e14e605708d8447/Chapter08/Connector%20Bracket.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "intuibase_Co2SensorEnclosure",
+  "tier": "extended",
+  "file": "models/intuibase_Co2SensorEnclosure.f3d",
+  "sha256": "0f9b32ac0e24413fa3b8cca9b68f0baca41714b4d19daea739d5401cbaf0edc1",
+  "bytes": 179702,
+  "decoded_features": {
+   "base_feature": 1,
+   "move_body": 2,
+   "native": 2,
+   "fillet": 3,
+   "sketch": 2,
+   "chamfer": 2,
+   "extrude": 8
+  },
+  "source": {
+   "repo": "intuibase/esp32_co2_monitor",
+   "commit": "0db87bfa69f07b834a7db9a201e80b22cb5c5fc1",
+   "path": "enclosure/f3d/Co2SensorEnclosure.f3d",
+   "url": "https://raw.githubusercontent.com/intuibase/esp32_co2_monitor/0db87bfa69f07b834a7db9a201e80b22cb5c5fc1/enclosure/f3d/Co2SensorEnclosure.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "runtimerobotics_rosbot",
+  "tier": "extended",
+  "file": "models/runtimerobotics_rosbot.f3d",
+  "sha256": "a5a40eb2e5b89568fa141e31b436e696d044bc3800b6f4d8f889c94751d9b456",
+  "bytes": 144443,
+  "decoded_features": {
+   "base_feature": 4,
+   "move_body": 1,
+   "fillet": 2,
+   "sketch": 9,
+   "extrude": 7,
+   "native": 3
+  },
+  "source": {
+   "repo": "runtimerobotics/fusion360-urdf-ros2",
+   "commit": "e317c5e00e1044996d19d5e4ff97431ed8816245",
+   "path": "demos/rosbot/rosbot.f3d",
+   "url": "https://raw.githubusercontent.com/runtimerobotics/fusion360-urdf-ros2/e317c5e00e1044996d19d5e4ff97431ed8816245/demos/rosbot/rosbot.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "adafruit_727_3xAAA_JST_Battery_Holder",
+  "tier": "extended",
+  "file": "models/adafruit_727_3xAAA_JST_Battery_Holder.f3d",
+  "sha256": "ff30a025bcd600304b43396274d5e011019f7fc068cc0314473f5751aa5db34c",
+  "bytes": 229486,
+  "decoded_features": {
+   "split_body": 1,
+   "fillet": 1,
+   "sketch": 8,
+   "extrude": 7,
+   "native": 1,
+   "datum_plane": 1
+  },
+  "source": {
+   "repo": "adafruit/Adafruit_CAD_Parts",
+   "commit": "9f2a89f3d5c3491886d58cb7fe83385417563cf4",
+   "path": "727 3x AAA Battery Holder/727 3xAAA JST Battery Holder.f3d",
+   "url": "https://raw.githubusercontent.com/adafruit/Adafruit_CAD_Parts/9f2a89f3d5c3491886d58cb7fe83385417563cf4/727%203x%20AAA%20Battery%20Holder/727%203xAAA%20JST%20Battery%20Holder.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "busraakgun24_kol",
+  "tier": "extended",
+  "file": "models/busraakgun24_kol.f3d",
+  "sha256": "320e889d60bbfa7bfc02fff9b31d414a40d24c7cd17adb85b21c9f9615256935",
+  "bytes": 138606,
+  "decoded_features": {
+   "full_round_fillet": 1,
+   "fillet": 1,
+   "sketch": 5,
+   "extrude": 6,
+   "native": 1
+  },
+  "source": {
+   "repo": "busraakgun24/Fusion360-Projects",
+   "commit": "867caaed0dab0f2b897b17bf71fb80f278b0dd07",
+   "path": "kol.f3d",
+   "url": "https://raw.githubusercontent.com/busraakgun24/Fusion360-Projects/867caaed0dab0f2b897b17bf71fb80f278b0dd07/kol.f3d",
+   "license": "cc0-1.0"
+  }
+ },
+ {
+  "id": "Saurabh_Mudgal_Crusher_Shaft",
+  "tier": "extended",
+  "file": "models/Saurabh_Mudgal_Crusher_Shaft.f3d",
+  "sha256": "c93feffda32b2606902962d247e9a34c5d7d29e01c66f09ea93b12c6ad5effe2",
+  "bytes": 240970,
+  "decoded_features": {
+   "base_feature": 2,
+   "sketch": 6,
+   "extrude": 8
+  },
+  "source": {
+   "repo": "Saurabh-Mudgal/Fusion360_SugarCane-Machine",
+   "commit": "a8f51a9ae8e92ea221ba375975d31e5c60063431",
+   "path": "Crusher Shaft .f3d",
+   "url": "https://raw.githubusercontent.com/Saurabh-Mudgal/Fusion360_SugarCane-Machine/a8f51a9ae8e92ea221ba375975d31e5c60063431/Crusher%20Shaft%20.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "PacktPublishing_Ch12_tealight_ghost_final",
+  "tier": "extended",
+  "file": "models/PacktPublishing_Ch12_tealight_ghost_final.f3d",
+  "sha256": "3926e305ba49287ed35c7c93a6c156d2c7749ee13ca17a9a4c645e1d18b1cab7",
+  "bytes": 631765,
+  "decoded_features": {
+   "trim_surface": 10,
+   "filled_surface": 2,
+   "knit_surface": 2,
+   "reverse_shape": 1,
+   "fillet": 1,
+   "pattern": 1,
+   "sketch": 5,
+   "spatial_sketch": 1,
+   "extrude": 4,
+   "revolve": 2,
+   "thicken": 1
+  },
+  "source": {
+   "repo": "PacktPublishing/Improving-CAD-Designs-with-Autodesk-Fusion-360",
+   "commit": "04ccbf639ed71272dd324d050315f66b1518436b",
+   "path": "Ch12/Ch12_tealight ghost_final.f3d",
+   "url": "https://raw.githubusercontent.com/PacktPublishing/Improving-CAD-Designs-with-Autodesk-Fusion-360/04ccbf639ed71272dd324d050315f66b1518436b/Ch12/Ch12_tealight%20ghost_final.f3d",
+   "license": "mit"
+  }
+ },
+ {
+  "id": "adafruit_2831_Photo_Transistor_Light_Sensor",
+  "tier": "extended",
+  "file": "models/adafruit_2831_Photo_Transistor_Light_Sensor.f3d",
+  "sha256": "70f7ff5055efb349e3a0824b4111df5d79c310e5537cfe911052104d74634ac5",
+  "bytes": 102458,
+  "decoded_features": {
+   "sketch": 1,
+   "extrude": 4,
+   "assembly_joint": 1
+  },
+  "source": {
+   "repo": "adafruit/Adafruit_CAD_Parts",
+   "commit": "9f2a89f3d5c3491886d58cb7fe83385417563cf4",
+   "path": "2831 Photo Transistor Light Sensor/2831 Photo Transistor Light Sensor.f3d",
+   "url": "https://raw.githubusercontent.com/adafruit/Adafruit_CAD_Parts/9f2a89f3d5c3491886d58cb7fe83385417563cf4/2831%20Photo%20Transistor%20Light%20Sensor/2831%20Photo%20Transistor%20Light%20Sensor.f3d",
+   "license": "mit"
+  }
+ }
+]
