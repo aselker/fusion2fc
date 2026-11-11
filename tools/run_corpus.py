@@ -11,6 +11,7 @@ timeline step (tools/corpus_compare.py: body count, volumes, and two-sided mesh 
 against Fusion's own tessellation). Prints one line per model and a summary, and the
 models that improved or regressed against tests/corpus/baseline.json.
 """
+import hashlib
 import json
 import os
 import shutil
@@ -27,13 +28,24 @@ CORPUS = ROOT / "tests" / "corpus"
 DEFAULT_CADMPEG = ROOT / "cadmpeg" / "target" / "release" / "cadmpeg"
 
 
+def dump_stamp(cadmpeg, model):
+    st = cadmpeg.stat()
+    return "%s %d %d %s" % (cadmpeg.resolve(), st.st_size, st.st_mtime_ns,
+                            hashlib.sha256(model.read_bytes()).hexdigest())
+
+
 def run_model(entry, cadmpeg, out):
+    """Decode, rebuild, and compare one model. The CADIR dump is reused while the cadmpeg
+    binary and the model are unchanged (work/dump.stamp)."""
     mid = entry["id"]
     truth = CORPUS / "truth" / mid / "steps.json"
     work = out / mid
+    keep = ("model.cadir.json", "dump.log", "dump.stamp")
     if work.exists():
-        shutil.rmtree(work)
-    work.mkdir(parents=True)
+        for f in work.iterdir():
+            if f.name not in keep:
+                shutil.rmtree(f) if f.is_dir() else f.unlink()
+    work.mkdir(parents=True, exist_ok=True)
     res = {"id": mid, "tier": entry["tier"]}
     if not truth.exists():
         res["status"] = "no truth"
@@ -42,14 +54,19 @@ def run_model(entry, cadmpeg, out):
     if "steps" not in t:
         res["status"] = "no timeline" if t.get("designType") == 0 else "truth error"
         return res
-    cadir = work / "model.cadir.json"
-    p = subprocess.run([str(cadmpeg), "dump", str(CORPUS / entry["file"]), "-o", str(cadir), "--force"],
-                       capture_output=True, text=True, timeout=900)
-    (work / "dump.log").write_text(p.stdout + p.stderr)
-    if p.returncode != 0 or not cadir.exists():
-        res["status"] = "decode failed (exit %d)" % p.returncode
-        res["summary"] = {"steps": len(t["steps"]), "match": 0}
-        return res
+    cadir, stamp_file = work / "model.cadir.json", work / "dump.stamp"
+    stamp = dump_stamp(cadmpeg, CORPUS / entry["file"])
+    if not (cadir.exists() and stamp_file.exists() and stamp_file.read_text() == stamp):
+        stamp_file.unlink(missing_ok=True)
+        p = subprocess.run([str(cadmpeg), "dump", str(CORPUS / entry["file"]), "-o", str(cadir), "--force"],
+                           capture_output=True, text=True, timeout=900)
+        (work / "dump.log").write_text(p.stdout + p.stderr)
+        if p.returncode != 0 or not cadir.exists():
+            cadir.unlink(missing_ok=True)
+            res["status"] = "decode failed (exit %d)" % p.returncode
+            res["summary"] = {"steps": len(t["steps"]), "match": 0}
+            return res
+        stamp_file.write_text(stamp)
     s, topo = slim(json.load(open(cadir)))
     json.dump(s, open(work / "slim.json", "w"))
     json.dump(topo, open(work / "topo.json", "w"))
