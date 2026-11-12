@@ -60,6 +60,11 @@ def display_name(feat):
 
 
 class Rebuilder:
+    # Feature kind -> builder method (features beyond sketches, extrudes, edge treatments).
+    FEATURE_BUILDERS = {"hole": "build_hole", "pattern": "build_pattern", "revolve": "build_revolve",
+                        "move_body": "build_move_body", "combine": "build_combine",
+                        "sweep": "build_sweep"}
+
     def __init__(self, slim, topo, wanted):
         self.slim = slim
         self.doc = App.newDocument("fusion2fc")
@@ -677,9 +682,6 @@ class Rebuilder:
         return {}
 
     # ----- holes, patterns, revolves, moves, combines ----------------------
-    BUILDERS = {"hole": "build_hole", "pattern": "build_pattern", "revolve": "build_revolve",
-                "move_body": "build_move_body", "combine": "build_combine"}
-
     @staticmethod
     def axis_placement(origin, direction):
         """Placement whose local +Z axis runs along `direction` from `origin`."""
@@ -999,6 +1001,323 @@ class Rebuilder:
         if not d.get("keep_tools"):
             self.solids = [s for s in self.solids if s not in tools]
         return {"op": op, "tools": len(tools)}
+    # ----- sweep, loft (profile loops and paths) -------------------------
+    def sketch_edge(self, sk, name):
+        """The sketch shape's edge for a mapped name ';g<id>;SKT.EdgeN' (world coordinates)."""
+        return sk.Shape.getElement(name.rsplit(".", 1)[-1])
+
+    def profile_loops(self, prof):
+        """(sketch object, [(outer loop edge names, [hole loop edge names])]) of a resolved
+        sketch profile. Nesting of `sketch_profiles` loops is found geometrically, as the
+        extrude's face maker does."""
+        kind, val = prof.get("kind"), prof.get("value")
+        sid = val.get("sketch") if isinstance(val, dict) else None
+        if sid not in self.sketch_defs or kind not in ("sketch_profiles", "sketch_regions"):
+            raise NotImplementedError("profile kind " + str(kind))
+        sk, geo_of, edge_of, normal = self.build_sketch(sid, self.sketch_label(sid))
+        loops = self.sketch_defs[sid].get("profiles") or []
+
+        def names(i):
+            out = []
+            for ref in loops[i]:
+                n = edge_of.get(ref["entity"])
+                if n is None:
+                    raise ValueError("profile references a curve with no sketch edge")
+                if n not in out:
+                    out.append(n)
+            return out
+
+        if kind == "sketch_regions":
+            groups = []
+            for r in val["regions"]:
+                if r.get("region") != "loops":
+                    raise NotImplementedError("region form %s" % r.get("region"))
+                groups.append((names(r["outer"]), [names(h) for h in r.get("holes", [])]))
+            return sk, groups
+        chosen = [names(i) for i in val["profiles"]]
+        faces = [Part.Face(Part.Wire(Part.__sortEdges__([self.sketch_edge(sk, n) for n in loop])))
+                 for loop in chosen]
+        depth = [sum(1 for j, g in enumerate(faces) if j != i and g.Area > f.Area
+                     and g.isInside(f.Wires[0].Vertexes[0].Point, 1e-7, True)) for i, f in enumerate(faces)]
+        groups = []
+        for i in range(len(chosen)):
+            if depth[i] % 2 == 0:
+                holes = [chosen[j] for j in range(len(chosen)) if depth[j] == depth[i] + 1
+                         and faces[i].isInside(faces[j].Wires[0].Vertexes[0].Point, 1e-7, True)]
+                groups.append((chosen[i], holes))
+        return sk, groups
+
+    def loop_object(self, sk, names, label):
+        """A binder holding one closed sketch loop as a wire."""
+        b = self.doc.addObject("PartDesign::SubShapeBinder", "Loop")
+        b.Support = [(sk, tuple(names))]
+        b.MakeFace = False
+        b.Label = label
+        b.Visibility = False
+        return b
+
+    def path_spine(self, path):
+        """(owner object, element names, edges) of a sweep path: sketch curves or
+        historical body edges."""
+        k, v = path.get("kind"), path.get("value")
+        if k == "sketch_curves":
+            sid = v["sketch"]
+            if sid not in self.sketch_defs:
+                raise NotImplementedError("path in a non-planar sketch")
+            sk, geo_of, edge_of, normal = self.build_sketch(sid, self.sketch_label(sid))
+            names = []
+            for eid in v["curves"]:
+                n = edge_of.get(eid)
+                if n is None:
+                    raise ValueError("path curve with no sketch edge")
+                names.append(n)
+            return sk, names, [self.sketch_edge(sk, n) for n in names]
+        if k == "historical_edges":
+            found = []
+            for eid in v["edges"]:
+                eg = self.topo_geometry.get(eid)
+                body, idx = self.find_edge(eg) if eg else (None, None)
+                if body is None:
+                    raise ValueError("path edge not found in the rebuilt bodies")
+                found.append((body, idx))
+            if len({b.Name for b, _ in found}) != 1:
+                raise NotImplementedError("path edges on several bodies")
+            body = found[0][0]
+            return body, ["Edge%d" % i for _, i in found], [body.Shape.Edges[i - 1] for _, i in found]
+        raise NotImplementedError("sweep path " + str(k))
+
+    @staticmethod
+    def chain(names, edges, near=None):
+        """Order path edges into one connected chain. It starts at the chain end nearest
+        to `near`, else at the free end of the first selected edge. Returns the ordered
+        names and their wire."""
+        tol = 1e-6
+        ends = [(e.Vertexes[0].Point, e.Vertexes[-1].Point) for e in edges]
+
+        def degree(p):
+            return sum((a - p).Length < tol for pair in ends for a in pair)
+
+        free = [p for pair in ends for p in pair if degree(p) == 1]
+        if near is not None and free:
+            p = min(free, key=lambda q: (q - near).Length)
+        elif free:
+            p = next((q for q in ends[0] if degree(q) == 1), free[0])
+        else:
+            p = ends[0][0]
+        order, used = [], set()
+        while len(order) < len(edges):
+            nxt = [i for i in range(len(edges)) if i not in used
+                   and any((a - p).Length < tol for a in ends[i])]
+            if not nxt:
+                raise ValueError("sweep path is not one connected chain")
+            i = nxt[0]
+            used.add(i)
+            order.append(i)
+            a, b = ends[i]
+            p = b if (a - p).Length < tol else a
+        return [names[i] for i in order], Part.Wire([edges[i] for i in order])
+
+    @staticmethod
+    def path_corners(wire):
+        """(point, incoming tangent, outgoing tangent) where consecutive path edges meet
+        at an angle (unit tangents, along the wire)."""
+        edges, verts = wire.OrderedEdges, wire.OrderedVertexes
+
+        def tangent(e, p):
+            t = e.tangentAt(e.Curve.parameter(p))
+            t.normalize()
+            return t
+
+        out = []
+        for i in range(len(edges) - 1):
+            p = verts[i + 1].Point
+            t_in, t_out = tangent(edges[i], p), tangent(edges[i + 1], p)
+            # Orient both along the wire: edge i runs from verts[i] to p.
+            if (edges[i].valueAt(edges[i].Curve.parameter(p)) - p).Length > 1e-6:
+                continue
+            if (verts[i].Point - p).dot(t_in) > 0:
+                t_in = -t_in
+            if (verts[i + 2].Point - p).dot(t_out) < 0 and len(edges[i + 1].Vertexes) > 1:
+                t_out = -t_out
+            if t_in.getAngle(t_out) > 1e-9:
+                out.append((p, t_in, t_out))
+        return out
+
+    def mitered_pipe(self, wire, radius, label):
+        """Solid pipe of a circle along a path with corners. Fusion joins the segments
+        with a miter: each segment continues straight along its end tangent up to the
+        plane that bisects the corner. Static geometry."""
+        edges, verts = wire.OrderedEdges, wire.OrderedVertexes
+        corners = {(c[0].x, c[0].y, c[0].z): c for c in self.path_corners(wire)}
+        parts = []
+        for i, e in enumerate(edges):
+            p0 = verts[i].Point
+            t = e.tangentAt(e.Curve.parameter(p0))
+            t.normalize()
+            if (verts[i + 1].Point - p0).dot(t) < 0 and e.Curve.__class__.__name__ == "Line":
+                t = -t
+            seg = Part.Wire(e).makePipeShell([Part.Wire(Part.Circle(p0, t, radius).toShape())], True, False, 0)
+            parts.append(seg)
+        size = 4 * radius
+        for p, t_in, t_out in corners.values():
+            bis = t_in + t_out
+            bis.normalize()
+            half = t_in.getAngle(t_out) / 2
+            reach = radius * math.tan(half) * 1.5 + 1e-3
+            for t, sign in ((t_in, 1), (t_out, -1)):
+                ext = Part.makeCylinder(radius, reach, p, t * sign)
+                # Keep the part of the extension on its own side of the bisector plane.
+                box = Part.makeBox(4 * size, 4 * size, 2 * size)
+                box.Placement = App.Placement(p, App.Rotation(V(0, 0, 1), bis * sign))
+                box.translate(-box.Placement.Rotation.multVec(V(2 * size, 2 * size, 0)))
+                parts.append(ext.common(box))
+        shape = parts[0].fuse(parts[1:]).removeSplitter() if len(parts) > 1 else parts[0]
+        if not shape.isValid() or len(shape.Solids) != 1:
+            raise ValueError("mitered pipe is not one valid solid")
+        return shape
+
+    def sweep_solid(self, section, link, wire, label):
+        """Solid swept by one closed section along a G1 path wire. The parametric
+        Part::Sweep is kept when it reproduces OCC's pipe shell of the same inputs;
+        otherwise a static copy of the pipe shell replaces it."""
+        self.doc.recompute()
+        profile = Part.Wire(Part.__sortEdges__(section.Shape.Edges))
+        direct = wire.makePipeShell([profile], True, False, 0)
+        if not direct.isValid():
+            direct.fix(1e-7, 1e-7, 1e-7)
+        if not direct.isValid() or not direct.Solids:
+            raise ValueError("sweep result is not a valid solid")
+        sw = self.doc.addObject("Part::Sweep", "Sweep")
+        sw.Sections = [section]
+        sw.Spine = link
+        sw.Solid = True
+        sw.Frenet = False
+        sw.Transition = "Transformed"
+        sw.Label = label
+        self.doc.recompute()
+        got = sw.Shape
+        if not got.isNull() and got.isValid() and abs(got.Volume - direct.Volume) <= 1e-9 * direct.Volume:
+            return sw
+        self.doc.removeObject(sw.Name)
+        return self.static(direct, label)
+
+    def static(self, shape, label):
+        obj = self.doc.addObject("Part::Feature", "Sweep")
+        obj.Shape = shape
+        obj.Label = label + " (static)"
+        self.notes.setdefault("static", []).append(label)
+        return obj
+
+    def subtract(self, base, tools, label):
+        """base minus the tools (holes of a hollow section), as one parametric object."""
+        if not tools:
+            return base
+        base.Visibility = False
+        cut = self.doc.addObject("Part::Cut", "Cut")
+        cut.Base = base
+        if len(tools) == 1:
+            cut.Tool = tools[0]
+        else:
+            fuse = self.doc.addObject("Part::MultiFuse", "Fusion")
+            fuse.Shapes = tools
+            cut.Tool = fuse
+        for t in tools:
+            t.Visibility = False
+        cut.Label = label
+        return cut
+
+    def union(self, objs, label):
+        if len(objs) == 1:
+            return objs[0]
+        fuse = self.doc.addObject("Part::MultiFuse", "Fusion")
+        fuse.Shapes = objs
+        fuse.Refine = True
+        fuse.Label = label
+        return fuse
+
+    def build_sweep(self, feat):
+        d = feat["definition"]
+        shape = d["shape"]
+        if shape.get("mode") != "solid":
+            raise NotImplementedError("%s sweep" % shape.get("mode"))
+        if shape.get("sections"):
+            raise NotImplementedError("sweep with several sections")
+        for key in ("guide_rail", "twist", "taper", "scale"):
+            if d.get(key) not in (None, 0, 0.0, 1, 1.0):
+                raise NotImplementedError("sweep " + key)
+        if d.get("orientation") not in (None, "perpendicular"):
+            raise NotImplementedError("sweep orientation " + str(d.get("orientation")))
+        ext = d.get("path_extent") or {"along_fraction": 1.0, "against_fraction": 0.0}
+        owner, names, edges = self.path_spine(d["path"])
+        sec = shape["section"]
+        name = feat["name"]
+        if sec.get("kind") == "generated":
+            names, wire = self.chain(names, edges)
+            start = wire.OrderedVertexes[0].Point
+            e0 = wire.OrderedEdges[0]
+            t = e0.tangentAt(e0.Curve.parameter(start))
+            g = sec["value"]
+            if g.get("shape") != "circular_region":
+                raise NotImplementedError("generated section " + str(g.get("shape")))
+            # Fusion's pipe section is centred on the path start, normal to the path.
+            radii = [g["region"]["outer_radius"]]
+            if g["region"].get("wall_thickness"):
+                radii.append(radii[0] - g["region"]["wall_thickness"])
+            # Keep the section seam where OCC puts it for a circle with this normal, as
+            # the static pipe shells do.
+            circle = Part.Circle(start, t, 1.0)
+            x, n = circle.XAxis, circle.Axis
+            y = n.cross(x)
+            rot = App.Rotation(App.Matrix(x.x, y.x, n.x, 0, x.y, y.y, n.y, 0, x.z, y.z, n.z, 0, 0, 0, 0, 1))
+            sections = []
+            for r in radii:
+                c = self.doc.addObject("Part::Circle", "PipeSection")
+                c.Radius = r
+                c.Placement = App.Placement(start, rot)
+                c.Visibility = False
+                sections.append(c)
+            groups = [(sections[0], sections[1:])]
+            at_start = True
+        elif sec.get("kind") == "profile":
+            sk, loops = self.profile_loops(sec["value"])
+            groups = [(self.loop_object(sk, o, name + " section"),
+                       [self.loop_object(sk, h, name + " section hole") for h in holes]) for o, holes in loops]
+            self.doc.recompute()
+            section = groups[0][0].Shape
+            names, wire = self.chain(names, edges, section.CenterOfMass)
+            at_start = section.distToShape(wire.OrderedVertexes[0])[0] < 1e-6
+            if not at_start and section.distToShape(wire.OrderedVertexes[-1])[0] < 1e-6:
+                wire.reverse()
+                at_start = section.distToShape(wire.OrderedVertexes[0])[0] < 1e-6
+            if not at_start and min(ext["along_fraction"], ext["against_fraction"]) < 1.0 - 1e-9:
+                raise NotImplementedError("sweep profile away from the path ends")
+        else:
+            raise NotImplementedError("sweep section " + str(sec.get("kind")))
+        # Fusion consumes a fraction of the path on each side of the profile; the whole
+        # path is swept when the profile is at its start and the fraction along it is 1.
+        fractions = (ext["along_fraction"], ext["against_fraction"])
+        if any(1e-9 < f < 1.0 - 1e-9 for f in fractions) or max(fractions) < 1.0 - 1e-9:
+            raise NotImplementedError("partial sweep path extent")
+        link = (owner, names)
+        self.notes = {}
+        solids = []
+        if self.path_corners(wire):
+            if sec.get("kind") != "generated":
+                raise NotImplementedError("profile sweep along a path with corners")
+            tube = [self.static(self.mitered_pipe(wire, c.Radius, name), name) for c in sections]
+            groups = []
+            solids.append(self.subtract(tube[0], tube[1:], name))
+        for outer, holes in groups:
+            body = self.sweep_solid(outer, link, wire, name)
+            cut = [self.sweep_solid(h, link, wire, name + " hole") for h in holes]
+            solids.append(self.subtract(body, cut, name))
+        tool = self.union(solids, name)
+        self.doc.recompute()
+        if tool.Shape.isNull() or not tool.Shape.Solids:
+            raise ValueError("empty sweep")
+        res = self.apply_op(shape["op"], tool, name)
+        res.update(self.notes)
+        return res
 
     # ----- driver ---------------------------------------------------------
     def sketch_label(self, sid, fallback=None):
@@ -1061,8 +1380,8 @@ class Rebuilder:
                 elif kind == "datum_plane":
                     rec.update(self.build_datum_plane(f))
                     rec["status"] = "built"
-                elif kind in self.BUILDERS:
-                    rec.update(getattr(self, self.BUILDERS[kind])(f))
+                elif kind in self.FEATURE_BUILDERS:
+                    rec.update(getattr(self, self.FEATURE_BUILDERS[kind])(f))
                     rec["status"] = "built"
                 else:
                     raise NotImplementedError("feature kind " + kind)
