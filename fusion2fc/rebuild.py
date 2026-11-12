@@ -12,10 +12,11 @@ because freecadcmd treats extra command-line arguments as files to open:
                                   #   dir/step_NNNN.brep (compound, world coordinates)
   freecadcmd fusion2fc/rebuild.py
 
-v0 scope: planar sketches (lines, arcs, circles, B-splines; coincidence from shared
-endpoints; horizontal/vertical), extrudes from resolved profiles/regions with blind,
-symmetric and two-sided extents, profile-plane or planar from-face starts, and
-new-body/join/cut/intersect against the bodies the tool touches. Everything else is
+v0 scope: planar sketches (lines, arcs, circles, polynomial and rational B-splines;
+coincidence from shared endpoints; horizontal/vertical), extrudes from resolved
+profiles/regions with blind, symmetric and two-sided extents, profile-plane or planar
+from-face starts (with their offset), and new-body/join/cut/intersect against the bodies
+the tool touches (within Fusion's modelling tolerance). Everything else is
 recorded in the report as skipped. CADIR lengths are mm, as in FreeCAD.
 """
 import json
@@ -33,6 +34,8 @@ import Sketcher
 
 V = App.Vector
 EPS = 1e-6
+# Fusion's modelling tolerance (ASM resabs, 1e-6 cm): bodies closer than this touch.
+FUSION_RESABS = 1e-5
 
 
 def vec(d):
@@ -157,10 +160,15 @@ class Rebuilder:
                 geo = Part.Circle(uv(g["center"]), V(0, 0, 1), g["radius"])
             elif k == "nurbs":
                 c = g["curve"]
-                if c["poles"].get("form") != "polynomial":
-                    skipped["rational nurbs"] += 1
+                form = c["poles"].get("form")
+                if form == "polynomial":
+                    poles, weights = [uv(p) for p in c["poles"]["points"]], None
+                elif form == "rational":
+                    poles = [uv(p["point"]) for p in c["poles"]["points"]]
+                    weights = [p["weight"] for p in c["poles"]["points"]]
+                else:
+                    skipped["nurbs " + str(form)] += 1
                     continue
-                poles = [uv(p) for p in c["poles"]["points"]]
                 knots, mults = [], []
                 for kv in c["knots"]:
                     if knots and abs(kv - knots[-1]) < 1e-12:
@@ -169,7 +177,8 @@ class Rebuilder:
                         knots.append(kv)
                         mults.append(1)
                 geo = Part.BSplineCurve()
-                geo.buildFromPolesMultsKnots(poles, mults, knots, c.get("periodic", False), c["degree"])
+                args = [poles, mults, knots, c.get("periodic", False), c["degree"]] + ([weights] if weights else [])
+                geo.buildFromPolesMultsKnots(*args)
             elif k == "point":
                 continue
             else:
@@ -204,8 +213,15 @@ class Rebuilder:
                     mapped[d["kind"]] += 1
                     continue
             mapped["unmapped:" + str(d.get("kind"))] += 1
+        redundant = 0
         if cons:
             sk.addConstraint(cons)
+            # Coincident curves (for example duplicated lines) make derived constraints
+            # redundant, and FreeCAD refuses to solve a sketch with redundant constraints.
+            sk.solve()
+            redundant = len(sk.RedundantConstraints)
+            if redundant:
+                sk.autoRemoveRedundants()
         self.doc.recompute()
         # The sketch shape orders edges by wire connectivity, not geometry index; the
         # element map ties each geometry id to its edge. Mapped names (";g<id>;SKT.EdgeN")
@@ -224,6 +240,8 @@ class Rebuilder:
         self.sketches[sid] = (sk, geo_of, edge_of, normal)
         self.report["sketches"][label] = {"geometry": len(geo_of), "coincident_clusters": len(clusters),
                                           "constraints": dict(mapped), "skipped_geometry": dict(skipped)}
+        if redundant:
+            self.report["sketches"][label]["redundant_removed"] = redundant
         return self.sketches[sid]
 
     # ----- extrude --------------------------------------------------------
@@ -378,7 +396,9 @@ class Rebuilder:
         start = d.get("start", {"kind": "profile_plane"})
         offset = 0.0  # along the sketch normal
         if start["kind"] == "from_face":
+            # The start offset is a displacement along the extrusion direction.
             offset = self.plane_offset(start.get("face", {}), origin, normal)
+            offset += (start.get("offset") or 0.0) * normal.dot(direction)
         elif start["kind"] == "offset_profile_plane":
             offset = start["offset"]
         elif start["kind"] != "profile_plane":
@@ -393,6 +413,8 @@ class Rebuilder:
             if k == "blind":
                 return t["length"]
             if k == "to_face":
+                if t.get("offset"):
+                    raise NotImplementedError("to_face offset")
                 dist = self.plane_offset(t["face"], origin, normal) - offset
                 along = dist * normal.dot(direction) * sign
                 if along <= 0:
@@ -455,7 +477,7 @@ class Rebuilder:
     # ----- booleans -------------------------------------------------------
     def touches(self, a, b):
         try:
-            return a.Shape.distToShape(b.Shape)[0] < 1e-7
+            return a.Shape.distToShape(b.Shape)[0] < FUSION_RESABS
         except Exception:
             return False
 
@@ -604,7 +626,10 @@ class Rebuilder:
             self.component = f.get("product_definition")
             try:
                 if kind == "sketch":
-                    rec["name"] = self.sketch_label(f["definition"]["sketch"]["sketch"], f["name"])
+                    ref = f["definition"]["sketch"]
+                    if "sketch" not in ref:
+                        raise NotImplementedError("sketch space " + str(ref.get("space")))
+                    rec["name"] = self.sketch_label(ref["sketch"], f["name"])
                 elif kind == "spatial_sketch":
                     rec["name"] = self.spatial_sketch_label(f["definition"]["sketch"], f["name"])
                 if f.get("suppressed"):
