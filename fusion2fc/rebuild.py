@@ -16,8 +16,11 @@ v0 scope: planar sketches (lines, arcs, circles, polynomial and rational B-splin
 coincidence from shared endpoints; horizontal/vertical), extrudes from resolved
 profiles/regions with blind, symmetric and two-sided extents, profile-plane or planar
 from-face starts (with their offset), and new-body/join/cut/intersect against the bodies
-the tool touches (within Fusion's modelling tolerance). Everything else is
-recorded in the report as skipped. CADIR lengths are mm, as in FreeCAD.
+the tool touches (within Fusion's modelling tolerance). Holes (primitive bore, drill
+point, counterbore/countersink per placement), feature patterns (seed tools re-applied
+through Draft arrays or Part::Mirroring), body patterns and mirrors, revolves, moves and
+combines are built when their decoded definitions and body selections resolve. Everything
+else is recorded in the report as skipped. CADIR lengths are mm, as in FreeCAD.
 """
 import json
 import math
