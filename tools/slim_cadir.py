@@ -27,7 +27,7 @@ def slim(cadir):
         if g:
             s["face_planes"][f["id"]] = {"origin": g["origin"], "normal": g["normal"], "sense": f.get("sense")}
     topo = [{"id": t["id"], "input_of": t.get("input_of"), "bodies": t.get("bodies"),
-             "edge_geometry": t.get("edge_geometry")}
+             "body_faces": t.get("body_faces"), "edge_geometry": t.get("edge_geometry")}
             for t in m.get("feature_input_topologies", [])]
     return s, topo
 
