@@ -536,25 +536,84 @@ class Rebuilder:
         return {"op": op, "targets": len(targets)}
 
     # ----- edge treatments ------------------------------------------------
+    EDGE_TOL = 1e-4  # mm: recorded edge point to rebuilt edge
+    TANGENT_TOL = 1e-3  # 1 - |cos| between recorded and rebuilt edge tangents
+
+    @staticmethod
+    def edge_tangent(edge, p):
+        try:
+            u = edge.Curve.parameter(p)
+            t = edge.tangentAt(min(max(u, edge.FirstParameter), edge.LastParameter))
+            return t if t.Length > EPS else None
+        except Exception:
+            return None
+
     def find_edge(self, eg):
-        """(body object, 1-based edge index) of the current edge matching recorded geometry."""
-        pts = [vec(eg[k]) for k in ("interior", "start", "end") if eg.get(k)]
-        for s in self.solids:
+        """(body object, 1-based edge index) of the current edge matching recorded geometry,
+        and the distance of the nearest edge (for the report). A rebuilt edge matches when it
+        passes through the recorded interior point along the recorded tangent. Among those,
+        one whose vertices are the recorded start and end wins (for a closed edge: a closed
+        edge through the recorded vertex, wherever its own seam lies), then one carrying
+        both recorded vertices (OCC merged the edge with a neighbour), then a piece of a
+        recorded edge that OCC split (fillets and chamfers propagate along the G1 chain)."""
+        p = vec(eg["interior"])
+        t = vec(eg["tangent"]) if eg.get("tangent") else None
+        ends = [vec(eg[k]) for k in ("start", "end") if eg.get(k)]
+        closed = len(ends) == 2 and (ends[0] - ends[1]).Length < self.EDGE_TOL
+        tol = self.EDGE_TOL
+        own = self.same_component(self.solids)
+        pool = own + [s for s in self.solids if s not in own]
+        best = None
+        for s in pool:
             for i, e in enumerate(s.Shape.Edges):
-                if all(e.distToShape(Part.Vertex(p))[0] < 1e-6 for p in pts):
-                    ends = [v.Point for v in e.Vertexes]
-                    if all(any((q - p).Length < 1e-6 for q in ends) for p in pts[1:]):
-                        return s, i + 1
-        return None, None
+                bb = e.BoundBox
+                bb.enlarge(tol)
+                if not bb.isInside(p):
+                    continue
+                d = e.distToShape(Part.Vertex(p))[0]
+                if d > tol:
+                    continue
+                if t is not None:
+                    te = self.edge_tangent(e, p)
+                    if te is None or 1 - abs(te.normalize().dot(t)) > self.TANGENT_TOL:
+                        continue
+                verts = [v.Point for v in e.Vertexes]
+                on = all(e.distToShape(Part.Vertex(q))[0] < tol for q in ends)
+                if closed:
+                    exact = e.isClosed() and on
+                else:
+                    exact = len(ends) == 2 and len(verts) == 2 and all(
+                        any((q - v).Length < tol for v in verts) for q in ends)
+                key = (0 if exact else 1 if on else 2, s not in own, d)
+                if best is None or key < best[0]:
+                    best = (key, s, i + 1)
+        if best is not None:
+            return best[1], best[2], best[0][2]
+        shapes = [s.Shape for s in pool if not s.Shape.isNull()]
+        nearest = min((sh.distToShape(Part.Vertex(p))[0] for sh in shapes), default=float("inf"))
+        return None, None, nearest
 
     def build_edge_treatment(self, feat, kind):
         d = feat["definition"]
         per_body = defaultdict(list)
-        missing = 0
+        missing = []
+        unresolved = defaultdict(int)  # selection kind -> groups or operands left out
+        groups = []
         for g in d.get("groups", []):
             e = g.get("edges", {})
-            if e.get("kind") != "historical":
-                raise NotImplementedError("edge selection " + str(e.get("kind")))
+            k = e.get("kind")
+            if k == "historical_partial":
+                unresolved["unresolved operands"] += len(e["value"].get("unresolved") or [])
+            elif k != "historical":
+                unresolved["%s groups" % k] += 1
+                continue
+            if e["value"].get("edges"):
+                groups.append(g)
+        if not groups:
+            kinds = sorted({str(g.get("edges", {}).get("kind")) for g in d.get("groups", [])})
+            raise NotImplementedError("edge selection " + "/".join(kinds))
+        for g in groups:
+            e = g["edges"]
             if kind == "fillet":
                 r = g.get("radius", {})
                 if r.get("kind") != "constant":
@@ -567,21 +626,39 @@ class Rebuilder:
                 size = (spec["distance"], spec["distance"])
             for eid in e["value"]["edges"]:
                 eg = self.topo_geometry.get(eid)
-                body, idx = self.find_edge(eg) if eg else (None, None)
-                if body is None:
-                    missing += 1
+                if eg is None:
+                    missing.append("no geometry")
                     continue
-                per_body[body].append((idx, size[0], size[1]))
+                body, idx, dist = self.find_edge(eg)
+                if body is None:
+                    missing.append("%.3g mm" % dist)
+                    continue
+                if all(i != idx for i, _, _ in per_body[body]):
+                    per_body[body].append((idx, size[0], size[1]))
         if missing:
-            raise ValueError("%d selected edges not found in the rebuilt bodies" % missing)
+            raise ValueError("%d selected edges not found in the rebuilt bodies (nearest: %s)"
+                             % (len(missing), ", ".join(missing[:6])))
+        made = []
         for body, edges in per_body.items():
             obj = self.doc.addObject("Part::Fillet" if kind == "fillet" else "Part::Chamfer", kind.capitalize())
             obj.Label = feat["name"]
             obj.Base = body
             obj.Edges = edges
-            self.solids[self.solids.index(body)] = obj
+            made.append((body, obj))
         self.doc.recompute()
-        return {"edges": sum(len(v) for v in per_body.values())}
+        bad = [o for _, o in made if o.Shape.isNull() or not o.Shape.Solids or "Invalid" in o.State]
+        if bad:
+            for _, o in made:
+                self.doc.removeObject(o.Name)
+            self.doc.recompute()
+            raise ValueError("OCC %s failed on %d of %d bodies" % (kind, len(bad), len(made)))
+        for body, obj in made:
+            self.solids[self.solids.index(body)] = obj
+        res = {"edges": sum(len(v) for v in per_body.values())}
+        if unresolved:
+            # Only the proven part of the selection is built.
+            res["partial_selection"] = dict(unresolved)
+        return res
 
     def build_datum_plane(self, feat):
         frame = feat["definition"].get("frame")
