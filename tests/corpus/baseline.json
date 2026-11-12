@@ -12,7 +12,7 @@
   "steps": 6
  },
  "PacktPublishing_4_2_S_Hook_Sweep_Final": {
-  "match": 2,
+  "match": 6,
   "steps": 7
  },
  "PacktPublishing_Bicycle_Handlebars_final": {
@@ -20,7 +20,7 @@
   "steps": 27
  },
  "PacktPublishing_Bracket_Finished": {
-  "match": 5,
+  "match": 8,
   "steps": 15
  },
  "PacktPublishing_Bracket_Solid": {
@@ -40,7 +40,7 @@
   "steps": 19
  },
  "PacktPublishing_Custom_Lattice": {
-  "match": 2,
+  "match": 3,
   "steps": 7
  },
  "PacktPublishing_Example_B": {
@@ -208,7 +208,7 @@
   "steps": 6
  },
  "case_join_from_face_offset": {
-  "match": 3,
+  "match": 4,
   "steps": 4
  },
  "case_join_touching_only": {
@@ -272,11 +272,11 @@
   "steps": 2
  },
  "digitalsputnik_Al_Pipe_16x22mm_M_SPPS000000057_v2": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "digitalsputnik_Al_Pipe_16x75mm_M_SPPS000000043_v1": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "digitalsputnik_Apollo_Yoke_Disc_P2_M_SPPS000000053_v1": {
@@ -304,7 +304,7 @@
   "steps": 16
  },
  "digitalsputnik_Encoder_Button_P_MPLA000000109_v2": {
-  "match": 2,
+  "match": 4,
   "steps": 18
  },
  "digitalsputnik_Front_Transparent_T1_v5": {
@@ -328,7 +328,7 @@
   "steps": 2
  },
  "gtgkartik_Dice": {
-  "match": 5,
+  "match": 12,
   "steps": 27
  },
  "gtgkartik_Industrial_Tool_2": {
