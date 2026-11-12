@@ -22,6 +22,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from slim_cadir import slim  # noqa: E402
+from stored_bodies import export as export_stored_bodies, stored_body_ids  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 CORPUS = ROOT / "tests" / "corpus"
@@ -67,12 +68,17 @@ def run_model(entry, cadmpeg, out):
             res["summary"] = {"steps": len(t["steps"]), "match": 0}
             return res
         stamp_file.write_text(stamp)
-    s, topo = slim(json.load(open(cadir)))
+    model = json.load(open(cadir))
+    s, topo = slim(model)
     json.dump(s, open(work / "slim.json", "w"))
     json.dump(topo, open(work / "topo.json", "w"))
     env = dict(os.environ, F2FC_SLIM=str(work / "slim.json"), F2FC_TOPO=str(work / "topo.json"),
                F2FC_OUT=str(work / "rebuilt.FCStd"), F2FC_REPORT=str(work / "report.json"),
                F2FC_STEPS=str(work / "steps"))
+    if stored_body_ids(model["model"]):
+        export_stored_bodies(model, work / "bodies", cadmpeg)
+        env["F2FC_BODIES"] = str(work / "bodies" / "index.json")
+    del model
     env.pop("F2FC_FEATURES", None)
     p = subprocess.run(["freecadcmd", str(ROOT / "fusion2fc" / "rebuild.py")], env=env,
                        capture_output=True, text=True, timeout=1800)

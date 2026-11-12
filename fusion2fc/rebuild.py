@@ -10,6 +10,8 @@ because freecadcmd treats extra command-line arguments as files to open:
   F2FC_REPORT=report.json
   F2FC_STEPS=dir/                 # optional: write the bodies after every feature as
                                   #   dir/step_NNNN.brep (compound, world coordinates)
+  F2FC_BODIES=dir/index.json      # optional: Base Feature bodies exported by
+                                  #   tools/stored_bodies.py (body id -> STEP file)
   freecadcmd fusion2fc/rebuild.py
 
 v0 scope: planar sketches (lines, arcs, circles, polynomial and rational B-splines;
@@ -64,7 +66,7 @@ class Rebuilder:
     FEATURE_BUILDERS = {"hole": "build_hole", "pattern": "build_pattern", "revolve": "build_revolve",
                         "move_body": "build_move_body", "combine": "build_combine",
                         "sweep": "build_sweep", "block": "build_block", "primitive": "build_primitive",
-                        "sphere": "build_sphere", "torus": "build_torus"}
+                        "sphere": "build_sphere", "torus": "build_torus", "base_feature": "build_base_feature"}
 
     def __init__(self, slim, topo, wanted):
         self.slim = slim
@@ -96,6 +98,9 @@ class Rebuilder:
         self.steps_dir = os.environ.get("F2FC_STEPS")
         if self.steps_dir:
             os.makedirs(self.steps_dir, exist_ok=True)
+        bodies = os.environ.get("F2FC_BODIES")
+        self.stored = json.load(open(bodies)) if bodies else None
+        self.stored_dir = os.path.dirname(bodies) if bodies else None
 
     # ----- components -----------------------------------------------------
     @staticmethod
@@ -1061,6 +1066,66 @@ class Rebuilder:
         obj = self.primitive_solid("Part::Torus", feat["name"], self.axis_placement(vec(d["center"]), vec(d["axis"])),
                                    Radius1=d["major_radius"], Radius2=d["minor_radius"])
         return self.apply_op(d["op"], obj, feat["name"])
+
+    # ----- base features (stored bodies) ---------------------------------
+    def build_base_feature(self, feat):
+        """Insert the bodies a Base Feature stores, as static solids. The decoded bodies are
+        those of the final design, so a body that a later feature modifies is refused. A
+        current body that coincides with a stored body is the body that the Base Feature
+        takes over (Body to Component), and the stored body replaces it."""
+        sel = feat["definition"].get("bodies") or {}
+        if sel.get("kind") != "resolved":
+            raise NotImplementedError("base feature bodies " + str(sel.get("kind")))
+        if self.stored is None:
+            raise NotImplementedError("stored bodies not exported (F2FC_BODIES)")
+        later = set()
+        for f in self.slim["features"]:
+            if f["ordinal"] > feat["ordinal"] and not f.get("suppressed"):
+                later.update(f.get("outputs") or [])
+        res = {"bodies": 0, "replaced": 0}
+        for bid in sel["value"]["bodies"]:
+            rec = self.stored.get(bid) or {}
+            if not rec.get("file"):
+                raise ValueError("stored body %s was not exported: %s" % (bid, rec.get("error", "missing")))
+            if bid in later:
+                raise NotImplementedError("stored body modified by later features")
+            shape = Part.Shape()
+            shape.read(os.path.join(self.stored_dir, rec["file"]))
+            if rec.get("kind") == "solid":
+                if not shape.Solids:
+                    raise ValueError("stored solid body has no solid")
+                shape = shape.Solids[0] if len(shape.Solids) == 1 else Part.makeCompound(shape.Solids)
+            obj = self.doc.addObject("Part::Feature", "StoredBody")
+            obj.Shape = shape
+            obj.Label = "%s body %d" % (feat["name"], res["bodies"] + 1)
+            self.body_component[obj.Name] = self.component
+            twin = self.coincident_body(obj)
+            if twin is not None:
+                self.solids.remove(twin)
+                twin.Visibility = False
+                res["replaced"] += 1
+            self.solids.append(obj)
+            res["bodies"] += 1
+        return res
+
+    def world_shape(self, obj):
+        mats = self.world.get(self.body_component.get(obj.Name)) or [None]
+        m = mats[0]
+        return obj.Shape if m is None or m.isUnity() else obj.Shape.transformGeometry(m)
+
+    def coincident_body(self, obj):
+        """The current body that occupies the same space as `obj` (world coordinates)."""
+        mine = self.world_shape(obj)
+        if not mine.Solids:
+            return None
+        for s in self.solids:
+            other = self.world_shape(s)
+            if not other.Solids or abs(other.Volume - mine.Volume) > 1e-6 * max(mine.Volume, 1.0):
+                continue
+            if other.BoundBox.isInside(mine.BoundBox.Center) and \
+                    abs(other.common(mine).Volume - mine.Volume) <= 1e-6 * max(mine.Volume, 1.0):
+                return s
+        return None
 
     # ----- sweep, loft (profile loops and paths) -------------------------
     def sketch_edge(self, sk, name):
