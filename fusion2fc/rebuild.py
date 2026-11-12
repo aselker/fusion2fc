@@ -90,6 +90,8 @@ class Rebuilder:
         self.world = self.component_placements(slim.get("occurrences") or [])
         self.report = {"features": [], "sketches": {}}
         self.state_bodies = {state["id"]: state.get("bodies") or [] for state in topo or []}
+        self.body_faces = {state["id"]: {b["body"]: b["faces"] for b in state.get("body_faces") or []}
+                           for state in topo or []}  # input state -> historical body -> its faces
         self.feature_tools = defaultdict(list)  # CADIR feature id -> [{"tool", "op"}], one per boolean
         self.feature = None  # feature being built
         self.steps_dir = os.environ.get("F2FC_STEPS")
@@ -844,23 +846,60 @@ class Rebuilder:
             targets += self.apply_op(t["op"], copies, feat["name"]).get("targets", 0)
         return {"seeds": len(seeds), "tools": len(tools), "targets": targets}
 
-    def select_bodies(self, sel):
-        """Rebuilt bodies (current solids of this component) that a body selection names."""
-        pool = self.same_component(self.solids)
+    @staticmethod
+    def historical_bodies(sel):
+        """(input state, historical body ids) of a historical body selection, else (None, None)."""
         kind, val = sel.get("kind"), sel.get("value") or {}
         if kind == "historical":
-            picked = val.get("bodies") or []
-            in_state = self.state_bodies.get(val.get("state"))
-            if in_state and len(picked) == len(in_state) == len(pool):
-                return pool
-            if len(picked) == len(pool) == 1:
-                return pool
-            raise NotImplementedError("historical selection of %d of %s bodies (%d rebuilt)" % (
-                len(picked), len(in_state) if in_state else "?", len(pool)))
+            return val.get("state"), list(val.get("bodies") or [])
         if kind == "historical_set":
-            return self.select_bodies({"kind": "historical", "value": {
-                "state": val.get("state"), "bodies": [m["body"] for m in val.get("members") or []]}})
-        raise NotImplementedError("body selection " + str(kind))
+            return val.get("state"), [m["body"] for m in val.get("members") or []]
+        return None, None
+
+    def locate_body(self, state, body, pool):
+        """The rebuilt body whose boundary carries the recorded edges of a historical body's faces."""
+        pts = [vec(eg["interior"]) for f in self.body_faces.get(state, {}).get(body) or []
+               for eg in self.topo_edges.get(f, [])]
+        if not pts:
+            return None
+        pts = pts[::max(1, len(pts) // 16)]
+        hits = [s for s in pool if all(s.Shape.distToShape(Part.Vertex(p))[0] < self.EDGE_TOL for p in pts)]
+        return hits[0] if len(hits) == 1 else None
+
+    def select_bodies(self, *sels):
+        """Rebuilt bodies (current solids of this component) that body selections name together.
+        A historical body is found by the recorded edges of its faces when the decoder states
+        them. Otherwise a selection resolves when it names every body of its input state, or the
+        component has one body; selections of one state that together name all its bodies
+        resolve to all."""
+        pool = self.same_component(self.solids)
+        located = []
+        for sel in sels:
+            state, ids = self.historical_bodies(sel)
+            hits = [self.locate_body(state, b, pool) for b in ids or []]
+            if not hits or None in hits:
+                located = None
+                break
+            located += [h for h in hits if h not in located]
+        if located:
+            return located
+        states, picked = set(), set()
+        for sel in sels:
+            state, ids = self.historical_bodies(sel)
+            if state is None:
+                if sel.get("kind") == "resolved" and len(pool) == 1:
+                    picked.update((sel.get("value") or {}).get("bodies") or [])
+                    continue
+                raise NotImplementedError("body selection " + str(sel.get("kind")))
+            states.add(state)
+            picked.update(ids)
+        if len(pool) == 1 and len(picked) == 1:
+            return pool
+        in_state = self.state_bodies.get(next(iter(states))) if len(states) == 1 else None
+        if in_state and set(in_state) == picked and len(in_state) == len(pool):
+            return pool
+        raise NotImplementedError("selection of %d of %s bodies (%d rebuilt)" % (
+            len(picked), len(in_state) if in_state else "?", len(pool)))
 
     def body_pattern(self, feat, seeds, p):
         """Copies of the seed bodies. A mirrored body that touches its seed is joined to it
@@ -971,15 +1010,22 @@ class Rebuilder:
     def build_combine(self, feat):
         d = feat["definition"]
         ops = d["operands"]
-        target = self.select_bodies(ops["target"])
-        tools = self.select_bodies(ops["tools"])
+        op = d["op"]
+        try:
+            target = self.select_bodies(ops["target"])
+            tools = self.select_bodies(ops["tools"])
+        except NotImplementedError:
+            if op != "join":
+                raise
+            # A join is symmetric: when target and tools are all the bodies, any one is the target.
+            both = self.select_bodies(ops["target"], ops["tools"])
+            target, tools = both[:1], both[1:]
         if len(target) != 1:
             raise NotImplementedError("combine of %d target bodies" % len(target))
         target = target[0]
         tools = [t for t in tools if t is not target]
         if not tools:
             raise ValueError("combine without tool bodies")
-        op = d["op"]
         if op == "join":
             b = self.doc.addObject("Part::MultiFuse", "Combine")
             b.Shapes = [target] + tools
