@@ -13,6 +13,12 @@ A step matches when
     against OpenCASCADE's), and
   - Fusion's step mesh and the rebuilt bodies tessellated at the same deviation d are
     within 1.25 * 2d of each other in both directions (see mesh_compare).
+The mesh distance is computed only when the body counts and volumes agree; it cannot
+change the outcome of a step that already fails.
+
+Results are cached by (Fusion mesh, digest of the rebuilt step's BREP) in
+F2FC_COMPARE_CACHE (JSON), which is discarded when this file or mesh_compare.py changes,
+so unchanged steps cost nothing on the next run.
 """
 import difflib
 import hashlib
@@ -56,42 +62,67 @@ def fmt(vs):
     return "[" + ", ".join("%.6g" % v for v in sorted(vs, reverse=True)[:6]) + (", ..." if len(vs) > 6 else "") + "]"
 
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+CODE_DIGEST = hashlib.sha1(b"".join(open(os.path.join(HERE, f), "rb").read()
+                                    for f in ("corpus_compare.py", "mesh_compare.py"))).hexdigest()
+
+
 class Cache:
-    def __init__(self):
-        self.fusion, self.rebuild, self.results = {}, {}, {}
+    """Per-run caches of meshes and rebuilt shapes, and the persistent result cache."""
+
+    def __init__(self, path=None):
+        self.path, self.fusion, self.shapes, self.tris, self.digests = path, {}, {}, {}, {}
+        self.results = {}
+        if path and os.path.exists(path):
+            try:
+                saved = json.load(open(path))
+                if saved.get("code") == CODE_DIGEST:
+                    self.results = saved.get("results", {})
+            except ValueError:
+                pass
+
+    def save(self):
+        if self.path:
+            json.dump({"code": CODE_DIGEST, "results": self.results}, open(self.path, "w"))
 
     def fusion_tris(self, path):
         if path not in self.fusion:
             self.fusion = {path: mc.read_stl(path) if path else np.zeros((0, 3, 3))}
         return self.fusion[path]
 
-    def rebuild_state(self, path, dev):
-        key = (path, dev)
-        if key not in self.rebuild:
-            if path is None:
-                shape, digest = None, "empty"
-            else:
-                raw = open(path, "rb").read()
-                digest = hashlib.sha1(raw).hexdigest()
+    def digest(self, path):
+        if path not in self.digests:
+            self.digests[path] = "empty" if path is None else hashlib.sha1(open(path, "rb").read()).hexdigest()
+        return self.digests[path]
+
+    def solids(self, path):
+        """Solid volumes of a rebuilt step and its shape (None when empty)."""
+        if path not in self.shapes:
+            shape = None
+            if path is not None:
                 shape = Part.Shape()
                 shape.importBrep(path)
-            if shape is None or not shape.Solids:
-                tris, solids = np.zeros((0, 3, 3)), []
-            else:
-                tris = mc.shape_triangles(shape, dev)
-                solids = [s.Volume for s in shape.Solids]
-            self.rebuild = {key: (digest, tris, solids)}
-        return self.rebuild[key]
+                if not shape.Solids:
+                    shape = None
+            self.shapes = {path: (shape, [s.Volume for s in shape.Solids] if shape else [])}
+        return self.shapes[path]
+
+    def rebuild_tris(self, path, dev):
+        key = (path, dev)
+        if key not in self.tris:
+            shape, _ = self.solids(path)
+            self.tris = {key: mc.shape_triangles(shape, dev) if shape else np.zeros((0, 3, 3))}
+        return self.tris[key]
 
 
 def compare_step(step, truth_dir, rebuild_path, dev, diag, cache):
     fusion_solids = [b for b in step.get("bodies", []) if b.get("solid")]
     fusion_vols = [b["volume"] for b in fusion_solids]
-    digest, rtris, rvols = cache.rebuild_state(rebuild_path, dev)
     mesh = step.get("mesh")
-    key = (mesh, digest)
+    key = "%s|%s|%r" % (mesh, cache.digest(rebuild_path), dev)
     if key in cache.results:
         return dict(cache.results[key])
+    _, rvols = cache.solids(rebuild_path)
     out = {"fusion_bodies": len(fusion_solids), "rebuilt_bodies": len(rvols),
            "fusion_surfaces": sum(1 for b in step.get("bodies", []) if not b.get("solid"))}
     problems = []
@@ -100,21 +131,25 @@ def compare_step(step, truth_dir, rebuild_path, dev, diag, cache):
     if not vols_match(fusion_vols, rvols):
         out["volumes"] = {"fusion": sorted(fusion_vols, reverse=True), "rebuilt": sorted(rvols, reverse=True)}
         problems.append("volumes %s vs %s" % (fmt(fusion_vols), fmt(rvols)))
-    ftris = cache.fusion_tris(os.path.join(truth_dir, mesh) if mesh else None)
     limit = MESH_FACTOR * 2 * dev
     out["mesh_limit"] = limit
-    if len(ftris) or len(rtris):
-        r = mc.compare(ftris, rtris, spacing=max(diag / 100.0, 4 * dev), cap=max(20 * limit, 1.0))
-        out["hausdorff"] = r["hausdorff"]
-        out["fusion_to_rebuilt"] = r["a_to_b"]
-        out["rebuilt_to_fusion"] = r["b_to_a"]
-        if not r["hausdorff"] <= limit:
-            worst = max((r["a_to_b"], r["b_to_a"]), key=lambda x: x.get("max") or 0)
-            at = worst.get("at")
-            problems.append("mesh distance %.4g mm > %.3g%s" % (
-                r["hausdorff"], limit, " at (%.2f, %.2f, %.2f)" % tuple(at) if at else ""))
+    if problems:
+        out["hausdorff"] = None
     else:
-        out["hausdorff"] = 0.0
+        ftris = cache.fusion_tris(os.path.join(truth_dir, mesh) if mesh else None)
+        rtris = cache.rebuild_tris(rebuild_path, dev)
+        if len(ftris) or len(rtris):
+            r = mc.compare(ftris, rtris, spacing=max(diag / 100.0, 4 * dev), cap=max(20 * limit, 1.0))
+            out["hausdorff"] = r["hausdorff"]
+            out["fusion_to_rebuilt"] = r["a_to_b"]
+            out["rebuilt_to_fusion"] = r["b_to_a"]
+            if not r["hausdorff"] <= limit:
+                worst = max((r["a_to_b"], r["b_to_a"]), key=lambda x: x.get("max") or 0)
+                at = worst.get("at")
+                problems.append("mesh distance %.4g mm > %.3g%s" % (
+                    r["hausdorff"], limit, " at (%.2f, %.2f, %.2f)" % tuple(at) if at else ""))
+        else:
+            out["hausdorff"] = 0.0
     out["status"] = "match" if not problems else "mismatch"
     out["problems"] = problems
     cache.results[key] = dict(out)
@@ -132,7 +167,7 @@ def main():
     steps = truth["steps"]
     feats = report["features"]
     pairs = align([s["name"] for s in steps], [f["name"] for f in feats])
-    cache, results, current = Cache(), [], None
+    cache, results, current = Cache(os.environ.get("F2FC_COMPARE_CACHE")), [], None
     for i, step in enumerate(steps):
         if i in pairs:
             current = pairs[i]
@@ -161,6 +196,7 @@ def main():
                "first_mismatch": None if first is None else {
                    "index": first["index"], "name": first["name"], "type": first["type"],
                    "problems": first.get("problems"), "rebuild": first.get("rebuild")}}
+    cache.save()
     json.dump({"summary": summary, "steps": results, "deviation_mm": dev},
               open(os.environ["F2FC_RESULT"], "w"), indent=1)
     print("F2FC compare: %d/%d steps match" % (n_match, len(results)))
