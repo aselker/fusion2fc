@@ -61,7 +61,8 @@ def display_name(feat):
 
 class Rebuilder:
     # Feature kind -> builder method (features beyond sketches, extrudes, edge treatments).
-    FEATURE_BUILDERS = {"sweep": "build_sweep"}
+    FEATURE_BUILDERS = {"sweep": "build_sweep", "block": "build_block", "primitive": "build_primitive",
+                        "sphere": "build_sphere", "torus": "build_torus"}
 
     def __init__(self, slim, topo, wanted):
         self.slim = slim
@@ -428,6 +429,9 @@ class Rebuilder:
                     raise NotImplementedError("to_shape termination for " + d["op"])
                 through.append(t.get("target", {}))
                 return self.scene_size(base.Shape)
+            if k == "through_all":
+                # Through every body: a length past the whole scene from the start plane.
+                return self.scene_size(base.Shape)
             raise NotImplementedError("termination " + str(k))
 
         ex = self.doc.addObject("Part::Extrusion", "Extrude")
@@ -674,6 +678,68 @@ class Rebuilder:
         pl.Visibility = False
         return {}
 
+    # ----- solid primitives ----------------------------------------------
+    @staticmethod
+    def rigid_placement(rows):
+        """Placement of a CADIR rigid 3x4 (or 4x4) row-major transform, in mm."""
+        m = App.Matrix(*(list(rows[0]) + list(rows[1]) + list(rows[2]) + [0, 0, 0, 1]))
+        return App.Placement(m)
+
+    def primitive_solid(self, kind, label, placement, **props):
+        obj = self.doc.addObject(kind, kind.split("::")[1])
+        obj.Label = label
+        for k, v in props.items():
+            setattr(obj, k, v)
+        obj.Placement = placement
+        self.doc.recompute()
+        if obj.Shape.isNull() or obj.Shape.Volume <= 0:
+            raise ValueError("empty primitive")
+        return obj
+
+    def build_block(self, feat):
+        d = feat["definition"]
+        if not d.get("dimensions") or not d.get("placement"):
+            raise NotImplementedError("box primitive without resolved dimensions or placement")
+        length, width, height = d["dimensions"]
+        box = self.primitive_solid("Part::Box", feat["name"], self.rigid_placement(d["placement"]),
+                                   Length=length, Width=width, Height=height)
+        return self.apply_op(d["op"], box, feat["name"])
+
+    def build_primitive(self, feat):
+        d = feat["definition"]
+        if not d.get("placement"):
+            raise NotImplementedError("primitive without a resolved placement")
+        solid = d["solid"]
+        pl = self.rigid_placement(d["placement"])
+        k = solid.get("kind")
+        full = 2 * math.pi
+        if k == "cylinder":
+            obj = self.primitive_solid("Part::Cylinder", feat["name"], pl, Radius=solid["radius"],
+                                       Height=solid["height"], Angle=math.degrees(solid.get("angle", full)))
+        elif k == "cone":
+            obj = self.primitive_solid("Part::Cone", feat["name"], pl, Radius1=solid["radius1"],
+                                       Radius2=solid["radius2"], Height=solid["height"],
+                                       Angle=math.degrees(solid.get("angle", full)))
+        elif k == "box":
+            obj = self.primitive_solid("Part::Box", feat["name"], pl, Length=solid["length"],
+                                       Width=solid["width"], Height=solid["height"])
+        else:
+            raise NotImplementedError("primitive solid " + str(k))
+        return self.apply_op(d["op"], obj, feat["name"])
+
+    def build_sphere(self, feat):
+        d = feat["definition"]
+        obj = self.primitive_solid("Part::Sphere", feat["name"], App.Placement(vec(d["center"]), App.Rotation()),
+                                   Radius=d["radius"])
+        return self.apply_op(d["op"], obj, feat["name"])
+
+    def build_torus(self, feat):
+        d = feat["definition"]
+        pl = App.Placement(vec(d["center"]), App.Rotation(V(0, 0, 1), vec(d["axis"])))
+        obj = self.primitive_solid("Part::Torus", feat["name"], pl, Radius1=d["major_radius"],
+                                   Radius2=d["minor_radius"])
+        return self.apply_op(d["op"], obj, feat["name"])
+
     # ----- sweep, loft (profile loops and paths) -------------------------
     def sketch_edge(self, sk, name):
         """The sketch shape's edge for a mapped name ';g<id>;SKT.EdgeN' (world coordinates)."""
@@ -749,7 +815,7 @@ class Rebuilder:
             found = []
             for eid in v["edges"]:
                 eg = self.topo_geometry.get(eid)
-                body, idx = self.find_edge(eg) if eg else (None, None)
+                body, idx, _ = self.find_edge(eg) if eg else (None, None, None)
                 if body is None:
                     raise ValueError("path edge not found in the rebuilt bodies")
                 found.append((body, idx))
@@ -839,9 +905,10 @@ class Rebuilder:
             reach = radius * math.tan(half) * 1.5 + 1e-3
             for t, sign in ((t_in, 1), (t_out, -1)):
                 ext = Part.makeCylinder(radius, reach, p, t * sign)
-                # Keep the part of the extension on its own side of the bisector plane.
+                # Keep the part of the extension on its own segment's side of the
+                # bisector plane (behind it for the incoming segment).
                 box = Part.makeBox(4 * size, 4 * size, 2 * size)
-                box.Placement = App.Placement(p, App.Rotation(V(0, 0, 1), bis * sign))
+                box.Placement = App.Placement(p, App.Rotation(V(0, 0, 1), bis * -sign))
                 box.translate(-box.Placement.Rotation.multVec(V(2 * size, 2 * size, 0)))
                 parts.append(ext.common(box))
         shape = parts[0].fuse(parts[1:]).removeSplitter() if len(parts) > 1 else parts[0]
@@ -977,7 +1044,7 @@ class Rebuilder:
         if self.path_corners(wire):
             if sec.get("kind") != "generated":
                 raise NotImplementedError("profile sweep along a path with corners")
-            tube = [self.static(self.mitered_pipe(wire, c.Radius, name), name) for c in sections]
+            tube = [self.static(self.mitered_pipe(wire, c.Radius.Value, name), name) for c in sections]
             groups = []
             solids.append(self.subtract(tube[0], tube[1:], name))
         for outer, holes in groups:
