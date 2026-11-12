@@ -12,7 +12,7 @@
   "steps": 6
  },
  "PacktPublishing_4_2_S_Hook_Sweep_Final": {
-  "match": 2,
+  "match": 6,
   "steps": 7
  },
  "PacktPublishing_Bicycle_Handlebars_final": {
@@ -40,7 +40,7 @@
   "steps": 19
  },
  "PacktPublishing_Custom_Lattice": {
-  "match": 2,
+  "match": 3,
   "steps": 7
  },
  "PacktPublishing_Example_B": {
@@ -328,7 +328,7 @@
   "steps": 2
  },
  "gtgkartik_Dice": {
-  "match": 5,
+  "match": 12,
   "steps": 27
  },
  "gtgkartik_Industrial_Tool_2": {

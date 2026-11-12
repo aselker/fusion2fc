@@ -5,7 +5,7 @@
 
 slim: features, sketches, sketch entities/constraints, parameters, spatial sketches,
 bodies, occurrences (placement of each component), components, and `face_planes` (resolved face id -> plane of its surface).
-topo: feature input topologies (history edge geometry).
+topo: feature input topologies (bodies and history edge geometry).
 """
 import json
 import sys
@@ -26,7 +26,8 @@ def slim(cadir):
         g = planes.get(f.get("surface"))
         if g:
             s["face_planes"][f["id"]] = {"origin": g["origin"], "normal": g["normal"], "sense": f.get("sense")}
-    topo = [{"id": t["id"], "input_of": t.get("input_of"), "edge_geometry": t.get("edge_geometry")}
+    topo = [{"id": t["id"], "input_of": t.get("input_of"), "bodies": t.get("bodies"),
+             "edge_geometry": t.get("edge_geometry")}
             for t in m.get("feature_input_topologies", [])]
     return s, topo
 

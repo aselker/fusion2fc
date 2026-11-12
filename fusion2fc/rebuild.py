@@ -61,7 +61,9 @@ def display_name(feat):
 
 class Rebuilder:
     # Feature kind -> builder method (features beyond sketches, extrudes, edge treatments).
-    FEATURE_BUILDERS = {"sweep": "build_sweep", "block": "build_block", "primitive": "build_primitive",
+    FEATURE_BUILDERS = {"hole": "build_hole", "pattern": "build_pattern", "revolve": "build_revolve",
+                        "move_body": "build_move_body", "combine": "build_combine",
+                        "sweep": "build_sweep", "block": "build_block", "primitive": "build_primitive",
                         "sphere": "build_sphere", "torus": "build_torus"}
 
     def __init__(self, slim, topo, wanted):
@@ -88,6 +90,9 @@ class Rebuilder:
         self.component = None  # component of the feature being built
         self.world = self.component_placements(slim.get("occurrences") or [])
         self.report = {"features": [], "sketches": {}}
+        self.state_bodies = {state["id"]: state.get("bodies") or [] for state in topo or []}
+        self.feature_tools = defaultdict(list)  # CADIR feature id -> [{"tool", "op"}], one per boolean
+        self.feature = None  # feature being built
         self.steps_dir = os.environ.get("F2FC_STEPS")
         if self.steps_dir:
             os.makedirs(self.steps_dir, exist_ok=True)
@@ -512,6 +517,8 @@ class Rebuilder:
         return parts
 
     def apply_op(self, op, tool, name, participants=None):
+        if self.feature is not None:  # patterns re-apply the tools of their seed features
+            self.feature_tools[self.feature["id"]].append({"tool": tool, "op": op})
         if op == "new_body":
             parts = self.split_solids(tool, name)
             self.solids += parts
@@ -678,6 +685,326 @@ class Rebuilder:
         pl.Visibility = False
         return {}
 
+    # ----- holes, patterns, revolves, moves, combines ----------------------
+    @staticmethod
+    def axis_placement(origin, direction):
+        """Placement whose local +Z axis runs along `direction` from `origin`."""
+        d = V(direction)
+        d.normalize()
+        return App.Placement(origin, App.Rotation(V(0, 0, 1), d))
+
+    def primitive(self, kind, label, placement, **props):
+        obj = self.doc.addObject(kind, kind.split("::")[1])
+        obj.Label = label
+        for k, v in props.items():
+            setattr(obj, k, v)
+        obj.Placement = placement
+        return obj
+
+    def hole_parts(self, name, d, pos, axis):
+        """Primitive solids of one hole instance: bore, drill point, and entry treatment.
+        `pos` is the entry point on the placement face, `axis` the unit drilling direction."""
+        shape = d["shape"]
+        con = shape.get("construction") or {}
+        if con.get("construction") != "form":
+            raise NotImplementedError("hole construction " + str(con.get("construction")))
+        form = con.get("kind") or {}
+        r = (shape.get("diameter") or 0) / 2
+        if r <= 0:
+            raise NotImplementedError("hole without a bore diameter")
+        ext = d.get("extent") or {}
+        bottom = d.get("bottom") or {"kind": "flat"}
+        tip = 0.0
+        if ext.get("kind") == "blind":
+            depth = ext["length"]
+            if bottom.get("kind") == "angled":
+                tip = r / math.tan(bottom["included_angle"] / 2)
+                if bottom.get("depth_to_tip"):
+                    depth -= tip
+        elif ext.get("kind") == "through_all":
+            depth = self.scene_size()
+        else:
+            raise NotImplementedError("hole extent " + str(ext.get("kind")))
+
+        def at(dist):
+            return self.axis_placement(pos + axis * dist, axis)
+
+        parts = [self.primitive("Part::Cylinder", name + " bore", at(0), Radius=r, Height=depth)]
+        if tip > EPS:
+            parts.append(self.primitive("Part::Cone", name + " drill point", at(depth),
+                                        Radius1=r, Radius2=0, Height=tip))
+        k = form.get("kind")
+        if k in ("counterbore", "counterbore_drilled"):
+            parts.append(self.primitive("Part::Cylinder", name + " counterbore", at(0),
+                                        Radius=form["diameter"] / 2, Height=form["depth"]))
+        elif k == "countersink":
+            rc = form["diameter"] / 2
+            parts.append(self.primitive("Part::Cone", name + " countersink", at(0), Radius1=rc, Radius2=r,
+                                        Height=(rc - r) / math.tan(form["angle"] / 2)))
+        elif k not in ("simple", "simple_drilled"):
+            raise NotImplementedError("hole form " + str(k))
+        return parts
+
+    def build_hole(self, feat):
+        """Hole: per placement, a bore with its drill point and entry treatment, cut from the
+        bodies it overlaps."""
+        d = feat["definition"]
+        placements = d.get("placements")
+        if not placements:
+            raise NotImplementedError("hole placement not resolved")
+        parts = []
+        for i, p in enumerate(placements):
+            if p.get("kind") != "directed":
+                raise NotImplementedError("hole placement " + str(p.get("kind")))
+            axis = vec(p["direction"])
+            axis.normalize()
+            label = feat["name"] if len(placements) == 1 else "%s %d" % (feat["name"], i + 1)
+            parts += self.hole_parts(label, d, vec(p["position"]), axis)
+        tool = self.doc.addObject("Part::MultiFuse", "HoleTool")
+        tool.Label = feat["name"] + " tool"
+        tool.Shapes = parts
+        tool.Refine = True
+        self.doc.recompute()
+        res = self.apply_op("cut", tool, feat["name"])
+        res["holes"] = len(placements)
+        return res
+
+    def pattern_copies(self, src, p, label):
+        """Parametric copies of `src` at the pattern's instances, the seed instance excluded."""
+        k = p.get("kind")
+        if k == "mirror":
+            m = self.doc.addObject("Part::Mirroring", "Mirror")
+            m.Label = label
+            m.Source = src
+            m.Base = vec(p["plane_origin"])
+            m.Normal = vec(p["plane_normal"])
+            self.doc.recompute()
+            return m
+        import Draft
+        if k == "circular":
+            angle = p["angle"]
+            # Draft spaces a full turn by angle/count and a partial one by angle/(count-1),
+            # as Fusion does; a full turn must be exactly 360 for Draft to see it.
+            deg = 360.0 if abs(angle - 2 * math.pi) < 1e-9 else math.degrees(angle)
+            axis = vec(p["axis_dir"])
+            axis.normalize()
+            arr = Draft.make_polar_array(src, number=p["count"], angle=deg, center=vec(p["axis_origin"]),
+                                         use_link=False)
+            arr.Axis = axis
+        elif k == "linear":
+            if not p.get("direction"):
+                raise NotImplementedError("linear pattern direction unresolved")
+            d1 = vec(p["direction"])
+            d1.normalize()
+            v_y, n_y = V(0, 1, 0), 1
+            sec = p.get("second")
+            if sec:
+                d2 = vec(sec["direction"])
+                d2.normalize()
+                v_y, n_y = d2 * sec["spacing"], sec["count"]
+            arr = Draft.make_ortho_array(src, v_x=d1 * p["spacing"], v_y=v_y, v_z=V(0, 0, 1),
+                                         n_x=p["count"], n_y=n_y, n_z=1, use_link=False)
+        else:
+            raise NotImplementedError("pattern form " + str(k if k != "unresolved" else "unresolved " + str(p.get("form"))))
+        arr.Label = label
+        # Instance 0 of a Draft array is the seed itself; Fusion adds only the other instances.
+        hidden = [0]
+        if k == "linear":  # Draft orders the grid as index u * n_y + v
+            hidden += [u * n_y + v for u, v in p.get("omitted_instances") or []]
+        if not hasattr(arr, "VisibilityList"):
+            arr.addProperty("App::PropertyBoolList", "VisibilityList", "Draft", "Instances built (default: all)")
+        arr.VisibilityList = [i not in hidden for i in range(max(hidden) + 1)]
+        self.doc.recompute()
+        return arr
+
+    def build_pattern(self, feat):
+        d = feat["definition"]
+        p = d.get("pattern") or {}
+        if p.get("kind") == "unresolved":
+            raise NotImplementedError("pattern %s unresolved" % p.get("form"))
+        seeds = d.get("seeds") or []
+        kinds = {s.get("kind") for s in seeds}
+        if not seeds:
+            raise NotImplementedError("pattern seeds unresolved")
+        if kinds == {"feature"}:
+            return self.feature_pattern(feat, seeds, p)
+        if kinds == {"bodies"}:
+            return self.body_pattern(feat, seeds, p)
+        raise NotImplementedError("pattern of " + "/".join(sorted(map(str, kinds))))
+
+    def feature_pattern(self, feat, seeds, p):
+        """Re-apply each seed feature's boolean with its tool copied to every instance."""
+        by_id = {f["id"]: f for f in self.slim["features"]}
+        tools = []
+        for s in seeds:
+            seed = by_id.get(s["value"])
+            used = self.feature_tools.get(s["value"])
+            if not used:
+                raise NotImplementedError("seed %s has no rebuilt tool" % (seed["name"] if seed else s["value"]))
+            tools += used
+        targets = 0
+        for i, t in enumerate(tools):
+            copies = self.pattern_copies(t["tool"], p, "%s copies %d" % (feat["name"], i + 1))
+            targets += self.apply_op(t["op"], copies, feat["name"]).get("targets", 0)
+        return {"seeds": len(seeds), "tools": len(tools), "targets": targets}
+
+    def select_bodies(self, sel):
+        """Rebuilt bodies (current solids of this component) that a body selection names."""
+        pool = self.same_component(self.solids)
+        kind, val = sel.get("kind"), sel.get("value") or {}
+        if kind == "historical":
+            picked = val.get("bodies") or []
+            in_state = self.state_bodies.get(val.get("state"))
+            if in_state and len(picked) == len(in_state) == len(pool):
+                return pool
+            if len(picked) == len(pool) == 1:
+                return pool
+            raise NotImplementedError("historical selection of %d of %s bodies (%d rebuilt)" % (
+                len(picked), len(in_state) if in_state else "?", len(pool)))
+        if kind == "historical_set":
+            return self.select_bodies({"kind": "historical", "value": {
+                "state": val.get("state"), "bodies": [m["body"] for m in val.get("members") or []]}})
+        raise NotImplementedError("body selection " + str(kind))
+
+    def body_pattern(self, feat, seeds, p):
+        """Copies of the seed bodies. A mirrored body that touches its seed is joined to it
+        (Fusion's Mirror Join; the decoded definition carries no operation)."""
+        bodies = []
+        for s in seeds:
+            bodies += [b for b in self.select_bodies(s["value"]) if b not in bodies]
+        res = {"seeds": len(bodies), "joined": 0, "bodies": 0}
+        for b in bodies:
+            copies = self.pattern_copies(b, p, "%s of %s" % (feat["name"], b.Label))
+            if p.get("kind") == "mirror" and self.touches(b, copies):
+                fuse = self.doc.addObject("Part::MultiFuse", "Join")
+                fuse.Label = feat["name"] + " join"
+                fuse.Shapes = [b, copies]
+                fuse.Refine = True
+                self.doc.recompute()
+                parts = self.split_solids(fuse, feat["name"])
+                i = self.solids.index(b)
+                self.solids[i:i + 1] = parts
+                res["joined"] += 1
+                res["op"] = "join (assumed: the mirror touches its seed)"
+            else:
+                parts = self.split_solids(copies, feat["name"])
+                self.solids += parts
+                res["bodies"] += len(parts)
+        return res
+
+    def profile_base(self, feat, prof):
+        """(face object, sketch record) for a planar sketch profile, as for an extrude."""
+        value = prof.get("value")
+        sid = value.get("sketch") if isinstance(value, dict) else None
+        if sid not in self.sketch_defs:
+            raise NotImplementedError("profile kind " + prof["kind"])
+        sk_rec = self.build_sketch(sid, self.sketch_label(sid))
+        sk, geo_of, edge_of, normal = sk_rec
+        regions = value.get("regions") or []
+        if any(r.get("region") == "trimmed" for r in regions):
+            base = self.doc.addObject("Part::Feature", "ProfileFace")
+            base.Shape = self.trimmed_face(sid, regions, sk.Placement)
+        else:
+            names = self.profile_edges(self.sketch_defs[sid], edge_of, prof)
+            base = self.doc.addObject("PartDesign::SubShapeBinder", "Profile")
+            base.Support = [(sk, tuple(names))]
+            base.MakeFace = True
+        base.Label = feat["name"] + " profile"
+        self.doc.recompute()
+        return base, sk_rec
+
+    def build_revolve(self, feat):
+        d = feat["definition"]
+        c = d.get("construction") or {}
+        if c.get("state") != "resolved":
+            raise NotImplementedError("revolve %s unresolved" % c.get("missing"))
+        if c.get("solid") is False:
+            raise NotImplementedError("surface revolve")
+        base, _ = self.profile_base(feat, c["profile"])
+        ext = c["extent"]
+
+        def angle(t):
+            if t.get("kind") != "angle":
+                raise NotImplementedError("revolve termination " + str(t.get("kind")))
+            return math.degrees(t["angle"])
+
+        axis = vec(c["axis"]["direction"])
+        axis.normalize()
+        origin = vec(c["axis"]["origin"])
+        rev = self.doc.addObject("Part::Revolution", "Revolve")
+        rev.Label = feat["name"]
+        rev.Source = base
+        rev.Base = origin
+        rev.Axis = axis
+        rev.Solid = True
+        if ext["kind"] == "one_sided":
+            rev.Angle = angle(ext["termination"])
+        elif ext["kind"] == "symmetric":
+            rev.Angle = angle(ext["termination"])
+            rev.Symmetric = True
+        else:
+            raise NotImplementedError("revolve extent " + str(ext["kind"]))
+        self.doc.recompute()
+        if rev.Shape.isNull() or rev.Shape.Volume <= 0:
+            raise ValueError("empty revolution")
+        return self.apply_op(d.get("op", "new_body"), rev, feat["name"])
+
+    def build_move_body(self, feat):
+        """Move: each selected body is replaced by a placed compound of it (or copied)."""
+        d = feat["definition"]
+        bodies = self.select_bodies(d["bodies"])
+        m = App.Placement(vec(d["translation"]), App.Rotation())
+        rot = d.get("rotation")
+        if rot:
+            axis = vec(rot["direction"])
+            axis.normalize()
+            m = m.multiply(App.Placement(App.Vector(), App.Rotation(axis, math.degrees(rot["angle"])),
+                                         vec(rot["origin"])))
+        copies = d.get("copies", 0)
+        if copies:
+            raise NotImplementedError("move with %d copies" % copies)
+        for b in bodies:
+            mv = self.doc.addObject("Part::Compound", "Move")
+            mv.Label = "%s of %s" % (feat["name"], b.Label)
+            mv.Links = [b]
+            mv.Placement = m
+            self.solids[self.solids.index(b)] = mv
+        self.doc.recompute()
+        return {"bodies": len(bodies)}
+
+    def build_combine(self, feat):
+        d = feat["definition"]
+        ops = d["operands"]
+        target = self.select_bodies(ops["target"])
+        tools = self.select_bodies(ops["tools"])
+        if len(target) != 1:
+            raise NotImplementedError("combine of %d target bodies" % len(target))
+        target = target[0]
+        tools = [t for t in tools if t is not target]
+        if not tools:
+            raise ValueError("combine without tool bodies")
+        op = d["op"]
+        if op == "join":
+            b = self.doc.addObject("Part::MultiFuse", "Combine")
+            b.Shapes = [target] + tools
+        elif op in ("cut", "intersect"):
+            b = self.doc.addObject("Part::Cut" if op == "cut" else "Part::Common", "Combine")
+            if len(tools) == 1:
+                tool = tools[0]
+            else:
+                tool = self.doc.addObject("Part::MultiFuse", "CombineTools")
+                tool.Shapes = tools
+            b.Base, b.Tool = target, tool
+        else:
+            raise NotImplementedError("combine " + str(op))
+        b.Label = feat["name"]
+        b.Refine = True
+        self.doc.recompute()
+        i = self.solids.index(target)
+        self.solids[i:i + 1] = self.split_solids(b, feat["name"])
+        if not d.get("keep_tools"):
+            self.solids = [s for s in self.solids if s not in tools]
+        return {"op": op, "tools": len(tools)}
     # ----- solid primitives ----------------------------------------------
     @staticmethod
     def rigid_placement(rows):
@@ -686,11 +1013,7 @@ class Rebuilder:
         return App.Placement(m)
 
     def primitive_solid(self, kind, label, placement, **props):
-        obj = self.doc.addObject(kind, kind.split("::")[1])
-        obj.Label = label
-        for k, v in props.items():
-            setattr(obj, k, v)
-        obj.Placement = placement
+        obj = self.primitive(kind, label, placement, **props)
         self.doc.recompute()
         if obj.Shape.isNull() or obj.Shape.Volume <= 0:
             raise ValueError("empty primitive")
@@ -735,9 +1058,8 @@ class Rebuilder:
 
     def build_torus(self, feat):
         d = feat["definition"]
-        pl = App.Placement(vec(d["center"]), App.Rotation(V(0, 0, 1), vec(d["axis"])))
-        obj = self.primitive_solid("Part::Torus", feat["name"], pl, Radius1=d["major_radius"],
-                                   Radius2=d["minor_radius"])
+        obj = self.primitive_solid("Part::Torus", feat["name"], self.axis_placement(vec(d["center"]), vec(d["axis"])),
+                                   Radius1=d["major_radius"], Radius2=d["minor_radius"])
         return self.apply_op(d["op"], obj, feat["name"])
 
     # ----- sweep, loft (profile loops and paths) -------------------------
@@ -1089,6 +1411,7 @@ class Rebuilder:
             kind = f["definition"].get("definition", "native")
             rec = {"name": f["name"], "kind": kind}
             self.component = f.get("product_definition")
+            self.feature = f
             try:
                 if kind == "sketch":
                     ref = f["definition"]["sketch"]
