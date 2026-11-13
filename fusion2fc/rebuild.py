@@ -18,8 +18,11 @@ v0 scope: planar sketches (lines, arcs, circles, polynomial and rational B-splin
 coincidence from shared endpoints; horizontal/vertical), extrudes from resolved
 profiles/regions with blind, symmetric and two-sided extents, profile-plane or planar
 from-face starts (with their offset), and new-body/join/cut/intersect against the bodies
-the tool touches (within Fusion's modelling tolerance). Everything else is
-recorded in the report as skipped. CADIR lengths are mm, as in FreeCAD.
+the tool touches (within Fusion's modelling tolerance). Holes (primitive bore, drill
+point, counterbore/countersink per placement), feature patterns (seed tools re-applied
+through Draft arrays or Part::Mirroring), body patterns and mirrors, revolves, moves and
+combines are built when their decoded definitions and body selections resolve. Everything
+else is recorded in the report as skipped. CADIR lengths are mm, as in FreeCAD.
 """
 import json
 import math
@@ -93,6 +96,8 @@ class Rebuilder:
         self.world = self.component_placements(slim.get("occurrences") or [])
         self.report = {"features": [], "sketches": {}}
         self.state_bodies = {state["id"]: state.get("bodies") or [] for state in topo or []}
+        self.body_faces = {state["id"]: {b["body"]: b["faces"] for b in state.get("body_faces") or []}
+                           for state in topo or []}  # input state -> historical body -> its faces
         self.feature_tools = defaultdict(list)  # CADIR feature id -> [{"tool", "op"}], one per boolean
         self.feature = None  # feature being built
         self.steps_dir = os.environ.get("F2FC_STEPS")
@@ -331,8 +336,33 @@ class Rebuilder:
                 return Part.Circle(uv(g["center"]), V(0, 0, 1), g["radius"]).toShape(t0, t1)
             raise NotImplementedError("trimmed %s" % g["kind"])
 
+        def merged(boundary):
+            """Consecutive pieces of one curve with contiguous parameter ranges join into
+            one piece (a circle stored as two half arcs becomes one closed edge)."""
+            segs = [dict(s, parameter_range=list(s["parameter_range"])) for s in boundary]
+            if len({s["entity"] for s in segs}) > 1:
+                return segs  # another curve meets the split point, which then needs its vertex
+            changed = True
+            while changed and len(segs) > 1:
+                changed = False
+                for i in range(len(segs)):
+                    a_, b_ = segs[i], segs[(i + 1) % len(segs)]
+                    if a_ is b_ or a_["entity"] != b_["entity"] or a_.get("reversed") != b_.get("reversed"):
+                        continue
+                    kind = ents[a_["entity"]]["geometry"]["kind"]
+                    if kind not in ("circle", "arc"):
+                        continue
+                    t0, t1 = a_["parameter_range"]
+                    u0, u1 = b_["parameter_range"]
+                    if abs(t1 - u0) < 1e-9 and (u1 - t0) <= 2 * math.pi + 1e-9:
+                        a_["parameter_range"] = [t0, u1]
+                        del segs[(i + 1) % len(segs)]
+                        changed = True
+                        break
+            return segs
+
         def loop_wire(boundary):
-            edges = [seg_edge(s) for s in boundary]
+            edges = [seg_edge(s) for s in merged(boundary)]
             return Part.Wire(Part.__sortEdges__(edges))
 
         faces = []
@@ -354,11 +384,122 @@ class Rebuilder:
             # Union of adjacent regions: rebuild one face from the boundary of the union
             # (edges owned by a single face), so the extrude yields one body per lump.
             fused = faces[0].fuse(faces[1:])
-            free = [e for e in fused.Edges if len(fused.ancestorsOfType(e, Part.Face)) == 1]
+            free = self.join_circle_pieces(
+                [e for e in fused.Edges if len(fused.ancestorsOfType(e, Part.Face)) == 1])
             wires = [Part.Wire(group) for group in Part.sortEdges(free)]
             shape = Part.makeFace(wires, "Part::FaceMakerBullseye")
         else:
             shape = faces[0]
+        try:  # pieces of one circle (split where regions met) become one edge again
+            unified = shape.removeSplitter()
+            if unified.isValid() and abs(unified.Area - shape.Area) < 1e-9 * max(shape.Area, 1.0):
+                shape = unified
+        except Exception:
+            pass
+        shape.Placement = placement
+        return shape
+
+    def loop_faces(self, sid, idxs):
+        """Planar faces (sketch coordinates) of whole stored loops made of lines, circles and arcs."""
+        ents = {e["id"]: e for e in self.entities[sid]}
+        loops = self.sketch_defs[sid]["profiles"]
+        faces = []
+        for i in idxs:
+            edges = []
+            for x in loops[i]:
+                e = ents[x["entity"]]
+                g, (t0, t1) = e["geometry"], self.full_range(e)
+                if g["kind"] == "line":
+                    a, b = uv(g["start"]), uv(g["end"])
+                    edges.append(Part.LineSegment(a + (b - a) * t0, a + (b - a) * t1).toShape())
+                elif g["kind"] in ("circle", "arc"):
+                    edges.append(Part.Circle(uv(g["center"]), V(0, 0, 1), g["radius"]).toShape(t0, t1))
+                else:
+                    raise NotImplementedError("loop curve " + g["kind"])
+            faces.append(Part.Face(Part.Wire(Part.__sortEdges__(edges))))
+        return faces
+
+    @staticmethod
+    def join_circle_pieces(edges):
+        """Edges that are pieces of one full circle (split where regions met) become the
+        single closed circle edge, as the sketch curve is."""
+        groups = defaultdict(list)
+        out = []
+        for e in edges:
+            c = e.Curve
+            if isinstance(c, Part.Circle):
+                key = tuple(round(x, 6) for x in (c.Center.x, c.Center.y, c.Center.z, c.Radius,
+                                                  abs(c.Axis.x), abs(c.Axis.y), abs(c.Axis.z)))
+                groups[key].append(e)
+            else:
+                out.append(e)
+        others = [v.Point for e in out for v in e.Vertexes]
+        for es in groups.values():
+            c = es[0].Curve
+            whole = len(es) > 1 and abs(sum(e.Length for e in es) - 2 * math.pi * c.Radius) < 1e-6 * c.Radius
+            # Only a ring of its own: another edge meeting a split point needs that vertex.
+            if whole and not any((v.Point - q).Length < 1e-7 for e in es for v in e.Vertexes for q in others):
+                out.append(Part.Circle(c.Center, c.Axis, c.Radius).toShape())
+            else:
+                out += es
+        return out
+
+    def crossing_loops(self, sid, regions):
+        """True when a `loops` region has a hole loop that crosses its outer loop (neither
+        inside it nor around it), which a face maker cannot build; such regions need the
+        boolean construction of `trimmed_face`."""
+        if not any(r.get("region") == "loops" and r.get("holes") for r in regions):
+            return False
+        try:
+            for r in regions:
+                if r.get("region") != "loops":
+                    continue
+                faces = self.loop_faces(sid, [r["outer"]] + r.get("holes", []))
+                for h in faces[1:]:
+                    both = faces[0].common(h).Area
+                    if both < h.Area * (1 - 1e-7) and both < faces[0].Area * (1 - 1e-7):
+                        return True
+        except Exception:
+            return False
+        return False
+
+    def overlapping_profile_union(self, sid, idxs, placement):
+        """The union face of whole stored loops when two of them partly overlap (Fusion's
+        selected regions of overlapping closed curves add up to their union; nested loops
+        alternate solid and hole). None when no two loops cross or a loop is not buildable."""
+        if len(idxs) < 2:
+            return None
+        try:
+            faces = self.loop_faces(sid, idxs)
+        except Exception:
+            return None
+        n = len(faces)
+        inside, overlap = {}, {}
+        for i in range(n):
+            for j in range(n):
+                if i == j:
+                    continue
+                both = faces[i].common(faces[j]).Area
+                inside[i, j] = both >= faces[j].Area * (1 - 1e-7)  # j inside i
+                overlap[i, j] = both > 1e-7 * min(faces[i].Area, faces[j].Area)
+        crossing = any(not inside[i, j] and not inside[j, i] and overlap[i, j]
+                       for i in range(n) for j in range(i + 1, n))
+        if not crossing:
+            return None
+        depth = [sum(1 for k in range(n) if k != i and inside[k, i] and (not inside[i, k] or k < i)) for i in range(n)]
+        solids = []
+        for i in range(n):
+            if depth[i] % 2:
+                continue
+            f = faces[i]
+            holes = [faces[j] for j in range(n) if depth[j] == depth[i] + 1 and inside[i, j]]
+            solids.append(f.cut(holes) if holes else f)
+        shape = solids[0].fuse(solids[1:]) if len(solids) > 1 else solids[0]
+        shape = shape.removeSplitter()
+        free = [e for e in shape.Edges if len(shape.ancestorsOfType(e, Part.Face)) == 1]
+        shape = Part.makeFace([Part.Wire(g) for g in Part.sortEdges(free)], "Part::FaceMakerBullseye")
+        if shape.normalAt(*shape.Surface.parameter(shape.CenterOfMass)).z < 0:
+            shape.reverse()
         shape.Placement = placement
         return shape
 
@@ -395,7 +536,13 @@ class Rebuilder:
         sk, geo_of, edge_of, normal = self.build_sketch(sid, self.sketch_label(sid))
         regions = value.get("regions") or []
         notes = {}
-        if any(r.get("region") == "trimmed" for r in regions):
+        union = (self.overlapping_profile_union(sid, value["profiles"], sk.Placement)
+                 if prof["kind"] == "sketch_profiles" else None)
+        if union is not None:
+            base = self.doc.addObject("Part::Feature", "ProfileFace")
+            base.Shape = union
+            notes["profile"] = "static union of overlapping loops"
+        elif any(r.get("region") == "trimmed" for r in regions) or self.crossing_loops(sid, regions):
             base = self.doc.addObject("Part::Feature", "ProfileFace")
             base.Shape = self.trimmed_face(sid, regions, sk.Placement)
             notes["profile"] = "static trimmed regions"
@@ -470,6 +617,14 @@ class Rebuilder:
         self.doc.recompute()
         if ex.Shape.isNull() or ex.Shape.Volume <= 0:
             raise ValueError("empty extrusion")
+        if (d["op"] == "cut" and ext["kind"] == "one_sided"
+                and ext["side"]["termination"].get("kind") == "through_all"
+                and not any(self.overlaps(ex, s) for s in self.solids)):
+            # A through-all cut that meets no body cannot be a Fusion feature (it fails
+            # with "no intersection"), so the recorded direction was read backwards.
+            ex.Dir = -direction
+            self.doc.recompute()
+            notes["direction"] = "flipped: through-all cut met no body"
         if suppressed:
             ex.Label = feat["name"] + " (suppressed)"
             ex.Visibility = False
@@ -853,23 +1008,60 @@ class Rebuilder:
             targets += self.apply_op(t["op"], copies, feat["name"]).get("targets", 0)
         return {"seeds": len(seeds), "tools": len(tools), "targets": targets}
 
-    def select_bodies(self, sel):
-        """Rebuilt bodies (current solids of this component) that a body selection names."""
-        pool = self.same_component(self.solids)
+    @staticmethod
+    def historical_bodies(sel):
+        """(input state, historical body ids) of a historical body selection, else (None, None)."""
         kind, val = sel.get("kind"), sel.get("value") or {}
         if kind == "historical":
-            picked = val.get("bodies") or []
-            in_state = self.state_bodies.get(val.get("state"))
-            if in_state and len(picked) == len(in_state) == len(pool):
-                return pool
-            if len(picked) == len(pool) == 1:
-                return pool
-            raise NotImplementedError("historical selection of %d of %s bodies (%d rebuilt)" % (
-                len(picked), len(in_state) if in_state else "?", len(pool)))
+            return val.get("state"), list(val.get("bodies") or [])
         if kind == "historical_set":
-            return self.select_bodies({"kind": "historical", "value": {
-                "state": val.get("state"), "bodies": [m["body"] for m in val.get("members") or []]}})
-        raise NotImplementedError("body selection " + str(kind))
+            return val.get("state"), [m["body"] for m in val.get("members") or []]
+        return None, None
+
+    def locate_body(self, state, body, pool):
+        """The rebuilt body whose boundary carries the recorded edges of a historical body's faces."""
+        pts = [vec(eg["interior"]) for f in self.body_faces.get(state, {}).get(body) or []
+               for eg in self.topo_edges.get(f, [])]
+        if not pts:
+            return None
+        pts = pts[::max(1, len(pts) // 16)]
+        hits = [s for s in pool if all(s.Shape.distToShape(Part.Vertex(p))[0] < self.EDGE_TOL for p in pts)]
+        return hits[0] if len(hits) == 1 else None
+
+    def select_bodies(self, *sels):
+        """Rebuilt bodies (current solids of this component) that body selections name together.
+        A historical body is found by the recorded edges of its faces when the decoder states
+        them. Otherwise a selection resolves when it names every body of its input state, or the
+        component has one body; selections of one state that together name all its bodies
+        resolve to all."""
+        pool = self.same_component(self.solids)
+        located = []
+        for sel in sels:
+            state, ids = self.historical_bodies(sel)
+            hits = [self.locate_body(state, b, pool) for b in ids or []]
+            if not hits or None in hits:
+                located = None
+                break
+            located += [h for h in hits if h not in located]
+        if located:
+            return located
+        states, picked = set(), set()
+        for sel in sels:
+            state, ids = self.historical_bodies(sel)
+            if state is None:
+                if sel.get("kind") == "resolved" and len(pool) == 1:
+                    picked.update((sel.get("value") or {}).get("bodies") or [])
+                    continue
+                raise NotImplementedError("body selection " + str(sel.get("kind")))
+            states.add(state)
+            picked.update(ids)
+        if len(pool) == 1 and len(picked) == 1:
+            return pool
+        in_state = self.state_bodies.get(next(iter(states))) if len(states) == 1 else None
+        if in_state and set(in_state) == picked and len(in_state) == len(pool):
+            return pool
+        raise NotImplementedError("selection of %d of %s bodies (%d rebuilt)" % (
+            len(picked), len(in_state) if in_state else "?", len(pool)))
 
     def body_pattern(self, feat, seeds, p):
         """Copies of the seed bodies. A mirrored body that touches its seed is joined to it
@@ -906,7 +1098,7 @@ class Rebuilder:
         sk_rec = self.build_sketch(sid, self.sketch_label(sid))
         sk, geo_of, edge_of, normal = sk_rec
         regions = value.get("regions") or []
-        if any(r.get("region") == "trimmed" for r in regions):
+        if any(r.get("region") == "trimmed" for r in regions) or self.crossing_loops(sid, regions):
             base = self.doc.addObject("Part::Feature", "ProfileFace")
             base.Shape = self.trimmed_face(sid, regions, sk.Placement)
         else:
@@ -980,15 +1172,22 @@ class Rebuilder:
     def build_combine(self, feat):
         d = feat["definition"]
         ops = d["operands"]
-        target = self.select_bodies(ops["target"])
-        tools = self.select_bodies(ops["tools"])
+        op = d["op"]
+        try:
+            target = self.select_bodies(ops["target"])
+            tools = self.select_bodies(ops["tools"])
+        except NotImplementedError:
+            if op != "join":
+                raise
+            # A join is symmetric: when target and tools are all the bodies, any one is the target.
+            both = self.select_bodies(ops["target"], ops["tools"])
+            target, tools = both[:1], both[1:]
         if len(target) != 1:
             raise NotImplementedError("combine of %d target bodies" % len(target))
         target = target[0]
         tools = [t for t in tools if t is not target]
         if not tools:
             raise ValueError("combine without tool bodies")
-        op = d["op"]
         if op == "join":
             b = self.doc.addObject("Part::MultiFuse", "Combine")
             b.Shapes = [target] + tools
