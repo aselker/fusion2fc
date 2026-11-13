@@ -1,11 +1,14 @@
-# geometry agent handoff
+# geometry agent handoff (fail-safety)
 
-Done, verified (merged as 6d8d854): from-face start offset; rational sketch NURBS; join touch tolerance 1e-5 mm (Bracket_Finished); redundant sketch constraints removed (SCD41 Extrude7 sketch had 0 edges); unresolved sketch binding skipped.
+Done: tools/convert.py (end-to-end driver + report), final-shape check and fallback group in rebuild.py
+(`finish()`, `compare_final`, `summary_text`, enabled by F2FC_FINAL/F2FC_FACTS), stored_bodies.export(ids)
++ final_body_ids, fusion2fc/versions.py + known_versions.json, tools/survey_versions.py. No Rust changes.
 
-In progress, cadmpeg WIP commit (check passes; unit tests, release build, corpus NOT run):
-1. Construction flags: decoder found 1 of ~350 construction curves. Layout depends on base type 9FF71F46 version 7/8/9. Construction lines then join profile loops: root cause of Co2SensorEnclosure Extrude4 (13 construction curves) and Lego sketches without profiles; likely many "profile kind sketch(_selection)" skips.
-2. Lock_B_Side sketches 1-4 (+5 native extrudes): head records of 24/152 bytes (null closing reference) were rejected.
+Left: fallback decision treats any skipped/failed feature as incomplete even if the shapes match
+(deliberate). Final compare uses product_definitions[].bodies for placement; bodies without a
+component are taken as root. Surfaces/sheet bodies are not compared (solids only). Known-version table
+should be regenerated (`python3.14 tools/survey_versions.py --write`) when the corpus grows.
 
-Next: (1) run `cargo test -p cadmpeg-codec-f3d --lib -- curve_tail member_run placement sketch_project`, release build, full corpus; (2) regenerate layout docs (`UPDATE_LAYOUT_DOCS=1 cargo test --release -p cadmpeg --test layout_tables`); goldens may change; (3) SCD41 Extrude3: OCC keeps edge-touching solids separate, Fusion makes one non-manifold lump (report, comparator counts solids).
-
-Gotchas: rebuild-only work can use the baseline binary with `--cadmpeg`. Python tools in the scratchpad are gone; record offsets come from the CADIR native_ref.
+Gotchas: system python3 is 3.12 without zstd zip support, survey needs python3.14. Fusion has no app
+version string in the file; ASM version and save date are the proxy. Earlier handoff items (construction
+flags, Lock_B_Side heads) were merged before this task.
