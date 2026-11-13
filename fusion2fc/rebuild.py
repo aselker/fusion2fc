@@ -2002,6 +2002,32 @@ class Rebuilder:
         fuse.Label = label
         return fuse
 
+    @staticmethod
+    def sweep_twisted(section, wire, twist, taper):
+        """Sweep of a planar section along one straight path edge with a twist (radians, about
+        the path, right-handed) and/or a taper (radians; the section offset grows by
+        tan(taper) per unit length): a loft through sections placed along the path, exact for
+        a pure taper (two sections) and sampled finely for a twist."""
+        if len(wire.Edges) != 1 or not isinstance(wire.Edges[0].Curve, Part.Line):
+            raise NotImplementedError("sweep twist/taper along a curved path")
+        p0, p1 = wire.OrderedVertexes[0].Point, wire.OrderedVertexes[-1].Point
+        axis = p1 - p0
+        length = axis.Length
+        axis.normalize()
+        base = Part.Wire(Part.__sortEdges__(section.Edges))
+        n = 2 if not twist else max(8, int(math.ceil(abs(math.degrees(twist)) / 3.0)))
+        wires = []
+        for k in range(n + 1):
+            f = k / n
+            w = base.copy()
+            if taper:
+                w = w.makeOffset2D(math.tan(taper) * length * f, join=2, fill=False, openResult=False, intersection=False)
+            if twist:
+                w.rotate(p0, axis, math.degrees(twist) * f)
+            w.translate(axis * (length * f))
+            wires.append(w)
+        return Part.makeLoft(wires, True, not twist)
+
     def build_sweep(self, feat):
         d = feat["definition"]
         shape = d["shape"]
@@ -2009,9 +2035,10 @@ class Rebuilder:
             raise NotImplementedError("%s sweep" % shape.get("mode"))
         if shape.get("sections"):
             raise NotImplementedError("sweep with several sections")
-        for key in ("guide_rail", "twist", "taper", "scale"):
+        for key in ("guide_rail", "scale"):
             if d.get(key) not in (None, 0, 0.0, 1, 1.0):
                 raise NotImplementedError("sweep " + key)
+        twist, taper = float(d.get("twist") or 0.0), float(d.get("taper") or 0.0)
         if d.get("orientation") not in (None, "perpendicular"):
             raise NotImplementedError("sweep orientation " + str(d.get("orientation")))
         ext = d.get("path_extent") or {"along_fraction": 1.0, "against_fraction": 0.0}
@@ -2046,12 +2073,21 @@ class Rebuilder:
             groups = [(sections[0], sections[1:])]
             at_start = True
         elif sec.get("kind") == "profile":
-            sk, loops = self.profile_loops(sec["value"])
+            ref = sec["value"]
+            if ref.get("kind") == "sketch" and ref.get("value") in self.sketch_defs:
+                # a whole-sketch section selects every region of the sketch
+                n = len(self.sketch_defs[ref["value"]].get("profiles") or [])
+                ref = {"kind": "sketch_profiles", "value": {"sketch": ref["value"], "profiles": list(range(n))}}
+            sk, loops = self.profile_loops(ref)
             groups = [(self.loop_object(sk, o, name + " section"),
                        [self.loop_object(sk, h, name + " section hole") for h in holes]) for o, holes in loops]
             self.doc.recompute()
             section = groups[0][0].Shape
-            names, wire = self.chain(names, edges, section.CenterOfMass)
+            loop_wire = Part.Wire(Part.__sortEdges__(section.Edges)) if section.Edges else None
+            if section.Edges:
+                # the path may start inside the region (distance to the filled section)
+                section = Part.Face(Part.Wire(Part.__sortEdges__(section.Edges)))
+            names, wire = self.chain(names, edges, section.BoundBox.Center)
             at_start = section.distToShape(wire.OrderedVertexes[0])[0] < 1e-6
             if not at_start and section.distToShape(wire.OrderedVertexes[-1])[0] < 1e-6:
                 wire.reverse()
@@ -2068,6 +2104,12 @@ class Rebuilder:
         link = (owner, names)
         self.notes = {}
         solids = []
+        if twist or taper:
+            if sec.get("kind") != "profile" or len(groups) != 1 or groups[0][1] or not at_start:
+                raise NotImplementedError("sweep twist/taper of this section")
+            tool = self.static(self.sweep_twisted(groups[0][0].Shape, wire, twist, taper), name)
+            self.doc.recompute()
+            return dict(self.apply_op(shape["op"], tool, name), **self.notes)
         if self.path_corners(wire):
             if sec.get("kind") != "generated":
                 raise NotImplementedError("profile sweep along a path with corners")
@@ -2115,7 +2157,9 @@ class Rebuilder:
         loft = self.doc.addObject("Part::Loft", "Loft")
         loft.Sections = objs
         loft.Solid = True
-        loft.Ruled = bool(d.get("ruled"))
+        # two sections: the smooth and the ruled surface coincide; the ruled one stays exact
+        # (the smooth one approximates circles to ~0.03 mm)
+        loft.Ruled = bool(d.get("ruled")) or len(objs) == 2
         loft.Closed = bool(d.get("closed"))
         loft.Label = name
         self.doc.recompute()
