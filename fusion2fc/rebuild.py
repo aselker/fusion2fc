@@ -12,6 +12,11 @@ because freecadcmd treats extra command-line arguments as files to open:
                                   #   dir/step_NNNN.brep (compound, world coordinates)
   F2FC_BODIES=dir/index.json      # optional: Base Feature bodies exported by
                                   #   tools/stored_bodies.py (body id -> STEP file)
+  F2FC_FINAL=dir/index.json       # optional: Fusion's stored final bodies (tools/stored_bodies.py
+                                  #   final_body_ids); enables the final-shape check and fallback
+  F2FC_FACTS=facts.json           # optional: version warnings, loss counts, {"fallback": false}
+  F2FC_SUMMARY=report.txt         # optional: write the conversion summary here
+  F2FC_NO_FALLBACK=1              # optional: never add the stored final shape
   freecadcmd fusion2fc/rebuild.py
 
 v0 scope: planar sketches (lines, arcs, circles, polynomial and rational B-splines;
@@ -69,7 +74,8 @@ class Rebuilder:
     FEATURE_BUILDERS = {"hole": "build_hole", "pattern": "build_pattern", "revolve": "build_revolve",
                         "move_body": "build_move_body", "combine": "build_combine",
                         "sweep": "build_sweep", "block": "build_block", "primitive": "build_primitive",
-                        "sphere": "build_sphere", "torus": "build_torus", "base_feature": "build_base_feature"}
+                        "sphere": "build_sphere", "torus": "build_torus", "base_feature": "build_base_feature",
+                        "shell": "build_shell", "delete_face": "build_delete_face", "draft": "build_draft"}
 
     def __init__(self, slim, topo, wanted):
         self.slim = slim
@@ -722,6 +728,21 @@ class Rebuilder:
         except Exception:
             return None
 
+    @staticmethod
+    def dist_to_point(shape, p):
+        """Distance from `shape` to point p; BRepExtrema fails on some degenerate edges and
+        faces, then the nearest of the shape's sampled edge points stands in."""
+        try:
+            return shape.distToShape(Part.Vertex(p))[0]
+        except RuntimeError:
+            pts = []
+            for e in shape.Edges:
+                try:
+                    pts += e.discretize(64)
+                except Exception:
+                    pass
+            return min(((q - p).Length for q in pts), default=float("inf"))
+
     def find_edge(self, eg):
         """(body object, 1-based edge index) of the current edge matching recorded geometry,
         and the distance of the nearest edge (for the report). A rebuilt edge matches when it
@@ -744,7 +765,7 @@ class Rebuilder:
                 bb.enlarge(tol)
                 if not bb.isInside(p):
                     continue
-                d = e.distToShape(Part.Vertex(p))[0]
+                d = self.dist_to_point(e, p)
                 if d > tol:
                     continue
                 if t is not None:
@@ -752,7 +773,7 @@ class Rebuilder:
                     if te is None or 1 - abs(te.normalize().dot(t)) > self.TANGENT_TOL:
                         continue
                 verts = [v.Point for v in e.Vertexes]
-                on = all(e.distToShape(Part.Vertex(q))[0] < tol for q in ends)
+                on = all(self.dist_to_point(e, q) < tol for q in ends)
                 if closed:
                     exact = e.isClosed() and on
                 else:
@@ -764,8 +785,215 @@ class Rebuilder:
         if best is not None:
             return best[1], best[2], best[0][2]
         shapes = [s.Shape for s in pool if not s.Shape.isNull()]
-        nearest = min((sh.distToShape(Part.Vertex(p))[0] for sh in shapes), default=float("inf"))
+        nearest = min((self.dist_to_point(sh, p) for sh in shapes), default=float("inf"))
         return None, None, nearest
+
+    # ----- face selection ---------------------------------------------------
+    def find_face(self, fid):
+        """(body object, 0-based face index) of the rebuilt face that a historical face names.
+        The decoder samples every edge that bounds a selected face (with the faces that use
+        it); each is located like a fillet edge, and the face is the one that all of them
+        bound. Edges OCC merged or split still count (find_edge accepts pieces). When several
+        faces remain, the one with the fewest edges outside the recorded set wins only if it
+        is unique; otherwise the match is ambiguous and raises."""
+        egs = self.topo_edges.get(fid)
+        if not egs:
+            raise ValueError("face has no recorded boundary edges")
+        body, cands = None, None
+        for eg in egs:
+            b, i, dist = self.find_edge(eg)
+            if b is None:
+                raise ValueError("a boundary edge of the selected face is not in the rebuilt bodies (nearest %.3g mm)" % dist)
+            if body is None:
+                body = b
+            elif b is not body:
+                raise ValueError("boundary edges of the selected face lie in different bodies")
+            edge = b.Shape.Edges[i - 1]
+            hit = {k for k, f in enumerate(b.Shape.Faces) if any(e.isSame(edge) for e in f.Edges)}
+            cands = hit if cands is None else cands & hit
+        if not cands:
+            raise ValueError("no rebuilt face carries all recorded boundary edges")
+        if len(cands) > 1:
+            n = {k: len(body.Shape.Faces[k].Edges) for k in cands}
+            low = min(n.values())
+            cands = {k for k in cands if n[k] == low}
+            if len(cands) > 1:
+                raise ValueError("ambiguous face match (%d rebuilt faces share the recorded edges)" % len(cands))
+        return body, next(iter(cands))
+
+    def selected_faces(self, ref):
+        """{body object: sorted face indices} for a historical face selection."""
+        if ref.get("kind") != "historical":
+            raise NotImplementedError("face selection " + str(ref.get("kind")))
+        per_body = defaultdict(set)
+        for fid in ref["value"]["faces"]:
+            body, k = self.find_face(fid)
+            per_body[body].add(k)
+        return {b: sorted(v) for b, v in per_body.items()}
+
+    def build_shell(self, feat):
+        d = feat["definition"]
+        if d.get("mode") not in (None, "inside", "outside"):
+            raise NotImplementedError("shell mode " + str(d.get("mode")))
+        per_body = self.selected_faces(d["removed_faces"])
+        t = float(d["thickness"])
+        made = []
+        for body, faces in per_body.items():
+            obj = self.doc.addObject("Part::Thickness", "Shell")
+            obj.Label = feat["name"]
+            obj.Faces = (body, ["Face%d" % (k + 1) for k in faces])
+            obj.Value = t if d.get("outward") else -t
+            obj.Mode = 0
+            obj.Join = 2
+            obj.Intersection = True
+            obj.SelfIntersection = False
+            made.append((body, obj))
+        self.doc.recompute()
+        bad = [o for _, o in made if o.Shape.isNull() or not o.Shape.Solids or "Invalid" in o.State]
+        if bad:
+            for _, o in made:
+                self.doc.removeObject(o.Name)
+            self.doc.recompute()
+            raise ValueError("OCC shell failed on %d of %d bodies" % (len(bad), len(made)))
+        for body, obj in made:
+            self.solids[self.solids.index(body)] = obj
+        return {"faces": sum(len(v) for v in per_body.values())}
+
+    def replace_with_shape(self, body, shape, feat):
+        """Replace a rebuilt body by a Part::Feature holding `shape` (an OCC operation without
+        a parametric FreeCAD feature)."""
+        if shape.isNull() or not shape.Solids or not shape.isValid():
+            raise ValueError("OCC result is not a valid solid")
+        obj = self.doc.addObject("Part::Feature", feat["name"].replace(" ", "_"))
+        obj.Label = feat["name"]
+        obj.Shape = shape
+        self.solids[self.solids.index(body)] = obj
+        return obj
+
+    def build_delete_face(self, feat):
+        d = feat["definition"]
+        if not d.get("heal", True):
+            raise NotImplementedError("delete face without healing")
+        made = []
+        for body, faces in self.selected_faces(d["faces"]).items():
+            shp = body.Shape.defeaturing([body.Shape.Faces[k] for k in faces])
+            if abs(shp.Volume - body.Shape.Volume) < 1e-9 * max(1.0, body.Shape.Volume) and len(shp.Faces) >= len(body.Shape.Faces):
+                raise ValueError("OCC defeaturing removed nothing")
+            made.append((body, shp))
+        for body, shp in made:
+            self.replace_with_shape(body, shp, feat)
+        self.doc.recompute()
+        return {"bodies": len(made)}
+
+    def build_draft(self, feat):
+        d = feat["definition"]
+        anchor = d.get("anchor") or {}
+        if anchor.get("kind") != "neutral_plane":
+            raise NotImplementedError("draft anchor " + str(anchor.get("kind")))
+        per_body = self.selected_faces(d["faces"])
+        nb = self.selected_faces(anchor["plane"])
+        if len(per_body) != 1 or list(nb) != list(per_body) or sum(len(v) for v in nb.values()) != 1:
+            raise NotImplementedError("draft over several bodies or neutral planes")
+        body = next(iter(per_body))
+        neutral = body.Shape.Faces[nb[body][0]]
+        if neutral.Surface.TypeId != "Part::GeomPlane":
+            raise NotImplementedError("non-planar draft neutral face")
+        pb = self.doc.addObject("PartDesign::Body", "DraftBody")
+        pb.BaseFeature = body
+        dr = pb.newObject("PartDesign::Draft", "Draft")
+        dr.Base = (body, ["Face%d" % (k + 1) for k in per_body[body]])
+        dr.NeutralPlane = (body, "Face%d" % (nb[body][0] + 1))
+        dr.Angle = math.degrees(float(d["angle"]))
+        dr.Reversed = bool(d.get("outward"))
+        self.doc.recompute()
+        if pb.Shape.isNull() or "Invalid" in dr.State or not pb.Shape.Solids:
+            self.doc.removeObject(dr.Name)
+            self.doc.removeObject(pb.Name)
+            self.doc.recompute()
+            raise ValueError("OCC draft failed")
+        self.solids[self.solids.index(body)] = pb
+        return {"faces": len(per_body[body])}
+
+    # Which side of an asymmetric chamfer carries the first distance. "forward" is the face
+    # whose boundary runs along the recorded (ASM) edge direction with its material on the
+    # left; "back" is the other face. Every API-made chamfer in tests/corpus (5 cases) puts
+    # the first distance on the "back" face. PacktPublishing_Bracket_Solid, made in the UI,
+    # needs "forward": the user can flip the reference face and the stored field is open
+    # (DR-341), so that model stays wrong until the decoder reads it.
+    CHAMFER_FIRST_FACE = os.environ.get("F2FC_CHAMFER_FIRST", "back")
+
+    def asymmetric_chamfer(self, body, idx, eg, spec):
+        """(first, second) distances in the order OCC reads them for edge `idx` of `body`:
+        the first is measured on the first face OCC finds for the edge (Part.Shape.
+        ancestorsOfType), the second on the other. Fusion measures its first distance (or the
+        distance of a distance-and-angle chamfer) on the face of the edge's first coedge."""
+        shape = body.Shape
+        edge = shape.Edges[idx - 1]
+        faces = shape.ancestorsOfType(edge, Part.Face)
+        if len(faces) != 2:
+            raise ValueError("edge lies between %d faces" % len(faces))
+        t_rec = vec(eg["tangent"])
+        t_rec.normalize()
+        u = 0.5 * (edge.FirstParameter + edge.LastParameter)
+        mid = edge.valueAt(u)
+        te = edge.tangentAt(u)
+        if te.dot(t_rec) < 0:
+            te = -te
+        normals, inward = [], []
+        for f in faces:
+            uv = f.Surface.parameter(mid)
+            n = f.normalAt(*uv)
+            d = n.cross(te)
+            d.normalize()
+            step = 1e-3 * max(1.0, min(edge.Length, 1.0))
+            if not f.isInside(mid + d * step, 1e-7, True):
+                d = -d
+                if not f.isInside(mid + d * step, 1e-7, True):
+                    raise ValueError("inward direction of a face is ambiguous")
+            normals.append(n)
+            inward.append(d)
+        # With the material on the left of the boundary, the inward direction is n x t.
+        fwd = [i for i in range(2) if inward[i].dot(normals[i].cross(t_rec)) > 0]
+        if len(fwd) != 1:
+            raise ValueError("faces do not separate by coedge sense")
+        first = fwd[0] if self.CHAMFER_FIRST_FACE == "forward" else 1 - fwd[0]
+        if os.environ.get("F2FC_DEBUG_EDGES"):
+            print("CHAMFER-DBG edge", idx, "t_rec", tuple(round(c, 3) for c in t_rec), "te", tuple(round(c, 3) for c in te),
+                  "n", [tuple(round(c, 3) for c in n) for n in normals], "fwd", fwd[0], "recorded start/end", eg.get("start"), eg.get("end"))
+        if spec["kind"] == "two_distances":
+            d_first, d_second = spec["first"], spec["second"]
+        else:
+            theta = math.pi - math.acos(max(-1.0, min(1.0, normals[0].dot(normals[1]))))
+            ang = spec["angle"]
+            d_first = spec["distance"]
+            d_second = d_first * math.sin(ang) / math.sin(theta + ang)
+        return (d_first, d_second) if first == 0 else (d_second, d_first)
+
+    def shaped_fillet(self, body, idx, eg, r):
+        """(start, end) radii of one edge for a variable-radius fillet (linear between the
+        recorded ends) or a chord-length fillet (radius from the chord of the blend arc)."""
+        shape = body.Shape
+        edge = shape.Edges[idx - 1]
+        if r["kind"] == "variable":
+            r0, r1 = r["points"][0]["radius"], r["points"][1]["radius"]
+            if edge.isClosed() or not eg.get("start") or not eg.get("end"):
+                raise ValueError("variable radius on a closed edge")
+            a, b = vec(eg["start"]), vec(eg["end"])
+            p0, p1 = edge.Vertexes[0].Point, edge.Vertexes[-1].Point
+            fwd = (p0 - a).Length + (p1 - b).Length
+            rev = (p0 - b).Length + (p1 - a).Length
+            return (r0, r1) if fwd <= rev else (r1, r0)
+        faces = shape.ancestorsOfType(edge, Part.Face)
+        if len(faces) != 2:
+            raise ValueError("edge lies between %d faces" % len(faces))
+        u = 0.5 * (edge.FirstParameter + edge.LastParameter)
+        mid = edge.valueAt(u)
+        n = [f.normalAt(*f.Surface.parameter(mid)) for f in faces]
+        turn = math.acos(max(-1.0, min(1.0, n[0].dot(n[1]))))
+        if turn < 1e-6:
+            raise ValueError("chord length on a tangent edge")
+        rad = r["chord_length"] / (2 * math.sin(turn / 2))
+        return (rad, rad)
 
     def build_edge_treatment(self, feat, kind):
         d = feat["definition"]
@@ -790,14 +1018,29 @@ class Rebuilder:
             e = g["edges"]
             if kind == "fillet":
                 r = g.get("radius", {})
-                if r.get("kind") != "constant":
-                    raise NotImplementedError("fillet radius " + str(r.get("kind")))
-                size = (r["radius"], r["radius"])
+                rk = r.get("kind")
+                if rk == "constant":
+                    size = (r["radius"], r["radius"])
+                elif rk == "variable":
+                    # OCC interpolates the radius linearly; Fusion's smooth transition does not
+                    # (case_fillet_variable_radius: 981.46 vs 981.05), so no build is better
+                    # than a close wrong one. shaped_fillet keeps the linear form for F2FC_VARIABLE=1.
+                    pts = r.get("points") or []
+                    if os.environ.get("F2FC_VARIABLE") != "1" or len(pts) != 2:
+                        raise NotImplementedError("fillet radius variable (OCC law is linear, Fusion's is not)")
+                    size = None
+                elif rk == "chordal":
+                    size = None
+                else:
+                    raise NotImplementedError("fillet radius " + str(rk))
             else:
                 spec = g.get("spec", {})
-                if spec.get("kind") != "distance":
+                if spec.get("kind") == "distance":
+                    size = (spec["distance"], spec["distance"])
+                elif spec.get("kind") in ("two_distances", "distance_angle"):
+                    size = None  # per edge, once the faces it lies between are known
+                else:
                     raise NotImplementedError("chamfer spec " + str(spec.get("kind")))
-                size = (spec["distance"], spec["distance"])
             for eid in e["value"]["edges"]:
                 eg = self.topo_geometry.get(eid)
                 if eg is None:
@@ -808,23 +1051,43 @@ class Rebuilder:
                     missing.append("%.3g mm" % dist)
                     continue
                 if all(i != idx for i, _, _ in per_body[body]):
-                    per_body[body].append((idx, size[0], size[1]))
+                    if size is None and kind == "fillet":
+                        sz = self.shaped_fillet(body, idx, eg, r)
+                    elif size is None:
+                        try:
+                            sz = self.asymmetric_chamfer(body, idx, eg, spec)
+                        except ValueError as ex:
+                            raise ValueError("chamfer orientation: %s" % ex)
+                    else:
+                        sz = size
+                    per_body[body].append((idx, sz[0], sz[1]))
         if missing:
             raise ValueError("%d selected edges not found in the rebuilt bodies (nearest: %s)"
                              % (len(missing), ", ".join(missing[:6])))
-        made = []
-        for body, edges in per_body.items():
-            obj = self.doc.addObject("Part::Fillet" if kind == "fillet" else "Part::Chamfer", kind.capitalize())
-            obj.Label = feat["name"]
-            obj.Base = body
-            obj.Edges = edges
-            made.append((body, obj))
-        self.doc.recompute()
-        bad = [o for _, o in made if o.Shape.isNull() or not o.Shape.Solids or "Invalid" in o.State]
-        if bad:
+        # A radius that consumes a whole adjacent face exactly (a fillet as tall as the step
+        # it rounds) is degenerate for OCC; Fusion accepts it. Retry shrunk by a hair, which
+        # leaves a sliver face but a volume within 1e-7 of the exact result.
+        for shrink in (0.0, 1e-7, 1e-6):
+            made = []
+            for body, edges in per_body.items():
+                obj = self.doc.addObject("Part::Fillet" if kind == "fillet" else "Part::Chamfer", kind.capitalize())
+                obj.Label = feat["name"]
+                obj.Base = body
+                obj.Edges = [(i, a * (1 - shrink), b * (1 - shrink)) for i, a, b in edges]
+                made.append((body, obj))
+            self.doc.recompute()
+            bad = [o for _, o in made if o.Shape.isNull() or not o.Shape.Solids or "Invalid" in o.State]
+            if not bad:
+                break
+            if shrink == 0.0 and os.environ.get("F2FC_DEBUG_EDGES"):
+                import json as _j
+                for i, (b_, o) in enumerate(made):
+                    b_.Shape.exportBrep("%s/%s_%d.brep" % (os.environ["F2FC_DEBUG_EDGES"], feat["name"], i))
+                    _j.dump({"kind": kind, "edges": o.Edges}, open("%s/%s_%d.json" % (os.environ["F2FC_DEBUG_EDGES"], feat["name"], i), "w"))
             for _, o in made:
                 self.doc.removeObject(o.Name)
             self.doc.recompute()
+        if bad:
             raise ValueError("OCC %s failed on %d of %d bodies" % (kind, len(bad), len(made)))
         for body, obj in made:
             self.solids[self.solids.index(body)] = obj
@@ -1737,7 +2000,127 @@ class Rebuilder:
             for m in mats:
                 bodies.append(self.body_record(s, m))
         self.report["bodies"] = bodies
+        self.finish()
         return self.report
+
+    # ----- final-shape check, fallback and conversion report -----------------
+    FINAL_RTOL = 1e-4  # relative volume tolerance against Fusion's stored final bodies
+
+    def stored_final_shapes(self, index):
+        """Fusion's stored final solids, placed in the root: [(body id, shape)]."""
+        out = []
+        for bid, rec in index.items():
+            if not rec.get("file"):
+                raise ValueError("final body %s not exported: %s" % (bid, rec.get("error", "missing")))
+            shape = Part.Shape()
+            shape.read(os.path.join(os.path.dirname(os.environ["F2FC_FINAL"]), rec["file"]))
+            for m in self.world.get(rec.get("component")) or [None]:
+                out.append((bid, shape if m is None or m.isUnity() else shape.transformGeometry(m)))
+        return out
+
+    def compare_final(self, stored, rebuilt):
+        """Count, volumes and bounding box of the rebuilt final bodies against the stored ones."""
+        def solids(shapes):
+            return [x for s in shapes for x in s.Solids]
+        a, b = solids(stored), solids(rebuilt)
+        res = {"stored_solids": len(a), "rebuilt_solids": len(b), "problems": []}
+        va, vb = sorted(x.Volume for x in a), sorted(x.Volume for x in b)
+        res["stored_volume"], res["rebuilt_volume"] = sum(va), sum(vb)
+        if len(a) != len(b):
+            res["problems"].append("solid count %d (Fusion) vs %d (rebuilt)" % (len(a), len(b)))
+        else:
+            for x, y in zip(va, vb):
+                if abs(x - y) > self.FINAL_RTOL * max(abs(x), abs(y), 1e-9):
+                    res["problems"].append("volume %.6g mm3 (Fusion) vs %.6g (rebuilt)" % (x, y))
+                    break
+        if a and b:
+            ba, bb = Part.makeCompound(a).BoundBox, Part.makeCompound(b).BoundBox
+            tol = max(0.01, 1e-4 * ba.DiagonalLength)
+            d = max(abs(ba.XMin - bb.XMin), abs(ba.YMin - bb.YMin), abs(ba.ZMin - bb.ZMin),
+                    abs(ba.XMax - bb.XMax), abs(ba.YMax - bb.YMax), abs(ba.ZMax - bb.ZMax))
+            res["bbox_max_deviation_mm"] = d
+            if d > tol:
+                res["problems"].append("bounding box differs by %.4g mm" % d)
+        res["match"] = not res["problems"]
+        return res
+
+    def finish(self):
+        """Compare with Fusion's stored final bodies, add them as a separate non-parametric group
+        when the rebuild is incomplete or differs, and write the conversion summary. Active only
+        when the driver (tools/convert.py) sets F2FC_FINAL / F2FC_FACTS."""
+        facts = json.load(open(os.environ["F2FC_FACTS"])) if os.environ.get("F2FC_FACTS") else {}
+        rep = self.report
+        feats = rep["features"]
+        lost = [r for r in feats if r["status"] in ("skipped", "failed")]
+        final = {"checked": False}
+        stored = None
+        if os.environ.get("F2FC_FINAL"):
+            try:
+                stored = self.stored_final_shapes(json.load(open(os.environ["F2FC_FINAL"])))
+                self.doc.recompute()
+                final = dict(self.compare_final([s for _, s in stored], self.world_shapes()), checked=True)
+            except Exception as e:
+                final = {"checked": False, "error": "%s: %s" % (type(e).__name__, e)}
+        incomplete = bool(lost) or (final.get("checked") and not final["match"])
+        want = facts.get("fallback", True) and not os.environ.get("F2FC_NO_FALLBACK")
+        used = False
+        if incomplete and want and stored:
+            grp = self.doc.addObject("App::DocumentObjectGroup", "FusionFinalShape")
+            grp.Label = "Fusion final shape (not parametric)"
+            for n, (bid, shape) in enumerate(stored):
+                o = self.doc.addObject("Part::Feature", "FusionFinalBody")
+                o.Shape = shape
+                o.Label = "Fusion final body %d (not parametric)" % (n + 1)
+                grp.addObject(o)
+            for s in self.solids:
+                s.Label = s.Label + " (INCOMPLETE rebuild)"
+                s.Visibility = False
+            used = True
+        final.update(incomplete=incomplete, fallback_used=used, fallback_wanted=want)
+        rep["final_shape"] = final
+        rep["facts"] = facts
+        rep["summary_text"] = self.summary_text(facts, lost, final)
+        print(rep["summary_text"])
+        if os.environ.get("F2FC_SUMMARY"):
+            open(os.environ["F2FC_SUMMARY"], "w").write(rep["summary_text"] + "\n")
+        if facts or os.environ.get("F2FC_FINAL"):
+            t = self.doc.addObject("App::TextDocument", "ConversionReport")
+            t.Label = "Conversion report"
+            try:
+                t.Text = rep["summary_text"]
+            except Exception:
+                pass
+
+    def summary_text(self, facts, lost, final):
+        feats = self.report["features"]
+        st = defaultdict(int)
+        for r in feats:
+            st[r["status"]] += 1
+        lines = ["Conversion report", "  features: %s" % ", ".join("%d %s" % (v, k) for k, v in sorted(st.items()))]
+        for r in lost[:40]:
+            lines.append("    %s %s (%s): %s" % (r["status"].upper(), r["name"], r["kind"], str(r.get("reason", ""))[:140]))
+        if len(lost) > 40:
+            lines.append("    ... %d more" % (len(lost) - 40))
+        if final.get("checked"):
+            lines.append("  final shape vs Fusion's stored bodies: %s (%d solids rebuilt, %d stored; volume %.6g vs %.6g mm3)" % (
+                "MATCH" if final["match"] else "DIFFERS", final["rebuilt_solids"], final["stored_solids"],
+                final["rebuilt_volume"], final["stored_volume"]))
+            for p in final["problems"]:
+                lines.append("    " + p)
+        else:
+            lines.append("  final shape: not checked" + (" (%s)" % final["error"] if final.get("error") else ""))
+        if final.get("fallback_used"):
+            lines.append("  FALLBACK: Fusion's stored final bodies were added as 'Fusion final shape (not parametric)'; "
+                         "the parametric rebuild is incomplete and hidden.")
+        elif final.get("incomplete"):
+            lines.append("  WARNING: the parametric rebuild is incomplete" +
+                         ("; fallback disabled." if not final.get("fallback_wanted") else "; no final bodies available."))
+        for w in facts.get("warnings", []):
+            lines.append("  WARNING: " + w)
+        lc = facts.get("loss_counts") or {}
+        if lc:
+            lines.append("  decoder losses by code: " + ", ".join("%s x%d" % kv for kv in sorted(lc.items(), key=lambda kv: -kv[1])[:12]))
+        return "\n".join(lines)
 
     @staticmethod
     def body_record(s, m):

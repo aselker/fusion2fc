@@ -1,0 +1,269 @@
+{
+ "design": "(Unsaved)",
+ "units": "cm",
+ "userParameters": [],
+ "timeline": [
+  {
+   "index": 0,
+   "name": "Sketch1",
+   "group": null,
+   "type": "Sketch",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "name": "Sketch1",
+    "component": "(Unsaved)",
+    "plane": {
+     "origin": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "normal": [
+      0.0,
+      0.0,
+      1.0
+     ]
+    },
+    "visible": false,
+    "transform": [
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "referencePlane": "ConstructionPlane",
+    "profiles": 1,
+    "curves": [
+     {
+      "type": "SketchCircle",
+      "construction": false,
+      "world": {
+       "center": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 0.5
+      },
+      "fixed": false,
+      "reference": false,
+      "center": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "radius": 0.5
+     }
+    ],
+    "points": [
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      0.0
+     ]
+    ],
+    "constraints": {},
+    "dimensions": []
+   },
+   "after": []
+  },
+  {
+   "index": 1,
+   "name": "Extrude1",
+   "group": null,
+   "type": "ExtrudeFeature",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "operation": 3,
+    "extentType": 0,
+    "isSolid": true,
+    "startExtent": {
+     "type": "ProfilePlaneStartDefinition"
+    },
+    "extentOne": {
+     "type": "DistanceExtentDefinition",
+     "distance": {
+      "name": "d1",
+      "expression": "8 mm",
+      "value": 0.8,
+      "unit": "mm"
+     }
+    },
+    "extentTwo": null,
+    "taperOne": {
+     "name": "d2",
+     "expression": "0.0 deg",
+     "value": 0.0,
+     "unit": "deg"
+    },
+    "taperTwo": null,
+    "symmetric": false,
+    "profile": {
+     "type": "Profile",
+     "sketch": "Sketch1",
+     "component": "(Unsaved)",
+     "index": 0,
+     "area": 0.7853981633974483,
+     "centroid": [
+      1.9490859162596877e-17,
+      0.0,
+      0.0
+     ]
+    },
+    "participantBodies": [],
+    "resultBodies": []
+   },
+   "after": [
+    {
+     "component": "(Unsaved)",
+     "name": "Body1",
+     "volume": 0.6283185307179857,
+     "occurrence": null
+    }
+   ]
+  },
+  {
+   "index": 2,
+   "name": "Fillet1",
+   "group": null,
+   "type": "FilletFeature",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "edgeSets": [
+     {
+      "type": "ConstantRadiusFilletEdgeSet",
+      "radius": {
+       "name": "d4",
+       "expression": "2 mm",
+       "value": 0.2,
+       "unit": "mm"
+      },
+      "isTangentChain": true,
+      "edges": [
+       {
+        "curve": "Circle3D",
+        "length": 3.141592653589793,
+        "body": "Body1",
+        "start": [
+         -0.5,
+         -6.123233995736766e-17,
+         0.8
+        ],
+        "end": [
+         -0.5,
+         -6.123233995736766e-17,
+         0.8
+        ],
+        "mid": [
+         0.5,
+         0.0,
+         0.8
+        ]
+       }
+      ]
+     }
+    ],
+    "resultBodies": [
+     {
+      "name": "Body1",
+      "component": "(Unsaved)"
+     }
+    ]
+   },
+   "after": [
+    {
+     "component": "(Unsaved)",
+     "name": "Body1",
+     "volume": 0.6037603530287767,
+     "occurrence": null
+    }
+   ]
+  }
+ ],
+ "bodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 0.6037603530287767,
+   "area": 3.7966007707269505,
+   "centroid": [
+    1.1752624003366052e-11,
+    0.0,
+    0.3856208731186224
+   ],
+   "bbox": [
+    [
+     -0.5,
+     -0.5,
+     0.0
+    ],
+    [
+     0.5,
+     0.5,
+     0.8
+    ]
+   ],
+   "faces": 4,
+   "edges": 3
+  }
+ ],
+ "worldBodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 0.6037603530287767,
+   "area": 3.7966007707269505,
+   "centroid": [
+    1.1752624003366052e-11,
+    0.0,
+    0.3856208731186224
+   ],
+   "bbox": [
+    [
+     -0.5,
+     -0.5,
+     0.0
+    ],
+    [
+     0.5,
+     0.5,
+     0.8
+    ]
+   ],
+   "faces": 4,
+   "edges": 3
+  }
+ ],
+ "stats": {
+  "items": 3,
+  "errors": 0,
+  "rolled": 1,
+  "seconds": 0.06
+ },
+ "case": "fillet_cylinder_top_edge",
+ "doc": ""
+}
