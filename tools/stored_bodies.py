@@ -69,11 +69,18 @@ def body_cadir(cadir, body):
     return out
 
 
-def export(cadir, outdir, cadmpeg):
+def final_body_ids(model):
+    """Every solid body of the final design (the shape Fusion stores)."""
+    return [b["id"] for b in model.get("bodies", []) if b.get("kind") == "solid"]
+
+
+def export(cadir, outdir, cadmpeg, ids=None):
+    """Export `ids` (default: the Base Feature bodies) to OUTDIR/body_NNN.step."""
     outdir = Path(outdir)
     outdir.mkdir(parents=True, exist_ok=True)
     index, kinds = {}, {b["id"]: b.get("kind") for b in cadir["model"].get("bodies", [])}
-    for n, body in enumerate(stored_body_ids(cadir["model"])):
+    owner = {b: pd["id"] for pd in cadir["model"].get("product_definitions", []) for b in pd.get("bodies") or []}
+    for n, body in enumerate(stored_body_ids(cadir["model"]) if ids is None else ids):
         if body not in kinds:
             continue
         sub, step = outdir / ("body_%03d.cadir.json" % n), outdir / ("body_%03d.step" % n)
@@ -82,7 +89,7 @@ def export(cadir, outdir, cadmpeg):
                            capture_output=True, text=True, timeout=600)
         sub.unlink()
         if p.returncode == 0 and step.exists():
-            index[body] = {"file": step.name, "kind": kinds[body]}
+            index[body] = {"file": step.name, "kind": kinds[body], "component": owner.get(body)}
         else:
             index[body] = {"error": (p.stdout + p.stderr)[-400:], "kind": kinds[body]}
     json.dump(index, open(outdir / "index.json", "w"), indent=1)

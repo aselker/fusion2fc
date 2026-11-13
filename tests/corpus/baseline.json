@@ -24,7 +24,7 @@
   "steps": 15
  },
  "PacktPublishing_Bracket_Solid": {
-  "match": 4,
+  "match": 5,
   "steps": 5
  },
  "PacktPublishing_Ch12_tealight_ghost_final": {
@@ -143,7 +143,59 @@
   "match": 5,
   "steps": 7
  },
+ "case_chamfer_and_fillet_adjacent": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_chamfer_box_all_edges": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_chamfer_concave_boss": {
+  "match": 6,
+  "steps": 6
+ },
+ "case_chamfer_corner_three_edges": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_chamfer_distance_angle": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_chamfer_distance_angle_flipped": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_chamfer_hole_edge": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_chamfer_single_edge": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_chamfer_tangent_chain": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_chamfer_then_fillet_same_corner": {
+  "match": 4,
+  "steps": 4
+ },
  "case_chamfer_top_edges": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_chamfer_two_distances": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_chamfer_two_distances_flipped": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_chamfer_two_distances_swapped": {
   "match": 3,
   "steps": 3
  },
@@ -199,9 +251,105 @@
   "match": 2,
   "steps": 2
  },
+ "case_fillet_after_pattern": {
+  "match": 6,
+  "steps": 6
+ },
+ "case_fillet_asymmetric": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_fillet_boss_base_and_top": {
+  "match": 6,
+  "steps": 6
+ },
+ "case_fillet_box_all_edges": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_fillet_chord_length": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_fillet_concave_boss_round": {
+  "match": 6,
+  "steps": 6
+ },
+ "case_fillet_concave_boss_square": {
+  "match": 6,
+  "steps": 6
+ },
+ "case_fillet_corner_mixed_radii": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_fillet_corner_rolling_ball_explicit": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_fillet_corner_setback": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_fillet_corner_three_edges": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_fillet_cylinder_top_edge": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_fillet_g2_continuity": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_fillet_hole_both_edges": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_fillet_hole_top_edge": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_fillet_single_edge": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_fillet_single_top_edge": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_fillet_tangent_chain_off": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_fillet_tangent_chain_rounded_rect": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_fillet_top_face_edges": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_fillet_two_edge_sets": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_fillet_two_features_disjoint": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_fillet_variable_radius": {
+  "match": 2,
+  "steps": 3
+ },
  "case_fillet_vertical_edges": {
   "match": 3,
   "steps": 3
+ },
+ "case_fillet_vertical_then_top": {
+  "match": 4,
+  "steps": 4
  },
  "case_join_bridge": {
   "match": 6,
@@ -288,7 +436,7 @@
   "steps": 37
  },
  "digitalsputnik_Apollo_Yoke_Lamp_Mount_Body_M_SPPS000000036_v2": {
-  "match": 2,
+  "match": 6,
   "steps": 14
  },
  "digitalsputnik_Apollo_Yoke_Lock_B_Side_P_MPLA000000177_v2": {
@@ -356,7 +504,7 @@
   "steps": 18
  },
  "intuibase_Co2SensorEnclosure": {
-  "match": 4,
+  "match": 5,
   "steps": 21
  },
  "intuibase_SCD41Chamber": {
