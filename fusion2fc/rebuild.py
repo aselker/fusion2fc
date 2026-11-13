@@ -1183,10 +1183,14 @@ class Rebuilder:
             axis.normalize()
             label = feat["name"] if len(placements) == 1 else "%s %d" % (feat["name"], i + 1)
             parts += self.hole_parts(label, d, vec(p["position"]), axis)
-        tool = self.doc.addObject("Part::MultiFuse", "HoleTool")
-        tool.Label = feat["name"] + " tool"
-        tool.Shapes = parts
-        tool.Refine = True
+        if len(parts) == 1:  # a lone bore (MultiFuse needs two shapes)
+            tool = parts[0]
+            tool.Label = feat["name"] + " tool"
+        else:
+            tool = self.doc.addObject("Part::MultiFuse", "HoleTool")
+            tool.Label = feat["name"] + " tool"
+            tool.Shapes = parts
+            tool.Refine = True
         self.doc.recompute()
         res = self.apply_op("cut", tool, feat["name"])
         res["holes"] = len(placements)
