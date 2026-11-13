@@ -16,6 +16,8 @@ parametric features and timeline rather than only the final geometry.
    primitive solids cut from the bodies; patterns and mirrors re-apply their seed features'
    tools through Draft arrays or `Part::Mirroring` (or copy bodies); revolves, moves and
    combines map to `Part::Revolution`, placed `Part::Compound`s and Part booleans.
+   Base Feature bodies (stored, not rebuilt) are exported from the CADIR to STEP by
+   `tools/stored_bodies.py` (`F2FC_BODIES`) and imported as the starting solids.
 3. **Check** against Fusion ground truth.
 
 ## Layout
