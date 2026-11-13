@@ -405,6 +405,32 @@ class Rebuilder:
         shape.Placement = placement
         return shape
 
+    def bare_sketch_regions(self, sid):
+        """Loop regions (outer loop, directly nested loops as holes) for every stored loop of a
+        sketch whose loops nest or stay apart. None when loops cross or are not buildable."""
+        n = len(self.sketch_defs[sid].get("profiles") or [])
+        if not n:
+            return None
+        try:
+            faces = self.loop_faces(sid, range(n))
+        except Exception:
+            return None
+        inside = {}
+        for i in range(n):
+            for j in range(n):
+                if i != j:
+                    both = faces[i].common(faces[j]).Area
+                    inside[i, j] = both >= faces[j].Area * (1 - 1e-7)  # j inside i
+                    if not inside[i, j] and both > 1e-7 * min(faces[i].Area, faces[j].Area):
+                        if not (faces[j].common(faces[i]).Area >= faces[i].Area * (1 - 1e-7)):
+                            return None
+        regions = []
+        for i in range(n):
+            inner = [j for j in range(n) if inside.get((i, j)) and not inside.get((j, i))]
+            direct = [j for j in inner if not any(k != j and inside.get((k, j)) and k in inner for k in range(n))]
+            regions.append({"region": "loops", "outer": i, "holes": direct})
+        return regions
+
     def loop_faces(self, sid, idxs):
         """Planar faces (sketch coordinates) of whole stored loops made of lines, circles and arcs."""
         ents = {e["id"]: e for e in self.entities[sid]}
@@ -536,6 +562,12 @@ class Rebuilder:
             raise NotImplementedError("surface extrude")
         prof = d["profile"]
         value = prof.get("value")
+        if prof["kind"] == "sketch" and value in self.sketch_defs:
+            # No selection record narrowed the sketch down: every region of it is extruded.
+            regions = self.bare_sketch_regions(value)
+            if regions:
+                prof = {"kind": "sketch_regions", "value": {"sketch": value, "regions": regions, "static": True}}
+                value = prof["value"]
         sid = value.get("sketch") if isinstance(value, dict) else None
         if sid not in self.sketch_defs:
             raise NotImplementedError("profile kind " + prof["kind"])
@@ -548,7 +580,8 @@ class Rebuilder:
             base = self.doc.addObject("Part::Feature", "ProfileFace")
             base.Shape = union
             notes["profile"] = "static union of overlapping loops"
-        elif any(r.get("region") == "trimmed" for r in regions) or self.crossing_loops(sid, regions):
+        elif (value.get("static") or any(r.get("region") == "trimmed" for r in regions)
+              or self.crossing_loops(sid, regions)):
             base = self.doc.addObject("Part::Feature", "ProfileFace")
             base.Shape = self.trimmed_face(sid, regions, sk.Placement)
             notes["profile"] = "static trimmed regions"
