@@ -387,6 +387,383 @@ def rolled_back_marker(design, root):
         design.timeline.markerPosition = 3
     return post
 
+# ---------------------------------------------------------------- fillet / chamfer cases
+# Blocks are (0,0)-(2,1) cm, 5 mm high unless stated. Edges are picked by endpoint position.
+def _pt(v):
+    g = v.geometry
+    return (g.x, g.y, g.z)
+
+
+def _near(a, b, t=1e-5):
+    return all(abs(x - y) < t for x, y in zip(a, b))
+
+
+def edge_at(body, p0, p1):
+    for e in body.edges:
+        a, b = _pt(e.startVertex), _pt(e.endVertex)
+        if (_near(a, p0) and _near(b, p1)) or (_near(a, p1) and _near(b, p0)):
+            return e
+    raise RuntimeError("no edge %s-%s" % (p0, p1))
+
+
+def edges_at_vertex(body, p):
+    return [e for e in body.edges if _near(_pt(e.startVertex), p) or _near(_pt(e.endVertex), p)]
+
+
+def circle_edges(body, z=None, cx=None):
+    out = []
+    for e in body.edges:
+        if short_type(e.geometry) != "Circle3D":
+            continue
+        c = e.geometry.center
+        if z is not None and abs(c.z - z) > 1e-6:
+            continue
+        if cx is not None and abs(c.x - cx) > 1e-6:
+            continue
+        out.append(e)
+    return out
+
+
+def cur(comp):
+    return comp.bRepBodies.item(0)
+
+
+def fillet_sets(comp, sets, rolling=True, g2=False):
+    """sets: list of (kind, edges, args...) -> one fillet feature with several edge sets."""
+    fs = comp.features.filletFeatures
+    fi = fs.createInput()
+    for st in sets:
+        kind, edges, args = st[0], st[1], st[2:]
+        es = fi.edgeSetInputs
+        if kind == "const":
+            es.addConstantRadiusEdgeSet(coll(edges), V(args[0]), args[1] if len(args) > 1 else True)
+        elif kind == "var":
+            es.addVariableRadiusEdgeSet(coll(edges), V(args[0]), V(args[1]), True)
+        elif kind == "chord":
+            es.addChordLengthEdgeSet(coll(edges), V(args[0]), True)
+        elif kind == "asym":
+            es.addAsymmetricRadiusEdgeSet(coll(edges), V(args[0]), V(args[1]), True)
+    fi.isRollingBallCorner = rolling
+    if g2:
+        fi.isG2 = True
+    return fs.add(fi)
+
+
+def chamfer_two(comp, edges, d1, d2, flip=False):
+    cs = comp.features.chamferFeatures
+    ci = cs.createInput2()
+    ci.chamferEdgeSets.addTwoDistancesChamferEdgeSet(coll(edges), V(d1), V(d2), True, flip)
+    return cs.add(ci)
+
+
+def chamfer_angle(comp, edges, d, ang, flip=False):
+    cs = comp.features.chamferFeatures
+    ci = cs.createInput2()
+    ci.chamferEdgeSets.addDistanceAndAngleChamferEdgeSet(coll(edges), V(d), V(ang), True, flip)
+    return cs.add(ci)
+
+
+def offset_plane(comp, base, d):
+    pi = comp.constructionPlanes.createInput()
+    pi.setByOffset(base, V(d))
+    return comp.constructionPlanes.add(pi)
+
+
+def rounded_rect_block(root, h="5 mm", r=0.3):
+    sk = root.sketches.add(root.xYConstructionPlane)
+    ls = rect(sk, 0, 0, 2, 1)
+    arcs = sk.sketchCurves.sketchArcs
+    pts = [(0, 0), (2, 0), (2, 1), (0, 1)]
+    for i in range(4):
+        l1, l2 = ls.item(i), ls.item((i + 1) % 4)
+        arcs.addFillet(l1, l1.endSketchPoint.geometry, l2, l2.startSketchPoint.geometry, r)
+    return extrude(root, sk.profiles.item(0), FO.NewBodyFeatureOperation, blind(h)).bodies.item(0)
+
+
+def plate_boss(root, round_boss=False):
+    block(root, 0, 0, 3, 2, "4 mm")
+    pl = offset_plane(root, root.xYConstructionPlane, "4 mm")
+    sk = root.sketches.add(pl)
+    if round_boss:
+        circle(sk, 1.5, 1, 0.4)
+    else:
+        rect(sk, 1, 0.5, 2, 1.5)
+    extrude(root, sk.profiles.item(0), FO.JoinFeatureOperation, blind("8 mm"))
+    return cur(root)
+
+
+def boss_base_edges(body, zc=0.4):
+    return [e for e in body.edges
+            if abs(e.startVertex.geometry.z - zc) < 1e-6 and abs(e.endVertex.geometry.z - zc) < 1e-6
+            and 0.9 < e.startVertex.geometry.x < 2.1 and 0.4 < e.startVertex.geometry.y < 1.6] \
+        or [e for e in circle_edges(body, z=zc)]
+
+
+def holed_block(root):
+    body = block(root, 0, 0, 2, 1, "5 mm")
+    sk = root.sketches.add(root.xYConstructionPlane)
+    circle(sk, 1, 0.5, 0.3)
+    extrude(root, sk.profiles.item(0), FO.CutFeatureOperation, through_all)
+    return cur(root)
+
+
+TOP, BOT = 0.5, 0.0
+
+
+@case
+def fillet_single_edge(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet(root, [edge_at(b, (0, 0, 0), (0, 0, TOP))], "2 mm")
+
+
+@case
+def fillet_single_top_edge(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet(root, [edge_at(b, (0, 0, TOP), (2, 0, TOP))], "1.5 mm")
+
+
+@case
+def fillet_box_all_edges(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet(root, list(b.edges), "1 mm")
+
+
+@case
+def fillet_top_face_edges(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet(root, list(top_face(b).edges), "1.5 mm")
+
+
+@case
+def fillet_cylinder_top_edge(design, root):
+    sk = root.sketches.add(root.xYConstructionPlane)
+    circle(sk, 0, 0, 0.5)
+    extrude(root, sk.profiles.item(0), FO.NewBodyFeatureOperation, blind("8 mm"))
+    fillet(root, circle_edges(cur(root), z=0.8), "2 mm")
+
+
+@case
+def fillet_tangent_chain_rounded_rect(design, root):
+    """Rounded-rectangle outline (sketch fillets); one edge selected, tangent chain picks the loop."""
+    b = rounded_rect_block(root)
+    top = [e for e in top_face(b).edges]
+    line = [e for e in top if short_type(e.geometry) == "Line3D"][0]
+    fillet_sets(root, [("const", [line], "1.5 mm", True)])
+
+
+@case
+def fillet_tangent_chain_off(design, root):
+    """Same outline, tangent chain disabled: only the selected straight edge is rounded."""
+    b = rounded_rect_block(root)
+    line = [e for e in top_face(b).edges if short_type(e.geometry) == "Line3D"][0]
+    fillet_sets(root, [("const", [line], "1.5 mm", False)])
+
+
+@case
+def fillet_vertical_then_top(design, root):
+    """Two fillet features in sequence: vertical corners, then the (now tangent) top loop."""
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet(root, vertical_edges(b), "3 mm")
+    b = cur(root)
+    line = [e for e in top_face(b).edges if short_type(e.geometry) == "Line3D"][0]
+    fillet_sets(root, [("const", [line], "1.5 mm", True)])
+
+
+@case
+def fillet_two_features_disjoint(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet(root, [edge_at(b, (0, 0, 0), (0, 0, TOP))], "2 mm")
+    b = cur(root)
+    fillet(root, [edge_at(b, (2, 1, TOP), (0, 1, TOP))], "1 mm")
+
+
+@case
+def fillet_hole_top_edge(design, root):
+    b = holed_block(root)
+    fillet(root, circle_edges(b, z=TOP), "1 mm")
+
+
+@case
+def fillet_hole_both_edges(design, root):
+    b = holed_block(root)
+    fillet(root, circle_edges(b), "1 mm")
+
+
+@case
+def fillet_concave_boss_square(design, root):
+    b = plate_boss(root)
+    fillet(root, boss_base_edges(b), "1.5 mm")
+
+
+@case
+def fillet_concave_boss_round(design, root):
+    b = plate_boss(root, True)
+    fillet(root, circle_edges(b, z=0.4), "1.5 mm")
+
+
+@case
+def fillet_boss_base_and_top(design, root):
+    """Convex top rim and concave base of a round boss in one feature, two radii."""
+    b = plate_boss(root, True)
+    fillet_sets(root, [("const", circle_edges(b, z=0.4), "1.5 mm"),
+                       ("const", circle_edges(b, z=1.2), "0.8 mm")])
+
+
+@case
+def fillet_corner_three_edges(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet(root, edges_at_vertex(b, (0, 0, TOP)), "2 mm")
+
+
+@case
+def fillet_corner_mixed_radii(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    es = edges_at_vertex(b, (0, 0, TOP))
+    fillet_sets(root, [("const", [es[0]], "1 mm"), ("const", [es[1]], "2 mm"), ("const", [es[2]], "1.5 mm")])
+
+
+@case
+def fillet_corner_setback(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet_sets(root, [("const", edges_at_vertex(b, (0, 0, TOP)), "2 mm")], rolling=False)
+
+
+@case
+def fillet_corner_rolling_ball_explicit(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet_sets(root, [("const", edges_at_vertex(b, (0, 0, TOP)), "2 mm")], rolling=True)
+
+
+@case
+def fillet_two_edge_sets(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet_sets(root, [("const", [edge_at(b, (0, 0, TOP), (2, 0, TOP)), edge_at(b, (0, 1, TOP), (2, 1, TOP))], "1 mm"),
+                       ("const", [edge_at(b, (0, 0, 0), (0, 1, 0)), edge_at(b, (2, 0, 0), (2, 1, 0))], "2 mm")])
+
+
+@case
+def fillet_variable_radius(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet_sets(root, [("var", [edge_at(b, (0, 0, TOP), (2, 0, TOP))], "1 mm", "3 mm")])
+
+
+@case
+def fillet_chord_length(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet_sets(root, [("chord", [edge_at(b, (0, 0, TOP), (2, 0, TOP))], "3 mm")])
+
+
+@case
+def fillet_asymmetric(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet_sets(root, [("asym", [edge_at(b, (0, 0, TOP), (2, 0, TOP))], "1 mm", "2.5 mm")])
+
+
+@case
+def fillet_g2_continuity(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet_sets(root, [("const", [edge_at(b, (0, 0, TOP), (2, 0, TOP))], "2 mm")], g2=True)
+
+
+@case
+def fillet_after_pattern(design, root):
+    b = block(root, 0, 0, 4, 1.5, "5 mm")
+    sk = root.sketches.add(root.xYConstructionPlane)
+    circle(sk, 0.5, 0.75, 0.2)
+    cut = extrude(root, sk.profiles.item(0), FO.CutFeatureOperation, through_all)
+    pf = root.features.rectangularPatternFeatures
+    pi = pf.createInput(coll([cut]), root.xConstructionAxis, V("3"), V("12 mm"),
+                        adsk.fusion.PatternDistanceType.SpacingPatternDistanceType)
+    pf.add(pi)
+    fillet(root, circle_edges(cur(root), z=TOP), "0.8 mm")
+
+
+@case
+def chamfer_single_edge(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    chamfer(root, [edge_at(b, (0, 0, TOP), (2, 0, TOP))], "1.5 mm")
+
+
+@case
+def chamfer_box_all_edges(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    chamfer(root, list(b.edges), "1 mm")
+
+
+@case
+def chamfer_two_distances(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    chamfer_two(root, [edge_at(b, (0, 0, TOP), (2, 0, TOP))], "1 mm", "2.5 mm")
+
+
+@case
+def chamfer_two_distances_swapped(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    chamfer_two(root, [edge_at(b, (0, 0, TOP), (2, 0, TOP))], "2.5 mm", "1 mm")
+
+
+@case
+def chamfer_two_distances_flipped(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    chamfer_two(root, [edge_at(b, (0, 0, TOP), (2, 0, TOP))], "1 mm", "2.5 mm", True)
+
+
+@case
+def chamfer_distance_angle_flipped(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    chamfer_angle(root, [edge_at(b, (0, 0, TOP), (2, 0, TOP))], "2 mm", "30 deg", True)
+
+
+@case
+def chamfer_distance_angle(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    chamfer_angle(root, [edge_at(b, (0, 0, TOP), (2, 0, TOP))], "2 mm", "30 deg")
+
+
+@case
+def chamfer_hole_edge(design, root):
+    b = holed_block(root)
+    chamfer(root, circle_edges(b, z=TOP), "1 mm")
+
+
+@case
+def chamfer_corner_three_edges(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    chamfer(root, edges_at_vertex(b, (0, 0, TOP)), "1.5 mm")
+
+
+@case
+def chamfer_tangent_chain(design, root):
+    b = rounded_rect_block(root)
+    line = [e for e in top_face(b).edges if short_type(e.geometry) == "Line3D"][0]
+    cs = root.features.chamferFeatures
+    ci = cs.createInput2()
+    ci.chamferEdgeSets.addEqualDistanceChamferEdgeSet(coll([line]), V("1 mm"), True)
+    cs.add(ci)
+
+
+@case
+def chamfer_concave_boss(design, root):
+    b = plate_boss(root)
+    chamfer(root, boss_base_edges(b), "1.5 mm")
+
+
+@case
+def chamfer_and_fillet_adjacent(design, root):
+    """Fillet one vertical edge, then chamfer the adjacent top edge that runs into it."""
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    fillet(root, [edge_at(b, (0, 0, 0), (0, 0, TOP))], "2 mm")
+    b = cur(root)
+    chamfer(root, [edge_at(b, (0.2, 0, TOP), (2, 0, TOP))], "1 mm")
+
+
+@case
+def chamfer_then_fillet_same_corner(design, root):
+    b = block(root, 0, 0, 2, 1, "5 mm")
+    chamfer(root, [edge_at(b, (0, 0, TOP), (2, 0, TOP))], "1 mm")
+    b = cur(root)
+    fillet(root, [edge_at(b, (0, 0, 0), (0, 0, TOP - 0.1))], "2 mm")
+
 
 # ---------------------------------------------------------------- driver
 def run(_context: str):
