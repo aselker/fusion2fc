@@ -76,7 +76,7 @@ class Rebuilder:
                         "sweep": "build_sweep", "block": "build_block", "primitive": "build_primitive",
                         "sphere": "build_sphere", "torus": "build_torus", "base_feature": "build_base_feature",
                         "shell": "build_shell", "delete_face": "build_delete_face", "draft": "build_draft", "loft": "build_loft",
-                        "scale": "build_scale", "split_body": "build_split_body", "move_face": "build_move_face"}
+                        "scale": "build_scale", "thicken": "build_thicken", "split_body": "build_split_body", "move_face": "build_move_face"}
 
     def __init__(self, slim, topo, wanted):
         self.slim = slim
@@ -559,7 +559,10 @@ class Rebuilder:
     def build_extrude(self, feat, suppressed=False):
         """Build an extrude; a suppressed one keeps its hidden tool out of the boolean chain."""
         d = feat["definition"]
-        if not d.get("solid", True):
+        surface = not d.get("solid", True)
+        if surface and (d["op"] != "new_body" or d["extent"]["kind"] != "one_sided" or suppressed
+                        or d["extent"]["side"].get("draft")
+                        or d["extent"]["side"]["termination"].get("kind") != "blind"):
             raise NotImplementedError("surface extrude")
         prof = d["profile"]
         value = prof.get("value")
@@ -669,6 +672,19 @@ class Rebuilder:
             ex.Label = feat["name"] + " (suppressed)"
             ex.Visibility = False
             return {"tool": ex.Name}
+        if surface:
+            # A surface extrude keeps the side faces only (no end caps): a sheet body.
+            side = [f for f in ex.Shape.Faces
+                    if abs(f.normalAt(*f.Surface.parameter(f.CenterOfMass)).dot(direction)) < 1e-6]
+            if not side:
+                raise ValueError("surface extrude without side faces")
+            ex.Visibility = False
+            sheet = self.doc.addObject("Part::Feature", "SurfaceExtrude")
+            sheet.Label = feat["name"]
+            sheet.Shape = Part.Shell(side)
+            self.solids.append(sheet)
+            notes["surface"] = "static sheet from the extruded side faces"
+            return dict(notes, op="new_body", bodies=1)
         participants = None
         if through and all(t.get("kind") == "historical" for t in through):
             participants = self.bodies_owning(through)
@@ -980,6 +996,31 @@ class Rebuilder:
         return {"faces": len(per_body[body])}
 
     # ----- scale, split body, offset faces -----------------------------------
+    def build_thicken(self, feat):
+        """Thicken faces of sheet bodies into a new solid along (forward) or against the face
+        normal; the sheet stays."""
+        d = feat["definition"]
+        side = d.get("side", "forward")
+        if side not in ("forward", "backward"):
+            raise NotImplementedError("thicken side " + str(side))
+        if d.get("op", "new_body") != "new_body":
+            raise NotImplementedError("thicken operation " + str(d.get("op")))
+        t = float(d["thickness"]) * (1 if side == "forward" else -1)
+        made = 0
+        for body, faces in self.selected_faces(d["faces"]).items():
+            for k in faces:
+                face = body.Shape.Faces[k]
+                if not isinstance(face.Surface, Part.Plane):
+                    raise NotImplementedError("thicken of a curved face")
+                n = face.normalAt(*face.Surface.parameter(face.CenterOfMass))
+                obj = self.doc.addObject("Part::Feature", "Thicken")
+                obj.Label = feat["name"]
+                obj.Shape = Part.Solid(Part.Shell(face.extrude(n * t).Faces))
+                self.solids.append(obj)
+                made += 1
+        self.doc.recompute()
+        return {"op": "new_body", "bodies": made}
+
     def build_scale(self, feat):
         """Scale: each selected body is replaced by a scaled copy of its shape about the center."""
         d = feat["definition"]
