@@ -1247,6 +1247,13 @@ class Rebuilder:
         self.doc.recompute()
         res = self.apply_op("cut", tool, feat["name"])
         res["holes"] = len(placements)
+        spec = (d.get("shape") or {}).get("construction", {}).get("specification") or {}
+        if spec.get("kind") == "threaded":
+            # The bore is the thread's minor diameter (cosmetic threads add no geometry).
+            if spec.get("modeled"):
+                res["approximation"] = "modeled thread built as its plain minor-diameter bore"
+            else:
+                res["thread"] = "cosmetic %s" % spec.get("designation")
         return res
 
     def pattern_copies(self, src, p, label):
