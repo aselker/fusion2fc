@@ -75,7 +75,8 @@ class Rebuilder:
                         "move_body": "build_move_body", "combine": "build_combine",
                         "sweep": "build_sweep", "block": "build_block", "primitive": "build_primitive",
                         "sphere": "build_sphere", "torus": "build_torus", "base_feature": "build_base_feature",
-                        "shell": "build_shell", "delete_face": "build_delete_face", "draft": "build_draft", "loft": "build_loft"}
+                        "shell": "build_shell", "delete_face": "build_delete_face", "draft": "build_draft", "loft": "build_loft",
+                        "scale": "build_scale", "split_body": "build_split_body", "move_face": "build_move_face"}
 
     def __init__(self, slim, topo, wanted):
         self.slim = slim
@@ -946,6 +947,95 @@ class Rebuilder:
             raise ValueError("OCC draft failed")
         self.solids[self.solids.index(body)] = pb
         return {"faces": len(per_body[body])}
+
+    # ----- scale, split body, offset faces -----------------------------------
+    def build_scale(self, feat):
+        """Scale: each selected body is replaced by a scaled copy of its shape about the center."""
+        d = feat["definition"]
+        f = d.get("factors") or {}
+        c = d.get("center") or {}
+        if c.get("kind") != "point":
+            raise NotImplementedError("scale center " + str(c.get("kind")))
+        center = vec(c["value"])
+        bodies = self.select_bodies(d["bodies"])
+        if f.get("kind") == "uniform":
+            fx = fy = fz = float(f["factor"])
+        elif f.get("kind") == "non_uniform":
+            fx, fy, fz = (float(f[k]) for k in ("x", "y", "z"))
+        else:
+            raise NotImplementedError("scale factors " + str(f.get("kind")))
+        for b in bodies:
+            shp = b.Shape.copy()
+            if fx == fy == fz:
+                shp.scale(fx, center)
+            else:
+                m = App.Matrix()
+                m.move(center * -1)
+                m.scale(fx, fy, fz)
+                m.move(center)
+                shp = shp.transformGeometry(m)
+            self.replace_with_shape(b, shp, feat)
+        self.doc.recompute()
+        return {"bodies": len(bodies)}
+
+    def datum_plane_of(self, ref):
+        """(origin, normal) of the datum plane feature a split tool names."""
+        for f in self.slim["features"]:
+            if f["id"] == ref.get("plane"):
+                fr = (f.get("definition") or {}).get("frame")
+                if fr:
+                    return vec(fr["origin"]), vec(fr["normal"])
+        raise NotImplementedError("split plane is not a resolved datum plane")
+
+    def build_split_body(self, feat):
+        d = feat["definition"]
+        tool = d.get("tool") or {}
+        if tool.get("kind") != "plane":
+            raise NotImplementedError("split tool " + str(tool.get("kind")) + " " + str((tool.get("value") or {}).get("kind")))
+        origin, normal = self.datum_plane_of(tool["value"])
+        normal.normalize()
+        bodies = self.select_bodies(d["targets"])
+        for b in bodies:
+            big = 4 * max(b.Shape.BoundBox.DiagonalLength, 1.0)
+            pl = Part.makePlane(2 * big, 2 * big, origin, normal)
+            pl.translate(-(pl.CenterOfMass - origin))
+            parts = b.Shape.generalFuse([pl])[0].Solids
+            if len(parts) < 2:
+                raise ValueError("the split plane does not cut the body")
+            comp = self.doc.addObject("Part::Feature", "Split")
+            comp.Label = feat["name"]
+            comp.Shape = Part.Compound(parts)
+            self.doc.recompute()
+            i = self.solids.index(b)
+            self.solids[i:i + 1] = self.split_solids(comp, feat["name"])
+        return {"bodies": len(bodies)}
+
+    def build_move_face(self, feat):
+        """Offset faces (press/pull) of planar faces whose neighbours are perpendicular to
+        them: the face is swept along its normal and fused (outward) or cut (inward)."""
+        d = feat["definition"]
+        m = d.get("motion") or {}
+        if m.get("kind") != "offset":
+            raise NotImplementedError("move face motion " + str(m.get("kind")))
+        dist = float(m["distance"])
+        per_body = self.selected_faces(d["faces"])
+        for body, faces in per_body.items():
+            shp = body.Shape
+            for k in faces:
+                face = shp.Faces[k]
+                if not isinstance(face.Surface, Part.Plane):
+                    raise NotImplementedError("offset of a non-planar face")
+                n = face.normalAt(*face.Surface.parameter(face.CenterOfMass))
+                for g in shp.Faces:
+                    if g.isSame(face) or not any(e.isSame(x) for e in face.Edges for x in g.Edges):
+                        continue
+                    if not isinstance(g.Surface, Part.Plane) or abs(g.normalAt(*g.Surface.parameter(g.CenterOfMass)).dot(n)) > 1e-6:
+                        raise NotImplementedError("offset face with a neighbour that is not perpendicular")
+                prism = face.extrude(n * dist)
+                shp = shp.fuse(prism).removeSplitter() if dist > 0 else shp.cut(prism).removeSplitter()
+            self.replace_with_shape(body, shp, feat)
+        self.doc.recompute()
+        return {"faces": sum(len(v) for v in per_body.values())}
 
     def require_uniform_corner_radii(self, body, edges):
         """Fillets of different radii that meet at a vertex get a corner blend that OCC builds
