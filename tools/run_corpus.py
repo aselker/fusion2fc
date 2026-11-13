@@ -36,11 +36,12 @@ def dump_stamp(cadmpeg, model):
 
 def run_model(entry, cadmpeg, out):
     """Decode, rebuild, and compare one model. The CADIR dump is reused while the cadmpeg
-    binary and the model are unchanged (work/dump.stamp)."""
+    binary and the model are unchanged (work/dump.stamp); step comparisons are reused
+    while the rebuilt step geometry is unchanged (work/compare_cache.json)."""
     mid = entry["id"]
     truth = CORPUS / "truth" / mid / "steps.json"
     work = out / mid
-    keep = ("model.cadir.json", "dump.log", "dump.stamp")
+    keep = ("model.cadir.json", "dump.log", "dump.stamp", "compare_cache.json")
     if work.exists():
         for f in work.iterdir():
             if f.name not in keep:
@@ -82,7 +83,8 @@ def run_model(entry, cadmpeg, out):
         res["summary"] = {"steps": len(t["steps"]), "match": 0}
         return res
     env = dict(os.environ, F2FC_TRUTH=str(truth), F2FC_REPORT=str(work / "report.json"),
-               F2FC_STEPS=str(work / "steps"), F2FC_RESULT=str(work / "result.json"))
+               F2FC_STEPS=str(work / "steps"), F2FC_RESULT=str(work / "result.json"),
+               F2FC_COMPARE_CACHE=str(work / "compare_cache.json"))
     p = subprocess.run(["freecadcmd", str(ROOT / "tools" / "corpus_compare.py")], env=env,
                        capture_output=True, text=True, timeout=3600)
     (work / "compare.log").write_text(p.stdout + p.stderr)
