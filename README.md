@@ -13,7 +13,7 @@ parametric features and timeline rather than only the final geometry.
    `freecadcmd` (inputs via `F2FC_*` environment variables, see the module docstring).
    Sketches become Sketcher sketches; extrudes become profile binder → `Part::Extrusion`
    → boolean chains (profile loops that overlap or cross are built as a static boolean face,
-   not by the binder's face maker); fillets and chamfers find their edges by geometry, and shell, draft and delete-face find their faces from the recorded boundary edges (`Part::Thickness`, `PartDesign::Draft`, OCC defeaturing). Holes become
+   not by the binder's face maker); an extrude whose profile is a bare sketch takes every loop region of it, nested loops as holes; fillets and chamfers find their edges by geometry, and shell, draft and delete-face find their faces from the recorded boundary edges (`Part::Thickness`, `PartDesign::Draft`, OCC defeaturing). Holes become
    primitive solids cut from the bodies; patterns and mirrors re-apply their seed features'
    tools through Draft arrays or `Part::Mirroring` (or copy bodies); revolves, moves and
    combines map to `Part::Revolution`, placed `Part::Compound`s and Part booleans.

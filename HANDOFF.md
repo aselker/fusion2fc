@@ -110,3 +110,23 @@ Findings, in order of models affected:
   no shared node (busra_kol, SCD41, co2_box, Lock_B_Side), member-ring match finds no face (Seven_LED, Claw,
   Tihend, 2278), `!single_exterior` multi-loop region (bowenchristopher, Cooler, Seven_LED), no counted group
   and no curve selection (administrativetrick, Lego_2x4).
+
+## Fourth pass result (final binary)
+Corpus 76/139 models, 592/1209 steps (baseline 75/575); generated 60/66; run_cases 60/66. No model lost steps.
+Gains: bitbank2_rack_mount_foot 1->16/16 (micrometre-sliver arrangement retry), Saurabh_Mudgal_Crusher_Shaft 3->5
+(bare sketch profile extrudes every loop region; next failure is a Base Feature, not profiles).
+Also added (no corpus change measured): `sketch_arrangement_faces` retries with crossing nodes for stored loops whose
+whole curves cross (busra_kol/SCD41 showed `certified_pieces_separated` failing on a line crossing a line without node).
+
+## Left / next (profiles)
+1. busra_kol Extrude4: the nested region operand resolves 1 of its 2 regions (exit 791/896 of the extrude binder).
+2. B10P/B2PS_VH: sketch decodes with no closed loops (many projected/construction lines) -> no profile at all.
+3. Arrangement work budget exhausted (co2_box, Lego_20x20, Controller_Cooler): `arrangement.exhausted()`.
+4. `!single_exterior` regions with no ring match (bowenchristopher, Cooler, Seven_LED); derived piece ids (Pizero).
+5. sketch_selection skips (2BC, Cake_v2, hook_sogou, TimingPulleyBase): `unresolved_region_operand` exit 977.
+6. Sweep/Revolve `profile kind sketch` (S_Hook, Metal_Post, k_recik): the rebuilder's sweep/revolve do not take
+   the bare-sketch path added for extrudes (`bare_sketch_regions`); not attempted.
+## Gotchas
+- The scratchpad dir and `../edges/tests/out` are shared/live: compare against `tests/corpus/baseline.json`.
+- Debugging recipe: sed `eprintln!("DBGX {}", line!())` before each `break 'feature_edit` and in the arrangement
+  builder's `return Ok(None)`/`geometric!`; ~4 min build via ../build-decoder.sh.
