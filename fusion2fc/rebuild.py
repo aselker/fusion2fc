@@ -1409,8 +1409,19 @@ class Rebuilder:
                 res["bodies"] += len(parts)
         return res
 
+    def bare_sketch_profile(self, prof):
+        """A profile naming a whole sketch (no selection record) as loop regions, like an
+        extrude of a bare sketch; unchanged when it is anything else."""
+        value = prof.get("value")
+        if prof.get("kind") == "sketch" and value in self.sketch_defs:
+            regions = self.bare_sketch_regions(value)
+            if regions:
+                return {"kind": "sketch_regions", "value": {"sketch": value, "regions": regions, "static": True}}
+        return prof
+
     def profile_base(self, feat, prof):
         """(face object, sketch record) for a planar sketch profile, as for an extrude."""
+        prof = self.bare_sketch_profile(prof)
         value = prof.get("value")
         sid = value.get("sketch") if isinstance(value, dict) else None
         if sid not in self.sketch_defs:
@@ -1418,7 +1429,8 @@ class Rebuilder:
         sk_rec = self.build_sketch(sid, self.sketch_label(sid))
         sk, geo_of, edge_of, normal = sk_rec
         regions = value.get("regions") or []
-        if any(r.get("region") == "trimmed" for r in regions) or self.crossing_loops(sid, regions):
+        if (value.get("static") or any(r.get("region") == "trimmed" for r in regions)
+                or self.crossing_loops(sid, regions)):
             base = self.doc.addObject("Part::Feature", "ProfileFace")
             base.Shape = self.trimmed_face(sid, regions, sk.Placement)
         else:
@@ -1655,6 +1667,7 @@ class Rebuilder:
         """(sketch object, [(outer loop edge names, [hole loop edge names])]) of a resolved
         sketch profile. Nesting of `sketch_profiles` loops is found geometrically, as the
         extrude's face maker does."""
+        prof = self.bare_sketch_profile(prof)
         kind, val = prof.get("kind"), prof.get("value")
         sid = val.get("sketch") if isinstance(val, dict) else None
         if sid not in self.sketch_defs or kind not in ("sketch_profiles", "sketch_regions"):
@@ -1930,11 +1943,13 @@ class Rebuilder:
                        [self.loop_object(sk, h, name + " section hole") for h in holes]) for o, holes in loops]
             self.doc.recompute()
             section = groups[0][0].Shape
+            if section.ShapeType == "Compound":  # a binder holds one closed loop as a compound
+                section = Part.Face(Part.Wire(Part.__sortEdges__(section.Edges)))
             names, wire = self.chain(names, edges, section.CenterOfMass)
-            at_start = section.distToShape(wire.OrderedVertexes[0])[0] < 1e-6
-            if not at_start and section.distToShape(wire.OrderedVertexes[-1])[0] < 1e-6:
+            at_start = section.distToShape(wire.OrderedVertexes[0])[0] < 1e-4
+            if not at_start and section.distToShape(wire.OrderedVertexes[-1])[0] < 1e-4:
                 wire.reverse()
-                at_start = section.distToShape(wire.OrderedVertexes[0])[0] < 1e-6
+                at_start = section.distToShape(wire.OrderedVertexes[0])[0] < 1e-4
             if not at_start and min(ext["along_fraction"], ext["against_fraction"]) < 1.0 - 1e-9:
                 raise NotImplementedError("sweep profile away from the path ends")
         else:
