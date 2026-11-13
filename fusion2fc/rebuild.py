@@ -914,52 +914,54 @@ class Rebuilder:
         self.solids[self.solids.index(body)] = pb
         return {"faces": len(per_body[body])}
 
-    # Which side of an asymmetric chamfer carries the first distance. "forward" is the face
-    # whose boundary runs along the recorded (ASM) edge direction with its material on the
-    # left; "back" is the other face. Every API-made chamfer in tests/corpus (5 cases) puts
-    # the first distance on the "back" face. PacktPublishing_Bracket_Solid, made in the UI,
-    # needs "forward": the user can flip the reference face and the stored field is open
-    # (DR-341), so that model stays wrong until the decoder reads it.
-    CHAMFER_FIRST_FACE = os.environ.get("F2FC_CHAMFER_FIRST", "back")
+    @staticmethod
+    def chamfer_first_planes(feat):
+        """slot -> (is_first, origin, normal): a planar support of the edge and whether it
+        carries the first distance (else the second) of a two-distance or distance-angle
+        chamfer, as the decoder measured it from the feature's transition (source property
+        chamfer_first_faces, DR-341)."""
+        out = {}
+        for item in (feat.get("source_properties", {}).get("chamfer_first_faces") or "").split(";"):
+            if ":" not in item:
+                continue
+            slot, role, nums = item.split(":", 2)
+            v = [float(x) for x in nums.split(",")]
+            o, n = V(*v[:3]), V(*v[3:])
+            n.normalize()
+            out[int(slot)] = (role == "first", o, n)
+        return out
 
-    def asymmetric_chamfer(self, body, idx, eg, spec):
+    @staticmethod
+    def face_on_plane(face, plane):
+        if not isinstance(face.Surface, Part.Plane):
+            return False
+        ax = face.Surface.Axis
+        return abs(abs(ax.dot(plane[1])) - 1.0) < 1e-6 and abs((face.Surface.Position - plane[0]).dot(plane[1])) < 1e-4
+
+    def asymmetric_chamfer(self, body, idx, spec, planes, slot):
         """(first, second) distances in the order OCC reads them for edge `idx` of `body`:
         the first is measured on the first face OCC finds for the edge (Part.Shape.
-        ancestorsOfType), the second on the other. Fusion measures its first distance (or the
-        distance of a distance-and-angle chamfer) on the face of the edge's first coedge."""
+        ancestorsOfType), the second on the other. The decoder names the support plane that
+        carries the first distance (or the distance of a distance-and-angle chamfer); an edge
+        without its own entry takes the plane of the group's other edges that bounds it."""
         shape = body.Shape
         edge = shape.Edges[idx - 1]
         faces = shape.ancestorsOfType(edge, Part.Face)
         if len(faces) != 2:
             raise ValueError("edge lies between %d faces" % len(faces))
-        t_rec = vec(eg["tangent"])
-        t_rec.normalize()
+        own = [planes[slot]] if slot in planes else list(planes.values())
+        # an edge without its own entry takes the group's planes that bound it
+        votes = set()
+        for is_first, o, n in own:
+            for i in range(2):
+                if self.face_on_plane(faces[i], (o, n)):
+                    votes.add(i if is_first else 1 - i)
+        if len(votes) != 1:
+            raise ValueError("the reference face of the first distance is not recorded (DR-341)")
+        first = votes.pop()
         u = 0.5 * (edge.FirstParameter + edge.LastParameter)
         mid = edge.valueAt(u)
-        te = edge.tangentAt(u)
-        if te.dot(t_rec) < 0:
-            te = -te
-        normals, inward = [], []
-        for f in faces:
-            uv = f.Surface.parameter(mid)
-            n = f.normalAt(*uv)
-            d = n.cross(te)
-            d.normalize()
-            step = 1e-3 * max(1.0, min(edge.Length, 1.0))
-            if not f.isInside(mid + d * step, 1e-7, True):
-                d = -d
-                if not f.isInside(mid + d * step, 1e-7, True):
-                    raise ValueError("inward direction of a face is ambiguous")
-            normals.append(n)
-            inward.append(d)
-        # With the material on the left of the boundary, the inward direction is n x t.
-        fwd = [i for i in range(2) if inward[i].dot(normals[i].cross(t_rec)) > 0]
-        if len(fwd) != 1:
-            raise ValueError("faces do not separate by coedge sense")
-        first = fwd[0] if self.CHAMFER_FIRST_FACE == "forward" else 1 - fwd[0]
-        if os.environ.get("F2FC_DEBUG_EDGES"):
-            print("CHAMFER-DBG edge", idx, "t_rec", tuple(round(c, 3) for c in t_rec), "te", tuple(round(c, 3) for c in te),
-                  "n", [tuple(round(c, 3) for c in n) for n in normals], "fwd", fwd[0], "recorded start/end", eg.get("start"), eg.get("end"))
+        normals = [f.normalAt(*f.Surface.parameter(mid)) for f in faces]
         if spec["kind"] == "two_distances":
             d_first, d_second = spec["first"], spec["second"]
         else:
@@ -1041,6 +1043,7 @@ class Rebuilder:
                     size = None  # per edge, once the faces it lies between are known
                 else:
                     raise NotImplementedError("chamfer spec " + str(spec.get("kind")))
+            first_planes = self.chamfer_first_planes(feat) if kind == "chamfer" else {}
             for eid in e["value"]["edges"]:
                 eg = self.topo_geometry.get(eid)
                 if eg is None:
@@ -1055,7 +1058,7 @@ class Rebuilder:
                         sz = self.shaped_fillet(body, idx, eg, r)
                     elif size is None:
                         try:
-                            sz = self.asymmetric_chamfer(body, idx, eg, spec)
+                            sz = self.asymmetric_chamfer(body, idx, spec, first_planes, int(eid.rsplit(":", 1)[1]))
                         except ValueError as ex:
                             raise ValueError("chamfer orientation: %s" % ex)
                     else:
