@@ -10,14 +10,19 @@ because freecadcmd treats extra command-line arguments as files to open:
   F2FC_REPORT=report.json
   F2FC_STEPS=dir/                 # optional: write the bodies after every feature as
                                   #   dir/step_NNNN.brep (compound, world coordinates)
+  F2FC_BODIES=dir/index.json      # optional: Base Feature bodies exported by
+                                  #   tools/stored_bodies.py (body id -> STEP file)
   freecadcmd fusion2fc/rebuild.py
 
 v0 scope: planar sketches (lines, arcs, circles, polynomial and rational B-splines;
 coincidence from shared endpoints; horizontal/vertical), extrudes from resolved
 profiles/regions with blind, symmetric and two-sided extents, profile-plane or planar
 from-face starts (with their offset), and new-body/join/cut/intersect against the bodies
-the tool touches (within Fusion's modelling tolerance). Everything else is
-recorded in the report as skipped. CADIR lengths are mm, as in FreeCAD.
+the tool touches (within Fusion's modelling tolerance). Holes (primitive bore, drill
+point, counterbore/countersink per placement), feature patterns (seed tools re-applied
+through Draft arrays or Part::Mirroring), body patterns and mirrors, revolves, moves and
+combines are built when their decoded definitions and body selections resolve. Everything
+else is recorded in the report as skipped. CADIR lengths are mm, as in FreeCAD.
 """
 import json
 import math
@@ -63,7 +68,9 @@ class Rebuilder:
     # Feature kind -> builder method (features beyond sketches, extrudes, edge treatments).
     FEATURE_BUILDERS = {"hole": "build_hole", "pattern": "build_pattern", "revolve": "build_revolve",
                         "move_body": "build_move_body", "combine": "build_combine",
-                        "sweep": "build_sweep"}
+                        "sweep": "build_sweep", "block": "build_block", "primitive": "build_primitive",
+                        "sphere": "build_sphere", "torus": "build_torus", "base_feature": "build_base_feature",
+                        "shell": "build_shell", "delete_face": "build_delete_face", "draft": "build_draft"}
 
     def __init__(self, slim, topo, wanted):
         self.slim = slim
@@ -90,11 +97,16 @@ class Rebuilder:
         self.world = self.component_placements(slim.get("occurrences") or [])
         self.report = {"features": [], "sketches": {}}
         self.state_bodies = {state["id"]: state.get("bodies") or [] for state in topo or []}
+        self.body_faces = {state["id"]: {b["body"]: b["faces"] for b in state.get("body_faces") or []}
+                           for state in topo or []}  # input state -> historical body -> its faces
         self.feature_tools = defaultdict(list)  # CADIR feature id -> [{"tool", "op"}], one per boolean
         self.feature = None  # feature being built
         self.steps_dir = os.environ.get("F2FC_STEPS")
         if self.steps_dir:
             os.makedirs(self.steps_dir, exist_ok=True)
+        bodies = os.environ.get("F2FC_BODIES")
+        self.stored = json.load(open(bodies)) if bodies else None
+        self.stored_dir = os.path.dirname(bodies) if bodies else None
 
     # ----- components -----------------------------------------------------
     @staticmethod
@@ -325,8 +337,33 @@ class Rebuilder:
                 return Part.Circle(uv(g["center"]), V(0, 0, 1), g["radius"]).toShape(t0, t1)
             raise NotImplementedError("trimmed %s" % g["kind"])
 
+        def merged(boundary):
+            """Consecutive pieces of one curve with contiguous parameter ranges join into
+            one piece (a circle stored as two half arcs becomes one closed edge)."""
+            segs = [dict(s, parameter_range=list(s["parameter_range"])) for s in boundary]
+            if len({s["entity"] for s in segs}) > 1:
+                return segs  # another curve meets the split point, which then needs its vertex
+            changed = True
+            while changed and len(segs) > 1:
+                changed = False
+                for i in range(len(segs)):
+                    a_, b_ = segs[i], segs[(i + 1) % len(segs)]
+                    if a_ is b_ or a_["entity"] != b_["entity"] or a_.get("reversed") != b_.get("reversed"):
+                        continue
+                    kind = ents[a_["entity"]]["geometry"]["kind"]
+                    if kind not in ("circle", "arc"):
+                        continue
+                    t0, t1 = a_["parameter_range"]
+                    u0, u1 = b_["parameter_range"]
+                    if abs(t1 - u0) < 1e-9 and (u1 - t0) <= 2 * math.pi + 1e-9:
+                        a_["parameter_range"] = [t0, u1]
+                        del segs[(i + 1) % len(segs)]
+                        changed = True
+                        break
+            return segs
+
         def loop_wire(boundary):
-            edges = [seg_edge(s) for s in boundary]
+            edges = [seg_edge(s) for s in merged(boundary)]
             return Part.Wire(Part.__sortEdges__(edges))
 
         faces = []
@@ -348,11 +385,122 @@ class Rebuilder:
             # Union of adjacent regions: rebuild one face from the boundary of the union
             # (edges owned by a single face), so the extrude yields one body per lump.
             fused = faces[0].fuse(faces[1:])
-            free = [e for e in fused.Edges if len(fused.ancestorsOfType(e, Part.Face)) == 1]
+            free = self.join_circle_pieces(
+                [e for e in fused.Edges if len(fused.ancestorsOfType(e, Part.Face)) == 1])
             wires = [Part.Wire(group) for group in Part.sortEdges(free)]
             shape = Part.makeFace(wires, "Part::FaceMakerBullseye")
         else:
             shape = faces[0]
+        try:  # pieces of one circle (split where regions met) become one edge again
+            unified = shape.removeSplitter()
+            if unified.isValid() and abs(unified.Area - shape.Area) < 1e-9 * max(shape.Area, 1.0):
+                shape = unified
+        except Exception:
+            pass
+        shape.Placement = placement
+        return shape
+
+    def loop_faces(self, sid, idxs):
+        """Planar faces (sketch coordinates) of whole stored loops made of lines, circles and arcs."""
+        ents = {e["id"]: e for e in self.entities[sid]}
+        loops = self.sketch_defs[sid]["profiles"]
+        faces = []
+        for i in idxs:
+            edges = []
+            for x in loops[i]:
+                e = ents[x["entity"]]
+                g, (t0, t1) = e["geometry"], self.full_range(e)
+                if g["kind"] == "line":
+                    a, b = uv(g["start"]), uv(g["end"])
+                    edges.append(Part.LineSegment(a + (b - a) * t0, a + (b - a) * t1).toShape())
+                elif g["kind"] in ("circle", "arc"):
+                    edges.append(Part.Circle(uv(g["center"]), V(0, 0, 1), g["radius"]).toShape(t0, t1))
+                else:
+                    raise NotImplementedError("loop curve " + g["kind"])
+            faces.append(Part.Face(Part.Wire(Part.__sortEdges__(edges))))
+        return faces
+
+    @staticmethod
+    def join_circle_pieces(edges):
+        """Edges that are pieces of one full circle (split where regions met) become the
+        single closed circle edge, as the sketch curve is."""
+        groups = defaultdict(list)
+        out = []
+        for e in edges:
+            c = e.Curve
+            if isinstance(c, Part.Circle):
+                key = tuple(round(x, 6) for x in (c.Center.x, c.Center.y, c.Center.z, c.Radius,
+                                                  abs(c.Axis.x), abs(c.Axis.y), abs(c.Axis.z)))
+                groups[key].append(e)
+            else:
+                out.append(e)
+        others = [v.Point for e in out for v in e.Vertexes]
+        for es in groups.values():
+            c = es[0].Curve
+            whole = len(es) > 1 and abs(sum(e.Length for e in es) - 2 * math.pi * c.Radius) < 1e-6 * c.Radius
+            # Only a ring of its own: another edge meeting a split point needs that vertex.
+            if whole and not any((v.Point - q).Length < 1e-7 for e in es for v in e.Vertexes for q in others):
+                out.append(Part.Circle(c.Center, c.Axis, c.Radius).toShape())
+            else:
+                out += es
+        return out
+
+    def crossing_loops(self, sid, regions):
+        """True when a `loops` region has a hole loop that crosses its outer loop (neither
+        inside it nor around it), which a face maker cannot build; such regions need the
+        boolean construction of `trimmed_face`."""
+        if not any(r.get("region") == "loops" and r.get("holes") for r in regions):
+            return False
+        try:
+            for r in regions:
+                if r.get("region") != "loops":
+                    continue
+                faces = self.loop_faces(sid, [r["outer"]] + r.get("holes", []))
+                for h in faces[1:]:
+                    both = faces[0].common(h).Area
+                    if both < h.Area * (1 - 1e-7) and both < faces[0].Area * (1 - 1e-7):
+                        return True
+        except Exception:
+            return False
+        return False
+
+    def overlapping_profile_union(self, sid, idxs, placement):
+        """The union face of whole stored loops when two of them partly overlap (Fusion's
+        selected regions of overlapping closed curves add up to their union; nested loops
+        alternate solid and hole). None when no two loops cross or a loop is not buildable."""
+        if len(idxs) < 2:
+            return None
+        try:
+            faces = self.loop_faces(sid, idxs)
+        except Exception:
+            return None
+        n = len(faces)
+        inside, overlap = {}, {}
+        for i in range(n):
+            for j in range(n):
+                if i == j:
+                    continue
+                both = faces[i].common(faces[j]).Area
+                inside[i, j] = both >= faces[j].Area * (1 - 1e-7)  # j inside i
+                overlap[i, j] = both > 1e-7 * min(faces[i].Area, faces[j].Area)
+        crossing = any(not inside[i, j] and not inside[j, i] and overlap[i, j]
+                       for i in range(n) for j in range(i + 1, n))
+        if not crossing:
+            return None
+        depth = [sum(1 for k in range(n) if k != i and inside[k, i] and (not inside[i, k] or k < i)) for i in range(n)]
+        solids = []
+        for i in range(n):
+            if depth[i] % 2:
+                continue
+            f = faces[i]
+            holes = [faces[j] for j in range(n) if depth[j] == depth[i] + 1 and inside[i, j]]
+            solids.append(f.cut(holes) if holes else f)
+        shape = solids[0].fuse(solids[1:]) if len(solids) > 1 else solids[0]
+        shape = shape.removeSplitter()
+        free = [e for e in shape.Edges if len(shape.ancestorsOfType(e, Part.Face)) == 1]
+        shape = Part.makeFace([Part.Wire(g) for g in Part.sortEdges(free)], "Part::FaceMakerBullseye")
+        if shape.normalAt(*shape.Surface.parameter(shape.CenterOfMass)).z < 0:
+            shape.reverse()
         shape.Placement = placement
         return shape
 
@@ -389,7 +537,13 @@ class Rebuilder:
         sk, geo_of, edge_of, normal = self.build_sketch(sid, self.sketch_label(sid))
         regions = value.get("regions") or []
         notes = {}
-        if any(r.get("region") == "trimmed" for r in regions):
+        union = (self.overlapping_profile_union(sid, value["profiles"], sk.Placement)
+                 if prof["kind"] == "sketch_profiles" else None)
+        if union is not None:
+            base = self.doc.addObject("Part::Feature", "ProfileFace")
+            base.Shape = union
+            notes["profile"] = "static union of overlapping loops"
+        elif any(r.get("region") == "trimmed" for r in regions) or self.crossing_loops(sid, regions):
             base = self.doc.addObject("Part::Feature", "ProfileFace")
             base.Shape = self.trimmed_face(sid, regions, sk.Placement)
             notes["profile"] = "static trimmed regions"
@@ -433,6 +587,9 @@ class Rebuilder:
                     raise NotImplementedError("to_shape termination for " + d["op"])
                 through.append(t.get("target", {}))
                 return self.scene_size(base.Shape)
+            if k == "through_all":
+                # Through every body: a length past the whole scene from the start plane.
+                return self.scene_size(base.Shape)
             raise NotImplementedError("termination " + str(k))
 
         ex = self.doc.addObject("Part::Extrusion", "Extrude")
@@ -461,6 +618,14 @@ class Rebuilder:
         self.doc.recompute()
         if ex.Shape.isNull() or ex.Shape.Volume <= 0:
             raise ValueError("empty extrusion")
+        if (d["op"] == "cut" and ext["kind"] == "one_sided"
+                and ext["side"]["termination"].get("kind") == "through_all"
+                and not any(self.overlaps(ex, s) for s in self.solids)):
+            # A through-all cut that meets no body cannot be a Fusion feature (it fails
+            # with "no intersection"), so the recorded direction was read backwards.
+            ex.Dir = -direction
+            self.doc.recompute()
+            notes["direction"] = "flipped: through-all cut met no body"
         if suppressed:
             ex.Label = feat["name"] + " (suppressed)"
             ex.Visibility = False
@@ -602,6 +767,132 @@ class Rebuilder:
         shapes = [s.Shape for s in pool if not s.Shape.isNull()]
         nearest = min((sh.distToShape(Part.Vertex(p))[0] for sh in shapes), default=float("inf"))
         return None, None, nearest
+
+    # ----- face selection ---------------------------------------------------
+    def find_face(self, fid):
+        """(body object, 0-based face index) of the rebuilt face that a historical face names.
+        The decoder samples every edge that bounds a selected face (with the faces that use
+        it); each is located like a fillet edge, and the face is the one that all of them
+        bound. Edges OCC merged or split still count (find_edge accepts pieces). When several
+        faces remain, the one with the fewest edges outside the recorded set wins only if it
+        is unique; otherwise the match is ambiguous and raises."""
+        egs = self.topo_edges.get(fid)
+        if not egs:
+            raise ValueError("face has no recorded boundary edges")
+        body, cands = None, None
+        for eg in egs:
+            b, i, dist = self.find_edge(eg)
+            if b is None:
+                raise ValueError("a boundary edge of the selected face is not in the rebuilt bodies (nearest %.3g mm)" % dist)
+            if body is None:
+                body = b
+            elif b is not body:
+                raise ValueError("boundary edges of the selected face lie in different bodies")
+            edge = b.Shape.Edges[i - 1]
+            hit = {k for k, f in enumerate(b.Shape.Faces) if any(e.isSame(edge) for e in f.Edges)}
+            cands = hit if cands is None else cands & hit
+        if not cands:
+            raise ValueError("no rebuilt face carries all recorded boundary edges")
+        if len(cands) > 1:
+            n = {k: len(body.Shape.Faces[k].Edges) for k in cands}
+            low = min(n.values())
+            cands = {k for k in cands if n[k] == low}
+            if len(cands) > 1:
+                raise ValueError("ambiguous face match (%d rebuilt faces share the recorded edges)" % len(cands))
+        return body, next(iter(cands))
+
+    def selected_faces(self, ref):
+        """{body object: sorted face indices} for a historical face selection."""
+        if ref.get("kind") != "historical":
+            raise NotImplementedError("face selection " + str(ref.get("kind")))
+        per_body = defaultdict(set)
+        for fid in ref["value"]["faces"]:
+            body, k = self.find_face(fid)
+            per_body[body].add(k)
+        return {b: sorted(v) for b, v in per_body.items()}
+
+    def build_shell(self, feat):
+        d = feat["definition"]
+        if d.get("mode") not in (None, "inside", "outside"):
+            raise NotImplementedError("shell mode " + str(d.get("mode")))
+        per_body = self.selected_faces(d["removed_faces"])
+        t = float(d["thickness"])
+        made = []
+        for body, faces in per_body.items():
+            obj = self.doc.addObject("Part::Thickness", "Shell")
+            obj.Label = feat["name"]
+            obj.Faces = (body, ["Face%d" % (k + 1) for k in faces])
+            obj.Value = t if d.get("outward") else -t
+            obj.Mode = 0
+            obj.Join = 2
+            obj.Intersection = True
+            obj.SelfIntersection = False
+            made.append((body, obj))
+        self.doc.recompute()
+        bad = [o for _, o in made if o.Shape.isNull() or not o.Shape.Solids or "Invalid" in o.State]
+        if bad:
+            for _, o in made:
+                self.doc.removeObject(o.Name)
+            self.doc.recompute()
+            raise ValueError("OCC shell failed on %d of %d bodies" % (len(bad), len(made)))
+        for body, obj in made:
+            self.solids[self.solids.index(body)] = obj
+        return {"faces": sum(len(v) for v in per_body.values())}
+
+    def replace_with_shape(self, body, shape, feat):
+        """Replace a rebuilt body by a Part::Feature holding `shape` (an OCC operation without
+        a parametric FreeCAD feature)."""
+        if shape.isNull() or not shape.Solids or not shape.isValid():
+            raise ValueError("OCC result is not a valid solid")
+        obj = self.doc.addObject("Part::Feature", feat["name"].replace(" ", "_"))
+        obj.Label = feat["name"]
+        obj.Shape = shape
+        self.solids[self.solids.index(body)] = obj
+        return obj
+
+    def build_delete_face(self, feat):
+        d = feat["definition"]
+        if not d.get("heal", True):
+            raise NotImplementedError("delete face without healing")
+        made = []
+        for body, faces in self.selected_faces(d["faces"]).items():
+            shp = body.Shape.defeaturing([body.Shape.Faces[k] for k in faces])
+            if abs(shp.Volume - body.Shape.Volume) < 1e-9 * max(1.0, body.Shape.Volume) and len(shp.Faces) >= len(body.Shape.Faces):
+                raise ValueError("OCC defeaturing removed nothing")
+            made.append((body, shp))
+        for body, shp in made:
+            self.replace_with_shape(body, shp, feat)
+        self.doc.recompute()
+        return {"bodies": len(made)}
+
+    def build_draft(self, feat):
+        d = feat["definition"]
+        anchor = d.get("anchor") or {}
+        if anchor.get("kind") != "neutral_plane":
+            raise NotImplementedError("draft anchor " + str(anchor.get("kind")))
+        per_body = self.selected_faces(d["faces"])
+        nb = self.selected_faces(anchor["plane"])
+        if len(per_body) != 1 or list(nb) != list(per_body) or sum(len(v) for v in nb.values()) != 1:
+            raise NotImplementedError("draft over several bodies or neutral planes")
+        body = next(iter(per_body))
+        neutral = body.Shape.Faces[nb[body][0]]
+        if neutral.Surface.TypeId != "Part::GeomPlane":
+            raise NotImplementedError("non-planar draft neutral face")
+        pb = self.doc.addObject("PartDesign::Body", "DraftBody")
+        pb.BaseFeature = body
+        dr = pb.newObject("PartDesign::Draft", "Draft")
+        dr.Base = (body, ["Face%d" % (k + 1) for k in per_body[body]])
+        dr.NeutralPlane = (body, "Face%d" % (nb[body][0] + 1))
+        dr.Angle = math.degrees(float(d["angle"]))
+        dr.Reversed = bool(d.get("outward"))
+        self.doc.recompute()
+        if pb.Shape.isNull() or "Invalid" in dr.State or not pb.Shape.Solids:
+            self.doc.removeObject(dr.Name)
+            self.doc.removeObject(pb.Name)
+            self.doc.recompute()
+            raise ValueError("OCC draft failed")
+        self.solids[self.solids.index(body)] = pb
+        return {"faces": len(per_body[body])}
 
     def build_edge_treatment(self, feat, kind):
         d = feat["definition"]
@@ -844,23 +1135,60 @@ class Rebuilder:
             targets += self.apply_op(t["op"], copies, feat["name"]).get("targets", 0)
         return {"seeds": len(seeds), "tools": len(tools), "targets": targets}
 
-    def select_bodies(self, sel):
-        """Rebuilt bodies (current solids of this component) that a body selection names."""
-        pool = self.same_component(self.solids)
+    @staticmethod
+    def historical_bodies(sel):
+        """(input state, historical body ids) of a historical body selection, else (None, None)."""
         kind, val = sel.get("kind"), sel.get("value") or {}
         if kind == "historical":
-            picked = val.get("bodies") or []
-            in_state = self.state_bodies.get(val.get("state"))
-            if in_state and len(picked) == len(in_state) == len(pool):
-                return pool
-            if len(picked) == len(pool) == 1:
-                return pool
-            raise NotImplementedError("historical selection of %d of %s bodies (%d rebuilt)" % (
-                len(picked), len(in_state) if in_state else "?", len(pool)))
+            return val.get("state"), list(val.get("bodies") or [])
         if kind == "historical_set":
-            return self.select_bodies({"kind": "historical", "value": {
-                "state": val.get("state"), "bodies": [m["body"] for m in val.get("members") or []]}})
-        raise NotImplementedError("body selection " + str(kind))
+            return val.get("state"), [m["body"] for m in val.get("members") or []]
+        return None, None
+
+    def locate_body(self, state, body, pool):
+        """The rebuilt body whose boundary carries the recorded edges of a historical body's faces."""
+        pts = [vec(eg["interior"]) for f in self.body_faces.get(state, {}).get(body) or []
+               for eg in self.topo_edges.get(f, [])]
+        if not pts:
+            return None
+        pts = pts[::max(1, len(pts) // 16)]
+        hits = [s for s in pool if all(s.Shape.distToShape(Part.Vertex(p))[0] < self.EDGE_TOL for p in pts)]
+        return hits[0] if len(hits) == 1 else None
+
+    def select_bodies(self, *sels):
+        """Rebuilt bodies (current solids of this component) that body selections name together.
+        A historical body is found by the recorded edges of its faces when the decoder states
+        them. Otherwise a selection resolves when it names every body of its input state, or the
+        component has one body; selections of one state that together name all its bodies
+        resolve to all."""
+        pool = self.same_component(self.solids)
+        located = []
+        for sel in sels:
+            state, ids = self.historical_bodies(sel)
+            hits = [self.locate_body(state, b, pool) for b in ids or []]
+            if not hits or None in hits:
+                located = None
+                break
+            located += [h for h in hits if h not in located]
+        if located:
+            return located
+        states, picked = set(), set()
+        for sel in sels:
+            state, ids = self.historical_bodies(sel)
+            if state is None:
+                if sel.get("kind") == "resolved" and len(pool) == 1:
+                    picked.update((sel.get("value") or {}).get("bodies") or [])
+                    continue
+                raise NotImplementedError("body selection " + str(sel.get("kind")))
+            states.add(state)
+            picked.update(ids)
+        if len(pool) == 1 and len(picked) == 1:
+            return pool
+        in_state = self.state_bodies.get(next(iter(states))) if len(states) == 1 else None
+        if in_state and set(in_state) == picked and len(in_state) == len(pool):
+            return pool
+        raise NotImplementedError("selection of %d of %s bodies (%d rebuilt)" % (
+            len(picked), len(in_state) if in_state else "?", len(pool)))
 
     def body_pattern(self, feat, seeds, p):
         """Copies of the seed bodies. A mirrored body that touches its seed is joined to it
@@ -897,7 +1225,7 @@ class Rebuilder:
         sk_rec = self.build_sketch(sid, self.sketch_label(sid))
         sk, geo_of, edge_of, normal = sk_rec
         regions = value.get("regions") or []
-        if any(r.get("region") == "trimmed" for r in regions):
+        if any(r.get("region") == "trimmed" for r in regions) or self.crossing_loops(sid, regions):
             base = self.doc.addObject("Part::Feature", "ProfileFace")
             base.Shape = self.trimmed_face(sid, regions, sk.Placement)
         else:
@@ -971,15 +1299,22 @@ class Rebuilder:
     def build_combine(self, feat):
         d = feat["definition"]
         ops = d["operands"]
-        target = self.select_bodies(ops["target"])
-        tools = self.select_bodies(ops["tools"])
+        op = d["op"]
+        try:
+            target = self.select_bodies(ops["target"])
+            tools = self.select_bodies(ops["tools"])
+        except NotImplementedError:
+            if op != "join":
+                raise
+            # A join is symmetric: when target and tools are all the bodies, any one is the target.
+            both = self.select_bodies(ops["target"], ops["tools"])
+            target, tools = both[:1], both[1:]
         if len(target) != 1:
             raise NotImplementedError("combine of %d target bodies" % len(target))
         target = target[0]
         tools = [t for t in tools if t is not target]
         if not tools:
             raise ValueError("combine without tool bodies")
-        op = d["op"]
         if op == "join":
             b = self.doc.addObject("Part::MultiFuse", "Combine")
             b.Shapes = [target] + tools
@@ -1001,6 +1336,123 @@ class Rebuilder:
         if not d.get("keep_tools"):
             self.solids = [s for s in self.solids if s not in tools]
         return {"op": op, "tools": len(tools)}
+    # ----- solid primitives ----------------------------------------------
+    @staticmethod
+    def rigid_placement(rows):
+        """Placement of a CADIR rigid 3x4 (or 4x4) row-major transform, in mm."""
+        m = App.Matrix(*(list(rows[0]) + list(rows[1]) + list(rows[2]) + [0, 0, 0, 1]))
+        return App.Placement(m)
+
+    def primitive_solid(self, kind, label, placement, **props):
+        obj = self.primitive(kind, label, placement, **props)
+        self.doc.recompute()
+        if obj.Shape.isNull() or obj.Shape.Volume <= 0:
+            raise ValueError("empty primitive")
+        return obj
+
+    def build_block(self, feat):
+        d = feat["definition"]
+        if not d.get("dimensions") or not d.get("placement"):
+            raise NotImplementedError("box primitive without resolved dimensions or placement")
+        length, width, height = d["dimensions"]
+        box = self.primitive_solid("Part::Box", feat["name"], self.rigid_placement(d["placement"]),
+                                   Length=length, Width=width, Height=height)
+        return self.apply_op(d["op"], box, feat["name"])
+
+    def build_primitive(self, feat):
+        d = feat["definition"]
+        if not d.get("placement"):
+            raise NotImplementedError("primitive without a resolved placement")
+        solid = d["solid"]
+        pl = self.rigid_placement(d["placement"])
+        k = solid.get("kind")
+        full = 2 * math.pi
+        if k == "cylinder":
+            obj = self.primitive_solid("Part::Cylinder", feat["name"], pl, Radius=solid["radius"],
+                                       Height=solid["height"], Angle=math.degrees(solid.get("angle", full)))
+        elif k == "cone":
+            obj = self.primitive_solid("Part::Cone", feat["name"], pl, Radius1=solid["radius1"],
+                                       Radius2=solid["radius2"], Height=solid["height"],
+                                       Angle=math.degrees(solid.get("angle", full)))
+        elif k == "box":
+            obj = self.primitive_solid("Part::Box", feat["name"], pl, Length=solid["length"],
+                                       Width=solid["width"], Height=solid["height"])
+        else:
+            raise NotImplementedError("primitive solid " + str(k))
+        return self.apply_op(d["op"], obj, feat["name"])
+
+    def build_sphere(self, feat):
+        d = feat["definition"]
+        obj = self.primitive_solid("Part::Sphere", feat["name"], App.Placement(vec(d["center"]), App.Rotation()),
+                                   Radius=d["radius"])
+        return self.apply_op(d["op"], obj, feat["name"])
+
+    def build_torus(self, feat):
+        d = feat["definition"]
+        obj = self.primitive_solid("Part::Torus", feat["name"], self.axis_placement(vec(d["center"]), vec(d["axis"])),
+                                   Radius1=d["major_radius"], Radius2=d["minor_radius"])
+        return self.apply_op(d["op"], obj, feat["name"])
+
+    # ----- base features (stored bodies) ---------------------------------
+    def build_base_feature(self, feat):
+        """Insert the bodies a Base Feature stores, as static solids. The decoded bodies are
+        those of the final design, so a body that a later feature modifies is refused. A
+        current body that coincides with a stored body is the body that the Base Feature
+        takes over (Body to Component), and the stored body replaces it."""
+        sel = feat["definition"].get("bodies") or {}
+        if sel.get("kind") != "resolved":
+            raise NotImplementedError("base feature bodies " + str(sel.get("kind")))
+        if self.stored is None:
+            raise NotImplementedError("stored bodies not exported (F2FC_BODIES)")
+        later = set()
+        for f in self.slim["features"]:
+            if f["ordinal"] > feat["ordinal"] and not f.get("suppressed"):
+                later.update(f.get("outputs") or [])
+        res = {"bodies": 0, "replaced": 0}
+        for bid in sel["value"]["bodies"]:
+            rec = self.stored.get(bid) or {}
+            if not rec.get("file"):
+                raise ValueError("stored body %s was not exported: %s" % (bid, rec.get("error", "missing")))
+            if bid in later:
+                raise NotImplementedError("stored body modified by later features")
+            shape = Part.Shape()
+            shape.read(os.path.join(self.stored_dir, rec["file"]))
+            if rec.get("kind") == "solid":
+                if not shape.Solids:
+                    raise ValueError("stored solid body has no solid")
+                shape = shape.Solids[0] if len(shape.Solids) == 1 else Part.makeCompound(shape.Solids)
+            obj = self.doc.addObject("Part::Feature", "StoredBody")
+            obj.Shape = shape
+            obj.Label = "%s body %d" % (feat["name"], res["bodies"] + 1)
+            self.body_component[obj.Name] = self.component
+            twin = self.coincident_body(obj)
+            if twin is not None:
+                self.solids.remove(twin)
+                twin.Visibility = False
+                res["replaced"] += 1
+            self.solids.append(obj)
+            res["bodies"] += 1
+        return res
+
+    def world_shape(self, obj):
+        mats = self.world.get(self.body_component.get(obj.Name)) or [None]
+        m = mats[0]
+        return obj.Shape if m is None or m.isUnity() else obj.Shape.transformGeometry(m)
+
+    def coincident_body(self, obj):
+        """The current body that occupies the same space as `obj` (world coordinates)."""
+        mine = self.world_shape(obj)
+        if not mine.Solids:
+            return None
+        for s in self.solids:
+            other = self.world_shape(s)
+            if not other.Solids or abs(other.Volume - mine.Volume) > 1e-6 * max(mine.Volume, 1.0):
+                continue
+            if other.BoundBox.isInside(mine.BoundBox.Center) and \
+                    abs(other.common(mine).Volume - mine.Volume) <= 1e-6 * max(mine.Volume, 1.0):
+                return s
+        return None
+
     # ----- sweep, loft (profile loops and paths) -------------------------
     def sketch_edge(self, sk, name):
         """The sketch shape's edge for a mapped name ';g<id>;SKT.EdgeN' (world coordinates)."""
@@ -1076,7 +1528,7 @@ class Rebuilder:
             found = []
             for eid in v["edges"]:
                 eg = self.topo_geometry.get(eid)
-                body, idx = self.find_edge(eg) if eg else (None, None)
+                body, idx, _ = self.find_edge(eg) if eg else (None, None, None)
                 if body is None:
                     raise ValueError("path edge not found in the rebuilt bodies")
                 found.append((body, idx))
@@ -1166,9 +1618,10 @@ class Rebuilder:
             reach = radius * math.tan(half) * 1.5 + 1e-3
             for t, sign in ((t_in, 1), (t_out, -1)):
                 ext = Part.makeCylinder(radius, reach, p, t * sign)
-                # Keep the part of the extension on its own side of the bisector plane.
+                # Keep the part of the extension on its own segment's side of the
+                # bisector plane (behind it for the incoming segment).
                 box = Part.makeBox(4 * size, 4 * size, 2 * size)
-                box.Placement = App.Placement(p, App.Rotation(V(0, 0, 1), bis * sign))
+                box.Placement = App.Placement(p, App.Rotation(V(0, 0, 1), bis * -sign))
                 box.translate(-box.Placement.Rotation.multVec(V(2 * size, 2 * size, 0)))
                 parts.append(ext.common(box))
         shape = parts[0].fuse(parts[1:]).removeSplitter() if len(parts) > 1 else parts[0]
@@ -1304,7 +1757,7 @@ class Rebuilder:
         if self.path_corners(wire):
             if sec.get("kind") != "generated":
                 raise NotImplementedError("profile sweep along a path with corners")
-            tube = [self.static(self.mitered_pipe(wire, c.Radius, name), name) for c in sections]
+            tube = [self.static(self.mitered_pipe(wire, c.Radius.Value, name), name) for c in sections]
             groups = []
             solids.append(self.subtract(tube[0], tube[1:], name))
         for outer, holes in groups:
