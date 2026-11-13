@@ -72,7 +72,7 @@
   "steps": 5
  },
  "adafruit_2831_Photo_Transistor_Light_Sensor": {
-  "match": 4,
+  "match": 10,
   "steps": 10
  },
  "adafruit_4320_PermaProto_Gizmo": {
