@@ -75,7 +75,7 @@ class Rebuilder:
                         "move_body": "build_move_body", "combine": "build_combine",
                         "sweep": "build_sweep", "block": "build_block", "primitive": "build_primitive",
                         "sphere": "build_sphere", "torus": "build_torus", "base_feature": "build_base_feature",
-                        "shell": "build_shell", "delete_face": "build_delete_face", "draft": "build_draft"}
+                        "shell": "build_shell", "delete_face": "build_delete_face", "draft": "build_draft", "loft": "build_loft"}
 
     def __init__(self, slim, topo, wanted):
         self.slim = slim
@@ -1927,6 +1927,43 @@ class Rebuilder:
         res = self.apply_op(shape["op"], tool, name)
         res.update(self.notes)
         return res
+
+    def build_loft(self, feat):
+        """Loft through whole-sketch sections (one closed loop each) with no rails or
+        centerline: `Part::Loft` through the loop wires."""
+        d = feat["definition"]
+        if (d.get("guidance") or {}).get("path"):
+            raise NotImplementedError("loft with rails or centerline")
+        if d.get("solid") is False:
+            raise NotImplementedError("surface loft")
+        if d.get("linearize"):
+            raise NotImplementedError("linearized loft")
+        name = feat["name"]
+        # A whole-sketch section selects every profile region, so nested loops (an annulus
+        # and its inner disc) fill back to the outermost loop.
+        objs = []
+        for sec in d["sections"]:
+            v = sec.get("value")
+            if sec.get("kind") != "sketch" or v not in self.sketch_defs:
+                raise NotImplementedError("loft section " + str(sec.get("kind")))
+            n = len(self.sketch_defs[v].get("profiles") or [])
+            sk, groups = self.profile_loops({"kind": "sketch_profiles",
+                                             "value": {"sketch": v, "profiles": list(range(n))}})
+            if len(groups) != 1:
+                raise NotImplementedError("loft section with several profiles")
+            objs.append(self.loop_object(sk, groups[0][0], name + " section"))
+        if len(objs) < 2:
+            raise NotImplementedError("loft with fewer than two sections")
+        loft = self.doc.addObject("Part::Loft", "Loft")
+        loft.Sections = objs
+        loft.Solid = True
+        loft.Ruled = bool(d.get("ruled"))
+        loft.Closed = bool(d.get("closed"))
+        loft.Label = name
+        self.doc.recompute()
+        if loft.Shape.isNull() or not loft.Shape.Solids or loft.Shape.Volume <= 0:
+            raise ValueError("empty loft")
+        return self.apply_op(d.get("op", "new_body"), loft, name)
 
     # ----- driver ---------------------------------------------------------
     def sketch_label(self, sid, fallback=None):
