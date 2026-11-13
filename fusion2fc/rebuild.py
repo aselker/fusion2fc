@@ -723,6 +723,21 @@ class Rebuilder:
         except Exception:
             return None
 
+    @staticmethod
+    def dist_to_point(shape, p):
+        """Distance from `shape` to point p; BRepExtrema fails on some degenerate edges and
+        faces, then the nearest of the shape's sampled edge points stands in."""
+        try:
+            return shape.distToShape(Part.Vertex(p))[0]
+        except RuntimeError:
+            pts = []
+            for e in shape.Edges:
+                try:
+                    pts += e.discretize(64)
+                except Exception:
+                    pass
+            return min(((q - p).Length for q in pts), default=float("inf"))
+
     def find_edge(self, eg):
         """(body object, 1-based edge index) of the current edge matching recorded geometry,
         and the distance of the nearest edge (for the report). A rebuilt edge matches when it
@@ -745,7 +760,7 @@ class Rebuilder:
                 bb.enlarge(tol)
                 if not bb.isInside(p):
                     continue
-                d = e.distToShape(Part.Vertex(p))[0]
+                d = self.dist_to_point(e, p)
                 if d > tol:
                     continue
                 if t is not None:
@@ -753,7 +768,7 @@ class Rebuilder:
                     if te is None or 1 - abs(te.normalize().dot(t)) > self.TANGENT_TOL:
                         continue
                 verts = [v.Point for v in e.Vertexes]
-                on = all(e.distToShape(Part.Vertex(q))[0] < tol for q in ends)
+                on = all(self.dist_to_point(e, q) < tol for q in ends)
                 if closed:
                     exact = e.isClosed() and on
                 else:
@@ -765,7 +780,7 @@ class Rebuilder:
         if best is not None:
             return best[1], best[2], best[0][2]
         shapes = [s.Shape for s in pool if not s.Shape.isNull()]
-        nearest = min((sh.distToShape(Part.Vertex(p))[0] for sh in shapes), default=float("inf"))
+        nearest = min((self.dist_to_point(sh, p) for sh in shapes), default=float("inf"))
         return None, None, nearest
 
     # ----- face selection ---------------------------------------------------
@@ -894,6 +909,55 @@ class Rebuilder:
         self.solids[self.solids.index(body)] = pb
         return {"faces": len(per_body[body])}
 
+    # Which side of an asymmetric chamfer carries the first distance: "forward" is the face
+    # whose boundary runs along the recorded (ASM) edge direction with its material on the
+    # left, i.e. the face the edge's first coedge belongs to.
+    CHAMFER_FIRST_FACE = os.environ.get("F2FC_CHAMFER_FIRST", "forward")
+
+    def asymmetric_chamfer(self, body, idx, eg, spec):
+        """(first, second) distances in the order OCC reads them for edge `idx` of `body`:
+        the first is measured on the first face OCC finds for the edge (Part.Shape.
+        ancestorsOfType), the second on the other. Fusion measures its first distance (or the
+        distance of a distance-and-angle chamfer) on the face of the edge's first coedge."""
+        shape = body.Shape
+        edge = shape.Edges[idx - 1]
+        faces = shape.ancestorsOfType(edge, Part.Face)
+        if len(faces) != 2:
+            raise ValueError("edge lies between %d faces" % len(faces))
+        t_rec = vec(eg["tangent"])
+        t_rec.normalize()
+        u = 0.5 * (edge.FirstParameter + edge.LastParameter)
+        mid = edge.valueAt(u)
+        te = edge.tangentAt(u)
+        if te.dot(t_rec) < 0:
+            te = -te
+        normals, inward = [], []
+        for f in faces:
+            uv = f.Surface.parameter(mid)
+            n = f.normalAt(*uv)
+            d = n.cross(te)
+            d.normalize()
+            step = 1e-3 * max(1.0, min(edge.Length, 1.0))
+            if not f.isInside(mid + d * step, 1e-7, True):
+                d = -d
+                if not f.isInside(mid + d * step, 1e-7, True):
+                    raise ValueError("inward direction of a face is ambiguous")
+            normals.append(n)
+            inward.append(d)
+        # With the material on the left of the boundary, the inward direction is n x t.
+        fwd = [i for i in range(2) if inward[i].dot(normals[i].cross(t_rec)) > 0]
+        if len(fwd) != 1:
+            raise ValueError("faces do not separate by coedge sense")
+        first = fwd[0] if self.CHAMFER_FIRST_FACE == "forward" else 1 - fwd[0]
+        if spec["kind"] == "two_distances":
+            d_first, d_second = spec["first"], spec["second"]
+        else:
+            theta = math.pi - math.acos(max(-1.0, min(1.0, normals[0].dot(normals[1]))))
+            ang = spec["angle"]
+            d_first = spec["distance"]
+            d_second = d_first * math.sin(ang) / math.sin(theta + ang)
+        return (d_first, d_second) if first == 0 else (d_second, d_first)
+
     def build_edge_treatment(self, feat, kind):
         d = feat["definition"]
         per_body = defaultdict(list)
@@ -922,9 +986,12 @@ class Rebuilder:
                 size = (r["radius"], r["radius"])
             else:
                 spec = g.get("spec", {})
-                if spec.get("kind") != "distance":
+                if spec.get("kind") == "distance":
+                    size = (spec["distance"], spec["distance"])
+                elif spec.get("kind") in ("two_distances", "distance_angle"):
+                    size = None  # per edge, once the faces it lies between are known
+                else:
                     raise NotImplementedError("chamfer spec " + str(spec.get("kind")))
-                size = (spec["distance"], spec["distance"])
             for eid in e["value"]["edges"]:
                 eg = self.topo_geometry.get(eid)
                 if eg is None:
@@ -935,23 +1002,41 @@ class Rebuilder:
                     missing.append("%.3g mm" % dist)
                     continue
                 if all(i != idx for i, _, _ in per_body[body]):
-                    per_body[body].append((idx, size[0], size[1]))
+                    if size is None:
+                        try:
+                            sz = self.asymmetric_chamfer(body, idx, eg, spec)
+                        except ValueError as ex:
+                            raise ValueError("chamfer orientation: %s" % ex)
+                    else:
+                        sz = size
+                    per_body[body].append((idx, sz[0], sz[1]))
         if missing:
             raise ValueError("%d selected edges not found in the rebuilt bodies (nearest: %s)"
                              % (len(missing), ", ".join(missing[:6])))
-        made = []
-        for body, edges in per_body.items():
-            obj = self.doc.addObject("Part::Fillet" if kind == "fillet" else "Part::Chamfer", kind.capitalize())
-            obj.Label = feat["name"]
-            obj.Base = body
-            obj.Edges = edges
-            made.append((body, obj))
-        self.doc.recompute()
-        bad = [o for _, o in made if o.Shape.isNull() or not o.Shape.Solids or "Invalid" in o.State]
-        if bad:
+        # A radius that consumes a whole adjacent face exactly (a fillet as tall as the step
+        # it rounds) is degenerate for OCC; Fusion accepts it. Retry shrunk by a hair, which
+        # leaves a sliver face but a volume within 1e-7 of the exact result.
+        for shrink in (0.0, 1e-7, 1e-6):
+            made = []
+            for body, edges in per_body.items():
+                obj = self.doc.addObject("Part::Fillet" if kind == "fillet" else "Part::Chamfer", kind.capitalize())
+                obj.Label = feat["name"]
+                obj.Base = body
+                obj.Edges = [(i, a * (1 - shrink), b * (1 - shrink)) for i, a, b in edges]
+                made.append((body, obj))
+            self.doc.recompute()
+            bad = [o for _, o in made if o.Shape.isNull() or not o.Shape.Solids or "Invalid" in o.State]
+            if not bad:
+                break
+            if shrink == 0.0 and os.environ.get("F2FC_DEBUG_EDGES"):
+                import json as _j
+                for i, (b_, o) in enumerate(made):
+                    b_.Shape.exportBrep("%s/%s_%d.brep" % (os.environ["F2FC_DEBUG_EDGES"], feat["name"], i))
+                    _j.dump({"kind": kind, "edges": o.Edges}, open("%s/%s_%d.json" % (os.environ["F2FC_DEBUG_EDGES"], feat["name"], i), "w"))
             for _, o in made:
                 self.doc.removeObject(o.Name)
             self.doc.recompute()
+        if bad:
             raise ValueError("OCC %s failed on %d of %d bodies" % (kind, len(bad), len(made)))
         for body, obj in made:
             self.solids[self.solids.index(body)] = obj
