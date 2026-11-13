@@ -1,6 +1,6 @@
 {
  "AdamLaskoi_SG90_Micro_Servo_9g_v1": {
-  "match": 6,
+  "match": 8,
   "steps": 19
  },
  "PacktPublishing_2BC": {
@@ -16,7 +16,7 @@
   "steps": 7
  },
  "PacktPublishing_Bicycle_Handlebars_final": {
-  "match": 2,
+  "match": 9,
   "steps": 27
  },
  "PacktPublishing_Bracket_Finished": {
@@ -24,7 +24,7 @@
   "steps": 15
  },
  "PacktPublishing_Bracket_Solid": {
-  "match": 3,
+  "match": 4,
   "steps": 5
  },
  "PacktPublishing_Ch12_tealight_ghost_final": {
@@ -40,7 +40,7 @@
   "steps": 19
  },
  "PacktPublishing_Custom_Lattice": {
-  "match": 3,
+  "match": 7,
   "steps": 7
  },
  "PacktPublishing_Example_B": {
@@ -100,7 +100,7 @@
   "steps": 16
  },
  "andyeske_Lego_2x4_brick_v1": {
-  "match": 4,
+  "match": 5,
   "steps": 19
  },
  "andyeske_N2_Pencil_v1": {
@@ -328,7 +328,7 @@
   "steps": 2
  },
  "gtgkartik_Dice": {
-  "match": 12,
+  "match": 19,
   "steps": 27
  },
  "gtgkartik_Industrial_Tool_2": {
@@ -368,7 +368,7 @@
   "steps": 10
  },
  "nick0451_Parametric_Battery_Case_v2": {
-  "match": 0,
+  "match": 3,
   "steps": 59
  },
  "onlinelei_appleScreen_v9": {
