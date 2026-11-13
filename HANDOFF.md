@@ -88,3 +88,25 @@ models, 432/1073 steps (generated 28/29, run_cases 28/29, cargo test passes, no 
 - handoff-tools/area_check.py is stale against the current rebuild.
 - No Rust unit test was added for the ordering change (needs a fixture with both a recorded
   selection and a history transition); the corpus gain is the evidence.
+
+# Fourth pass (profiles agent, Sonnet): root causes by decoder exit
+
+Method: temporary eprintln builds (reverted) at every exit of the extrude profile binder
+(`profile_select.rs`), `resolve_profile_curve_arrangement_regions`, and the arrangement builder.
+Findings, in order of models affected:
+
+- `profile kind sketch` skips (rack_mount_foot, B10P/B2PS_VH, Crusher_Shaft): the extrude scope has no
+  counted selection group and the recorded curve selection did not resolve, so the decoder left the bare
+  sketch reference. Crusher_Shaft selects every region of its sketch (nested circles) -> rebuild now
+  extrudes all loop regions for a bare `sketch` (`bare_sketch_regions`). B10P/B2PS: the sketch decodes with no
+  closed loops at all (curves "not part of any closed profile loop"), still open.
+- rack_mount_foot: Fusion keeps a 0.19 um line between two arcs (and a 0.1 um arc piece). With the 1e-5 mm
+  tolerance the exact arrangement refuses the sketch (edges "meet other than at nodes"/not separated), so no
+  region resolved. Fixed in cadmpeg: `curve_arrangement_faces` retries at 100x tolerance (drops lines under
+  that, merges nodes), same-circle arc test tolerant to float noise, programs also matched without slivers.
+  1 -> 16/16 steps.
+- Exit counts seen on the remaining models (line numbers of the pre-edit tree): arrangement budget exhausted
+  (`arrangement.exhausted()`; co2_box, Lego_20x20, Cooler), `certified_pieces_separated` false for edges with
+  no shared node (busra_kol, SCD41, co2_box, Lock_B_Side), member-ring match finds no face (Seven_LED, Claw,
+  Tihend, 2278), `!single_exterior` multi-loop region (bowenchristopher, Cooler, Seven_LED), no counted group
+  and no curve selection (administrativetrick, Lego_2x4).
