@@ -1,0 +1,69 @@
+{
+"source": "case_rev_symmetric.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 2,
+"diag": 42.49999999999999,
+"deviation_mm": 0.008499999999999999,
+"steps_total": 2,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Revolve1",
+"group": null,
+"type": "RevolveFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 6981.317007977317,
+"area": 2558.5574319414536,
+"centroid": [
+4.264184425528131,
+-5.0888874903416275e-15,
+-8.687500000000002
+],
+"bbox": [
+[
+-7.499999999999998,
+-14.999999999999993,
+-20.0
+],
+[
+15.000000000000002,
+15.000000000000002,
+0.0
+]
+],
+"tri": [
+0,
+504
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 2.1
+}

@@ -1,0 +1,201 @@
+{
+"source": "case_pat_rect_one_dir_extent.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 5,
+"diag": 72.55342858886821,
+"deviation_mm": 0.014510685717773643,
+"steps_total": 5,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 9600.000000000002,
+"area": 5600.0,
+"centroid": [
+30.0,
+20.0,
+2.0
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+60.0,
+40.0,
+4.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 9600.000000000002,
+"area": 5600.0,
+"centroid": [
+30.0,
+20.0,
+2.0
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+60.0,
+40.0,
+4.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 3,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 9713.097335529239,
+"area": 5675.398223686155,
+"centroid": [
+29.720548867276605,
+19.836986839242556,
+2.046575188787841
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+60.0,
+40.0,
+8.0
+]
+],
+"tri": [
+0,
+140
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 4,
+"name": "R-Pattern1",
+"group": null,
+"type": "RectangularPatternFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 10052.389342116952,
+"area": 5901.59289474462,
+"centroid": [
+29.729981006486938,
+19.369955681769927,
+2.180012662351448
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+60.0,
+40.0,
+8.0
+]
+],
+"tri": [
+0,
+524
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 2.4
+}

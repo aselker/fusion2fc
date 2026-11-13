@@ -336,8 +336,8 @@
   "id": "case_chamfer_distance_angle",
   "tier": "generated",
   "file": "../cases/chamfer_distance_angle.f3d",
-  "sha256": "7d2eca276fe2d3c2a475023b3d769f426c2618aa68c8e959d70282f9a8b1ecda",
-  "bytes": 65687,
+  "sha256": "a338484bae3cf9f446b0eac27ec9226b5a5087a6f10a17988e6c70f45b72e375",
+  "bytes": 73916,
   "source": {
    "generated": "vm/scripts/make_cases.py"
   }
@@ -346,8 +346,8 @@
   "id": "case_chamfer_distance_angle_flipped",
   "tier": "generated",
   "file": "../cases/chamfer_distance_angle_flipped.f3d",
-  "sha256": "998bf0a770cb55000af97ba80827dfacafc085dc9a826bbcf64f378332cd71a5",
-  "bytes": 65857,
+  "sha256": "f129b6c18ba68d44ea9bcfa5bcc302a34d0453888944d062db94b5626877919c",
+  "bytes": 65821,
   "source": {
    "generated": "vm/scripts/make_cases.py"
   }
@@ -396,8 +396,8 @@
   "id": "case_chamfer_two_distances",
   "tier": "generated",
   "file": "../cases/chamfer_two_distances.f3d",
-  "sha256": "b189f52ce77e06b8591c11957ca1cdfa066a41a44ffc73eacabaa262e20cc5bf",
-  "bytes": 71519,
+  "sha256": "4a3a0e081043b687d15786dd8f90c6eb2da158d0a4b4733f3e074eed13b8b341",
+  "bytes": 65738,
   "source": {
    "generated": "vm/scripts/make_cases.py"
   }
@@ -406,8 +406,8 @@
   "id": "case_chamfer_two_distances_flipped",
   "tier": "generated",
   "file": "../cases/chamfer_two_distances_flipped.f3d",
-  "sha256": "8302959dbe3ef59cfe142d32ec7497dcab43f3eeaef001d770ed91ef6447c778",
-  "bytes": 71645,
+  "sha256": "3d4b62c9356ab4ac9daa3cc0111fd4415e781e39589a2571d49e2f3dd2d7917f",
+  "bytes": 71519,
   "source": {
    "generated": "vm/scripts/make_cases.py"
   }
@@ -416,8 +416,8 @@
   "id": "case_chamfer_two_distances_swapped",
   "tier": "generated",
   "file": "../cases/chamfer_two_distances_swapped.f3d",
-  "sha256": "d7221a123e5cee63bb3c73c01274d22c6fae6371ded2d594516d2648e93de866",
-  "bytes": 65824,
+  "sha256": "c4e288555a21249beeae930df4ca576a3ae6f75f348bdb9187cb8f3c5f472297",
+  "bytes": 71595,
   "source": {
    "generated": "vm/scripts/make_cases.py"
   }
@@ -2116,6 +2116,946 @@
    "path": "2831 Photo Transistor Light Sensor/2831 Photo Transistor Light Sensor.f3d",
    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_CAD_Parts/9f2a89f3d5c3491886d58cb7fe83385417563cf4/2831%20Photo%20Transistor%20Light%20Sensor/2831%20Photo%20Transistor%20Light%20Sensor.f3d",
    "license": "mit"
+  }
+ },
+ {
+  "id": "case_comb_cut",
+  "tier": "generated",
+  "file": "../cases/comb_cut.f3d",
+  "sha256": "cdc6212153f945b0f6aab960124b0108f183dadd49dcbfc9443c0492295d558f",
+  "bytes": 72130,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_comb_cut_keep_tools",
+  "tier": "generated",
+  "file": "../cases/comb_cut_keep_tools.f3d",
+  "sha256": "e6c76a4b937792acdbcd3d61cd3f79ba2299d1dc15bd7a5d02570ed9345ad394",
+  "bytes": 74697,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_comb_intersect",
+  "tier": "generated",
+  "file": "../cases/comb_intersect.f3d",
+  "sha256": "80c9880154f6c8daa14250e59b0d3377e3f3d288fbcff629abea80d816529c8a",
+  "bytes": 67522,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_comb_join",
+  "tier": "generated",
+  "file": "../cases/comb_join.f3d",
+  "sha256": "a3aa2a85d6530d9516c1543a82700803fa1b385732730207a2a523e9d78fef73",
+  "bytes": 75436,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_comb_join_three_bodies",
+  "tier": "generated",
+  "file": "../cases/comb_join_three_bodies.f3d",
+  "sha256": "0a24e30fb2c191233e4d484a1705f751ad803207cbbf73de55d8ed54a44b84b7",
+  "bytes": 89467,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_comp_extrude_in_component",
+  "tier": "generated",
+  "file": "../cases/comp_extrude_in_component.f3d",
+  "sha256": "82ccf0308dde835605c68e9a86b83f265e6c370d0579461a1df09f5588027998",
+  "bytes": 86535,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_comp_moved_occurrence",
+  "tier": "generated",
+  "file": "../cases/comp_moved_occurrence.f3d",
+  "sha256": "b87f7433370bfca6d6a262f4172bb06e6c788e61edcddd8020a8c515df9350eb",
+  "bytes": 66348,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_comp_new_from_body",
+  "tier": "generated",
+  "file": "../cases/comp_new_from_body.f3d",
+  "sha256": "5ab8c4fc3b8f4302fcec751cbed7e3db90ffa5866d67b570a0d3ae572b83bbc1",
+  "bytes": 80270,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_copy_body",
+  "tier": "generated",
+  "file": "../cases/copy_body.f3d",
+  "sha256": "6c1adaf5e5c2517aa353465e855e3bc6c8a09eefbfadd78fb6bbbc8347b70cb8",
+  "bytes": 73671,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_cut_across_bodies_participants",
+  "tier": "generated",
+  "file": "../cases/cut_across_bodies_participants.f3d",
+  "sha256": "5ecc1cea2353932a3b74f45a756ea3f2ff81f80134cdbd273db38d846c03d5fb",
+  "bytes": 113561,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_draft_side_faces",
+  "tier": "generated",
+  "file": "../cases/draft_side_faces.f3d",
+  "sha256": "dd6dd47a9c518aa09df1b5e9687e436a07bfdc4a5de08151d53b6e36e64ced84",
+  "bytes": 68769,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_draft_single_face",
+  "tier": "generated",
+  "file": "../cases/draft_single_face.f3d",
+  "sha256": "026a112a97189d0f8180026b46e17c63705c59b80c1a0fc1226201edd23d6004",
+  "bytes": 65528,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_hole_counterbore",
+  "tier": "generated",
+  "file": "../cases/hole_counterbore.f3d",
+  "sha256": "f3e1d2397ee741f8ac51502422678b5ee627ce504b5aebd9aeba3027b1e68bd7",
+  "bytes": 98120,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_hole_countersink",
+  "tier": "generated",
+  "file": "../cases/hole_countersink.f3d",
+  "sha256": "ef18e136ddbe5674c1e56d29d7e02c044e2eae142133ab8824febe586ee124ae",
+  "bytes": 102796,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_hole_on_offset_face_plane",
+  "tier": "generated",
+  "file": "../cases/hole_on_offset_face_plane.f3d",
+  "sha256": "5bd37445b46ba199d5c51ce4724d9515e10e0c1fa82a88c340deecd120bf11d7",
+  "bytes": 83194,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_hole_simple_blind",
+  "tier": "generated",
+  "file": "../cases/hole_simple_blind.f3d",
+  "sha256": "ceed815f11f7a684aa68fe2d2dca012edbd6cb45999a9d527f3ce8bbde5d6ee2",
+  "bytes": 84410,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_hole_simple_through_all",
+  "tier": "generated",
+  "file": "../cases/hole_simple_through_all.f3d",
+  "sha256": "5b925ac2e410f510a3e56406c9c34d06a4ddd561c0bb18c4000faac376e31a5a",
+  "bytes": 84940,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_hole_tapped_cosmetic",
+  "tier": "generated",
+  "file": "../cases/hole_tapped_cosmetic.f3d",
+  "sha256": "e227c340648eb65cd870a4f1e506bbfe1d72c48d21fdba679774b04a8b1821f8",
+  "bytes": 93424,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_hole_tapped_modeled",
+  "tier": "generated",
+  "file": "../cases/hole_tapped_modeled.f3d",
+  "sha256": "1518db6644bce7bbc38e3ce30890edf34723036fd1b4f828c60e7938a563222b",
+  "bytes": 96238,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_hole_tapped_through",
+  "tier": "generated",
+  "file": "../cases/hole_tapped_through.f3d",
+  "sha256": "726ccdb9f63bdb17ca64d1a773f217465cb39bedfc2bd43aaffa53fd943d656a",
+  "bytes": 94901,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_hole_two_points_on_face",
+  "tier": "generated",
+  "file": "../cases/hole_two_points_on_face.f3d",
+  "sha256": "65d8da7919ea2c56bd43ed35e29a75a1eeff40999785171d1dab8b5a580191f6",
+  "bytes": 87839,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_loft_offset_centers",
+  "tier": "generated",
+  "file": "../cases/loft_offset_centers.f3d",
+  "sha256": "a3bd7db2da32b5bed10e5bb25410a83c28f68301c6670b00e5077c74b11e3811",
+  "bytes": 136654,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_loft_three_profiles",
+  "tier": "generated",
+  "file": "../cases/loft_three_profiles.f3d",
+  "sha256": "e9ae58d58bca021c08ae096626a7c305c2f15d93965b166d28191fef6dbfc41b",
+  "bytes": 265297,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_loft_two_rect_circle",
+  "tier": "generated",
+  "file": "../cases/loft_two_rect_circle.f3d",
+  "sha256": "7bd9afa15988e37d16ac2340362094713549292db75292a82f65dc9af47afa0a",
+  "bytes": 187626,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_loft_with_rail",
+  "tier": "generated",
+  "file": "../cases/loft_with_rail.f3d",
+  "sha256": "ff240e5af8b202aae6b734b55f497879d7213286041d9eafd72ebab5d67e130f",
+  "bytes": 211049,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_mirror_body",
+  "tier": "generated",
+  "file": "../cases/mirror_body.f3d",
+  "sha256": "c907499cf909d908abd61ffde8a237d6c30e5cbb0e4085717e8c0634d3d5f793",
+  "bytes": 67512,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_mirror_feature",
+  "tier": "generated",
+  "file": "../cases/mirror_feature.f3d",
+  "sha256": "ea08e9b0f9e3fe5b11ebbd6960a78e92a0cf4c9713d1f16c2e0c2f2f5dde23a4",
+  "bytes": 116273,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_mirror_feature_mid_plane",
+  "tier": "generated",
+  "file": "../cases/mirror_feature_mid_plane.f3d",
+  "sha256": "308caed6a39742ed133244acf71e770b6cb7aa72b10b0a86db106491dd0df31a",
+  "bytes": 105477,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_move_body_rotate",
+  "tier": "generated",
+  "file": "../cases/move_body_rotate.f3d",
+  "sha256": "c5d4a2d8c68b57e937c031911f9296dfeb2a208eb827f191960d8ce37151244d",
+  "bytes": 65774,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_move_body_translate",
+  "tier": "generated",
+  "file": "../cases/move_body_translate.f3d",
+  "sha256": "bfb4fe944a096701bb561e109a2d87396019628a6522eb3e15fe48f9e0cac1b1",
+  "bytes": 65787,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_multi_body_join_extrude",
+  "tier": "generated",
+  "file": "../cases/multi_body_join_extrude.f3d",
+  "sha256": "d13e7499c28f98babd6a7377206e50dd4c52944d052f0d0e70ae64a02805a18d",
+  "bytes": 84892,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_offset_face_press_pull",
+  "tier": "generated",
+  "file": "../cases/offset_face_press_pull.f3d",
+  "sha256": "67e6b1b3ac527c0e92ef04c16e96de602b71c81ce70a735d231f5347ee08c697",
+  "bytes": 67765,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_offset_face_side_inward",
+  "tier": "generated",
+  "file": "../cases/offset_face_side_inward.f3d",
+  "sha256": "5e0601822d873bf4388445f4c5080236f3c4f8a6c8dd7c9f91c09559c2afc0a1",
+  "bytes": 63481,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_pat_circ_bodies",
+  "tier": "generated",
+  "file": "../cases/pat_circ_bodies.f3d",
+  "sha256": "c1b668bb3537aea0d46f50a93f1134165dca7ab3e767404ebb89da6f7b8893fe",
+  "bytes": 96373,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_pat_circ_full",
+  "tier": "generated",
+  "file": "../cases/pat_circ_full.f3d",
+  "sha256": "f251c6e3f2c1c6fe3890fed7e69bf69858cf68ebfa12ce96434dfcdc0dbc3f32",
+  "bytes": 129316,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_pat_circ_partial",
+  "tier": "generated",
+  "file": "../cases/pat_circ_partial.f3d",
+  "sha256": "49a59a1e9f2ce450f6131ee76429271c8bdef228ff54c27b6209b00a91dd703f",
+  "bytes": 111143,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_pat_circ_symmetric",
+  "tier": "generated",
+  "file": "../cases/pat_circ_symmetric.f3d",
+  "sha256": "c06e12676ad617944fd8c884dede2a76d74a33e2d1f4ec38be09f9bd1ddf0ac0",
+  "bytes": 100359,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_pat_path",
+  "tier": "generated",
+  "file": "../cases/pat_path.f3d",
+  "sha256": "dbe8f12b82774ac1c3a562adc04012b52f7154d1adc8ecb95b998fd2b93ce2c9",
+  "bytes": 96288,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_pat_rect_bodies",
+  "tier": "generated",
+  "file": "../cases/pat_rect_bodies.f3d",
+  "sha256": "3daeb4659ebd04d1488da7a11569387582a1fbaeb70eac7be5ba369790a2558d",
+  "bytes": 92846,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_pat_rect_faces",
+  "tier": "generated",
+  "file": "../cases/pat_rect_faces.f3d",
+  "sha256": "2a75d2441cbc4e464a6cd13b552cfade6768398a03ee4c4137392e88f9e9de13",
+  "bytes": 113845,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_pat_rect_one_dir_extent",
+  "tier": "generated",
+  "file": "../cases/pat_rect_one_dir_extent.f3d",
+  "sha256": "53ebaa3c4528e115cc1cc870d5f8a68baf5dc940ebe8cb59d567759dc8f035e1",
+  "bytes": 106452,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_pat_rect_one_dir_spacing",
+  "tier": "generated",
+  "file": "../cases/pat_rect_one_dir_spacing.f3d",
+  "sha256": "9ed38c92e3cfcba1905e7d00d8e55ba3fd1e70d1350d59eef4a96adbead178b4",
+  "bytes": 106474,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_pat_rect_symmetric",
+  "tier": "generated",
+  "file": "../cases/pat_rect_symmetric.f3d",
+  "sha256": "bd9fab527705036de3f8955668abc58b59cb108ebdbbbda7d0f8067bec8bd5f0",
+  "bytes": 99070,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_pat_rect_two_dirs",
+  "tier": "generated",
+  "file": "../cases/pat_rect_two_dirs.f3d",
+  "sha256": "7f79a8c45bb3f11d35c9f22489e94b8ad2bd05e3c868e3c96b7a81797366498a",
+  "bytes": 154740,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_rev_about_profile_edge",
+  "tier": "generated",
+  "file": "../cases/rev_about_profile_edge.f3d",
+  "sha256": "9758ae92605b57f7515d2db4de8b02ce0b4e2fd83854c4f83874a1ae540a11f3",
+  "bytes": 135816,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_rev_about_sketch_line",
+  "tier": "generated",
+  "file": "../cases/rev_about_sketch_line.f3d",
+  "sha256": "440460c9629411d4ec68365e1e61913375a6a26f972faec3c93caa6e2dd63808",
+  "bytes": 147858,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_rev_cut_groove",
+  "tier": "generated",
+  "file": "../cases/rev_cut_groove.f3d",
+  "sha256": "4b31e35e1e745cb686cdc7190932d8bcdae5ebff76ba6a141500f20148782fd7",
+  "bytes": 185475,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_rev_full_axis",
+  "tier": "generated",
+  "file": "../cases/rev_full_axis.f3d",
+  "sha256": "0c59afc1731aa56ca34deae541cbbfa1fe3a3e9e072fc0be8f63b646efbcf442",
+  "bytes": 147568,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_rev_join_flange",
+  "tier": "generated",
+  "file": "../cases/rev_join_flange.f3d",
+  "sha256": "910eca5c407f29de0c9b40fde20437cad806ad2d520ccb9bc5edec83b6c86386",
+  "bytes": 128933,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_rev_partial_angle",
+  "tier": "generated",
+  "file": "../cases/rev_partial_angle.f3d",
+  "sha256": "3542a4271e9919eba827a31316d28218801938d950af154c3712497e440e79fc",
+  "bytes": 164775,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_rev_symmetric",
+  "tier": "generated",
+  "file": "../cases/rev_symmetric.f3d",
+  "sha256": "0b13e8be07620d240f084dc07035be517720761a36296bc77cc2ca3df7123688",
+  "bytes": 145127,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_scale_body_about_corner",
+  "tier": "generated",
+  "file": "../cases/scale_body_about_corner.f3d",
+  "sha256": "8bbe15a512656c10261a4bd6996664f6940119f654b5e37e665086657420c262",
+  "bytes": 65531,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_scale_body_uniform",
+  "tier": "generated",
+  "file": "../cases/scale_body_uniform.f3d",
+  "sha256": "8175efbf6c67839e3e7d5ac59a0975d7f4fa52b32795e971f1f67c855f079080",
+  "bytes": 68645,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_shell_inside",
+  "tier": "generated",
+  "file": "../cases/shell_inside.f3d",
+  "sha256": "03d3ab8e4ec1cc270d3b2a81bfccedf018e7c85f940b71ea73f8b1321ab31b21",
+  "bytes": 80345,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_shell_outside",
+  "tier": "generated",
+  "file": "../cases/shell_outside.f3d",
+  "sha256": "18bafb11fe013832b8795e9f827e21a37b57f6741c642785ed66a24150d43e17",
+  "bytes": 80927,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_shell_two_faces",
+  "tier": "generated",
+  "file": "../cases/shell_two_faces.f3d",
+  "sha256": "43c17fe09450ce029b5bbbfe4d9dd68ea007b44d200a6c4122c94f7e3659592e",
+  "bytes": 79445,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_shell_whole_body",
+  "tier": "generated",
+  "file": "../cases/shell_whole_body.f3d",
+  "sha256": "24541485d9ce0ebe14ef2ff08a9cc5b03ee180ae646c300797a971484bd00961",
+  "bytes": 65296,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_arc_center_start_end",
+  "tier": "generated",
+  "file": "../cases/sk_arc_center_start_end.f3d",
+  "sha256": "db629f9472ca7899879f74aa2b25d6bc98442a14317463e697ac4eb046419ee6",
+  "bytes": 112145,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_arc_tangent",
+  "tier": "generated",
+  "file": "../cases/sk_arc_tangent.f3d",
+  "sha256": "057965941038eac0164446f017e59dbbe2737388c64879a9aca0bba48ea6c0a8",
+  "bytes": 71319,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_arc_three_point",
+  "tier": "generated",
+  "file": "../cases/sk_arc_three_point.f3d",
+  "sha256": "2aa5a9c0169db5f6c9f7143561795eb742c4aa60874a8c19b3b1ef0a117caad1",
+  "bytes": 96753,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_chamfer_corners",
+  "tier": "generated",
+  "file": "../cases/sk_chamfer_corners.f3d",
+  "sha256": "197ca12f728d95ff82422cd34d7d7671fdcd4db6a06eaace0c8f43820649249e",
+  "bytes": 69769,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_construction_lines_mixed",
+  "tier": "generated",
+  "file": "../cases/sk_construction_lines_mixed.f3d",
+  "sha256": "a374440cc16ca5bfd5dfbf44f574571734a734fdcb288abf9b4e282dbe6132af",
+  "bytes": 63339,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_copy_pattern_in_sketch",
+  "tier": "generated",
+  "file": "../cases/sk_copy_pattern_in_sketch.f3d",
+  "sha256": "1ca0b2dc782447d25b97c02d0b74aebd84f5ad66067e563512735959e159b710",
+  "bytes": 141775,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_dimension_params",
+  "tier": "generated",
+  "file": "../cases/sk_dimension_params.f3d",
+  "sha256": "2f432384af08e617df6ef7470bd09dbb5346d82bc3fd27f8e6302e9f72e80482",
+  "bytes": 66405,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_ellipse",
+  "tier": "generated",
+  "file": "../cases/sk_ellipse.f3d",
+  "sha256": "424fbca39abf524c571ccad3388d32bcf6c66f3be8fb2ceb516998086846d77a",
+  "bytes": 101143,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_ellipse_rotated_cut",
+  "tier": "generated",
+  "file": "../cases/sk_ellipse_rotated_cut.f3d",
+  "sha256": "63402dcaf9a6e46488c39b809798bf7c4ece779d7faaed48617c4f40c8ded9ec",
+  "bytes": 86650,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_fillet_corners",
+  "tier": "generated",
+  "file": "../cases/sk_fillet_corners.f3d",
+  "sha256": "bd84e672d476129e54a64970fdc08d9d011c302f577bfdaa526dfa817d4c98cf",
+  "bytes": 86110,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_intersect_plane",
+  "tier": "generated",
+  "file": "../cases/sk_intersect_plane.f3d",
+  "sha256": "674bbab868443d51e740556ac668eeab61283f97a38e5d5a9ff0d7da9ce0eac6",
+  "bytes": 90095,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_mirror_in_sketch",
+  "tier": "generated",
+  "file": "../cases/sk_mirror_in_sketch.f3d",
+  "sha256": "46e8f3ea12c723bb64f3cf684301366de53917f0ccf5905deec94bdd55c67cb1",
+  "bytes": 73875,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_offset_curves_ring",
+  "tier": "generated",
+  "file": "../cases/sk_offset_curves_ring.f3d",
+  "sha256": "f3866897ee5f72b88f4faa276082ac5ae5cd46505d3a5b24b783ae07eaefa8f1",
+  "bytes": 75899,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_on_angled_plane",
+  "tier": "generated",
+  "file": "../cases/sk_on_angled_plane.f3d",
+  "sha256": "a6d87e0d76529bfe1e2586db9e4ac821720291f995e22d226ef43713f7b655e8",
+  "bytes": 103183,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_on_face_boss",
+  "tier": "generated",
+  "file": "../cases/sk_on_face_boss.f3d",
+  "sha256": "a0e57937d5867a5cae6741751fd38f0e863c3d54b48a4e4f4da3efbcda20a94e",
+  "bytes": 100430,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_on_offset_plane",
+  "tier": "generated",
+  "file": "../cases/sk_on_offset_plane.f3d",
+  "sha256": "96abaf412ee604919792dc42640e85bd70141beed99eeb598bcfbe864a1bc7ac",
+  "bytes": 69921,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_on_side_face_cut",
+  "tier": "generated",
+  "file": "../cases/sk_on_side_face_cut.f3d",
+  "sha256": "352e2968316c6a14c7129021143501e4f93b8cae170a2524d9cc489cc64a29d4",
+  "bytes": 71381,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_polygon_circumscribed_pentagon",
+  "tier": "generated",
+  "file": "../cases/sk_polygon_circumscribed_pentagon.f3d",
+  "sha256": "8721c6c080d6ee971b9ece010342cfa3b17a248b46a16ad83ff22e3ab2eb21f4",
+  "bytes": 68960,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_polygon_hexagon",
+  "tier": "generated",
+  "file": "../cases/sk_polygon_hexagon.f3d",
+  "sha256": "ee6ba6b24734422faeee4a59f0c3502be42059a3b3a0130c3b643370b8e34b26",
+  "bytes": 79645,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_projected_edges",
+  "tier": "generated",
+  "file": "../cases/sk_projected_edges.f3d",
+  "sha256": "d8353888ebb8fecd449807e584785d3938544a7feb175429f9d9e38a531a461c",
+  "bytes": 83623,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_slot_center_to_center",
+  "tier": "generated",
+  "file": "../cases/sk_slot_center_to_center.f3d",
+  "sha256": "07bb3120ebe3d80c49c056f47f1c23e97b61d19a29bba6712174b6c348d4da99",
+  "bytes": 98121,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_slot_overall_cut",
+  "tier": "generated",
+  "file": "../cases/sk_slot_overall_cut.f3d",
+  "sha256": "765df2d24be208836acecd5ed8a4d80a62571d2ba3177c9c319cd60fa5c3a333",
+  "bytes": 91287,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_spline_control_point",
+  "tier": "generated",
+  "file": "../cases/sk_spline_control_point.f3d",
+  "sha256": "14bac15bf3a840ad114a8d04ba58b9aedf4f8e787f83714c85e56a275b74b7cd",
+  "bytes": 80297,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_spline_fit",
+  "tier": "generated",
+  "file": "../cases/sk_spline_fit.f3d",
+  "sha256": "e8bea55b142d9f8957a22e013b42b27cae5d832cd0fa5bf7aab631eaf2280d7f",
+  "bytes": 89048,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sk_text_extrude",
+  "tier": "generated",
+  "file": "../cases/sk_text_extrude.f3d",
+  "sha256": "799901b3cbc2958fc3fda0f6c1bc6c550a2c2ca729ece75e74bb46cfa38f0b8f",
+  "bytes": 175554,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_split_body_by_tool_body",
+  "tier": "generated",
+  "file": "../cases/split_body_by_tool_body.f3d",
+  "sha256": "0a5e1f1fdef7a866754cb829b8dd217363916de432ceb0c70d1d7d758ebad31f",
+  "bytes": 119042,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_split_body_plane",
+  "tier": "generated",
+  "file": "../cases/split_body_plane.f3d",
+  "sha256": "6a7f909c896b93681032b04c5a7393974f395815913ebbd6ac3aee898fe4c2ad",
+  "bytes": 72031,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_split_body_plane_yz",
+  "tier": "generated",
+  "file": "../cases/split_body_plane_yz.f3d",
+  "sha256": "88430f1f94de26a6b471eeba4af1dd4124e83b45a4d256adf272eaa0ce8e5004",
+  "bytes": 67749,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sweep_arc_path",
+  "tier": "generated",
+  "file": "../cases/sweep_arc_path.f3d",
+  "sha256": "68730ab1e856ac0952875d80b5cf57de9013740a8e7a7778d5afcc1f57d6e51f",
+  "bytes": 149061,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sweep_cut_groove",
+  "tier": "generated",
+  "file": "../cases/sweep_cut_groove.f3d",
+  "sha256": "24f1fb82f3f8b8d39c82e4f80bf056047e51d4dc846bb409c9961eab3f1f3baa",
+  "bytes": 74339,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sweep_line",
+  "tier": "generated",
+  "file": "../cases/sweep_line.f3d",
+  "sha256": "8653fc2406548f9ef821327d45b0099159122ae02cf3f38c7f40dbe6e4bbaac7",
+  "bytes": 184822,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sweep_line_arc_path",
+  "tier": "generated",
+  "file": "../cases/sweep_line_arc_path.f3d",
+  "sha256": "73451540f115f5f805e98c467faa7f5d71080de4616497819132fb4fc00b9fca",
+  "bytes": 177965,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sweep_spline_path",
+  "tier": "generated",
+  "file": "../cases/sweep_spline_path.f3d",
+  "sha256": "c4393c75f67a93e5faebd668df974527792ca5bc84250b7c3acebd3c7fc9cb44",
+  "bytes": 190330,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sweep_taper",
+  "tier": "generated",
+  "file": "../cases/sweep_taper.f3d",
+  "sha256": "183a3e45efd93a51ed2b4268d6e9401098da589e622d88c04c8711b58a38a603",
+  "bytes": 66662,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_sweep_twist",
+  "tier": "generated",
+  "file": "../cases/sweep_twist.f3d",
+  "sha256": "b17901f9aea04c707d5d52940084d214b5bd1fc2897df5e05268d955db5e34e4",
+  "bytes": 147223,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_thicken_face",
+  "tier": "generated",
+  "file": "../cases/thicken_face.f3d",
+  "sha256": "19659ccd539e5ca5530bc171df32d1750e00a0ba4771def4d87a8dcdd9871ef0",
+  "bytes": 66067,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_two_components",
+  "tier": "generated",
+  "file": "../cases/two_components.f3d",
+  "sha256": "c2157cae0b87b40f5f89ea950d4d7549efd79880fe2d68bca9214183d99a1fcb",
+  "bytes": 108830,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
   }
  }
 ]

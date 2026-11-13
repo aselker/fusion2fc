@@ -1,0 +1,157 @@
+{
+"source": "case_sk_ellipse_rotated_cut.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 4,
+"diag": 56.789083458002736,
+"deviation_mm": 0.011357816691600547,
+"steps_total": 4,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 8000.0,
+"area": 4000.0,
+"centroid": [
+0.0,
+0.0,
+2.5
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+5.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 8000.0,
+"area": 4000.0,
+"centroid": [
+0.0,
+0.0,
+2.5
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+5.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 3,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 6727.6378960370175,
+"area": 3813.945628556068,
+"centroid": [
+-4.5950656907817117e-11,
+-3.7924672203875746e-10,
+2.5
+],
+"bbox": [
+[
+-20.0,
+-20.0,
+0.0
+],
+[
+20.0,
+20.0,
+5.0
+]
+],
+"tri": [
+0,
+432
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 3.1
+}

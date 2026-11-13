@@ -1,0 +1,69 @@
+{
+"source": "case_sk_polygon_circumscribed_pentagon.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 2,
+"diag": 33.149676555881555,
+"deviation_mm": 0.006629935311176311,
+"steps_total": 2,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2179.6275840160815,
+"area": 1162.468044808577,
+"centroid": [
+-2.0374545317131846e-15,
+2.0374545317131846e-15,
+3.0000000000000004
+],
+"bbox": [
+[
+-11.615239572463143,
+-12.353149982853353,
+0.0
+],
+[
+11.881848003464953,
+10.247467955794452,
+6.000000000000001
+]
+],
+"tri": [
+0,
+16
+]
+}
+],
+"seconds": 0.01
+}
+],
+"seconds": 2.6
+}

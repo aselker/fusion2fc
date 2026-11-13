@@ -1,0 +1,97 @@
+{
+"source": "case_loft_offset_centers.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 4,
+"diag": 29.546573405388315,
+"deviation_mm": 0.005909314681077664,
+"steps_total": 4,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Plane1",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 3,
+"name": "Loft1",
+"group": null,
+"type": "LoftFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1172.861257340211,
+"area": 744.2099192369994,
+"centroid": [
+3.9285714283922757,
+1.9642857142857697,
+3.9285714285714453
+],
+"bbox": [
+[
+-8.0,
+-8.0,
+0.0
+],
+[
+14.000000000000002,
+9.0,
+10.0
+]
+],
+"tri": [
+0,
+276
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 2.1
+}

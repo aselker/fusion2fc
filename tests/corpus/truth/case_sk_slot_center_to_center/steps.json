@@ -1,0 +1,69 @@
+{
+"source": "case_sk_slot_center_to_center.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 2,
+"diag": 29.393876913398138,
+"deviation_mm": 0.005878775382679628,
+"steps_total": 2,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 841.0619298297468,
+"area": 681.0619298297469,
+"centroid": [
+9.999999999999998,
+0.0,
+2.0
+],
+"bbox": [
+[
+-4.0,
+-4.0,
+0.0
+],
+[
+24.0,
+4.0,
+4.0
+]
+],
+"tri": [
+0,
+236
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 2.5
+}

@@ -1,0 +1,358 @@
+{
+ "design": "(Unsaved)",
+ "units": "cm",
+ "userParameters": [],
+ "timeline": [
+  {
+   "index": 0,
+   "name": "Sketch1",
+   "group": null,
+   "type": "Sketch",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "name": "Sketch1",
+    "component": "(Unsaved)",
+    "plane": {
+     "origin": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "normal": [
+      0.0,
+      0.0,
+      1.0
+     ]
+    },
+    "visible": false,
+    "transform": [
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "referencePlane": "ConstructionPlane",
+    "profiles": 1,
+    "curves": [
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        0.6912004412253211,
+        1.0247467955794454,
+        0.0
+       ],
+       "end": [
+        -0.7609994346303228,
+        0.9740348584587457,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       0.6912004412253211,
+       1.0247467955794454,
+       0.0
+      ],
+      "end": [
+       -0.7609994346303227,
+       0.9740348584587457,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        -0.7609994346303228,
+        0.9740348584587457,
+        0.0
+       ],
+       "end": [
+        -1.1615239572463143,
+        -0.4227601468247473,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       -0.7609994346303228,
+       0.9740348584587457,
+       0.0
+      ],
+      "end": [
+       -1.1615239572463143,
+       -0.4227601468247473,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        -1.1615239572463143,
+        -0.4227601468247473,
+        0.0
+       ],
+       "end": [
+        0.043138150304820766,
+        -1.2353149982853353,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       -1.1615239572463143,
+       -0.4227601468247473,
+       0.0
+      ],
+      "end": [
+       0.04313815030482071,
+       -1.2353149982853353,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        0.043138150304820766,
+        -1.2353149982853353,
+        0.0
+       ],
+       "end": [
+        1.188184800346495,
+        -0.3407065089281081,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       0.043138150304820766,
+       -1.2353149982853353,
+       0.0
+      ],
+      "end": [
+       1.188184800346495,
+       -0.34070650892810805,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        1.188184800346495,
+        -0.3407065089281081,
+        0.0
+       ],
+       "end": [
+        0.6912004412253211,
+        1.0247467955794454,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       1.188184800346495,
+       -0.3407065089281081,
+       0.0
+      ],
+      "end": [
+       0.6912004412253211,
+       1.0247467955794454,
+       0.0
+      ]
+     }
+    ],
+    "points": [
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.6912004412253211,
+      1.0247467955794454,
+      0.0
+     ],
+     [
+      -0.7609994346303228,
+      0.9740348584587457,
+      0.0
+     ],
+     [
+      -1.1615239572463143,
+      -0.4227601468247473,
+      0.0
+     ],
+     [
+      0.043138150304820766,
+      -1.2353149982853353,
+      0.0
+     ],
+     [
+      1.188184800346495,
+      -0.3407065089281081,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      0.0
+     ]
+    ],
+    "constraints": {
+     "PolygonConstraint": 1
+    },
+    "dimensions": []
+   },
+   "after": []
+  },
+  {
+   "index": 1,
+   "name": "Extrude1",
+   "group": null,
+   "type": "ExtrudeFeature",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "operation": 3,
+    "extentType": 0,
+    "isSolid": true,
+    "startExtent": {
+     "type": "ProfilePlaneStartDefinition"
+    },
+    "extentOne": {
+     "type": "DistanceExtentDefinition",
+     "distance": {
+      "name": "d1",
+      "expression": "6 mm",
+      "value": 0.6000000000000001,
+      "unit": "mm"
+     }
+    },
+    "extentTwo": null,
+    "taperOne": {
+     "name": "d2",
+     "expression": "0.0 deg",
+     "value": 0.0,
+     "unit": "deg"
+    },
+    "taperTwo": null,
+    "symmetric": false,
+    "profile": {
+     "type": "Profile",
+     "sketch": "Sketch1",
+     "component": "(Unsaved)",
+     "index": 0,
+     "area": 3.6327126400268015,
+     "centroid": [
+      -5.7303408704433346e-18,
+      -1.5280908987848892e-17,
+      0.0
+     ]
+    },
+    "participantBodies": [],
+    "resultBodies": []
+   },
+   "after": [
+    {
+     "component": "(Unsaved)",
+     "name": "Body1",
+     "volume": 2.1796275840160817,
+     "occurrence": null
+    }
+   ]
+  }
+ ],
+ "bodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 2.1796275840160817,
+   "area": 11.624680448085769,
+   "centroid": [
+    -2.0374545317131847e-16,
+    2.0374545317131847e-16,
+    0.30000000000000004
+   ],
+   "bbox": [
+    [
+     -1.1615239572463143,
+     -1.2353149982853353,
+     0.0
+    ],
+    [
+     1.1881848003464952,
+     1.0247467955794451,
+     0.6000000000000001
+    ]
+   ],
+   "faces": 7,
+   "edges": 15
+  }
+ ],
+ "worldBodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 2.1796275840160817,
+   "area": 11.624680448085769,
+   "centroid": [
+    -2.0374545317131847e-16,
+    2.0374545317131847e-16,
+    0.30000000000000004
+   ],
+   "bbox": [
+    [
+     -1.1615239572463143,
+     -1.2353149982853353,
+     0.0
+    ],
+    [
+     1.1881848003464952,
+     1.0247467955794451,
+     0.6000000000000001
+    ]
+   ],
+   "faces": 7,
+   "edges": 15
+  }
+ ],
+ "stats": {
+  "items": 2,
+  "errors": 0,
+  "rolled": 0,
+  "seconds": 0.02
+ },
+ "case": "sk_polygon_circumscribed_pentagon",
+ "doc": ""
+}

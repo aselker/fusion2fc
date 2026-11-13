@@ -1,0 +1,143 @@
+{
+"source": "case_mirror_body.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 3,
+"diag": 41.53311931459037,
+"deviation_mm": 0.008306623862918075,
+"steps_total": 3,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 500.0,
+"area": 400.0,
+"centroid": [
+15.0,
+10.0,
+2.5
+],
+"bbox": [
+[
+10.0,
+5.0,
+0.0
+],
+[
+20.0,
+15.0,
+5.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Mirror1",
+"group": null,
+"type": "MirrorFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 500.0,
+"area": 400.0,
+"centroid": [
+15.0,
+10.0,
+2.5
+],
+"bbox": [
+[
+10.0,
+5.0,
+0.0
+],
+[
+20.0,
+15.0,
+5.0
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 500.0,
+"area": 400.0,
+"centroid": [
+-15.0,
+10.0,
+2.5
+],
+"bbox": [
+[
+-20.0,
+5.0,
+0.0
+],
+[
+-10.0,
+15.0,
+5.0
+]
+],
+"tri": [
+12,
+12
+]
+}
+],
+"seconds": 0.01
+}
+],
+"seconds": 2.1
+}

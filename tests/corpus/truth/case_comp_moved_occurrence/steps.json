@@ -1,0 +1,88 @@
+{
+"source": "case_comp_moved_occurrence.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 3,
+"diag": 22.9128784747792,
+"deviation_mm": 0.00458257569495584,
+"steps_total": 3,
+"steps": [
+{
+"index": 0,
+"name": " Component1:1",
+"group": null,
+"type": "Occurrence",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'Occurrence' object has no attribute 'parentComponent'"
+},
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Component1",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Component1",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Component1",
+"occurrence": "Component1:1",
+"solid": true,
+"visible": true,
+"volume": 1000.0,
+"area": 700.0,
+"centroid": [
+40.0,
+5.0,
+2.5
+],
+"bbox": [
+[
+30.0,
+0.0,
+0.0
+],
+[
+50.0,
+10.0,
+5.0
+]
+],
+"placement_check": {
+"centroid_error": 0.0,
+"transposed": false
+},
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+}
+],
+"seconds": 2.2
+}
