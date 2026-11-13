@@ -9,3 +9,11 @@
 **Next:** 1) build cadmpeg, run f3d tests + layout_tables test, check nick0451/Bicycle/Lattice boxes. 2) face matcher + shell (`Part::Thickness`, Value=-t inward). 3) draft/thicken/delete face.
 
 **Gotchas:** kantoku base body decodes `solid` but has double-sided faces (Fusion: surface). Part::Sweep "Round corner" is wrong; OCC pipes depend on circle seam.
+
+## Update (face matcher, shell, delete face, draft)
+
+**Done:** `Rebuilder.find_face(fid)` locates a rebuilt face from the decoder's recorded boundary edges (`topo_edges`: every edge of a selected face with its `faces` list), using `find_edge` for each, intersecting the faces that carry them, then the fewest-edges rule; ambiguity raises. `build_shell` = `Part::Thickness` (Value=-t inward, Mode skin, Join intersection). Decoder: a `Shell` scope that spans several transitions (brick Shell1: state 26, previous 23, transition's previous 24) now binds its removed faces (`shell_walls::spanned_transition`). plate_v8 Shell2 and brick Shell1 build and match. `build_delete_face` (OCC `defeaturing`) and `build_draft` (`PartDesign::Draft` in a Body, Reversed = outward) are in but unverified: no model reaches them with a matching upstream body.
+
+**Left:** appleScreen shell (scope not bound to a unique history pair; also blocked by native extrude profile upstream); Handlebars Shell3 fails to find a boundary edge (upstream loft missing); Dice DeleteFace1 face is a lone circle edge and defeaturing removes nothing (upstream pattern mismatch too); thicken needs surface bodies (Hook Thicken1 follows a skipped surface extrude; tealight Thicken faces are native); split body tool faces are native. Draft sign convention (angle sign vs `outward`) untested against Fusion.
+
+**Gotchas:** never run two `run_corpus.py` on the same model at once (they share `steps/`). `Part::Thickness` needs `Intersection=True` for sharp inside corners.
