@@ -40,7 +40,7 @@ A model **passes** when every step matches.
 
 | Tier | Models | What |
 |---|---|---|
-| `generated` | 29 | `tests/cases/*.f3d`, minimal designs built by `vm/scripts/make_cases.py`, plus the GPL-3.0 `replica_*` cases (see `tests/cases/README.md`) |
+| `generated` | 66 | `tests/cases/*.f3d`, minimal designs built by `vm/scripts/make_cases.py`, plus the GPL-3.0 `replica_*` cases (see `tests/cases/README.md`) |
 | `supported` | 28 | downloaded models whose decoded features are all kinds the rebuilder handles (sketch, extrude, fillet, chamfer, datum plane) |
 | `extended` | 45 | downloaded models that also use patterns, holes, revolves, sweeps, lofts, shells, drafts, combines, moves, splits, surfaces or multi-component assemblies |
 

@@ -293,6 +293,376 @@
   }
  },
  {
+  "id": "case_chamfer_and_fillet_adjacent",
+  "tier": "generated",
+  "file": "../cases/chamfer_and_fillet_adjacent.f3d",
+  "sha256": "170b5b89b0fe402ff874f6cdabaf7ccd4de39e85d34e04903e8d722fbbd2af53",
+  "bytes": 71688,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_chamfer_box_all_edges",
+  "tier": "generated",
+  "file": "../cases/chamfer_box_all_edges.f3d",
+  "sha256": "92f81f60f33a262e3785b5adbab391dcba05717eeed3d7c3fc3e38abb29ddf81",
+  "bytes": 84466,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_chamfer_concave_boss",
+  "tier": "generated",
+  "file": "../cases/chamfer_concave_boss.f3d",
+  "sha256": "d246f1439465c3574a2f8293f6ccd0f268fd00b732559724569a078858d8f498",
+  "bytes": 81924,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_chamfer_corner_three_edges",
+  "tier": "generated",
+  "file": "../cases/chamfer_corner_three_edges.f3d",
+  "sha256": "66d2734297d04444a424eefa6ac165bcf15ae2ffa96549135a2346085a613246",
+  "bytes": 68179,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_chamfer_distance_angle",
+  "tier": "generated",
+  "file": "../cases/chamfer_distance_angle.f3d",
+  "sha256": "7d2eca276fe2d3c2a475023b3d769f426c2618aa68c8e959d70282f9a8b1ecda",
+  "bytes": 65687,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_chamfer_distance_angle_flipped",
+  "tier": "generated",
+  "file": "../cases/chamfer_distance_angle_flipped.f3d",
+  "sha256": "998bf0a770cb55000af97ba80827dfacafc085dc9a826bbcf64f378332cd71a5",
+  "bytes": 65857,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_chamfer_hole_edge",
+  "tier": "generated",
+  "file": "../cases/chamfer_hole_edge.f3d",
+  "sha256": "ae542f41ebd8d44d8a76497497005d3d92f5651df0c6a329acfcfbeca294a780",
+  "bytes": 116979,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_chamfer_single_edge",
+  "tier": "generated",
+  "file": "../cases/chamfer_single_edge.f3d",
+  "sha256": "992f7475b474353a68f1517a2e02d77b73f1017dcadb66e07220f622adf0c7dd",
+  "bytes": 65581,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_chamfer_tangent_chain",
+  "tier": "generated",
+  "file": "../cases/chamfer_tangent_chain.f3d",
+  "sha256": "97a793fcd9dff51848b3001d484ed46cd9c7f2243643a66f5a92853a6490afba",
+  "bytes": 135524,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_chamfer_then_fillet_same_corner",
+  "tier": "generated",
+  "file": "../cases/chamfer_then_fillet_same_corner.f3d",
+  "sha256": "7f3796af54a19c725cc9eee5252add4a282fe454975b90081c718708333c7fc9",
+  "bytes": 68850,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_chamfer_two_distances",
+  "tier": "generated",
+  "file": "../cases/chamfer_two_distances.f3d",
+  "sha256": "b189f52ce77e06b8591c11957ca1cdfa066a41a44ffc73eacabaa262e20cc5bf",
+  "bytes": 71519,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_chamfer_two_distances_flipped",
+  "tier": "generated",
+  "file": "../cases/chamfer_two_distances_flipped.f3d",
+  "sha256": "8302959dbe3ef59cfe142d32ec7497dcab43f3eeaef001d770ed91ef6447c778",
+  "bytes": 71645,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_chamfer_two_distances_swapped",
+  "tier": "generated",
+  "file": "../cases/chamfer_two_distances_swapped.f3d",
+  "sha256": "d7221a123e5cee63bb3c73c01274d22c6fae6371ded2d594516d2648e93de866",
+  "bytes": 65824,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_after_pattern",
+  "tier": "generated",
+  "file": "../cases/fillet_after_pattern.f3d",
+  "sha256": "99b696ccc7751bbdb2e7aac724bdeceb2f639e819720402a99b406081026d252",
+  "bytes": 141865,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_asymmetric",
+  "tier": "generated",
+  "file": "../cases/fillet_asymmetric.f3d",
+  "sha256": "b18d9a63ceedf4cb73d841e263892bbbe6bc5abb167ece75983088460b335cee",
+  "bytes": 83858,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_boss_base_and_top",
+  "tier": "generated",
+  "file": "../cases/fillet_boss_base_and_top.f3d",
+  "sha256": "670177ed13c6fd5c79500dad1a8934150123e53c16a1def275e43de20975a6c7",
+  "bytes": 141451,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_box_all_edges",
+  "tier": "generated",
+  "file": "../cases/fillet_box_all_edges.f3d",
+  "sha256": "af17734428a2cb9c0c5da6e8283773304a50d10b1341be6ff8f5a324aa966222",
+  "bytes": 192482,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_chord_length",
+  "tier": "generated",
+  "file": "../cases/fillet_chord_length.f3d",
+  "sha256": "7c67ee2edee99a6281de333bf68ef0f584368a14f33137ddd63f993aa0fdd3de",
+  "bytes": 97035,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_concave_boss_round",
+  "tier": "generated",
+  "file": "../cases/fillet_concave_boss_round.f3d",
+  "sha256": "82333ff6f91a587edfa67fa9e47c04cb7c3de513883608c98b73928880737ef1",
+  "bytes": 125750,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_concave_boss_square",
+  "tier": "generated",
+  "file": "../cases/fillet_concave_boss_square.f3d",
+  "sha256": "b5d73bcc3f678979e9eea2721afd35df7bb5ccc0ebd950a7fcfe79941e52ad77",
+  "bytes": 101815,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_corner_mixed_radii",
+  "tier": "generated",
+  "file": "../cases/fillet_corner_mixed_radii.f3d",
+  "sha256": "2df186992d7b508c244c2f4904fd8ee459288710e5dad2d447af48fb95dd1276",
+  "bytes": 100849,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_corner_rolling_ball_explicit",
+  "tier": "generated",
+  "file": "../cases/fillet_corner_rolling_ball_explicit.f3d",
+  "sha256": "75d0d8b5ba761d86d44a7341596ba4100975cf23cb1d24919e8d91089a4b3581",
+  "bytes": 97133,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_corner_setback",
+  "tier": "generated",
+  "file": "../cases/fillet_corner_setback.f3d",
+  "sha256": "9e17b7a4b1964961a5df01a9a28b13031727ff0a37dd6012980d6706d1a37c38",
+  "bytes": 104482,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_corner_three_edges",
+  "tier": "generated",
+  "file": "../cases/fillet_corner_three_edges.f3d",
+  "sha256": "ae658c095c8df8a1a0e131a8d169f539713fd3fb978c9e77137dbaf6ce94bc1d",
+  "bytes": 97144,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_cylinder_top_edge",
+  "tier": "generated",
+  "file": "../cases/fillet_cylinder_top_edge.f3d",
+  "sha256": "b207615d02a2ae7fff327281f13e4a68432bbcdc0003d1ec4d4193393bffdff0",
+  "bytes": 239898,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_g2_continuity",
+  "tier": "generated",
+  "file": "../cases/fillet_g2_continuity.f3d",
+  "sha256": "5b29c0f8297bfb5d4ff968d01244a1ce05f93e991793e1e3637f326ddf9aa7df",
+  "bytes": 92322,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_hole_both_edges",
+  "tier": "generated",
+  "file": "../cases/fillet_hole_both_edges.f3d",
+  "sha256": "4afb63ff4347431a638d0f474f40381d551008d6e908566c214a77f5d5e1d8b4",
+  "bytes": 147325,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_hole_top_edge",
+  "tier": "generated",
+  "file": "../cases/fillet_hole_top_edge.f3d",
+  "sha256": "877950bdc225dd277a7bc4e35b7df04b8f97f989e9da269821ddcfb3b27357f3",
+  "bytes": 140476,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_single_edge",
+  "tier": "generated",
+  "file": "../cases/fillet_single_edge.f3d",
+  "sha256": "3a951967743bcbce591b32fe71d87164a84a2cfff218f58330cf91efc42e507c",
+  "bytes": 67761,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_single_top_edge",
+  "tier": "generated",
+  "file": "../cases/fillet_single_top_edge.f3d",
+  "sha256": "4c99274280f8af1ec3cc5646bd9824b008177784017c545e350215ee9856814e",
+  "bytes": 89020,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_tangent_chain_off",
+  "tier": "generated",
+  "file": "../cases/fillet_tangent_chain_off.f3d",
+  "sha256": "6fd27a6153b0d2d63c7bd21aab6bd55698152afc02a3783907a9d9148627d75b",
+  "bytes": 129113,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_tangent_chain_rounded_rect",
+  "tier": "generated",
+  "file": "../cases/fillet_tangent_chain_rounded_rect.f3d",
+  "sha256": "bfcae66802e51776d06fffff1dfa8c9f2d09cac5eac0ba63a75e1befd7dc9f2e",
+  "bytes": 213467,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_top_face_edges",
+  "tier": "generated",
+  "file": "../cases/fillet_top_face_edges.f3d",
+  "sha256": "161b5e2d648d397894cc1c3df622b9d208458ada4488e08ac4480395c2c4d1af",
+  "bytes": 165407,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_two_edge_sets",
+  "tier": "generated",
+  "file": "../cases/fillet_two_edge_sets.f3d",
+  "sha256": "185d5b7b87da36d8dfaa8c64b70d51b0f7b2431c03e68c66411d855e7ae8f125",
+  "bytes": 149402,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_two_features_disjoint",
+  "tier": "generated",
+  "file": "../cases/fillet_two_features_disjoint.f3d",
+  "sha256": "07a3f7ffa27979593330e549d7019f9fda93a5820178323819aca3a83e3a398e",
+  "bytes": 124849,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_variable_radius",
+  "tier": "generated",
+  "file": "../cases/fillet_variable_radius.f3d",
+  "sha256": "56d77e04c4d976d32f479e18c056dc51bb5c8768337807f0f135d522f797c1a8",
+  "bytes": 89163,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_fillet_vertical_then_top",
+  "tier": "generated",
+  "file": "../cases/fillet_vertical_then_top.f3d",
+  "sha256": "ab99266ee8c772d8ed901f0b180a4365fca617a6c7aabd92629c99235bd459c0",
+  "bytes": 213553,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
   "id": "andyeske_N2_Pencil_v1",
   "tier": "supported",
   "file": "models/andyeske_N2_Pencil_v1.f3d",
@@ -1165,7 +1535,7 @@
   "source": {
    "repo": "busraakgun24/Fusion360-Projects",
    "commit": "867caaed0dab0f2b897b17bf71fb80f278b0dd07",
-   "path": "kürecik.f3d",
+   "path": "k\u00fcrecik.f3d",
    "url": "https://raw.githubusercontent.com/busraakgun24/Fusion360-Projects/867caaed0dab0f2b897b17bf71fb80f278b0dd07/k%C3%BCrecik.f3d",
    "license": "cc0-1.0"
   }
@@ -1412,7 +1782,7 @@
   "source": {
    "repo": "digitalsputnik/ApolloHardware",
    "commit": "cde6e59bb1ee51fd80bfe931a6864f8647398749",
-   "path": "hw/custom/plastic/Tüübel-T2 v3.f3d",
+   "path": "hw/custom/plastic/T\u00fc\u00fcbel-T2 v3.f3d",
    "url": "https://raw.githubusercontent.com/digitalsputnik/ApolloHardware/cde6e59bb1ee51fd80bfe931a6864f8647398749/hw/custom/plastic/T%C3%BC%C3%BCbel-T2%20v3.f3d",
    "license": "bsd-3-clause"
   }

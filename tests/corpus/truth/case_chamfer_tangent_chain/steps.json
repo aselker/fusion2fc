@@ -1,0 +1,113 @@
+{
+"source": "case_chamfer_tangent_chain.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 3,
+"diag": 22.9128784747792,
+"deviation_mm": 0.00458257569495584,
+"steps_total": 3,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 961.3716694115408,
+"area": 658.7964473723101,
+"centroid": [
+10.000000000000002,
+5.000000000000001,
+2.5
+],
+"bbox": [
+[
+0.0,
+5.551115123125783e-16,
+0.0
+],
+[
+20.0,
+10.0,
+5.0
+]
+],
+"tri": [
+0,
+252
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "Chamfer1",
+"group": null,
+"type": "ChamferFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 934.9940890019681,
+"area": 625.3650311190457,
+"centroid": [
+9.999999999999998,
+5.0,
+2.4389684293950427
+],
+"bbox": [
+[
+0.0,
+5.551115123125783e-16,
+0.0
+],
+[
+20.0,
+10.0,
+5.0
+]
+],
+"tri": [
+0,
+356
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 2.7
+}

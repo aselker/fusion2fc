@@ -1,0 +1,245 @@
+{
+"source": "case_fillet_after_pattern.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 6,
+"diag": 43.01162633521314,
+"deviation_mm": 0.008602325267042629,
+"steps_total": 6,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.03
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 3000.0,
+"area": 1750.0,
+"centroid": [
+20.0,
+7.5,
+2.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+40.0,
+15.0,
+5.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 3000.0,
+"area": 1750.0,
+"centroid": [
+20.0,
+7.5,
+2.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+40.0,
+15.0,
+5.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 3,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2937.1681469282016,
+"area": 1787.6991118430776,
+"centroid": [
+20.32087975523278,
+7.499999999999999,
+2.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+40.0,
+15.0,
+5.0
+]
+],
+"tri": [
+0,
+152
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 4,
+"name": "R-Pattern1",
+"group": null,
+"type": "RectangularPatternFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2811.5044407846044,
+"area": 1863.0973355292326,
+"centroid": [
+20.201133126237906,
+7.5,
+2.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+40.0,
+15.0,
+5.0
+]
+],
+"tri": [
+0,
+432
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 5,
+"name": "Fillet1",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0005.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2805.864028641965,
+"area": 1851.006924470952,
+"centroid": [
+20.207568117350228,
+7.499999999999999,
+2.4953214444914398
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+40.0,
+15.0,
+5.0
+]
+],
+"tri": [
+0,
+2058
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 2.8
+}
