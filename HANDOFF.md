@@ -34,3 +34,12 @@ Done (rebuild.py, commit see git log):
 Findings:
 - badger2040 Fillet2: r=3 on an 8 mm edge whose end face is 1.6 mm wide; OCC cannot, Fusion could (unknown how).
 - Co2SensorEnclosure Chamfer1 (Cover): truth volume unchanged after the chamfer (resultBodies empty); rebuild removes material. Not a rebuild bug we can fix.
+
+- Chord-length fillets build (radius = chord / (2 sin(turn/2))). Variable radius is reported unsupported: OCC's linear law gives 981.46 vs Fusion's 981.05 (case_fillet_variable_radius).
+- Default first chamfer distance is on the face OTHER than the one whose boundary runs along the recorded edge direction ("back"). That passes all 5 generated asymmetric chamfer cases; PacktPublishing_Bracket_Solid (UI-made) needs "forward" (F2FC_CHAMFER_FIRST=forward). Needs DR-341: the decoder must read the stored reference face (IR `flip_direction` exists, always false).
+
+Left:
+- andyeske_N2_Pencil Fillet2: spline blend has no radius row and only ONE support face in `treatment_face_supports` (supports=[10410]); Fillet3: a persisting face with a new non-plane carrier. A spineless-blend reading was tried (shared deleted edge of two supports) and dropped for lack of a second support.
+- case_fillet_tangent_chain_off (OCC always follows tangent chains), corner_setback, corner_mixed_radii (OCC corner blend differs), asymmetric fillet (no OCC equivalent through Part::Fillet).
+- badger2040 Fillet2/3 (radius exceeds the 1.6 mm end face), the rest of "edges not found" follow wrong upstream bodies.
+Gotchas: run `../build-decoder.sh` from the worktree root (from elsewhere it fails silently under grep). Never splice rebuild.py with s[:a]+x+s[b:] when b may precede a.
