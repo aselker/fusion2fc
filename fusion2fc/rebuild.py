@@ -869,8 +869,11 @@ class Rebuilder:
         d = feat["definition"]
         if d.get("mode") not in (None, "inside", "outside"):
             raise NotImplementedError("shell mode " + str(d.get("mode")))
-        per_body = self.selected_faces(d["removed_faces"])
         t = float(d["thickness"])
+        rf = d["removed_faces"]
+        if rf.get("kind") == "faces" and not rf.get("value"):
+            return self.build_hollow(feat, t, bool(d.get("outward")))
+        per_body = self.selected_faces(rf)
         made = []
         for body, faces in per_body.items():
             obj = self.doc.addObject("Part::Thickness", "Shell")
@@ -892,6 +895,19 @@ class Rebuilder:
         for body, obj in made:
             self.solids[self.solids.index(body)] = obj
         return {"faces": sum(len(v) for v in per_body.values())}
+
+    def build_hollow(self, feat, t, outward):
+        """Shell without removed faces: the body becomes a closed hollow (inward wall of
+        thickness t, or an outer wall around the original volume when outward)."""
+        bodies = self.select_bodies(feat["definition"]["bodies"])
+        for b in bodies:
+            shp = b.Shape
+            off = shp.makeOffsetShape(t if outward else -t, 1e-6, False, False, 0, 0)
+            inner = Part.Solid(off.Shells[0]) if off.Shells else off
+            res = inner.cut(shp) if outward else shp.cut(inner)
+            self.replace_with_shape(b, res, feat)
+        self.doc.recompute()
+        return {"bodies": len(bodies)}
 
     def replace_with_shape(self, body, shape, feat):
         """Replace a rebuilt body by a Part::Feature holding `shape` (an OCC operation without
@@ -925,10 +941,25 @@ class Rebuilder:
         if anchor.get("kind") != "neutral_plane":
             raise NotImplementedError("draft anchor " + str(anchor.get("kind")))
         per_body = self.selected_faces(d["faces"])
-        nb = self.selected_faces(anchor["plane"])
-        if len(per_body) != 1 or list(nb) != list(per_body) or sum(len(v) for v in nb.values()) != 1:
-            raise NotImplementedError("draft over several bodies or neutral planes")
+        if len(per_body) != 1:
+            raise NotImplementedError("draft over several bodies")
         body = next(iter(per_body))
+        pull = anchor.get("pull") or {}
+        if anchor["plane"].get("kind") == "native" and pull.get("direction"):
+            # a datum plane the decoder named, or an origin plane (through the origin)
+            if pull.get("plane"):
+                origin, normal = self.datum_plane_of({"plane": pull["plane"]})
+            else:
+                origin, normal = V(0, 0, 0), vec(pull["direction"])
+            normal.normalize()
+            hits = [k for k, f in enumerate(body.Shape.Faces) if self.face_on_plane(f, (origin, normal))]
+            if len(hits) != 1:
+                raise NotImplementedError("draft neutral plane that is not a face of the body (%d faces)" % len(hits))
+            nb = {body: hits}
+        else:
+            nb = self.selected_faces(anchor["plane"])
+        if list(nb) != list(per_body) or sum(len(v) for v in nb.values()) != 1:
+            raise NotImplementedError("draft over several bodies or neutral planes")
         neutral = body.Shape.Faces[nb[body][0]]
         if neutral.Surface.TypeId != "Part::GeomPlane":
             raise NotImplementedError("non-planar draft neutral face")
