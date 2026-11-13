@@ -20,7 +20,7 @@
   "steps": 27
  },
  "PacktPublishing_Bracket_Finished": {
-  "match": 8,
+  "match": 15,
   "steps": 15
  },
  "PacktPublishing_Bracket_Solid": {
@@ -56,7 +56,7 @@
   "steps": 8
  },
  "Saurabh_Mudgal_Crusher_Shaft": {
-  "match": 3,
+  "match": 5,
   "steps": 22
  },
  "WilkoV_03_Refinements": {
@@ -124,7 +124,7 @@
   "steps": 6
  },
  "bitbank2_rack_mount_foot": {
-  "match": 1,
+  "match": 16,
   "steps": 16
  },
  "bowenchristopher_Untitled_v1": {
@@ -199,9 +199,49 @@
   "match": 3,
   "steps": 3
  },
+ "case_comb_cut": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_comb_cut_keep_tools": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_comb_intersect": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_comb_join": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_comb_join_three_bodies": {
+  "match": 7,
+  "steps": 7
+ },
+ "case_comp_extrude_in_component": {
+  "match": 2,
+  "steps": 5
+ },
+ "case_comp_moved_occurrence": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_comp_new_from_body": {
+  "match": 5,
+  "steps": 5
+ },
  "case_component_offset": {
   "match": 3,
   "steps": 3
+ },
+ "case_copy_body": {
+  "match": 2,
+  "steps": 4
+ },
+ "case_cut_across_bodies_participants": {
+  "match": 9,
+  "steps": 10
  },
  "case_cut_from_top_face": {
   "match": 4,
@@ -218,6 +258,14 @@
  "case_disjoint_new_body": {
   "match": 2,
   "steps": 2
+ },
+ "case_draft_side_faces": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_draft_single_face": {
+  "match": 2,
+  "steps": 3
  },
  "case_extrude_blind": {
   "match": 2,
@@ -351,6 +399,42 @@
   "match": 4,
   "steps": 4
  },
+ "case_hole_counterbore": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_hole_countersink": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_hole_on_offset_face_plane": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_hole_simple_blind": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_hole_simple_through_all": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_hole_tapped_cosmetic": {
+  "match": 3,
+  "steps": 4
+ },
+ "case_hole_tapped_modeled": {
+  "match": 3,
+  "steps": 4
+ },
+ "case_hole_tapped_through": {
+  "match": 3,
+  "steps": 4
+ },
+ "case_hole_two_points_on_face": {
+  "match": 4,
+  "steps": 4
+ },
  "case_join_bridge": {
   "match": 6,
   "steps": 6
@@ -363,9 +447,101 @@
   "match": 4,
   "steps": 4
  },
+ "case_loft_offset_centers": {
+  "match": 3,
+  "steps": 4
+ },
+ "case_loft_three_profiles": {
+  "match": 5,
+  "steps": 6
+ },
+ "case_loft_two_rect_circle": {
+  "match": 3,
+  "steps": 4
+ },
+ "case_loft_with_rail": {
+  "match": 4,
+  "steps": 5
+ },
+ "case_mirror_body": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_mirror_feature": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_mirror_feature_mid_plane": {
+  "match": 6,
+  "steps": 6
+ },
+ "case_move_body_rotate": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_move_body_translate": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_multi_body_join_extrude": {
+  "match": 7,
+  "steps": 7
+ },
+ "case_offset_face_press_pull": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_offset_face_side_inward": {
+  "match": 2,
+  "steps": 3
+ },
  "case_params_renamed_suppressed": {
   "match": 4,
   "steps": 4
+ },
+ "case_pat_circ_bodies": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_pat_circ_full": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_pat_circ_partial": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_pat_circ_symmetric": {
+  "match": 4,
+  "steps": 5
+ },
+ "case_pat_path": {
+  "match": 3,
+  "steps": 4
+ },
+ "case_pat_rect_bodies": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_pat_rect_faces": {
+  "match": 4,
+  "steps": 5
+ },
+ "case_pat_rect_one_dir_extent": {
+  "match": 4,
+  "steps": 5
+ },
+ "case_pat_rect_one_dir_spacing": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_pat_rect_symmetric": {
+  "match": 4,
+  "steps": 5
+ },
+ "case_pat_rect_two_dirs": {
+  "match": 5,
+  "steps": 5
  },
  "case_regions_full_circle": {
   "match": 2,
@@ -399,13 +575,213 @@
   "match": 4,
   "steps": 9
  },
+ "case_rev_about_profile_edge": {
+  "match": 1,
+  "steps": 2
+ },
+ "case_rev_about_sketch_line": {
+  "match": 1,
+  "steps": 2
+ },
+ "case_rev_cut_groove": {
+  "match": 3,
+  "steps": 4
+ },
+ "case_rev_full_axis": {
+  "match": 1,
+  "steps": 2
+ },
+ "case_rev_join_flange": {
+  "match": 3,
+  "steps": 4
+ },
+ "case_rev_partial_angle": {
+  "match": 1,
+  "steps": 2
+ },
+ "case_rev_symmetric": {
+  "match": 1,
+  "steps": 2
+ },
  "case_rolled_back_marker": {
   "match": 4,
+  "steps": 4
+ },
+ "case_scale_body_about_corner": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_scale_body_uniform": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_shell_inside": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_shell_outside": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_shell_two_faces": {
+  "match": 3,
+  "steps": 3
+ },
+ "case_shell_whole_body": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_sk_arc_center_start_end": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_arc_tangent": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_arc_three_point": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_chamfer_corners": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_construction_lines_mixed": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_copy_pattern_in_sketch": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_dimension_params": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_ellipse": {
+  "match": 1,
+  "steps": 2
+ },
+ "case_sk_ellipse_rotated_cut": {
+  "match": 3,
+  "steps": 4
+ },
+ "case_sk_fillet_corners": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_intersect_plane": {
+  "match": 7,
+  "steps": 7
+ },
+ "case_sk_mirror_in_sketch": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_offset_curves_ring": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_on_angled_plane": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_sk_on_face_boss": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_sk_on_offset_plane": {
+  "match": 5,
+  "steps": 5
+ },
+ "case_sk_on_side_face_cut": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_sk_polygon_circumscribed_pentagon": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_polygon_hexagon": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_projected_edges": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_sk_slot_center_to_center": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_slot_overall_cut": {
+  "match": 4,
+  "steps": 4
+ },
+ "case_sk_spline_control_point": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_spline_fit": {
+  "match": 2,
+  "steps": 2
+ },
+ "case_sk_text_extrude": {
+  "match": 1,
+  "steps": 2
+ },
+ "case_split_body_by_tool_body": {
+  "match": 4,
+  "steps": 5
+ },
+ "case_split_body_plane": {
+  "match": 3,
+  "steps": 4
+ },
+ "case_split_body_plane_yz": {
+  "match": 3,
   "steps": 4
  },
  "case_suppressed_default_names": {
   "match": 7,
   "steps": 7
+ },
+ "case_sweep_arc_path": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_sweep_cut_groove": {
+  "match": 4,
+  "steps": 5
+ },
+ "case_sweep_line": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_sweep_line_arc_path": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_sweep_spline_path": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_sweep_taper": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_sweep_twist": {
+  "match": 2,
+  "steps": 3
+ },
+ "case_thicken_face": {
+  "match": 1,
+  "steps": 3
+ },
+ "case_two_components": {
+  "match": 5,
+  "steps": 6
  },
  "digitalsputnik_16mm_Claw_P_MPLA000000141_v1": {
   "match": 1,
@@ -516,7 +892,7 @@
   "steps": 10
  },
  "nick0451_Parametric_Battery_Case_v2": {
-  "match": 3,
+  "match": 20,
   "steps": 59
  },
  "onlinelei_appleScreen_v9": {
@@ -528,7 +904,7 @@
   "steps": 6
  },
  "ravengraves_NEMA17StepperMotor": {
-  "match": 2,
+  "match": 3,
   "steps": 25
  },
  "ravengraves_TimingPulleyBase": {
