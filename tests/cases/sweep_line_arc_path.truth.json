@@ -1,0 +1,323 @@
+{
+ "design": "(Unsaved)",
+ "units": "cm",
+ "userParameters": [],
+ "timeline": [
+  {
+   "index": 0,
+   "name": "Sketch1",
+   "group": null,
+   "type": "Sketch",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "name": "Sketch1",
+    "component": "(Unsaved)",
+    "plane": {
+     "origin": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "normal": [
+      1.0,
+      -0.0,
+      0.0
+     ]
+    },
+    "visible": false,
+    "transform": [
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "referencePlane": "ConstructionPlane",
+    "profiles": 1,
+    "curves": [
+     {
+      "type": "SketchCircle",
+      "construction": false,
+      "world": {
+       "center": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 0.3
+      },
+      "fixed": false,
+      "reference": false,
+      "center": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "radius": 0.3
+     }
+    ],
+    "points": [
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      0.0
+     ]
+    ],
+    "constraints": {},
+    "dimensions": []
+   },
+   "after": []
+  },
+  {
+   "index": 1,
+   "name": "Sketch2",
+   "group": null,
+   "type": "Sketch",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "name": "Sketch2",
+    "component": "(Unsaved)",
+    "plane": {
+     "origin": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "normal": [
+      -0.0,
+      1.0,
+      0.0
+     ]
+    },
+    "visible": false,
+    "transform": [
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "referencePlane": "ConstructionPlane",
+    "profiles": 0,
+    "curves": [
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        1.5080215884868817e-06,
+        0.0,
+        0.05297557076156929
+       ],
+       "end": [
+        1.7704348957757607,
+        0.0,
+        0.024591077575327063
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       1.5080215884868817e-06,
+       -0.05297557076156929,
+       0.0
+      ],
+      "end": [
+       1.7704348957757607,
+       -0.024591077575327063,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchArc",
+      "construction": false,
+      "world": {
+       "start": [
+        1.7704348957757607,
+        0.0,
+        0.024591077575327063
+       ],
+       "mid": [
+        2.566056324749055,
+        0.0,
+        -0.27068795839269594
+       ],
+       "end": [
+        3.0,
+        0.0,
+        -1.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "center": [
+       1.7500000000000009,
+       1.2499999999999991,
+       0.0
+      ],
+      "radius": 1.2747548783981952,
+      "start": [
+       1.7704348957757607,
+       -0.024591077575327063,
+       0.0
+      ],
+      "end": [
+       3.0,
+       1.0,
+       0.0
+      ],
+      "startAngle": 0.0,
+      "endAngle": 1.3573696291678017
+     }
+    ],
+    "points": [
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      1.5080215884868817e-06,
+      -0.05297557076156929,
+      0.0
+     ],
+     [
+      1.7704348957757607,
+      -0.024591077575327063,
+      0.0
+     ],
+     [
+      3.0,
+      1.0,
+      0.0
+     ],
+     [
+      1.7500000000000009,
+      1.2499999999999991,
+      0.0
+     ]
+    ],
+    "constraints": {
+     "TangentConstraint": 1
+    },
+    "dimensions": []
+   },
+   "after": []
+  },
+  {
+   "index": 2,
+   "name": "Sweep1",
+   "group": null,
+   "type": "SweepFeature",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "operation": 3,
+    "resultBodies": []
+   },
+   "after": [
+    {
+     "component": "(Unsaved)",
+     "name": "Body1",
+     "volume": 0.9694186676688601,
+     "occurrence": null
+    }
+   ]
+  }
+ ],
+ "bodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 0.9694186676688601,
+   "area": 7.02872124930138,
+   "centroid": [
+    1.6588085005878483,
+    0.0,
+    -0.18580576865175072
+   ],
+   "bbox": [
+    [
+     0.0,
+     -0.3,
+     -1.074762312054803
+    ],
+    [
+     3.2414193342453035,
+     0.3,
+     0.30000000000000004
+    ]
+   ],
+   "faces": 4,
+   "edges": 4
+  }
+ ],
+ "worldBodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 0.9694186676688601,
+   "area": 7.02872124930138,
+   "centroid": [
+    1.6588085005878483,
+    0.0,
+    -0.18580576865175072
+   ],
+   "bbox": [
+    [
+     0.0,
+     -0.3,
+     -1.074762312054803
+    ],
+    [
+     3.2414193342453035,
+     0.3,
+     0.30000000000000004
+    ]
+   ],
+   "faces": 4,
+   "edges": 4
+  }
+ ],
+ "stats": {
+  "items": 3,
+  "errors": 0,
+  "rolled": 0,
+  "seconds": 0.14
+ },
+ "case": "sweep_line_arc_path",
+ "doc": ""
+}

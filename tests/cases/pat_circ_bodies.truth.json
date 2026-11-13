@@ -1,0 +1,594 @@
+{
+ "design": "(Unsaved)",
+ "units": "cm",
+ "userParameters": [],
+ "timeline": [
+  {
+   "index": 0,
+   "name": "Sketch1",
+   "group": null,
+   "type": "Sketch",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "name": "Sketch1",
+    "component": "(Unsaved)",
+    "plane": {
+     "origin": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "normal": [
+      0.0,
+      0.0,
+      1.0
+     ]
+    },
+    "visible": false,
+    "transform": [
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "referencePlane": "ConstructionPlane",
+    "profiles": 1,
+    "curves": [
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        1.0,
+        -0.3,
+        0.0
+       ],
+       "end": [
+        2.0,
+        -0.3,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       1.0,
+       -0.3,
+       0.0
+      ],
+      "end": [
+       2.0,
+       -0.3,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        2.0,
+        -0.3,
+        0.0
+       ],
+       "end": [
+        2.0,
+        0.3,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       2.0,
+       -0.3,
+       0.0
+      ],
+      "end": [
+       2.0,
+       0.3,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        2.0,
+        0.3,
+        0.0
+       ],
+       "end": [
+        1.0,
+        0.3,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       2.0,
+       0.3,
+       0.0
+      ],
+      "end": [
+       1.0,
+       0.3,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        1.0,
+        0.3,
+        0.0
+       ],
+       "end": [
+        1.0,
+        -0.3,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       1.0,
+       0.3,
+       0.0
+      ],
+      "end": [
+       1.0,
+       -0.3,
+       0.0
+      ]
+     }
+    ],
+    "points": [
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      1.0,
+      -0.3,
+      0.0
+     ],
+     [
+      2.0,
+      -0.3,
+      0.0
+     ],
+     [
+      2.0,
+      0.3,
+      0.0
+     ],
+     [
+      1.0,
+      0.3,
+      0.0
+     ]
+    ],
+    "constraints": {},
+    "dimensions": []
+   },
+   "after": []
+  },
+  {
+   "index": 1,
+   "name": "Extrude1",
+   "group": null,
+   "type": "ExtrudeFeature",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "operation": 3,
+    "extentType": 0,
+    "isSolid": true,
+    "startExtent": {
+     "type": "ProfilePlaneStartDefinition"
+    },
+    "extentOne": {
+     "type": "DistanceExtentDefinition",
+     "distance": {
+      "name": "d1",
+      "expression": "5 mm",
+      "value": 0.5,
+      "unit": "mm"
+     }
+    },
+    "extentTwo": null,
+    "taperOne": {
+     "name": "d2",
+     "expression": "0.0 deg",
+     "value": 0.0,
+     "unit": "deg"
+    },
+    "taperTwo": null,
+    "symmetric": false,
+    "profile": {
+     "type": "Profile",
+     "sketch": "Sketch1",
+     "component": "(Unsaved)",
+     "index": 0,
+     "area": 0.6,
+     "centroid": [
+      1.5,
+      0.0,
+      0.0
+     ]
+    },
+    "participantBodies": [],
+    "resultBodies": []
+   },
+   "after": [
+    {
+     "component": "(Unsaved)",
+     "name": "Body1",
+     "volume": 0.3,
+     "occurrence": null
+    }
+   ]
+  },
+  {
+   "index": 2,
+   "name": "C-Pattern1",
+   "group": null,
+   "type": "CircularPatternFeature",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "quantity": {
+     "name": "d3",
+     "expression": "5",
+     "value": 5.0,
+     "unit": ""
+    },
+    "totalAngle": {
+     "name": "d4",
+     "expression": "360 deg",
+     "value": 6.283185307179586,
+     "unit": "deg"
+    },
+    "resultBodies": [
+     {
+      "name": "Body1",
+      "component": "(Unsaved)"
+     }
+    ]
+   },
+   "after": [
+    {
+     "component": "(Unsaved)",
+     "name": "Body1",
+     "volume": 0.3,
+     "occurrence": null
+    },
+    {
+     "component": "(Unsaved)",
+     "name": "Body2",
+     "volume": 0.3000000000000003,
+     "occurrence": null
+    },
+    {
+     "component": "(Unsaved)",
+     "name": "Body3",
+     "volume": 0.29999999999999993,
+     "occurrence": null
+    },
+    {
+     "component": "(Unsaved)",
+     "name": "Body4",
+     "volume": 0.30000000000000027,
+     "occurrence": null
+    },
+    {
+     "component": "(Unsaved)",
+     "name": "Body5",
+     "volume": 0.30000000000000004,
+     "occurrence": null
+    }
+   ]
+  }
+ ],
+ "bodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 0.3,
+   "area": 2.8000000000000003,
+   "centroid": [
+    1.5,
+    0.0,
+    0.25
+   ],
+   "bbox": [
+    [
+     1.0,
+     -0.3,
+     0.0
+    ],
+    [
+     2.0,
+     0.3,
+     0.5
+    ]
+   ],
+   "faces": 6,
+   "edges": 12
+  },
+  {
+   "component": "(Unsaved)",
+   "name": "Body2",
+   "solid": true,
+   "visible": true,
+   "volume": 0.3000000000000003,
+   "area": 2.8000000000000007,
+   "centroid": [
+    0.4635254915624213,
+    1.4265847744427307,
+    0.25000000000000006
+   ],
+   "bbox": [
+    [
+     0.023700039486401425,
+     0.8583514179826695,
+     0.0
+    ],
+    [
+     0.903350943638441,
+     1.9948181309027915,
+     0.5000000000000001
+    ]
+   ],
+   "faces": 6,
+   "edges": 12
+  },
+  {
+   "component": "(Unsaved)",
+   "name": "Body3",
+   "solid": true,
+   "visible": true,
+   "volume": 0.29999999999999993,
+   "area": 2.8,
+   "centroid": [
+    -1.213525491562421,
+    0.8816778784387097,
+    0.25
+   ],
+   "bbox": [
+    [
+     -1.7943695644376367,
+     0.34508015397998903,
+     0.0
+    ],
+    [
+     -0.6326814186872054,
+     1.4182756028974306,
+     0.5
+    ]
+   ],
+   "faces": 6,
+   "edges": 12
+  },
+  {
+   "component": "(Unsaved)",
+   "name": "Body4",
+   "solid": true,
+   "visible": true,
+   "volume": 0.30000000000000027,
+   "area": 2.8000000000000016,
+   "centroid": [
+    -1.2135254915624216,
+    -0.8816778784387098,
+    0.25
+   ],
+   "bbox": [
+    [
+     -1.7943695644376372,
+     -1.4182756028974306,
+     0.0
+    ],
+    [
+     -0.6326814186872056,
+     -0.3450801539799888,
+     0.5000000000000001
+    ]
+   ],
+   "faces": 6,
+   "edges": 12
+  },
+  {
+   "component": "(Unsaved)",
+   "name": "Body5",
+   "solid": true,
+   "visible": true,
+   "volume": 0.30000000000000004,
+   "area": 2.8000000000000003,
+   "centroid": [
+    0.463525491562421,
+    -1.4265847744427302,
+    0.25
+   ],
+   "bbox": [
+    [
+     0.023700039486401148,
+     -1.9948181309027915,
+     0.0
+    ],
+    [
+     0.9033509436384406,
+     -0.8583514179826695,
+     0.5
+    ]
+   ],
+   "faces": 6,
+   "edges": 12
+  }
+ ],
+ "worldBodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 0.3,
+   "area": 2.8000000000000003,
+   "centroid": [
+    1.5,
+    0.0,
+    0.25
+   ],
+   "bbox": [
+    [
+     1.0,
+     -0.3,
+     0.0
+    ],
+    [
+     2.0,
+     0.3,
+     0.5
+    ]
+   ],
+   "faces": 6,
+   "edges": 12
+  },
+  {
+   "component": "(Unsaved)",
+   "name": "Body2",
+   "solid": true,
+   "visible": true,
+   "volume": 0.3000000000000003,
+   "area": 2.8000000000000007,
+   "centroid": [
+    0.4635254915624213,
+    1.4265847744427307,
+    0.25000000000000006
+   ],
+   "bbox": [
+    [
+     0.023700039486401425,
+     0.8583514179826695,
+     0.0
+    ],
+    [
+     0.903350943638441,
+     1.9948181309027915,
+     0.5000000000000001
+    ]
+   ],
+   "faces": 6,
+   "edges": 12
+  },
+  {
+   "component": "(Unsaved)",
+   "name": "Body3",
+   "solid": true,
+   "visible": true,
+   "volume": 0.29999999999999993,
+   "area": 2.8,
+   "centroid": [
+    -1.213525491562421,
+    0.8816778784387097,
+    0.25
+   ],
+   "bbox": [
+    [
+     -1.7943695644376367,
+     0.34508015397998903,
+     0.0
+    ],
+    [
+     -0.6326814186872054,
+     1.4182756028974306,
+     0.5
+    ]
+   ],
+   "faces": 6,
+   "edges": 12
+  },
+  {
+   "component": "(Unsaved)",
+   "name": "Body4",
+   "solid": true,
+   "visible": true,
+   "volume": 0.30000000000000027,
+   "area": 2.8000000000000016,
+   "centroid": [
+    -1.2135254915624216,
+    -0.8816778784387098,
+    0.25
+   ],
+   "bbox": [
+    [
+     -1.7943695644376372,
+     -1.4182756028974306,
+     0.0
+    ],
+    [
+     -0.6326814186872056,
+     -0.3450801539799888,
+     0.5000000000000001
+    ]
+   ],
+   "faces": 6,
+   "edges": 12
+  },
+  {
+   "component": "(Unsaved)",
+   "name": "Body5",
+   "solid": true,
+   "visible": true,
+   "volume": 0.30000000000000004,
+   "area": 2.8000000000000003,
+   "centroid": [
+    0.463525491562421,
+    -1.4265847744427302,
+    0.25
+   ],
+   "bbox": [
+    [
+     0.023700039486401148,
+     -1.9948181309027915,
+     0.0
+    ],
+    [
+     0.9033509436384406,
+     -0.8583514179826695,
+     0.5
+    ]
+   ],
+   "faces": 6,
+   "edges": 12
+  }
+ ],
+ "stats": {
+  "items": 3,
+  "errors": 0,
+  "rolled": 0,
+  "seconds": 0.14
+ },
+ "case": "pat_circ_bodies",
+ "doc": ""
+}

@@ -1,0 +1,82 @@
+{
+"source": "case_sweep_arc_path.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 3,
+"diag": 35.704489224125126,
+"deviation_mm": 0.007140897844825025,
+"steps_total": 3,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Sweep1",
+"group": null,
+"type": "SweepFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 557.5919854808807,
+"area": 589.6479697618095,
+"centroid": [
+15.157367546778964,
+-4.977757273840985e-16,
+-5.350522960198536
+],
+"bbox": [
+[
+0.0,
+-3.0,
+-9.82792247540258
+],
+[
+32.77582883346703,
+3.0,
+3.0000000000000004
+]
+],
+"tri": [
+0,
+6074
+]
+}
+],
+"seconds": 0.07
+}
+],
+"seconds": 2.3
+}

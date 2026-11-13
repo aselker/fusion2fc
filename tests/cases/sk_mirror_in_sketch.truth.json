@@ -1,0 +1,568 @@
+{
+ "design": "(Unsaved)",
+ "units": "cm",
+ "userParameters": [],
+ "timeline": [
+  {
+   "index": 0,
+   "name": "Sketch1",
+   "group": null,
+   "type": "Sketch",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "name": "Sketch1",
+    "component": "(Unsaved)",
+    "plane": {
+     "origin": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "normal": [
+      0.0,
+      0.0,
+      1.0
+     ]
+    },
+    "visible": false,
+    "transform": [
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "referencePlane": "ConstructionPlane",
+    "profiles": 1,
+    "curves": [
+     {
+      "type": "SketchLine",
+      "construction": true,
+      "world": {
+       "start": [
+        0.0,
+        -2.0,
+        0.0
+       ],
+       "end": [
+        0.0,
+        2.0,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       0.0,
+       -2.0,
+       0.0
+      ],
+      "end": [
+       0.0,
+       2.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "end": [
+        1.5,
+        0.0,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "end": [
+       1.5,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        1.5,
+        0.0,
+        0.0
+       ],
+       "end": [
+        1.5,
+        1.0,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       1.5,
+       0.0,
+       0.0
+      ],
+      "end": [
+       1.5,
+       1.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        1.5,
+        1.0,
+        0.0
+       ],
+       "end": [
+        0.5,
+        1.5,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       1.5,
+       1.0,
+       0.0
+      ],
+      "end": [
+       0.5,
+       1.5,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        0.5,
+        1.5,
+        0.0
+       ],
+       "end": [
+        0.0,
+        1.5,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       0.5,
+       1.5,
+       0.0
+      ],
+      "end": [
+       0.0,
+       1.5,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": true,
+      "world": {
+       "start": [
+        0.0,
+        1.5,
+        0.0
+       ],
+       "end": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       0.0,
+       1.5,
+       0.0
+      ],
+      "end": [
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "end": [
+        -1.5,
+        0.0,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "end": [
+       -1.5,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        -1.5,
+        0.0,
+        0.0
+       ],
+       "end": [
+        -1.5,
+        1.0,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       -1.5,
+       0.0,
+       0.0
+      ],
+      "end": [
+       -1.5,
+       1.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        -1.5,
+        1.0,
+        0.0
+       ],
+       "end": [
+        -0.5,
+        1.5,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       -1.5,
+       1.0,
+       0.0
+      ],
+      "end": [
+       -0.5,
+       1.5,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        -0.5,
+        1.5,
+        0.0
+       ],
+       "end": [
+        0.0,
+        1.5,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       -0.5,
+       1.5,
+       0.0
+      ],
+      "end": [
+       0.0,
+       1.5,
+       0.0
+      ]
+     }
+    ],
+    "points": [
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      -2.0,
+      0.0
+     ],
+     [
+      0.0,
+      2.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      1.5,
+      0.0,
+      0.0
+     ],
+     [
+      1.5,
+      0.0,
+      0.0
+     ],
+     [
+      1.5,
+      1.0,
+      0.0
+     ],
+     [
+      1.5,
+      1.0,
+      0.0
+     ],
+     [
+      0.5,
+      1.5,
+      0.0
+     ],
+     [
+      0.5,
+      1.5,
+      0.0
+     ],
+     [
+      0.0,
+      1.5,
+      0.0
+     ],
+     [
+      0.0,
+      1.5,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      -1.5,
+      0.0,
+      0.0
+     ],
+     [
+      -1.5,
+      0.0,
+      0.0
+     ],
+     [
+      -1.5,
+      1.0,
+      0.0
+     ],
+     [
+      -1.5,
+      1.0,
+      0.0
+     ],
+     [
+      -0.5,
+      1.5,
+      0.0
+     ],
+     [
+      -0.5,
+      1.5,
+      0.0
+     ],
+     [
+      0.0,
+      1.5,
+      0.0
+     ]
+    ],
+    "constraints": {
+     "SymmetryConstraint": 8
+    },
+    "dimensions": []
+   },
+   "after": []
+  },
+  {
+   "index": 1,
+   "name": "Extrude1",
+   "group": null,
+   "type": "ExtrudeFeature",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "operation": 3,
+    "extentType": 0,
+    "isSolid": true,
+    "startExtent": {
+     "type": "ProfilePlaneStartDefinition"
+    },
+    "extentOne": {
+     "type": "DistanceExtentDefinition",
+     "distance": {
+      "name": "d1",
+      "expression": "4 mm",
+      "value": 0.4,
+      "unit": "mm"
+     }
+    },
+    "extentTwo": null,
+    "taperOne": {
+     "name": "d2",
+     "expression": "0.0 deg",
+     "value": 0.0,
+     "unit": "deg"
+    },
+    "taperTwo": null,
+    "symmetric": false,
+    "profile": {
+     "type": "Profile",
+     "sketch": "Sketch1",
+     "component": "(Unsaved)",
+     "index": 0,
+     "area": 4.0,
+     "centroid": [
+      0.0,
+      0.6770833333333333,
+      0.0
+     ]
+    },
+    "participantBodies": [],
+    "resultBodies": []
+   },
+   "after": [
+    {
+     "component": "(Unsaved)",
+     "name": "Body1",
+     "volume": 1.6000000000000003,
+     "occurrence": null
+    }
+   ]
+  }
+ ],
+ "bodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 1.6000000000000003,
+   "area": 11.294427190999915,
+   "centroid": [
+    0.0,
+    0.6770833333333333,
+    0.2
+   ],
+   "bbox": [
+    [
+     -1.5,
+     0.0,
+     0.0
+    ],
+    [
+     1.5,
+     1.5,
+     0.4
+    ]
+   ],
+   "faces": 8,
+   "edges": 18
+  }
+ ],
+ "worldBodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 1.6000000000000003,
+   "area": 11.294427190999915,
+   "centroid": [
+    0.0,
+    0.6770833333333333,
+    0.2
+   ],
+   "bbox": [
+    [
+     -1.5,
+     0.0,
+     0.0
+    ],
+    [
+     1.5,
+     1.5,
+     0.4
+    ]
+   ],
+   "faces": 8,
+   "edges": 18
+  }
+ ],
+ "stats": {
+  "items": 2,
+  "errors": 0,
+  "rolled": 0,
+  "seconds": 0.04
+ },
+ "case": "sk_mirror_in_sketch",
+ "doc": ""
+}

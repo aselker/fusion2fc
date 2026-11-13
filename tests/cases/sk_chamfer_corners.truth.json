@@ -1,0 +1,437 @@
+{
+ "design": "(Unsaved)",
+ "units": "cm",
+ "userParameters": [],
+ "timeline": [
+  {
+   "index": 0,
+   "name": "Sketch1",
+   "group": null,
+   "type": "Sketch",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "name": "Sketch1",
+    "component": "(Unsaved)",
+    "plane": {
+     "origin": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "normal": [
+      0.0,
+      0.0,
+      1.0
+     ]
+    },
+    "visible": false,
+    "transform": [
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "referencePlane": "ConstructionPlane",
+    "profiles": 1,
+    "curves": [
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "end": [
+        2.5,
+        0.0,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "end": [
+       2.5,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        3.0,
+        0.5,
+        0.0
+       ],
+       "end": [
+        3.0,
+        1.7,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       3.0,
+       0.5,
+       0.0
+      ],
+      "end": [
+       3.0,
+       1.7,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        2.7,
+        2.0,
+        0.0
+       ],
+       "end": [
+        0.0,
+        2.0,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       2.7,
+       2.0,
+       0.0
+      ],
+      "end": [
+       0.0,
+       2.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        0.0,
+        2.0,
+        0.0
+       ],
+       "end": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       0.0,
+       2.0,
+       0.0
+      ],
+      "end": [
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        2.5,
+        0.0,
+        0.0
+       ],
+       "end": [
+        3.0,
+        0.5,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       2.5,
+       0.0,
+       0.0
+      ],
+      "end": [
+       3.0,
+       0.5,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        3.0,
+        1.7,
+        0.0
+       ],
+       "end": [
+        2.7,
+        2.0,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       3.0,
+       1.7,
+       0.0
+      ],
+      "end": [
+       2.7,
+       2.0,
+       0.0
+      ]
+     }
+    ],
+    "points": [
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      3.0,
+      0.0,
+      0.0
+     ],
+     [
+      3.0,
+      2.0,
+      0.0
+     ],
+     [
+      0.0,
+      2.0,
+      0.0
+     ],
+     [
+      2.5,
+      0.0,
+      0.0
+     ],
+     [
+      3.0,
+      0.5,
+      0.0
+     ],
+     [
+      3.0,
+      1.7,
+      0.0
+     ],
+     [
+      2.7,
+      2.0,
+      0.0
+     ]
+    ],
+    "constraints": {
+     "CoincidentConstraint": 4
+    },
+    "dimensions": [
+     {
+      "type": "SketchLinearDimension",
+      "driving": true,
+      "parameter": {
+       "name": "d1",
+       "expression": "5.00 mm",
+       "value": 0.5,
+       "unit": "mm"
+      }
+     },
+     {
+      "type": "SketchLinearDimension",
+      "driving": true,
+      "parameter": {
+       "name": "d2",
+       "expression": "5.00 mm",
+       "value": 0.5,
+       "unit": "mm"
+      }
+     },
+     {
+      "type": "SketchLinearDimension",
+      "driving": true,
+      "parameter": {
+       "name": "d3",
+       "expression": "3.00 mm",
+       "value": 0.30000000000000004,
+       "unit": "mm"
+      }
+     },
+     {
+      "type": "SketchLinearDimension",
+      "driving": true,
+      "parameter": {
+       "name": "d4",
+       "expression": "3.00 mm",
+       "value": 0.30000000000000004,
+       "unit": "mm"
+      }
+     }
+    ]
+   },
+   "after": []
+  },
+  {
+   "index": 1,
+   "name": "Extrude1",
+   "group": null,
+   "type": "ExtrudeFeature",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "operation": 3,
+    "extentType": 0,
+    "isSolid": true,
+    "startExtent": {
+     "type": "ProfilePlaneStartDefinition"
+    },
+    "extentOne": {
+     "type": "DistanceExtentDefinition",
+     "distance": {
+      "name": "d5",
+      "expression": "4 mm",
+      "value": 0.4,
+      "unit": "mm"
+     }
+    },
+    "extentTwo": null,
+    "taperOne": {
+     "name": "d6",
+     "expression": "0.0 deg",
+     "value": 0.0,
+     "unit": "deg"
+    },
+    "taperTwo": null,
+    "symmetric": false,
+    "profile": {
+     "type": "Profile",
+     "sketch": "Sketch1",
+     "component": "(Unsaved)",
+     "index": 0,
+     "area": 5.83,
+     "centroid": [
+      1.4606060606060607,
+      1.0109205260148655,
+      0.0
+     ]
+    },
+    "participantBodies": [],
+    "resultBodies": []
+   },
+   "after": [
+    {
+     "component": "(Unsaved)",
+     "name": "Body1",
+     "volume": 2.3320000000000003,
+     "occurrence": null
+    }
+   ]
+  }
+ ],
+ "bodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 2.3320000000000003,
+   "area": 15.47254833995939,
+   "centroid": [
+    1.4606060606060607,
+    1.0109205260148657,
+    0.2
+   ],
+   "bbox": [
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     3.0,
+     2.0,
+     0.4
+    ]
+   ],
+   "faces": 8,
+   "edges": 18
+  }
+ ],
+ "worldBodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 2.3320000000000003,
+   "area": 15.47254833995939,
+   "centroid": [
+    1.4606060606060607,
+    1.0109205260148657,
+    0.2
+   ],
+   "bbox": [
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     3.0,
+     2.0,
+     0.4
+    ]
+   ],
+   "faces": 8,
+   "edges": 18
+  }
+ ],
+ "stats": {
+  "items": 2,
+  "errors": 0,
+  "rolled": 0,
+  "seconds": 0.04
+ },
+ "case": "sk_chamfer_corners",
+ "doc": ""
+}

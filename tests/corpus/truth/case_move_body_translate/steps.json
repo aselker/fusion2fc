@@ -1,0 +1,113 @@
+{
+"source": "case_move_body_translate.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 3,
+"diag": 36.55133376499413,
+"deviation_mm": 0.007310266752998827,
+"steps_total": 3,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 3600.0000000000005,
+"area": 1800.0,
+"centroid": [
+14.999999999999998,
+10.0,
+3.0000000000000004
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+30.0,
+20.0,
+6.000000000000001
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "Move1",
+"group": null,
+"type": "MoveFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 3600.0000000000005,
+"area": 1800.0,
+"centroid": [
+24.999999999999996,
+14.999999999999998,
+5.000000000000001
+],
+"bbox": [
+[
+10.0,
+5.0,
+2.0
+],
+[
+40.0,
+25.0,
+8.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 2.2
+}

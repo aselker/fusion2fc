@@ -1,0 +1,69 @@
+{
+"source": "case_sk_arc_tangent.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 2,
+"diag": 32.044902172764786,
+"deviation_mm": 0.006408980434552958,
+"steps_total": 2,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 1111.1183813737314,
+"area": 857.7171921997167,
+"centroid": [
+13.510954713432149,
+5.119602293825123,
+2.0
+],
+"bbox": [
+[
+0.0,
+-0.5297557076156933,
+0.0
+],
+[
+30.0,
+10.0,
+4.0
+]
+],
+"tri": [
+0,
+96
+]
+}
+],
+"seconds": 0.01
+}
+],
+"seconds": 2.1
+}

@@ -1,0 +1,69 @@
+{
+"source": "case_rev_partial_angle.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 2,
+"diag": 30.576563902958487,
+"deviation_mm": 0.0061153127805916975,
+"steps_total": 2,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Revolve1",
+"group": null,
+"type": "RevolveFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2908.882086657216,
+"area": 1270.2322633089389,
+"centroid": [
+5.818861937559154,
+6.934649618895829,
+-8.6875
+],
+"bbox": [
+[
+-2.6047226650039548,
+0.0,
+-20.0
+],
+[
+15.0,
+15.0,
+0.0
+]
+],
+"tri": [
+0,
+252
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 4.7
+}

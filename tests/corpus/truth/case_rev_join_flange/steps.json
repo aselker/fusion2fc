@@ -1,0 +1,157 @@
+{
+"source": "case_rev_join_flange.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 4,
+"diag": 44.36214602563767,
+"deviation_mm": 0.008872429205127534,
+"steps_total": 4,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2261.9467105845533,
+"area": 980.1769079200155,
+"centroid": [
+-1.2548161889258838e-09,
+0.0,
+10.0
+],
+"bbox": [
+[
+-6.0,
+-6.0,
+0.0
+],
+[
+6.0,
+6.0,
+20.0
+]
+],
+"tri": [
+0,
+228
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 2261.9467105845533,
+"area": 980.1769079200155,
+"centroid": [
+-1.2548161889258838e-09,
+0.0,
+10.0
+],
+"bbox": [
+[
+-6.0,
+-6.0,
+0.0
+],
+[
+6.0,
+6.0,
+20.0
+]
+],
+"tri": [
+0,
+228
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 3,
+"name": "Revolve1",
+"group": null,
+"type": "RevolveFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0003.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 3769.9111843079127,
+"area": 2136.2830044410593,
+"centroid": [
+-3.9735965417058913e-10,
+2.355966430713616e-15,
+8.600000000000003
+],
+"bbox": [
+[
+-14.0,
+-14.0,
+0.0
+],
+[
+14.0,
+14.0,
+20.0
+]
+],
+"tri": [
+0,
+816
+]
+}
+],
+"seconds": 0.02
+}
+],
+"seconds": 2.7
+}

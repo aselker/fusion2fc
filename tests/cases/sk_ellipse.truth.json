@@ -1,0 +1,288 @@
+{
+ "design": "(Unsaved)",
+ "units": "cm",
+ "userParameters": [],
+ "timeline": [
+  {
+   "index": 0,
+   "name": "Sketch1",
+   "group": null,
+   "type": "Sketch",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "name": "Sketch1",
+    "component": "(Unsaved)",
+    "plane": {
+     "origin": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "normal": [
+      0.0,
+      0.0,
+      1.0
+     ]
+    },
+    "visible": false,
+    "transform": [
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "referencePlane": "ConstructionPlane",
+    "profiles": 1,
+    "curves": [
+     {
+      "type": "SketchEllipse",
+      "construction": false,
+      "world": null,
+      "fixed": false,
+      "reference": false,
+      "center": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "major": 2.0,
+      "minor": 1.0,
+      "majorAxis": [
+       1.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": true,
+      "world": {
+       "start": [
+        -2.0,
+        0.0,
+        0.0
+       ],
+       "end": [
+        2.0,
+        0.0,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       -2.0,
+       0.0,
+       0.0
+      ],
+      "end": [
+       2.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": true,
+      "world": {
+       "start": [
+        0.0,
+        1.0,
+        0.0
+       ],
+       "end": [
+        0.0,
+        -1.0,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       0.0,
+       1.0,
+       0.0
+      ],
+      "end": [
+       0.0,
+       -1.0,
+       0.0
+      ]
+     }
+    ],
+    "points": [
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      -2.0,
+      0.0,
+      0.0
+     ],
+     [
+      2.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      -1.0,
+      0.0
+     ]
+    ],
+    "constraints": {
+     "CoincidentConstraint": 4
+    },
+    "dimensions": []
+   },
+   "after": []
+  },
+  {
+   "index": 1,
+   "name": "Extrude1",
+   "group": null,
+   "type": "ExtrudeFeature",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "operation": 3,
+    "extentType": 0,
+    "isSolid": true,
+    "startExtent": {
+     "type": "ProfilePlaneStartDefinition"
+    },
+    "extentOne": {
+     "type": "DistanceExtentDefinition",
+     "distance": {
+      "name": "d1",
+      "expression": "5 mm",
+      "value": 0.5,
+      "unit": "mm"
+     }
+    },
+    "extentTwo": null,
+    "taperOne": {
+     "name": "d2",
+     "expression": "0.0 deg",
+     "value": 0.0,
+     "unit": "deg"
+    },
+    "taperTwo": null,
+    "symmetric": false,
+    "profile": {
+     "type": "Profile",
+     "sketch": "Sketch1",
+     "component": "(Unsaved)",
+     "index": 0,
+     "area": 6.283185307179586,
+     "centroid": [
+      7.796343665038751e-17,
+      0.0,
+      0.0
+     ]
+    },
+    "participantBodies": [],
+    "resultBodies": []
+   },
+   "after": [
+    {
+     "component": "(Unsaved)",
+     "name": "Body1",
+     "volume": 3.1415926535899286,
+     "occurrence": null
+    }
+   ]
+  }
+ ],
+ "bodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 3.1415926535899286,
+   "area": 17.410594726925982,
+   "centroid": [
+    2.0913574746278733e-10,
+    0.0,
+    0.25
+   ],
+   "bbox": [
+    [
+     -2.0,
+     -1.0,
+     0.0
+    ],
+    [
+     2.0,
+     1.0,
+     0.5
+    ]
+   ],
+   "faces": 3,
+   "edges": 2
+  }
+ ],
+ "worldBodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 3.1415926535899286,
+   "area": 17.410594726925982,
+   "centroid": [
+    2.0913574746278733e-10,
+    0.0,
+    0.25
+   ],
+   "bbox": [
+    [
+     -2.0,
+     -1.0,
+     0.0
+    ],
+    [
+     2.0,
+     1.0,
+     0.5
+    ]
+   ],
+   "faces": 3,
+   "edges": 2
+  }
+ ],
+ "stats": {
+  "items": 2,
+  "errors": 0,
+  "rolled": 0,
+  "seconds": 0.04
+ },
+ "case": "sk_ellipse",
+ "doc": ""
+}

@@ -271,7 +271,7 @@
        "value": 0.5235987755982988,
        "unit": "deg"
       },
-      "isTangentChain": false,
+      "isTangentChain": true,
       "edges": [
        {
         "curve": "Line3D",
@@ -307,7 +307,7 @@
     {
      "component": "(Unsaved)",
      "name": "Body1",
-     "volume": 0.9769059892324149,
+     "volume": 0.976905989232415,
      "occurrence": null
     }
    ]
@@ -319,12 +319,12 @@
    "name": "Body1",
    "solid": true,
    "visible": true,
-   "volume": 0.9769059892324149,
-   "area": 6.807846096908265,
+   "volume": 0.976905989232415,
+   "area": 6.807846096908266,
    "centroid": [
     1.0,
-    0.5109100738580568,
-    0.24566600878618425
+    0.5102439792326554,
+    0.2449999141607829
    ],
    "bbox": [
     [
@@ -348,12 +348,12 @@
    "name": "Body1",
    "solid": true,
    "visible": true,
-   "volume": 0.9769059892324149,
-   "area": 6.807846096908265,
+   "volume": 0.976905989232415,
+   "area": 6.807846096908266,
    "centroid": [
     1.0,
-    0.5109100738580568,
-    0.24566600878618425
+    0.5102439792326554,
+    0.2449999141607829
    ],
    "bbox": [
     [
@@ -375,7 +375,7 @@
   "items": 3,
   "errors": 0,
   "rolled": 1,
-  "seconds": 0.04
+  "seconds": 0.05
  },
  "case": "chamfer_distance_angle",
  "doc": ""

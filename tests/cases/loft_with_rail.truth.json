@@ -1,0 +1,378 @@
+{
+ "design": "(Unsaved)",
+ "units": "cm",
+ "userParameters": [],
+ "timeline": [
+  {
+   "index": 0,
+   "name": "Sketch1",
+   "group": null,
+   "type": "Sketch",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "name": "Sketch1",
+    "component": "(Unsaved)",
+    "plane": {
+     "origin": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "normal": [
+      0.0,
+      0.0,
+      1.0
+     ]
+    },
+    "visible": true,
+    "transform": [
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "referencePlane": "ConstructionPlane",
+    "profiles": 1,
+    "curves": [
+     {
+      "type": "SketchCircle",
+      "construction": false,
+      "world": {
+       "center": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "radius": 0.8
+      },
+      "fixed": false,
+      "reference": false,
+      "center": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "radius": 0.8
+     }
+    ],
+    "points": [
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      0.0
+     ]
+    ],
+    "constraints": {},
+    "dimensions": []
+   },
+   "after": []
+  },
+  {
+   "index": 1,
+   "name": "Plane1",
+   "group": null,
+   "type": "ConstructionPlane",
+   "suppressed": false,
+   "component": {
+    "error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+   },
+   "data": {
+    "definition": "ConstructionPlaneOffsetDefinition",
+    "geometry": {
+     "origin": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "normal": [
+      0.0,
+      0.0,
+      1.0
+     ]
+    }
+   },
+   "after": []
+  },
+  {
+   "index": 2,
+   "name": "Sketch2",
+   "group": null,
+   "type": "Sketch",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "name": "Sketch2",
+    "component": "(Unsaved)",
+    "plane": {
+     "origin": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "normal": [
+      0.0,
+      0.0,
+      1.0
+     ]
+    },
+    "visible": false,
+    "transform": [
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "referencePlane": "ConstructionPlane",
+    "profiles": 1,
+    "curves": [
+     {
+      "type": "SketchCircle",
+      "construction": false,
+      "world": {
+       "center": [
+        0.0,
+        0.0,
+        1.0
+       ],
+       "radius": 0.4
+      },
+      "fixed": false,
+      "reference": false,
+      "center": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "radius": 0.4
+     }
+    ],
+    "points": [
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      0.0
+     ]
+    ],
+    "constraints": {},
+    "dimensions": []
+   },
+   "after": []
+  },
+  {
+   "index": 3,
+   "name": "Sketch3",
+   "group": null,
+   "type": "Sketch",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "name": "Sketch3",
+    "component": "(Unsaved)",
+    "plane": {
+     "origin": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "normal": [
+      -0.0,
+      1.0,
+      0.0
+     ]
+    },
+    "visible": false,
+    "transform": [
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "referencePlane": "ConstructionPlane",
+    "profiles": 0,
+    "curves": [
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        0.8,
+        0.0,
+        0.0
+       ],
+       "end": [
+        0.4,
+        0.0,
+        1.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       0.8,
+       0.0,
+       0.0
+      ],
+      "end": [
+       0.4,
+       -1.0,
+       0.0
+      ]
+     }
+    ],
+    "points": [
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.8,
+      0.0,
+      0.0
+     ],
+     [
+      0.4,
+      -1.0,
+      0.0
+     ]
+    ],
+    "constraints": {},
+    "dimensions": []
+   },
+   "after": []
+  },
+  {
+   "index": 4,
+   "name": "Loft1",
+   "group": null,
+   "type": "LoftFeature",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "operation": 3,
+    "resultBodies": []
+   },
+   "after": [
+    {
+     "component": "(Unsaved)",
+     "name": "Body1",
+     "volume": 1.1728612573402113,
+     "occurrence": null
+    }
+   ]
+  }
+ ],
+ "bodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 1.1728612573402113,
+   "area": 6.573592730023208,
+   "centroid": [
+    -1.7926022685936335e-11,
+    0.0,
+    0.3928571428571449
+   ],
+   "bbox": [
+    [
+     -0.8,
+     -0.8,
+     0.0
+    ],
+    [
+     0.8,
+     0.8,
+     1.0
+    ]
+   ],
+   "faces": 3,
+   "edges": 2
+  }
+ ],
+ "worldBodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 1.1728612573402113,
+   "area": 6.573592730023208,
+   "centroid": [
+    -1.7926022685936335e-11,
+    0.0,
+    0.3928571428571449
+   ],
+   "bbox": [
+    [
+     -0.8,
+     -0.8,
+     0.0
+    ],
+    [
+     0.8,
+     0.8,
+     1.0
+    ]
+   ],
+   "faces": 3,
+   "edges": 2
+  }
+ ],
+ "stats": {
+  "items": 5,
+  "errors": 0,
+  "rolled": 0,
+  "seconds": 0.1
+ },
+ "case": "loft_with_rail",
+ "doc": ""
+}

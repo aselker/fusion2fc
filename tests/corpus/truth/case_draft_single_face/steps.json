@@ -1,0 +1,113 @@
+{
+"source": "case_draft_single_face.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 3,
+"diag": 37.416573867739416,
+"deviation_mm": 0.007483314773547883,
+"steps_total": 3,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 6000.0,
+"area": 2200.0,
+"centroid": [
+15.0,
+10.0,
+5.0
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+30.0,
+20.0,
+10.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Draft1",
+"group": null,
+"type": "DraftFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 5823.673019291535,
+"area": 2150.187228164609,
+"centroid": [
+14.563631516549282,
+10.0,
+4.9495372936963875
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+30.0,
+20.0,
+10.0
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+}
+],
+"seconds": 2.2
+}

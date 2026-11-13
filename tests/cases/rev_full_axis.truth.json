@@ -1,0 +1,340 @@
+{
+ "design": "(Unsaved)",
+ "units": "cm",
+ "userParameters": [],
+ "timeline": [
+  {
+   "index": 0,
+   "name": "Sketch1",
+   "group": null,
+   "type": "Sketch",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "name": "Sketch1",
+    "component": "(Unsaved)",
+    "plane": {
+     "origin": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "normal": [
+      -0.0,
+      1.0,
+      0.0
+     ]
+    },
+    "visible": false,
+    "transform": [
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "referencePlane": "ConstructionPlane",
+    "profiles": 1,
+    "curves": [
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        0.5,
+        0.0,
+        0.0
+       ],
+       "end": [
+        1.5,
+        0.0,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       0.5,
+       0.0,
+       0.0
+      ],
+      "end": [
+       1.5,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        1.5,
+        0.0,
+        0.0
+       ],
+       "end": [
+        1.5,
+        0.0,
+        -1.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       1.5,
+       0.0,
+       0.0
+      ],
+      "end": [
+       1.5,
+       1.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        1.5,
+        0.0,
+        -1.0
+       ],
+       "end": [
+        1.0,
+        0.0,
+        -2.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       1.5,
+       1.0,
+       0.0
+      ],
+      "end": [
+       1.0,
+       2.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        1.0,
+        0.0,
+        -2.0
+       ],
+       "end": [
+        0.5,
+        0.0,
+        -2.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       1.0,
+       2.0,
+       0.0
+      ],
+      "end": [
+       0.5,
+       2.0,
+       0.0
+      ]
+     },
+     {
+      "type": "SketchLine",
+      "construction": false,
+      "world": {
+       "start": [
+        0.5,
+        0.0,
+        -2.0
+       ],
+       "end": [
+        0.5,
+        0.0,
+        0.0
+       ]
+      },
+      "fixed": false,
+      "reference": false,
+      "start": [
+       0.5,
+       2.0,
+       0.0
+      ],
+      "end": [
+       0.5,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "points": [
+     [
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.5,
+      0.0,
+      0.0
+     ],
+     [
+      1.5,
+      0.0,
+      0.0
+     ],
+     [
+      1.5,
+      0.0,
+      0.0
+     ],
+     [
+      1.5,
+      1.0,
+      0.0
+     ],
+     [
+      1.5,
+      1.0,
+      0.0
+     ],
+     [
+      1.0,
+      2.0,
+      0.0
+     ],
+     [
+      1.0,
+      2.0,
+      0.0
+     ],
+     [
+      0.5,
+      2.0,
+      0.0
+     ],
+     [
+      0.5,
+      2.0,
+      0.0
+     ],
+     [
+      0.5,
+      0.0,
+      0.0
+     ]
+    ],
+    "constraints": {},
+    "dimensions": []
+   },
+   "after": []
+  },
+  {
+   "index": 1,
+   "name": "Revolve1",
+   "group": null,
+   "type": "RevolveFeature",
+   "suppressed": false,
+   "component": "(Unsaved)",
+   "data": {
+    "operation": 3,
+    "resultBodies": []
+   },
+   "after": [
+    {
+     "component": "(Unsaved)",
+     "name": "Body1",
+     "volume": 10.471975511966516,
+     "occurrence": null
+    }
+   ]
+  }
+ ],
+ "bodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 10.471975511966516,
+   "area": 33.12836147912181,
+   "centroid": [
+    -2.0390748099840322e-10,
+    5.088887490341365e-16,
+    -0.8687500000000068
+   ],
+   "bbox": [
+    [
+     -1.5,
+     -1.5,
+     -2.0
+    ],
+    [
+     1.5,
+     1.5,
+     0.0
+    ]
+   ],
+   "faces": 5,
+   "edges": 5
+  }
+ ],
+ "worldBodies": [
+  {
+   "component": "(Unsaved)",
+   "name": "Body1",
+   "solid": true,
+   "visible": true,
+   "volume": 10.471975511966516,
+   "area": 33.12836147912181,
+   "centroid": [
+    -2.0390748099840322e-10,
+    5.088887490341365e-16,
+    -0.8687500000000068
+   ],
+   "bbox": [
+    [
+     -1.5,
+     -1.5,
+     -2.0
+    ],
+    [
+     1.5,
+     1.5,
+     0.0
+    ]
+   ],
+   "faces": 5,
+   "edges": 5
+  }
+ ],
+ "stats": {
+  "items": 2,
+  "errors": 0,
+  "rolled": 0,
+  "seconds": 0.04
+ },
+ "case": "rev_full_axis",
+ "doc": ""
+}

@@ -1,0 +1,201 @@
+{
+"source": "case_sweep_cut_groove.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 5,
+"diag": 45.12205669071391,
+"deviation_mm": 0.009024411338142782,
+"steps_total": 5,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 4800.000000000001,
+"area": 2320.0000000000005,
+"centroid": [
+20.0,
+0.0,
+3.0000000000000004
+],
+"bbox": [
+[
+0.0,
+-10.0,
+0.0
+],
+[
+40.0,
+10.0,
+6.000000000000001
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 2,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 4800.000000000001,
+"area": 2320.0000000000005,
+"centroid": [
+20.0,
+0.0,
+3.0000000000000004
+],
+"bbox": [
+[
+0.0,
+-10.0,
+0.0
+],
+[
+40.0,
+10.0,
+6.000000000000001
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 3,
+"name": "Sketch3",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 4800.000000000001,
+"area": 2320.0000000000005,
+"centroid": [
+20.0,
+0.0,
+3.0000000000000004
+],
+"bbox": [
+[
+0.0,
+-10.0,
+0.0
+],
+[
+40.0,
+10.0,
+6.000000000000001
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 4,
+"name": "Sweep1",
+"group": null,
+"type": "SweepFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 4548.6725877128165,
+"area": 2398.761041672824,
+"centroid": [
+20.0,
+-0.27626456668488814,
+3.118858610529291
+],
+"bbox": [
+[
+0.0,
+-10.0,
+0.0
+],
+[
+40.0,
+10.0,
+6.000000000000001
+]
+],
+"tri": [
+0,
+84
+]
+}
+],
+"seconds": 0.01
+}
+],
+"seconds": 2.1
+}
