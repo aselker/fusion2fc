@@ -69,7 +69,8 @@ class Rebuilder:
     FEATURE_BUILDERS = {"hole": "build_hole", "pattern": "build_pattern", "revolve": "build_revolve",
                         "move_body": "build_move_body", "combine": "build_combine",
                         "sweep": "build_sweep", "block": "build_block", "primitive": "build_primitive",
-                        "sphere": "build_sphere", "torus": "build_torus", "base_feature": "build_base_feature"}
+                        "sphere": "build_sphere", "torus": "build_torus", "base_feature": "build_base_feature",
+                        "shell": "build_shell"}
 
     def __init__(self, slim, topo, wanted):
         self.slim = slim
@@ -766,6 +767,77 @@ class Rebuilder:
         shapes = [s.Shape for s in pool if not s.Shape.isNull()]
         nearest = min((sh.distToShape(Part.Vertex(p))[0] for sh in shapes), default=float("inf"))
         return None, None, nearest
+
+    # ----- face selection ---------------------------------------------------
+    def find_face(self, fid):
+        """(body object, 0-based face index) of the rebuilt face that a historical face names.
+        The decoder samples every edge that bounds a selected face (with the faces that use
+        it); each is located like a fillet edge, and the face is the one that all of them
+        bound. Edges OCC merged or split still count (find_edge accepts pieces). When several
+        faces remain, the one with the fewest edges outside the recorded set wins only if it
+        is unique; otherwise the match is ambiguous and raises."""
+        egs = self.topo_edges.get(fid)
+        if not egs:
+            raise ValueError("face has no recorded boundary edges")
+        body, cands = None, None
+        for eg in egs:
+            b, i, dist = self.find_edge(eg)
+            if b is None:
+                raise ValueError("a boundary edge of the selected face is not in the rebuilt bodies (nearest %.3g mm)" % dist)
+            if body is None:
+                body = b
+            elif b is not body:
+                raise ValueError("boundary edges of the selected face lie in different bodies")
+            edge = b.Shape.Edges[i - 1]
+            hit = {k for k, f in enumerate(b.Shape.Faces) if any(e.isSame(edge) for e in f.Edges)}
+            cands = hit if cands is None else cands & hit
+        if not cands:
+            raise ValueError("no rebuilt face carries all recorded boundary edges")
+        if len(cands) > 1:
+            n = {k: len(body.Shape.Faces[k].Edges) for k in cands}
+            low = min(n.values())
+            cands = {k for k in cands if n[k] == low}
+            if len(cands) > 1:
+                raise ValueError("ambiguous face match (%d rebuilt faces share the recorded edges)" % len(cands))
+        return body, next(iter(cands))
+
+    def selected_faces(self, ref):
+        """{body object: sorted face indices} for a historical face selection."""
+        if ref.get("kind") != "historical":
+            raise NotImplementedError("face selection " + str(ref.get("kind")))
+        per_body = defaultdict(set)
+        for fid in ref["value"]["faces"]:
+            body, k = self.find_face(fid)
+            per_body[body].add(k)
+        return {b: sorted(v) for b, v in per_body.items()}
+
+    def build_shell(self, feat):
+        d = feat["definition"]
+        if d.get("mode") not in (None, "inside", "outside"):
+            raise NotImplementedError("shell mode " + str(d.get("mode")))
+        per_body = self.selected_faces(d["removed_faces"])
+        t = float(d["thickness"])
+        made = []
+        for body, faces in per_body.items():
+            obj = self.doc.addObject("Part::Thickness", "Shell")
+            obj.Label = feat["name"]
+            obj.Faces = (body, ["Face%d" % (k + 1) for k in faces])
+            obj.Value = t if d.get("outward") else -t
+            obj.Mode = 0
+            obj.Join = 2
+            obj.Intersection = True
+            obj.SelfIntersection = False
+            made.append((body, obj))
+        self.doc.recompute()
+        bad = [o for _, o in made if o.Shape.isNull() or not o.Shape.Solids or "Invalid" in o.State]
+        if bad:
+            for _, o in made:
+                self.doc.removeObject(o.Name)
+            self.doc.recompute()
+            raise ValueError("OCC shell failed on %d of %d bodies" % (len(bad), len(made)))
+        for body, obj in made:
+            self.solids[self.solids.index(body)] = obj
+        return {"faces": sum(len(v) for v in per_body.values())}
 
     def build_edge_treatment(self, feat, kind):
         d = feat["definition"]
