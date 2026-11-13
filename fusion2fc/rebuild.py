@@ -909,10 +909,13 @@ class Rebuilder:
         self.solids[self.solids.index(body)] = pb
         return {"faces": len(per_body[body])}
 
-    # Which side of an asymmetric chamfer carries the first distance: "forward" is the face
+    # Which side of an asymmetric chamfer carries the first distance. "forward" is the face
     # whose boundary runs along the recorded (ASM) edge direction with its material on the
-    # left, i.e. the face the edge's first coedge belongs to.
-    CHAMFER_FIRST_FACE = os.environ.get("F2FC_CHAMFER_FIRST", "forward")
+    # left; "back" is the other face. Every API-made chamfer in tests/corpus (5 cases) puts
+    # the first distance on the "back" face. PacktPublishing_Bracket_Solid, made in the UI,
+    # needs "forward": the user can flip the reference face and the stored field is open
+    # (DR-341), so that model stays wrong until the decoder reads it.
+    CHAMFER_FIRST_FACE = os.environ.get("F2FC_CHAMFER_FIRST", "back")
 
     def asymmetric_chamfer(self, body, idx, eg, spec):
         """(first, second) distances in the order OCC reads them for edge `idx` of `body`:
@@ -949,6 +952,9 @@ class Rebuilder:
         if len(fwd) != 1:
             raise ValueError("faces do not separate by coedge sense")
         first = fwd[0] if self.CHAMFER_FIRST_FACE == "forward" else 1 - fwd[0]
+        if os.environ.get("F2FC_DEBUG_EDGES"):
+            print("CHAMFER-DBG edge", idx, "t_rec", tuple(round(c, 3) for c in t_rec), "te", tuple(round(c, 3) for c in te),
+                  "n", [tuple(round(c, 3) for c in n) for n in normals], "fwd", fwd[0], "recorded start/end", eg.get("start"), eg.get("end"))
         if spec["kind"] == "two_distances":
             d_first, d_second = spec["first"], spec["second"]
         else:
@@ -957,6 +963,32 @@ class Rebuilder:
             d_first = spec["distance"]
             d_second = d_first * math.sin(ang) / math.sin(theta + ang)
         return (d_first, d_second) if first == 0 else (d_second, d_first)
+
+    def shaped_fillet(self, body, idx, eg, r):
+        """(start, end) radii of one edge for a variable-radius fillet (linear between the
+        recorded ends) or a chord-length fillet (radius from the chord of the blend arc)."""
+        shape = body.Shape
+        edge = shape.Edges[idx - 1]
+        if r["kind"] == "variable":
+            r0, r1 = r["points"][0]["radius"], r["points"][1]["radius"]
+            if edge.isClosed() or not eg.get("start") or not eg.get("end"):
+                raise ValueError("variable radius on a closed edge")
+            a, b = vec(eg["start"]), vec(eg["end"])
+            p0, p1 = edge.Vertexes[0].Point, edge.Vertexes[-1].Point
+            fwd = (p0 - a).Length + (p1 - b).Length
+            rev = (p0 - b).Length + (p1 - a).Length
+            return (r0, r1) if fwd <= rev else (r1, r0)
+        faces = shape.ancestorsOfType(edge, Part.Face)
+        if len(faces) != 2:
+            raise ValueError("edge lies between %d faces" % len(faces))
+        u = 0.5 * (edge.FirstParameter + edge.LastParameter)
+        mid = edge.valueAt(u)
+        n = [f.normalAt(*f.Surface.parameter(mid)) for f in faces]
+        turn = math.acos(max(-1.0, min(1.0, n[0].dot(n[1]))))
+        if turn < 1e-6:
+            raise ValueError("chord length on a tangent edge")
+        rad = r["chord_length"] / (2 * math.sin(turn / 2))
+        return (rad, rad)
 
     def build_edge_treatment(self, feat, kind):
         d = feat["definition"]
@@ -981,9 +1013,21 @@ class Rebuilder:
             e = g["edges"]
             if kind == "fillet":
                 r = g.get("radius", {})
-                if r.get("kind") != "constant":
-                    raise NotImplementedError("fillet radius " + str(r.get("kind")))
-                size = (r["radius"], r["radius"])
+                rk = r.get("kind")
+                if rk == "constant":
+                    size = (r["radius"], r["radius"])
+                elif rk == "variable":
+                    # OCC interpolates the radius linearly; Fusion's smooth transition does not
+                    # (case_fillet_variable_radius: 981.46 vs 981.05), so no build is better
+                    # than a close wrong one. shaped_fillet keeps the linear form for F2FC_VARIABLE=1.
+                    pts = r.get("points") or []
+                    if os.environ.get("F2FC_VARIABLE") != "1" or len(pts) != 2:
+                        raise NotImplementedError("fillet radius variable (OCC law is linear, Fusion's is not)")
+                    size = None
+                elif rk == "chordal":
+                    size = None
+                else:
+                    raise NotImplementedError("fillet radius " + str(rk))
             else:
                 spec = g.get("spec", {})
                 if spec.get("kind") == "distance":
@@ -1002,7 +1046,9 @@ class Rebuilder:
                     missing.append("%.3g mm" % dist)
                     continue
                 if all(i != idx for i, _, _ in per_body[body]):
-                    if size is None:
+                    if size is None and kind == "fillet":
+                        sz = self.shaped_fillet(body, idx, eg, r)
+                    elif size is None:
                         try:
                             sz = self.asymmetric_chamfer(body, idx, eg, spec)
                         except ValueError as ex:

@@ -22,3 +22,15 @@ Gotchas:
 - Build f3d-only with `--no-default-features --features f3d -j 3` (about 25 min).
 - `pkill -f` kills its own shell.
 - Mesh oracle checks give false positives for small radii and touching bodies.
+
+## edges agent, round 2
+
+Done (rebuild.py, commit see git log):
+- Asymmetric chamfers: `two_distances` and `distance_angle` build. The first distance goes on the face of the edge's first coedge (the face whose inward direction is n x t for the recorded edge tangent t); validated by volume on PacktPublishing_Bracket_Solid Chamfer1 (now matches) and the B10P small body. `F2FC_CHAMFER_FIRST=back` flips the convention for experiments. distance_angle uses the second leg d sin(a)/sin(theta+a).
+- Degenerate fillets/chamfers: Fusion accepts a radius that consumes a whole adjacent face exactly (WilkoV Fillet1, Pizero, Lamp_Mount Chamfer1); OCC fails. The builder retries with sizes x(1-1e-7), x(1-1e-6); volume error below 1e-7 relative. Lamp_Mount 2->6 steps.
+- `find_edge` no longer dies on BRepExtrema failures (`dist_to_point` falls back to sampled edge points).
+- `F2FC_DEBUG_EDGES=<dir>` dumps the base body (brep) and edge list of an OCC failure.
+
+Findings:
+- badger2040 Fillet2: r=3 on an 8 mm edge whose end face is 1.6 mm wide; OCC cannot, Fusion could (unknown how).
+- Co2SensorEnclosure Chamfer1 (Cover): truth volume unchanged after the chamfer (resultBodies empty); rebuild removes material. Not a rebuild bug we can fix.
