@@ -12,6 +12,11 @@ because freecadcmd treats extra command-line arguments as files to open:
                                   #   dir/step_NNNN.brep (compound, world coordinates)
   F2FC_BODIES=dir/index.json      # optional: Base Feature bodies exported by
                                   #   tools/stored_bodies.py (body id -> STEP file)
+  F2FC_FINAL=dir/index.json       # optional: Fusion's stored final bodies (tools/stored_bodies.py
+                                  #   final_body_ids); enables the final-shape check and fallback
+  F2FC_FACTS=facts.json           # optional: version warnings, loss counts, {"fallback": false}
+  F2FC_SUMMARY=report.txt         # optional: write the conversion summary here
+  F2FC_NO_FALLBACK=1              # optional: never add the stored final shape
   freecadcmd fusion2fc/rebuild.py
 
 v0 scope: planar sketches (lines, arcs, circles, polynomial and rational B-splines;
@@ -1864,7 +1869,127 @@ class Rebuilder:
             for m in mats:
                 bodies.append(self.body_record(s, m))
         self.report["bodies"] = bodies
+        self.finish()
         return self.report
+
+    # ----- final-shape check, fallback and conversion report -----------------
+    FINAL_RTOL = 1e-4  # relative volume tolerance against Fusion's stored final bodies
+
+    def stored_final_shapes(self, index):
+        """Fusion's stored final solids, placed in the root: [(body id, shape)]."""
+        out = []
+        for bid, rec in index.items():
+            if not rec.get("file"):
+                raise ValueError("final body %s not exported: %s" % (bid, rec.get("error", "missing")))
+            shape = Part.Shape()
+            shape.read(os.path.join(os.path.dirname(os.environ["F2FC_FINAL"]), rec["file"]))
+            for m in self.world.get(rec.get("component")) or [None]:
+                out.append((bid, shape if m is None or m.isUnity() else shape.transformGeometry(m)))
+        return out
+
+    def compare_final(self, stored, rebuilt):
+        """Count, volumes and bounding box of the rebuilt final bodies against the stored ones."""
+        def solids(shapes):
+            return [x for s in shapes for x in s.Solids]
+        a, b = solids(stored), solids(rebuilt)
+        res = {"stored_solids": len(a), "rebuilt_solids": len(b), "problems": []}
+        va, vb = sorted(x.Volume for x in a), sorted(x.Volume for x in b)
+        res["stored_volume"], res["rebuilt_volume"] = sum(va), sum(vb)
+        if len(a) != len(b):
+            res["problems"].append("solid count %d (Fusion) vs %d (rebuilt)" % (len(a), len(b)))
+        else:
+            for x, y in zip(va, vb):
+                if abs(x - y) > self.FINAL_RTOL * max(abs(x), abs(y), 1e-9):
+                    res["problems"].append("volume %.6g mm3 (Fusion) vs %.6g (rebuilt)" % (x, y))
+                    break
+        if a and b:
+            ba, bb = Part.makeCompound(a).BoundBox, Part.makeCompound(b).BoundBox
+            tol = max(0.01, 1e-4 * ba.DiagonalLength)
+            d = max(abs(ba.XMin - bb.XMin), abs(ba.YMin - bb.YMin), abs(ba.ZMin - bb.ZMin),
+                    abs(ba.XMax - bb.XMax), abs(ba.YMax - bb.YMax), abs(ba.ZMax - bb.ZMax))
+            res["bbox_max_deviation_mm"] = d
+            if d > tol:
+                res["problems"].append("bounding box differs by %.4g mm" % d)
+        res["match"] = not res["problems"]
+        return res
+
+    def finish(self):
+        """Compare with Fusion's stored final bodies, add them as a separate non-parametric group
+        when the rebuild is incomplete or differs, and write the conversion summary. Active only
+        when the driver (tools/convert.py) sets F2FC_FINAL / F2FC_FACTS."""
+        facts = json.load(open(os.environ["F2FC_FACTS"])) if os.environ.get("F2FC_FACTS") else {}
+        rep = self.report
+        feats = rep["features"]
+        lost = [r for r in feats if r["status"] in ("skipped", "failed")]
+        final = {"checked": False}
+        stored = None
+        if os.environ.get("F2FC_FINAL"):
+            try:
+                stored = self.stored_final_shapes(json.load(open(os.environ["F2FC_FINAL"])))
+                self.doc.recompute()
+                final = dict(self.compare_final([s for _, s in stored], self.world_shapes()), checked=True)
+            except Exception as e:
+                final = {"checked": False, "error": "%s: %s" % (type(e).__name__, e)}
+        incomplete = bool(lost) or (final.get("checked") and not final["match"])
+        want = facts.get("fallback", True) and not os.environ.get("F2FC_NO_FALLBACK")
+        used = False
+        if incomplete and want and stored:
+            grp = self.doc.addObject("App::DocumentObjectGroup", "FusionFinalShape")
+            grp.Label = "Fusion final shape (not parametric)"
+            for n, (bid, shape) in enumerate(stored):
+                o = self.doc.addObject("Part::Feature", "FusionFinalBody")
+                o.Shape = shape
+                o.Label = "Fusion final body %d (not parametric)" % (n + 1)
+                grp.addObject(o)
+            for s in self.solids:
+                s.Label = s.Label + " (INCOMPLETE rebuild)"
+                s.Visibility = False
+            used = True
+        final.update(incomplete=incomplete, fallback_used=used, fallback_wanted=want)
+        rep["final_shape"] = final
+        rep["facts"] = facts
+        rep["summary_text"] = self.summary_text(facts, lost, final)
+        print(rep["summary_text"])
+        if os.environ.get("F2FC_SUMMARY"):
+            open(os.environ["F2FC_SUMMARY"], "w").write(rep["summary_text"] + "\n")
+        if facts or os.environ.get("F2FC_FINAL"):
+            t = self.doc.addObject("App::TextDocument", "ConversionReport")
+            t.Label = "Conversion report"
+            try:
+                t.Text = rep["summary_text"]
+            except Exception:
+                pass
+
+    def summary_text(self, facts, lost, final):
+        feats = self.report["features"]
+        st = defaultdict(int)
+        for r in feats:
+            st[r["status"]] += 1
+        lines = ["Conversion report", "  features: %s" % ", ".join("%d %s" % (v, k) for k, v in sorted(st.items()))]
+        for r in lost[:40]:
+            lines.append("    %s %s (%s): %s" % (r["status"].upper(), r["name"], r["kind"], str(r.get("reason", ""))[:140]))
+        if len(lost) > 40:
+            lines.append("    ... %d more" % (len(lost) - 40))
+        if final.get("checked"):
+            lines.append("  final shape vs Fusion's stored bodies: %s (%d solids rebuilt, %d stored; volume %.6g vs %.6g mm3)" % (
+                "MATCH" if final["match"] else "DIFFERS", final["rebuilt_solids"], final["stored_solids"],
+                final["rebuilt_volume"], final["stored_volume"]))
+            for p in final["problems"]:
+                lines.append("    " + p)
+        else:
+            lines.append("  final shape: not checked" + (" (%s)" % final["error"] if final.get("error") else ""))
+        if final.get("fallback_used"):
+            lines.append("  FALLBACK: Fusion's stored final bodies were added as 'Fusion final shape (not parametric)'; "
+                         "the parametric rebuild is incomplete and hidden.")
+        elif final.get("incomplete"):
+            lines.append("  WARNING: the parametric rebuild is incomplete" +
+                         ("; fallback disabled." if not final.get("fallback_wanted") else "; no final bodies available."))
+        for w in facts.get("warnings", []):
+            lines.append("  WARNING: " + w)
+        lc = facts.get("loss_counts") or {}
+        if lc:
+            lines.append("  decoder losses by code: " + ", ".join("%s x%d" % kv for kv in sorted(lc.items(), key=lambda kv: -kv[1])[:12]))
+        return "\n".join(lines)
 
     @staticmethod
     def body_record(s, m):
