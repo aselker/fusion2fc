@@ -1,0 +1,113 @@
+{
+"source": "case_fillet_cylinder_top_edge.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 3,
+"diag": 16.24807680927192,
+"deviation_mm": 0.0032496153618543845,
+"steps_total": 3,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.01
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 628.3185307179857,
+"area": 408.4070449666731,
+"centroid": [
+5.228398987494152e-10,
+0.0,
+3.999999999999999
+],
+"bbox": [
+[
+-5.0,
+-5.0,
+0.0
+],
+[
+5.0,
+5.0,
+8.0
+]
+],
+"tri": [
+0,
+348
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "Fillet1",
+"group": null,
+"type": "FilletFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0002.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 603.7603530287768,
+"area": 379.66007707269506,
+"centroid": [
+1.1752624003366052e-10,
+0.0,
+3.856208731186224
+],
+"bbox": [
+[
+-5.0,
+-5.0,
+0.0
+],
+[
+5.0,
+5.0,
+8.0
+]
+],
+"tri": [
+0,
+2772
+]
+}
+],
+"seconds": 0.04
+}
+],
+"seconds": 3.0
+}
