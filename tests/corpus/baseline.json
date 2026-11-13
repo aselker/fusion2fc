@@ -1,6 +1,6 @@
 {
  "AdamLaskoi_SG90_Micro_Servo_9g_v1": {
-  "match": 8,
+  "match": 18,
   "steps": 19
  },
  "PacktPublishing_2BC": {
@@ -60,7 +60,7 @@
   "steps": 22
  },
  "WilkoV_03_Refinements": {
-  "match": 4,
+  "match": 7,
   "steps": 10
  },
  "adafruit_1739_Pizero_Large": {
@@ -108,7 +108,7 @@
   "steps": 20
  },
  "bitbank2_badger2040_case": {
-  "match": 2,
+  "match": 6,
   "steps": 10
  },
  "bitbank2_co2_01space_box": {
@@ -120,7 +120,7 @@
   "steps": 3
  },
  "bitbank2_oled_cover": {
-  "match": 3,
+  "match": 6,
   "steps": 6
  },
  "bitbank2_rack_mount_foot": {
@@ -284,11 +284,11 @@
   "steps": 10
  },
  "digitalsputnik_Apollo_Yoke_Int_Corner_P2_P_MPLA000000157_v1": {
-  "match": 1,
+  "match": 3,
   "steps": 37
  },
  "digitalsputnik_Apollo_Yoke_Lamp_Mount_Body_M_SPPS000000036_v2": {
-  "match": 1,
+  "match": 2,
   "steps": 14
  },
  "digitalsputnik_Apollo_Yoke_Lock_B_Side_P_MPLA000000177_v2": {
@@ -332,7 +332,7 @@
   "steps": 27
  },
  "gtgkartik_Industrial_Tool_2": {
-  "match": 2,
+  "match": 3,
   "steps": 13
  },
  "homebrew_pinball_Fast_Light_Board": {
@@ -380,7 +380,7 @@
   "steps": 6
  },
  "ravengraves_NEMA17StepperMotor": {
-  "match": 1,
+  "match": 2,
   "steps": 25
  },
  "ravengraves_TimingPulleyBase": {
