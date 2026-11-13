@@ -70,7 +70,7 @@ class Rebuilder:
                         "move_body": "build_move_body", "combine": "build_combine",
                         "sweep": "build_sweep", "block": "build_block", "primitive": "build_primitive",
                         "sphere": "build_sphere", "torus": "build_torus", "base_feature": "build_base_feature",
-                        "shell": "build_shell"}
+                        "shell": "build_shell", "delete_face": "build_delete_face", "draft": "build_draft"}
 
     def __init__(self, slim, topo, wanted):
         self.slim = slim
@@ -838,6 +838,61 @@ class Rebuilder:
         for body, obj in made:
             self.solids[self.solids.index(body)] = obj
         return {"faces": sum(len(v) for v in per_body.values())}
+
+    def replace_with_shape(self, body, shape, feat):
+        """Replace a rebuilt body by a Part::Feature holding `shape` (an OCC operation without
+        a parametric FreeCAD feature)."""
+        if shape.isNull() or not shape.Solids or not shape.isValid():
+            raise ValueError("OCC result is not a valid solid")
+        obj = self.doc.addObject("Part::Feature", feat["name"].replace(" ", "_"))
+        obj.Label = feat["name"]
+        obj.Shape = shape
+        self.solids[self.solids.index(body)] = obj
+        return obj
+
+    def build_delete_face(self, feat):
+        d = feat["definition"]
+        if not d.get("heal", True):
+            raise NotImplementedError("delete face without healing")
+        made = []
+        for body, faces in self.selected_faces(d["faces"]).items():
+            shp = body.Shape.defeaturing([body.Shape.Faces[k] for k in faces])
+            if abs(shp.Volume - body.Shape.Volume) < 1e-9 * max(1.0, body.Shape.Volume) and len(shp.Faces) >= len(body.Shape.Faces):
+                raise ValueError("OCC defeaturing removed nothing")
+            made.append((body, shp))
+        for body, shp in made:
+            self.replace_with_shape(body, shp, feat)
+        self.doc.recompute()
+        return {"bodies": len(made)}
+
+    def build_draft(self, feat):
+        d = feat["definition"]
+        anchor = d.get("anchor") or {}
+        if anchor.get("kind") != "neutral_plane":
+            raise NotImplementedError("draft anchor " + str(anchor.get("kind")))
+        per_body = self.selected_faces(d["faces"])
+        nb = self.selected_faces(anchor["plane"])
+        if len(per_body) != 1 or list(nb) != list(per_body) or sum(len(v) for v in nb.values()) != 1:
+            raise NotImplementedError("draft over several bodies or neutral planes")
+        body = next(iter(per_body))
+        neutral = body.Shape.Faces[nb[body][0]]
+        if neutral.Surface.TypeId != "Part::GeomPlane":
+            raise NotImplementedError("non-planar draft neutral face")
+        pb = self.doc.addObject("PartDesign::Body", "DraftBody")
+        pb.BaseFeature = body
+        dr = pb.newObject("PartDesign::Draft", "Draft")
+        dr.Base = (body, ["Face%d" % (k + 1) for k in per_body[body]])
+        dr.NeutralPlane = (body, "Face%d" % (nb[body][0] + 1))
+        dr.Angle = math.degrees(float(d["angle"]))
+        dr.Reversed = bool(d.get("outward"))
+        self.doc.recompute()
+        if pb.Shape.isNull() or "Invalid" in dr.State or not pb.Shape.Solids:
+            self.doc.removeObject(dr.Name)
+            self.doc.removeObject(pb.Name)
+            self.doc.recompute()
+            raise ValueError("OCC draft failed")
+        self.solids[self.solids.index(body)] = pb
+        return {"faces": len(per_body[body])}
 
     def build_edge_treatment(self, feat, kind):
         d = feat["definition"]
