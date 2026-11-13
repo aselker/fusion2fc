@@ -160,11 +160,11 @@
   "steps": 3
  },
  "case_chamfer_distance_angle": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_chamfer_distance_angle_flipped": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_chamfer_hole_edge": {
@@ -188,15 +188,15 @@
   "steps": 3
  },
  "case_chamfer_two_distances": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_chamfer_two_distances_flipped": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_chamfer_two_distances_swapped": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_component_offset": {
@@ -268,7 +268,7 @@
   "steps": 3
  },
  "case_fillet_chord_length": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_fillet_concave_boss_round": {
@@ -436,7 +436,7 @@
   "steps": 37
  },
  "digitalsputnik_Apollo_Yoke_Lamp_Mount_Body_M_SPPS000000036_v2": {
-  "match": 2,
+  "match": 6,
   "steps": 14
  },
  "digitalsputnik_Apollo_Yoke_Lock_B_Side_P_MPLA000000177_v2": {
@@ -504,7 +504,7 @@
   "steps": 18
  },
  "intuibase_Co2SensorEnclosure": {
-  "match": 4,
+  "match": 5,
   "steps": 21
  },
  "intuibase_SCD41Chamber": {
