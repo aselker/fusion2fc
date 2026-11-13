@@ -17,3 +17,9 @@
 **Left:** appleScreen shell (scope not bound to a unique history pair; also blocked by native extrude profile upstream); Handlebars Shell3 fails to find a boundary edge (upstream loft missing); Dice DeleteFace1 face is a lone circle edge and defeaturing removes nothing (upstream pattern mismatch too); thicken needs surface bodies (Hook Thicken1 follows a skipped surface extrude; tealight Thicken faces are native); split body tool faces are native. Draft sign convention (angle sign vs `outward`) untested against Fusion.
 
 **Gotchas:** never run two `run_corpus.py` on the same model at once (they share `steps/`). `Part::Thickness` needs `Intersection=True` for sharp inside corners.
+
+## Update (round 4: loft)
+
+**Done:** `Rebuilder.build_loft` = `Part::Loft` through whole-sketch sections (one outermost planar loop per section; a whole-sketch section selects every region, so an annulus plus its inner disc fills back to the outer loop, which matches Fusion's volumes). Handlebars 9 -> 18/27 steps. No rails/centerline, surface, linearized, or multi-profile sections yet (clear NotImplemented reasons).
+
+**Left:** Doom Keycap lofts (sections are sketches with several disjoint profiles; the decoder says "whole sketch" but the real selection must be a subset: needs region frames from the decoder). Handlebars Loft7 (section sketch is not planar-profile). Surface extrude/thicken: Hook's surface extrude has a `Path` profile and Thicken1's thickness is not in the dump; tealight needs patch/trim/stitch (32 steps, big). Derived Base Feature (Connector_Bracket 19, Example_B 12): the stored snapshot body is not an active body of the final BREP (later features modify it), so the decoder has no geometry to export; needs historical body geometry per state. kantoku Base Feature: stored body decodes as solid with double-sided faces but Fusion treats it as a surface body (rebuilt shows 1 body vs 0). Flange: not attempted.
