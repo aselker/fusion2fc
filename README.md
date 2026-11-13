@@ -12,7 +12,13 @@ parametric features and timeline rather than only the final geometry.
 2. **Rebuild** the decoded design in FreeCAD with `fusion2fc/rebuild.py`, run by
    `freecadcmd` (inputs via `F2FC_*` environment variables, see the module docstring).
    Sketches become Sketcher sketches; extrudes become profile binder → `Part::Extrusion`
-   → boolean chains; fillets and chamfers find their edges by geometry.
+   → boolean chains (profile loops that overlap or cross are built as a static boolean face,
+   not by the binder's face maker); fillets and chamfers find their edges by geometry, and shell, draft and delete-face find their faces from the recorded boundary edges (`Part::Thickness`, `PartDesign::Draft`, OCC defeaturing). Holes become
+   primitive solids cut from the bodies; patterns and mirrors re-apply their seed features'
+   tools through Draft arrays or `Part::Mirroring` (or copy bodies); revolves, moves and
+   combines map to `Part::Revolution`, placed `Part::Compound`s and Part booleans.
+   Base Feature bodies (stored, not rebuilt) are exported from the CADIR to STEP by
+   `tools/stored_bodies.py` (`F2FC_BODIES`) and imported as the starting solids.
 3. **Check** against Fusion ground truth.
 
 ## Layout
