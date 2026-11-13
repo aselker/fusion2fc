@@ -32,11 +32,34 @@ diff, N = no oracle profile.
 - intuibase_SCD41Chamber@Extrude3: R (trimmed regions leave two sliver bodies Fusion does not have).
 - ravengraves_NEMA17@Extrude1: R, stale loops (stored square; four chamfer lines added later; Fusion = octagon piece).
 
-Counts: R 19, X 2 (+1 R/X), D 1, T 2 (+1 after fix), N 2 (overlap with R).
+Counts (initial triage): R 19, X 2 (+1 R/X), D 1, T 2 (+1 after fix), N 2 (overlapping R).
 
-Root cause of R: the file stores whole sketch-profile loops (and per-selection persistent ids),
-not Fusion's arrangement regions, and the stored loops predate later sketch edits. Resolving it needs
-the selection identities (DesignExtrudeSelectionMember local_id) or the extrude's output cap faces.
+## Done (this pass)
+- cadmpeg `unselected_extrude_profile`: the recorded curve selection now outranks the history
+  transition (which can only name whole stored loops). Fixed the first extrude of WilkoV_03
+  (4->7), badger2040 (2->6), oled_cover (3->6, passes), Lamp_Mount (1->2), NEMA17 (1->2),
+  gtgkartik (2->3), and with the rebuild fixes below SG90 (8->18) and Int_Corner (1->3).
+- rebuild.py: `overlapping_profile_union` (partly overlapping whole loops build a union face),
+  `crossing_loops` (a hole loop crossing its outer loop builds by boolean cut), circle pieces
+  merged back to one closed edge when nothing else meets the split point (keeps later fillets
+  working: Disc_P2, adafruit_2831 regressed without it), through-all cut that meets no body is
+  flipped.
+- Corpus: 43/102 models, 420/1073 steps (baseline 42/395); generated 28/29; run_cases 28/29;
+  cargo test -p cadmpeg-codec-f3d passes. No model lost matched steps.
 
-Earlier findings (previous profile agent): see git history of this file. Gotchas: foreground
-commands are backgrounded after 180 s; handoff-tools/area_check.py is stale against the current rebuild.
+## Left (ranked by models blocked at an Extrude)
+1. R, 14 models still: Pizero, 2278, administrativetrick, co2_box, busra_kol, Claw, Lock_B_Side,
+   Lock_P3, Controller_Cooler, Tihend, Seven_LED, SCD41, bowenchristopher, WilkoV later steps.
+   For these the recorded selection either does not resolve (Tihend, Pizero still take the
+   transition result) or resolves to the wrong pieces; next step is tracing why
+   `recorded_curve_selection_profile` returns None for them (needs a debug eprintln build).
+2. T: Nupud_T1/T_v2 (1e-5 relative), Int_Corner Extrude4 (48994.7 vs 48994.2), SG90 Extrude9.
+3. PacktPublishing_3_1 Extrude3: flipped through-all cut now hits, but also cuts a second
+   body Fusion left alone (participant bodies not decoded).
+4. T_bel_T2 Extrude2: oracle has no profile; stored outer loop (hexagon) lies inside its "hole".
+
+## Gotchas
+- Foreground commands are backgrounded after ~120 s here; poll with short timeouts.
+- handoff-tools/area_check.py is stale against the current rebuild.
+- No Rust unit test was added for the ordering change (needs a fixture with both a recorded
+  selection and a history transition); the corpus gain is the evidence.

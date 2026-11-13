@@ -336,8 +336,33 @@ class Rebuilder:
                 return Part.Circle(uv(g["center"]), V(0, 0, 1), g["radius"]).toShape(t0, t1)
             raise NotImplementedError("trimmed %s" % g["kind"])
 
+        def merged(boundary):
+            """Consecutive pieces of one curve with contiguous parameter ranges join into
+            one piece (a circle stored as two half arcs becomes one closed edge)."""
+            segs = [dict(s, parameter_range=list(s["parameter_range"])) for s in boundary]
+            if len({s["entity"] for s in segs}) > 1:
+                return segs  # another curve meets the split point, which then needs its vertex
+            changed = True
+            while changed and len(segs) > 1:
+                changed = False
+                for i in range(len(segs)):
+                    a_, b_ = segs[i], segs[(i + 1) % len(segs)]
+                    if a_ is b_ or a_["entity"] != b_["entity"] or a_.get("reversed") != b_.get("reversed"):
+                        continue
+                    kind = ents[a_["entity"]]["geometry"]["kind"]
+                    if kind not in ("circle", "arc"):
+                        continue
+                    t0, t1 = a_["parameter_range"]
+                    u0, u1 = b_["parameter_range"]
+                    if abs(t1 - u0) < 1e-9 and (u1 - t0) <= 2 * math.pi + 1e-9:
+                        a_["parameter_range"] = [t0, u1]
+                        del segs[(i + 1) % len(segs)]
+                        changed = True
+                        break
+            return segs
+
         def loop_wire(boundary):
-            edges = [seg_edge(s) for s in boundary]
+            edges = [seg_edge(s) for s in merged(boundary)]
             return Part.Wire(Part.__sortEdges__(edges))
 
         faces = []
@@ -359,11 +384,18 @@ class Rebuilder:
             # Union of adjacent regions: rebuild one face from the boundary of the union
             # (edges owned by a single face), so the extrude yields one body per lump.
             fused = faces[0].fuse(faces[1:])
-            free = [e for e in fused.Edges if len(fused.ancestorsOfType(e, Part.Face)) == 1]
+            free = self.join_circle_pieces(
+                [e for e in fused.Edges if len(fused.ancestorsOfType(e, Part.Face)) == 1])
             wires = [Part.Wire(group) for group in Part.sortEdges(free)]
             shape = Part.makeFace(wires, "Part::FaceMakerBullseye")
         else:
             shape = faces[0]
+        try:  # pieces of one circle (split where regions met) become one edge again
+            unified = shape.removeSplitter()
+            if unified.isValid() and abs(unified.Area - shape.Area) < 1e-9 * max(shape.Area, 1.0):
+                shape = unified
+        except Exception:
+            pass
         shape.Placement = placement
         return shape
 
@@ -386,6 +418,31 @@ class Rebuilder:
                     raise NotImplementedError("loop curve " + g["kind"])
             faces.append(Part.Face(Part.Wire(Part.__sortEdges__(edges))))
         return faces
+
+    @staticmethod
+    def join_circle_pieces(edges):
+        """Edges that are pieces of one full circle (split where regions met) become the
+        single closed circle edge, as the sketch curve is."""
+        groups = defaultdict(list)
+        out = []
+        for e in edges:
+            c = e.Curve
+            if isinstance(c, Part.Circle):
+                key = tuple(round(x, 6) for x in (c.Center.x, c.Center.y, c.Center.z, c.Radius,
+                                                  abs(c.Axis.x), abs(c.Axis.y), abs(c.Axis.z)))
+                groups[key].append(e)
+            else:
+                out.append(e)
+        others = [v.Point for e in out for v in e.Vertexes]
+        for es in groups.values():
+            c = es[0].Curve
+            whole = len(es) > 1 and abs(sum(e.Length for e in es) - 2 * math.pi * c.Radius) < 1e-6 * c.Radius
+            # Only a ring of its own: another edge meeting a split point needs that vertex.
+            if whole and not any((v.Point - q).Length < 1e-7 for e in es for v in e.Vertexes for q in others):
+                out.append(Part.Circle(c.Center, c.Axis, c.Radius).toShape())
+            else:
+                out += es
+        return out
 
     def crossing_loops(self, sid, regions):
         """True when a `loops` region has a hole loop that crosses its outer loop (neither
