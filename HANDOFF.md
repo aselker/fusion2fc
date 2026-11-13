@@ -43,3 +43,16 @@ Left:
 - case_fillet_tangent_chain_off (OCC always follows tangent chains), corner_setback, corner_mixed_radii (OCC corner blend differs), asymmetric fillet (no OCC equivalent through Part::Fillet).
 - badger2040 Fillet2/3 (radius exceeds the 1.6 mm end face), the rest of "edges not found" follow wrong upstream bodies.
 Gotchas: run `../build-decoder.sh` from the worktree root (from elsewhere it fails silently under grep). Never splice rebuild.py with s[:a]+x+s[b:] when b may precede a.
+
+## edges agent, round 3
+
+Done:
+- DR-341 chamfer reference face: there is no stored flip bit. The byte 21 bytes after the edge-recipe's next header (flag in the edge-operand frame) is the API's 5th argument, which make_cases.py misnames `flip`: it is `isTangentChain` for chamfers (case `*_flipped` = tangent chain on; geometry identical to the unflipped case). The decoder now measures the assignment from the exact transition (`history/chamfer_bevels.rs`, `annotate_chamfer_reference_faces`): setback of the bevel plane (or revolved bevel circle) on each planar support, matched to the stated distances, published as the feature source property `chamfer_first_faces` (`slot:first|second:origin,normal`). `rebuild.py` picks the OCC face on that plane; edges without their own entry use the group's other planes; no entry gives a clear "not recorded" refusal. The F2FC_CHAMFER_FIRST knob and the "back" guess are gone. All 5 generated asymmetric cases, PacktPublishing_Bracket_Solid (now 5/5) and Co2SensorEnclosure Chamfer (circle edge, revolved bevel) are measured.
+- Fillets of unequal radii that meet at a vertex are refused (OCC corner blend differs from Fusion's: case_fillet_corner_mixed_radii).
+
+Findings / left:
+- Tangent chain: no stored signal (fillet operand flag byte is 0 in both case_fillet_tangent_chain_off and the chain-on case). A refusal when the selection leaves a G1 neighbour out regressed uwearzt_DINRailMount Fillet2 (Fusion's chain is on there and the stored selection lists only the clicked edges), so it was dropped. OCC always follows chains.
+- WilkoV_03_Refinements Fillet1: radius equals both the cylinder radius and its height (Fusion yields a hemisphere, 2.0944e6); OCC "command not done" even shrunk, and the step is reported built with the body unchanged. Needs a sphere/cap special construction.
+- corner_setback, asymmetric fillet and variable radius: no OCC equivalent through Part::Fillet (unchanged, asymmetric/variable refused).
+- edge selection native fillets (tealight, nick0451 x8, N2_Pencil Fillet2/3): not progressed; see round 2 notes (single-support spline blend; Fusion-lost references).
+Gotchas: ASM history topology has no face sense or coedge sense, so orientation rules cannot be computed in the decoder; plane identity (not orientation) is the portable way to name a face. Run cargo tests as `../cargo-locked.sh test -q --manifest-path cadmpeg/Cargo.toml -p cadmpeg-codec-f3d --lib` from the worktree root.

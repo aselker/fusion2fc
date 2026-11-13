@@ -914,6 +914,20 @@ class Rebuilder:
         self.solids[self.solids.index(body)] = pb
         return {"faces": len(per_body[body])}
 
+    def require_uniform_corner_radii(self, body, edges):
+        """Fillets of different radii that meet at a vertex get a corner blend that OCC builds
+        differently from Fusion (case_fillet_corner_mixed_radii: 987.06 vs 985.63)."""
+        shape = body.Shape
+        at_vertex = []
+        for idx, r0, r1 in edges:
+            for vtx in shape.Edges[idx - 1].Vertexes:
+                at_vertex.append((vtx, idx, r0, r1))
+        for i, (v, idx, r0, r1) in enumerate(at_vertex):
+            for w, jdx, q0, q1 in at_vertex[i + 1:]:
+                if jdx != idx and v.isSame(w) and max(abs(r0 - q0), abs(r1 - q1), abs(r0 - q1), abs(r1 - q0)) > 1e-9 \
+                        and abs(r0 - r1) < 1e-9 and abs(q0 - q1) < 1e-9:
+                    raise NotImplementedError("corner blend of unequal fillet radii (OCC corner differs from Fusion's)")
+
     @staticmethod
     def chamfer_first_planes(feat):
         """slot -> (is_first, origin, normal): a planar support of the edge and whether it
@@ -1067,6 +1081,9 @@ class Rebuilder:
         if missing:
             raise ValueError("%d selected edges not found in the rebuilt bodies (nearest: %s)"
                              % (len(missing), ", ".join(missing[:6])))
+        for body, edges in per_body.items():
+            if kind == "fillet":
+                self.require_uniform_corner_radii(body, edges)
         # A radius that consumes a whole adjacent face exactly (a fillet as tall as the step
         # it rounds) is degenerate for OCC; Fusion accepts it. Retry shrunk by a hair, which
         # leaves a sliver face but a volume within 1e-7 of the exact result.
