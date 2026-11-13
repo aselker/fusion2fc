@@ -47,6 +47,31 @@ Counts (initial triage): R 19, X 2 (+1 R/X), D 1, T 2 (+1 after fix), N 2 (overl
 - Corpus: 43/102 models, 420/1073 steps (baseline 42/395); generated 28/29; run_cases 28/29;
   cargo test -p cadmpeg-codec-f3d passes. No model lost matched steps.
 
+## Third pass (why recorded_curve_selection_profile returned None)
+Root causes found with temporary eprintln builds (removed), fixed in cadmpeg 929e4ccf7c:
+1. Shared arrangement budget (Tihend, Lock_P3, Claw, 2278): each region of a multi-region
+   selection rebuilt the whole sketch arrangement and charged the 1M per-selection cap again.
+   Faces are now cached per selection (`ProfileGeometryWork::curve_faces`).
+2. Stored loop lists a split curve's pieces out of walk order (Tihend 16-curve face): the
+   unique face with the same curve multiset is taken (`arrangement_region_matching_curve_set`,
+   reports FeatureProfileLoopFlagsAssumed).
+3. Lines with an in-plane stored normal were dropped from the sketch (Tihend 209/230).
+4. Curves with no constraint had no owner: the curve record ends with a typed container
+   reference (flag, u64, GUID string, 2 zero bytes) that was not read (Pizero circle 104).
+Results: Tihend 1->2/2 (passes), Lock_P3 1->13/14, Claw 1->4/12, 2278 2->4/5. Corpus 43/102
+models, 432/1073 steps (generated 28/29, run_cases 28/29, cargo test passes, no regressions).
+
+## Still failing at an Extrude, by DBG exit (before fixes; counts are models)
+- L4363 `!single_exterior` multi-loop region with no ring match (bowenchristopher, Controller_Cooler,
+  Seven_LED): a region with holes whose rings do not match faces; same order issue likely applies
+  to `arrangement_regions_matching_member_rings` (try multiset matching there).
+- L4280 curve selection does not resolve (co2_box, Lock_B_Side, Controller_Cooler, Seven_LED): a
+  program curve is missing/point (Lock_B_Side: curve 1231 has no identity record).
+- Pizero: selection names derived piece ids (106, 123, 126, 128, 130) that exist as no stored
+  curve (second-generation split pieces); needs wildcard ring matching on the known parents.
+- administrativetrick: no counted group (oracle profile is an error).
+- busra_kol, SCD41, WilkoV later steps (Fillet) not traced.
+
 ## Left (ranked by models blocked at an Extrude)
 1. R, 14 models still: Pizero, 2278, administrativetrick, co2_box, busra_kol, Claw, Lock_B_Side,
    Lock_P3, Controller_Cooler, Tihend, Seven_LED, SCD41, bowenchristopher, WilkoV later steps.
