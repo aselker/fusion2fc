@@ -40,3 +40,11 @@ Findings (no code change; debug prints removed):
 - thicken_face: the face operand's own record says active face slot 22 (boundary at y=0, neighbours 14 and 32, identical for the y=20 face), yet Fusion's mesh thickens y=20..21.5. The decoder follows the file; a ground-truth check (VM) of which face `faces.item(0)` is would settle whether the file's slot or the case script is right. Candidate faces in the operand: entity 11, 14, 22, 32.
 - appleScreen Shell3: `face_selection_state` returns None because the scope is not in `scope_histories` and `unique_history_state_pair(212, 211)` is ambiguous across histories (printed from instrumented build). Needs scope-to-history binding for this scope (`bind_scope_histories`), not the shell wall logic.
 - Hook Thicken1 and digitalsputnik Draft2/3 fail on upstream rebuilt-body mismatches, not on selection.
+
+## Update (round 7)
+
+**Done:** split by tool body (decoder lists the tool body's faces from the body recipe operand: `bind_split_tool_body_faces` in history.rs; rebuild splits each target into its parts inside/outside the tool and keeps the tool). Sweep path: an entity selection whose primary identity is a Sketch now resolves to `sketch_curves` even when its secondary identity equals a history edge slot (projection had already produced `historical_edges`; `bind_sweep_sketch_selections` now also replaces those). Rebuild: sweep of a profile that is off a straight path translates it along the path vector.
+
+**Not done (reasons):**
+- appleScreen Shell3: instrumented build showed `bind_scope_histories` is never reached for scope #65139 (`scope_candidates` empty: no history holds the pair 212/211 by the direct or chained relation), so no unambiguous binding exists without guessing. Needs the history layout of that model examined (probably the 211 state lives in another history).
+- thicken_face: truth `features.json` has no face data for the thicken (only result bodies); the face operand records active face 22 (y=0). Fusion's mesh thickens y=20..21.5. Unresolved without the VM.
