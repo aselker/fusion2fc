@@ -1429,6 +1429,33 @@ class Rebuilder:
             m.Normal = vec(p["plane_normal"])
             self.doc.recompute()
             return m
+        if k in ("linear_offsets", "circular_angles"):
+            # Instances at explicit signed offsets (or angles) from the seed; the seed's own (zero)
+            # position is not copied.
+            parts = []
+            for i, off in enumerate(p["offsets"] if k == "linear_offsets" else p["angles"]):
+                if abs(off) < 1e-12:
+                    continue
+                if k == "linear_offsets":
+                    if not p.get("direction"):
+                        raise NotImplementedError("linear pattern direction unresolved")
+                    d1 = vec(p["direction"])
+                    d1.normalize()
+                    pl = App.Placement(d1 * off, App.Rotation())
+                else:
+                    axis = vec(p["axis_dir"])
+                    axis.normalize()
+                    pl = App.Placement(App.Vector(), App.Rotation(axis, math.degrees(off)), vec(p["axis_origin"]))
+                c = self.doc.addObject("Part::Compound", "Instance")
+                c.Label = "%s %d" % (label, i)
+                c.Links = [src]
+                c.Placement = pl
+                parts.append(c)
+            arr = self.doc.addObject("Part::Compound", "Array")
+            arr.Links = parts
+            arr.Label = label
+            self.doc.recompute()
+            return arr
         import Draft
         if k == "circular":
             angle = p["angle"]
