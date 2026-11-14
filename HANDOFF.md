@@ -25,3 +25,11 @@
 - `$TMPDIR` is unset in this shell; use the scratchpad for `cadmpeg convert -o ... --force` output.
 - `cargo fmt` reformats ~19 files not fmt-clean upstream; run it, then `git checkout` the unrelated ones.
 - features.json has no pattern/hole/mirror data for most features (only counts for circular patterns).
+
+## Round 4 (patterns)
+- Done: rectangular-pattern distribution block read when the block carries four extra leading zero bytes (generated Active designs): gives Extent vs Spacing and the symmetric flag. Symmetric patterns with an odd count project as `LinearOffsets` / `CircularAngles` with signed offsets (seed at zero). IR change: offsets/angles must be strictly increasing and include zero (no longer start at zero); creo test string updated. Rebuilder `pattern_copies` places compound copies at explicit offsets/angles. pat_rect_one_dir_extent, pat_rect_symmetric, pat_circ_symmetric now pass.
+- Even-count symmetric patterns still return no projection (layout not settled; no data).
+- pat_rect_faces: rebuilder `face_pattern` re-applies the cut/join tool whose walls carry the selected faces, but the decoder resolves the historical face wrongly (face 124 is the block's x=0 plane, not the hole cylinder), so the step is skipped ("face selection unproven"). Fix the face slot resolution of the R-Pattern face group (group #51910) to finish.
+- pat_path: scope PathPattern has no `path_pattern_settings` parsed for this layout (extent distance semantic of "5 instances, distance 1" unclear) and the rebuilder cannot resolve the native path group to a sketch curve. Not attempted.
+- nick0451 R-Pattern6 / NEMA17 R-Pattern1: not attempted.
+- Gotcha: killing a cargo build mid-link corrupts incremental output (lld undefined hidden symbol); remove target/release/incremental/cadmpeg_codec_f3d-* and deps/libcadmpeg_codec_f3d-* and rebuild. Foreground waits are backgrounded after 180 s; wait on log files with a polling loop.
