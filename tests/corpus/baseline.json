@@ -4,7 +4,7 @@
   "steps": 19
  },
  "PacktPublishing_2BC": {
-  "match": 3,
+  "match": 6,
   "steps": 10
  },
  "PacktPublishing_3_1_Example": {
@@ -250,6 +250,22 @@
  "case_cut_participant": {
   "match": 7,
   "steps": 7
+ },
+ "case_cut_participants_all": {
+  "match": 9,
+  "steps": 10
+ },
+ "case_cut_participants_blind": {
+  "match": 9,
+  "steps": 10
+ },
+ "case_cut_participants_one": {
+  "match": 9,
+  "steps": 10
+ },
+ "case_cut_participants_reverse": {
+  "match": 10,
+  "steps": 11
  },
  "case_cut_through_all": {
   "match": 4,
@@ -732,7 +748,7 @@
   "steps": 2
  },
  "case_split_body_by_tool_body": {
-  "match": 4,
+  "match": 5,
   "steps": 5
  },
  "case_split_body_plane": {
@@ -752,7 +768,7 @@
   "steps": 3
  },
  "case_sweep_cut_groove": {
-  "match": 4,
+  "match": 5,
   "steps": 5
  },
  "case_sweep_line": {
@@ -900,7 +916,7 @@
   "steps": 8
  },
  "onlinelei_hook_sogou_v1": {
-  "match": 1,
+  "match": 4,
   "steps": 6
  },
  "ravengraves_NEMA17StepperMotor": {
@@ -916,7 +932,7 @@
   "steps": 29
  },
  "runtimerobotics_rosbot": {
-  "match": 8,
+  "match": 26,
   "steps": 26
  },
  "ulikoehler_B10P_VH": {

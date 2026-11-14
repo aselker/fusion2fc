@@ -78,7 +78,8 @@ still give the right shape and say what was lost, never quietly give wrong geome
 | + 37 fillet/chamfer cases | 69/139 | 564/1209 | |
 | After fillet rounds 1–2, loft | 76/139 | 585/1209 | |
 | +94 everyday cases, profiles/patterns round 3 | 128/233 | 930/1560 | generated 110/160 (535/593 steps), supported 12/28, extended 6/45; run_cases 114/160 |
-| **Current main** (round 4/5: scale, split, offset face, draft, shell, sweep taper/twist, tapped holes, copy body, whole-sketch revolve/sweep, ellipses) | **154/233** | **962/1560** | generated 136/160 (562/593 steps), supported 12/28, extended 6/45; run_cases 140/160 |
+| round 4/5: scale, split, offset face, draft, shell, sweep taper/twist, tapped holes, copy body, whole-sketch revolve/sweep, ellipses) | 154/233 | 962/1560 | generated 136/160 (562/593 steps), supported 12/28, extended 6/45; run_cases 140/160 |
+| **Current main** (+ split by tool body, off-path sweep, region operands with replaced curves, rosbot Move, honest cut/join refusals, 4 participant-cut cases) | **157/237** | **1025/1601** | generated 138/164 (601/634 steps), supported 12/28 (126/220), extended 7/45 (298/747); run_cases 143/164 |
 
 ## What works now (merged on main)
 
@@ -184,6 +185,32 @@ in the agents' `HANDOFF.md` files.
    Gate_Bracket): low priority for hobby use.
 8. **Rule fillets:** none appear in the corpus or in 850 permissively licensed public `.f3d`
    files, and the Fusion API can't create them. Low priority unless the user makes a sample.
+
+## Findings from round 6 (2026-11-13 evening), not yet fixed
+
+- **Wrong-region extrudes** (silent wrong geometry): co2_box Extrude18, kol Extrude4, Claw
+  Extrude1, Industrial_Tool_2 Extrude2, Controller_Cooler_P2 Extrude2, Seven_LED_Insert
+  Extrude1. The decoder has to resolve the selection uniquely, or downgrade it to unresolved.
+  The classification table is in `.worktrees/profiles/HANDOFF.md`.
+- **Participant cuts:**
+  - The Extrude prologue with a `reference:N` participant list is rejected at the DR-117
+    refusal.
+  - Variants `case_cut_participants_{one,all,blind,reverse}` were generated for decoding it.
+  - The rebuilder plan: `affected_bodies` plus recorded `body_centers`.
+  - See `.worktrees/features-b/HANDOFF.md`.
+- **Derived Base Feature** (Connector_Bracket, Example_B): needs historical-state BREP from
+  replaying the ASM delta states. This is a decoder project of its own.
+- **appleScreen Shell3:** no history holds the 212/211 state pair.
+- **thicken_face:** Fusion's `faces.item(0)` of the sheet is the y=20 mm face (checked in the
+  VM). The decoder reads active face slot 22 as the y=0 face, so it misreads which face is
+  selected.
+- **Region gaps left:**
+  - B10P/B2PS: cap-face matching against arrangement regions;
+  - Cake_v2: a branching transition chain;
+  - TimingPulleyBase: ring matching with replaced members.
+- Quick triage of the first failure per real model, reading `tests/out/corpus/*/result.json`:
+  each file's `summary.first_mismatch` has `name`, `type`, `rebuild.status`/`reason` and
+  `problems`. Sort by `steps - index`.
 
 ## Comparator questions for the user
 
