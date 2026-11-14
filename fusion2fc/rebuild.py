@@ -2299,6 +2299,56 @@ class Rebuilder:
             wires.append(w)
         return Part.makeLoft(wires, True, not twist)
 
+    @staticmethod
+    def sweep_both_ways(section, wire):
+        """Pipe of a planar section lying on a path: the path is cut where it crosses the
+        section and each part gets an OCC right-corner (mitred) pipe shell; the halves fuse."""
+        face = section if section.Faces else Part.Face(Part.Wire(Part.__sortEdges__(section.Edges)))
+        prof = Part.Wire(Part.__sortEdges__(face.OuterWire.Edges))
+        dist, pts, _ = face.distToShape(wire)
+        if dist > 1e-4:
+            raise NotImplementedError("sweep profile away from the path")
+        pt = pts[0][0]
+        tol = 1e-6
+        verts = wire.OrderedVertexes
+        before, after = [], []
+        hit = False
+        for k, e in enumerate(wire.OrderedEdges):
+            a, b = verts[k].Point, verts[k + 1].Point if k + 1 < len(verts) else verts[0].Point
+            if hit:
+                after.append(e)
+            elif (a - pt).Length < tol:
+                hit = True
+                after.append(e)
+            elif (b - pt).Length < tol:
+                hit = True
+                before.append(e)
+            elif e.distToShape(Part.Vertex(pt))[0] < tol:
+                hit = True
+                c = e.Curve
+                fp, lp = e.FirstParameter, e.LastParameter
+                u = c.parameter(pt)
+                fwd = (e.valueAt(fp) - a).Length < tol
+                s0, s1 = (fp, u), (u, lp)
+                first, second = (s0, s1) if fwd else (s1, s0)
+                before.append(Part.Edge(c, *first))
+                after.append(Part.Edge(c, *second))
+            else:
+                before.append(e)
+        if not hit:
+            raise ValueError("the profile does not meet the path")
+        halves = []
+        if after:
+            halves.append(Part.Wire(Part.__sortEdges__(after)).makePipeShell([prof], True, False, 1))
+        if before:
+            rev = Part.Wire(Part.__sortEdges__(before))
+            rev.reverse()
+            halves.append(rev.makePipeShell([prof], True, False, 1))
+        solid = halves[0] if len(halves) == 1 else halves[0].fuse(halves[1]).removeSplitter()
+        if not solid.isValid() or not solid.Solids:
+            raise ValueError("sweep halves do not form a valid solid")
+        return solid
+
     def build_sweep(self, feat):
         d = feat["definition"]
         shape = d["shape"]
@@ -2392,9 +2442,25 @@ class Rebuilder:
             tool = self.static(self.sweep_twisted(groups[0][0].Shape, wire, twist, taper), name)
             self.doc.recompute()
             return dict(self.apply_op(shape["op"], tool, name), **self.notes)
+        if sec.get("kind") == "profile" and not at_start and len(groups) == 1 and not groups[0][1] \
+                and ext["along_fraction"] == 1.0 and ext["against_fraction"] == 1.0:
+            # a profile inside the path: sweep both ways from it and join the halves
+            tool = self.static(self.sweep_both_ways(section, wire), name)
+            self.doc.recompute()
+            return dict(self.apply_op(shape["op"], tool, name), **self.notes)
         if self.path_corners(wire):
             if sec.get("kind") != "generated":
-                raise NotImplementedError("profile sweep along a path with corners")
+                if len(groups) != 1 or groups[0][1] or not at_start:
+                    raise NotImplementedError("profile sweep along a path with corners (%d sections, holes %s, at start %s)" % (len(groups), [len(g[1]) for g in groups], at_start))
+                # OCC's right-corner transition mitres the section at each path corner
+                prof = Part.Wire(Part.__sortEdges__(groups[0][0].Shape.Edges))
+                pipe = wire.makePipeShell([prof], True, False, 1)
+                if not pipe.isValid() or not pipe.Solids:
+                    raise ValueError("mitred pipe shell is not a valid solid")
+                self.notes = {}
+                tool = self.static(pipe, name)
+                self.doc.recompute()
+                return dict(self.apply_op(shape["op"], tool, name), **self.notes)
             tube = [self.static(self.mitered_pipe(wire, c.Radius.Value, name), name) for c in sections]
             groups = []
             solids.append(self.subtract(tube[0], tube[1:], name))
