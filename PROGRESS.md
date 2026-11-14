@@ -1,6 +1,6 @@
 # fusion2fc progress notes
 
-Status as of 2026-11-13. Read this first when resuming. It is written for a fresh session or a
+Status as of 2026-11-13 (evening). Read this first when resuming. It is written for a fresh session or a
 different agent, and assumes no memory of earlier conversations.
 
 ## Goal
@@ -77,7 +77,8 @@ still give the right shape and say what was lost, never quietly give wrong geome
 | After WIP integration, early extrudes, regions, shell | 43/102 | 439/1073 | |
 | + 37 fillet/chamfer cases | 69/139 | 564/1209 | |
 | After fillet rounds 1–2, loft | 76/139 | 585/1209 | |
-| **Current main** (+94 everyday cases, profiles/patterns round 3) | **128/233** | **930/1560** | generated 110/160 (535/593 steps), supported 12/28, extended 6/45; run_cases 114/160 |
+| +94 everyday cases, profiles/patterns round 3 | 128/233 | 930/1560 | generated 110/160 (535/593 steps), supported 12/28, extended 6/45; run_cases 114/160 |
+| **Current main** (round 4/5: scale, split, offset face, draft, shell, sweep taper/twist, tapped holes, copy body, whole-sketch revolve/sweep, ellipses) | **154/233** | **962/1560** | generated 136/160 (562/593 steps), supported 12/28, extended 6/45; run_cases 140/160 |
 
 ## What works now (merged on main)
 
@@ -102,30 +103,27 @@ still give the right shape and say what was lost, never quietly give wrong geome
   - Base Feature stored bodies.
 - **Fail-safe:** conversion report, final-shape fallback, version warnings (`tools/convert.py`).
 
-## Paused work: three agents hit the Sonnet limit on 2026-11-13
+## Agent work in progress (round 6, started 2026-11-13 evening)
 
 Each agent has its own worktree under `.worktrees/<name>`, on branch `agent/<name>`, with a
 cadmpeg worktree on `f2fc-agent/<name>`. Every worktree has a `HANDOFF.md` with that agent's
-running notes. **None of this is merged.** Some of it is uncommitted, and none of it has been
-verified on the full corpus.
+running notes. Everything from rounds 4 and 5 is merged into main. Work started after that
+is not merged until the coordinator verifies it.
 
-- **`profiles`:** revolve/sweep profiles, ellipse and text.
-  - Committed: `482468b`, the rebuild change for bare-sketch profiles in revolve and sweep.
-  - Uncommitted: edits in `rebuild.py` and cadmpeg (`sketch.rs`, `face_resolve.rs`,
-    `sketch_project.rs`, `sketch_geometry.rs`, writer files). Its last note: "Compiles. Now
-    build the decoder, and meanwhile patch the rebuilder for ellipses."
-- **`features-a`:** tapped holes, patterns, copy body, components, cut participants.
-  - Committed: tapped holes (fusion `e6bec75`, cadmpeg `81129edb45`).
-  - Uncommitted: `rebuild.py`, cadmpeg `scopes/pattern.rs`. It was looking at the IR pattern
-    definition.
-- **`features-b`:** split, scale, offset faces, draft, shell, loft, sweep options, thicken.
-  - Committed:
-    - `083da22` scale, split body by plane, planar offset faces;
-    - `4ab916a` draft neutral plane, shell with no removed faces;
-    - `7fb879e` sweep taper/twist on straight paths;
-    - `9d0c75e` surface extrude sheets and thicken;
-    - `faa3a9a` README.
-  - It was about to run the full corpus.
+- **`profiles`:** sketch regions that don't resolve. The `unresolved_region_operand` models
+  (2BC, Cake_v2, hook_sogou, TimingPulleyBase), and the ulikoehler sketches that have no
+  closed loops.
+- **`features-a`:**
+  - First, fix the f3d lib test compile errors that its thread commit introduced
+    (`feature_project/tests/hole.rs`). **The tests on `fusion2fc` 877e68aa03 don't compile
+    until this lands.**
+  - Then patterns: symmetric and one-direction extent, pattern of faces, path pattern,
+    nick0451 R-Pattern6, and NEMA17 R-Pattern1.
+- **`features-b`:**
+  - split by tool body (list the tool's faces as Historical);
+  - appleScreen Shell3 (bind the scope to its history);
+  - case_sweep_cut_groove (the decoder resolves the path to a block edge);
+  - thicken face side.
 
 To resume, either send each agent a "continue" message (if the same session is still around),
 or start a new agent with that worktree and its `HANDOFF.md`. Tell it to finish, commit, run
@@ -196,6 +194,7 @@ These have not been changed; they are for the user to decide.
 - Surface-only steps never match (tealight, kantoku).
 - Localised datum-plane names (作業平面1) break alignment.
 - The Nupud models are about 1e-5 relative off in volume.
+- Warped faces (sweep_twist, loft_two_rect_circle, loft_offset_centers): volumes match and Fusion's mesh vertices lie within 1e-3 mm of our surface, but the mesh distance is 0.03–0.07 mm against a limit of about 0.015–0.02 mm. This looks like a tessellation limit in the comparator.
 
 ## Gotchas
 
