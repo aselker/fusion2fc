@@ -2219,6 +2219,46 @@
   }
  },
  {
+  "id": "case_cut_participants_reverse",
+  "tier": "generated",
+  "file": "../cases/cut_participants_reverse.f3d",
+  "sha256": "3e5568a6bc21c361a9a1b5e7e6a725cf017795170e50ea18b44145ce1a4fdfea",
+  "bytes": 93875,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_cut_participants_blind",
+  "tier": "generated",
+  "file": "../cases/cut_participants_blind.f3d",
+  "sha256": "3668b6da7f1bce4273218f3a0894cb699e324046d37a952127f1b9df26be9218",
+  "bytes": 92449,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_cut_participants_all",
+  "tier": "generated",
+  "file": "../cases/cut_participants_all.f3d",
+  "sha256": "bd10b085fd3cb73ccee49ca33a4694c1dfe317a6a7b27272c10a772f30dd3e94",
+  "bytes": 114092,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
+  "id": "case_cut_participants_one",
+  "tier": "generated",
+  "file": "../cases/cut_participants_one.f3d",
+  "sha256": "ad1d6da15849adc0d67247d07e3e924a169038802c06821f7f5086c30d8504fc",
+  "bytes": 93226,
+  "source": {
+   "generated": "vm/scripts/make_cases.py"
+  }
+ },
+ {
   "id": "case_draft_side_faces",
   "tier": "generated",
   "file": "../cases/draft_side_faces.f3d",

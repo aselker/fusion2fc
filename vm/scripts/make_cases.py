@@ -1790,6 +1790,66 @@ def cut_across_bodies_participants(design, root):
     extrude(root, sk.profiles.item(0), FO.CutFeatureOperation, setup)
 
 
+# participant-cut variants (decoder layout of the Extrude prologue reference list)
+def _three_stacked(root):
+    b1 = block(root, 0, 0, 2, 1, "3 mm")
+    b2 = block(root, 0, 0, 2, 1, "3 mm", plane=offset_plane(root, root.xYConstructionPlane, "5 mm"))
+    b3 = block(root, 0, 0, 2, 1, "3 mm", plane=offset_plane(root, root.xYConstructionPlane, "10 mm"))
+    return b1, b2, b3
+
+
+@case
+def cut_participants_one(design, root):
+    """Through-all cut whose participants are only the middle body."""
+    b1, b2, b3 = _three_stacked(root)
+    sk = root.sketches.add(root.xYConstructionPlane)
+    circle(sk, 1, 0.5, 0.3)
+
+    def setup(inp):
+        inp.setOneSideExtent(adsk.fusion.ThroughAllExtentDefinition.create(), POS)
+        inp.participantBodies = [b2]
+    extrude(root, sk.profiles.item(0), FO.CutFeatureOperation, setup)
+
+
+@case
+def cut_participants_all(design, root):
+    """Through-all cut naming all three bodies as participants."""
+    b1, b2, b3 = _three_stacked(root)
+    sk = root.sketches.add(root.xYConstructionPlane)
+    circle(sk, 1, 0.5, 0.3)
+
+    def setup(inp):
+        inp.setOneSideExtent(adsk.fusion.ThroughAllExtentDefinition.create(), POS)
+        inp.participantBodies = [b1, b2, b3]
+    extrude(root, sk.profiles.item(0), FO.CutFeatureOperation, setup)
+
+
+@case
+def cut_participants_blind(design, root):
+    """Blind 12 mm cut reaching all bodies, participants the bottom and top body."""
+    b1, b2, b3 = _three_stacked(root)
+    sk = root.sketches.add(root.xYConstructionPlane)
+    circle(sk, 1, 0.5, 0.3)
+
+    def setup(inp):
+        inp.setDistanceExtent(False, V("12 mm"))
+        inp.participantBodies = [b1, b3]
+    extrude(root, sk.profiles.item(0), FO.CutFeatureOperation, setup)
+
+
+@case
+def cut_participants_reverse(design, root):
+    """Through-all cut downward from a sketch above the stack, participant the bottom body."""
+    b1, b2, b3 = _three_stacked(root)
+    sk = root.sketches.add(offset_plane(root, root.xYConstructionPlane, "15 mm"))
+    circle(sk, 1, 0.5, 0.3)
+
+    def setup(inp):
+        inp.setOneSideExtent(adsk.fusion.ThroughAllExtentDefinition.create(), NEG)
+        inp.participantBodies = [b1]
+    extrude(root, sk.profiles.item(0), FO.CutFeatureOperation, setup)
+
+
 @case
 def multi_body_join_extrude(design, root):
     block(root, 0, 0, 2, 1, "3 mm")
