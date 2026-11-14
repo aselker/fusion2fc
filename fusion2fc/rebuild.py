@@ -765,17 +765,36 @@ class Rebuilder:
             fuse.Shapes = targets + [tool]
             fuse.Refine = True
             self.doc.recompute()
+            before = sum(t.Shape.Volume for t in targets)
+            if (self.feature or {}).get("definition", {}).get("definition") in ("extrude", "revolve", "sweep") \
+                    and fuse.Shape.Volume <= before * (1 + 1e-9):
+                self.doc.removeObject(fuse.Name)
+                raise ValueError("join adds no volume (profile, direction or extent not reproduced)")
             # Bodies the join leaves unconnected stay separate bodies.
             self.solids = [s for s in self.solids if s not in targets] + self.split_solids(fuse, name)
         elif op in ("cut", "intersect"):
             pool = participants if participants else self.same_component(self.solids)
             targets = [s for s in pool if self.overlaps(s, tool)]
+            made = []
+            if not targets and (self.feature or {}).get("definition", {}).get("definition") in ("extrude", "revolve", "sweep"):
+                # Fusion refuses a cut or intersect that meets no body, so a rebuilt tool that
+                # meets none is in the wrong place: refuse instead of leaving the body as it was.
+                raise ValueError("%s tool meets no body (profile, direction or extent not reproduced)" % op)
             for t in targets:
                 b = self.doc.addObject("Part::Cut" if op == "cut" else "Part::Common", op.capitalize())
                 b.Label = name + " " + op
                 b.Base, b.Tool = t, tool
                 b.Refine = True
                 self.solids[self.solids.index(t)] = b
+                made.append((t, b))
+            if op == "cut" and made:
+                self.doc.recompute()
+                gone = [b for _, b in made if b.Shape.isNull() or b.Shape.Volume <= 1e-9]
+                if gone and (self.feature or {}).get("definition", {}).get("definition") in ("extrude", "revolve", "sweep"):
+                    for t, b in made:  # leave the bodies as they were
+                        self.solids[self.solids.index(b)] = t
+                        self.doc.removeObject(b.Name)
+                    raise ValueError("cut removes a whole body (profile or extent not reproduced)")
         else:
             raise NotImplementedError("operation " + op)
         self.doc.recompute()
