@@ -260,11 +260,11 @@
   "steps": 2
  },
  "case_draft_side_faces": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_draft_single_face": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_extrude_blind": {
@@ -488,11 +488,11 @@
   "steps": 7
  },
  "case_offset_face_press_pull": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_offset_face_side_inward": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_params_renamed_suppressed": {
@@ -608,11 +608,11 @@
   "steps": 4
  },
  "case_scale_body_about_corner": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_scale_body_uniform": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_shell_inside": {
@@ -628,7 +628,7 @@
   "steps": 3
  },
  "case_shell_whole_body": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_sk_arc_center_start_end": {
@@ -736,11 +736,11 @@
   "steps": 5
  },
  "case_split_body_plane": {
-  "match": 3,
+  "match": 4,
   "steps": 4
  },
  "case_split_body_plane_yz": {
-  "match": 3,
+  "match": 4,
   "steps": 4
  },
  "case_suppressed_default_names": {
@@ -748,7 +748,7 @@
   "steps": 7
  },
  "case_sweep_arc_path": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_sweep_cut_groove": {
@@ -756,7 +756,7 @@
   "steps": 5
  },
  "case_sweep_line": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_sweep_line_arc_path": {
@@ -764,11 +764,11 @@
   "steps": 3
  },
  "case_sweep_spline_path": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_sweep_taper": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_sweep_twist": {
@@ -868,7 +868,7 @@
   "steps": 20
  },
  "homebrew_pinball_Metal_Post_1_Inch_02_4434": {
-  "match": 2,
+  "match": 4,
   "steps": 7
  },
  "homebrew_pinball_NeoPixel_Jewel_7_LED": {

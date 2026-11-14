@@ -75,7 +75,8 @@ class Rebuilder:
                         "move_body": "build_move_body", "combine": "build_combine",
                         "sweep": "build_sweep", "block": "build_block", "primitive": "build_primitive",
                         "sphere": "build_sphere", "torus": "build_torus", "base_feature": "build_base_feature",
-                        "shell": "build_shell", "delete_face": "build_delete_face", "draft": "build_draft", "loft": "build_loft"}
+                        "shell": "build_shell", "delete_face": "build_delete_face", "draft": "build_draft", "loft": "build_loft",
+                        "scale": "build_scale", "thicken": "build_thicken", "split_body": "build_split_body", "move_face": "build_move_face"}
 
     def __init__(self, slim, topo, wanted):
         self.slim = slim
@@ -558,7 +559,10 @@ class Rebuilder:
     def build_extrude(self, feat, suppressed=False):
         """Build an extrude; a suppressed one keeps its hidden tool out of the boolean chain."""
         d = feat["definition"]
-        if not d.get("solid", True):
+        surface = not d.get("solid", True)
+        if surface and (d["op"] != "new_body" or d["extent"]["kind"] != "one_sided" or suppressed
+                        or d["extent"]["side"].get("draft")
+                        or d["extent"]["side"]["termination"].get("kind") != "blind"):
             raise NotImplementedError("surface extrude")
         prof = d["profile"]
         value = prof.get("value")
@@ -668,6 +672,19 @@ class Rebuilder:
             ex.Label = feat["name"] + " (suppressed)"
             ex.Visibility = False
             return {"tool": ex.Name}
+        if surface:
+            # A surface extrude keeps the side faces only (no end caps): a sheet body.
+            side = [f for f in ex.Shape.Faces
+                    if abs(f.normalAt(*f.Surface.parameter(f.CenterOfMass)).dot(direction)) < 1e-6]
+            if not side:
+                raise ValueError("surface extrude without side faces")
+            ex.Visibility = False
+            sheet = self.doc.addObject("Part::Feature", "SurfaceExtrude")
+            sheet.Label = feat["name"]
+            sheet.Shape = Part.Shell(side)
+            self.solids.append(sheet)
+            notes["surface"] = "static sheet from the extruded side faces"
+            return dict(notes, op="new_body", bodies=1)
         participants = None
         if through and all(t.get("kind") == "historical" for t in through):
             participants = self.bodies_owning(through)
@@ -868,8 +885,11 @@ class Rebuilder:
         d = feat["definition"]
         if d.get("mode") not in (None, "inside", "outside"):
             raise NotImplementedError("shell mode " + str(d.get("mode")))
-        per_body = self.selected_faces(d["removed_faces"])
         t = float(d["thickness"])
+        rf = d["removed_faces"]
+        if rf.get("kind") == "faces" and not rf.get("value"):
+            return self.build_hollow(feat, t, bool(d.get("outward")))
+        per_body = self.selected_faces(rf)
         made = []
         for body, faces in per_body.items():
             obj = self.doc.addObject("Part::Thickness", "Shell")
@@ -891,6 +911,19 @@ class Rebuilder:
         for body, obj in made:
             self.solids[self.solids.index(body)] = obj
         return {"faces": sum(len(v) for v in per_body.values())}
+
+    def build_hollow(self, feat, t, outward):
+        """Shell without removed faces: the body becomes a closed hollow (inward wall of
+        thickness t, or an outer wall around the original volume when outward)."""
+        bodies = self.select_bodies(feat["definition"]["bodies"])
+        for b in bodies:
+            shp = b.Shape
+            off = shp.makeOffsetShape(t if outward else -t, 1e-6, False, False, 0, 0)
+            inner = Part.Solid(off.Shells[0]) if off.Shells else off
+            res = inner.cut(shp) if outward else shp.cut(inner)
+            self.replace_with_shape(b, res, feat)
+        self.doc.recompute()
+        return {"bodies": len(bodies)}
 
     def replace_with_shape(self, body, shape, feat):
         """Replace a rebuilt body by a Part::Feature holding `shape` (an OCC operation without
@@ -924,10 +957,25 @@ class Rebuilder:
         if anchor.get("kind") != "neutral_plane":
             raise NotImplementedError("draft anchor " + str(anchor.get("kind")))
         per_body = self.selected_faces(d["faces"])
-        nb = self.selected_faces(anchor["plane"])
-        if len(per_body) != 1 or list(nb) != list(per_body) or sum(len(v) for v in nb.values()) != 1:
-            raise NotImplementedError("draft over several bodies or neutral planes")
+        if len(per_body) != 1:
+            raise NotImplementedError("draft over several bodies")
         body = next(iter(per_body))
+        pull = anchor.get("pull") or {}
+        if anchor["plane"].get("kind") == "native" and pull.get("direction"):
+            # a datum plane the decoder named, or an origin plane (through the origin)
+            if pull.get("plane"):
+                origin, normal = self.datum_plane_of({"plane": pull["plane"]})
+            else:
+                origin, normal = V(0, 0, 0), vec(pull["direction"])
+            normal.normalize()
+            hits = [k for k, f in enumerate(body.Shape.Faces) if self.face_on_plane(f, (origin, normal))]
+            if len(hits) != 1:
+                raise NotImplementedError("draft neutral plane that is not a face of the body (%d faces)" % len(hits))
+            nb = {body: hits}
+        else:
+            nb = self.selected_faces(anchor["plane"])
+        if list(nb) != list(per_body) or sum(len(v) for v in nb.values()) != 1:
+            raise NotImplementedError("draft over several bodies or neutral planes")
         neutral = body.Shape.Faces[nb[body][0]]
         if neutral.Surface.TypeId != "Part::GeomPlane":
             raise NotImplementedError("non-planar draft neutral face")
@@ -946,6 +994,120 @@ class Rebuilder:
             raise ValueError("OCC draft failed")
         self.solids[self.solids.index(body)] = pb
         return {"faces": len(per_body[body])}
+
+    # ----- scale, split body, offset faces -----------------------------------
+    def build_thicken(self, feat):
+        """Thicken faces of sheet bodies into a new solid along (forward) or against the face
+        normal; the sheet stays."""
+        d = feat["definition"]
+        side = d.get("side", "forward")
+        if side not in ("forward", "backward"):
+            raise NotImplementedError("thicken side " + str(side))
+        if d.get("op", "new_body") != "new_body":
+            raise NotImplementedError("thicken operation " + str(d.get("op")))
+        t = float(d["thickness"]) * (1 if side == "forward" else -1)
+        made = 0
+        for body, faces in self.selected_faces(d["faces"]).items():
+            for k in faces:
+                face = body.Shape.Faces[k]
+                if not isinstance(face.Surface, Part.Plane):
+                    raise NotImplementedError("thicken of a curved face")
+                n = face.normalAt(*face.Surface.parameter(face.CenterOfMass))
+                obj = self.doc.addObject("Part::Feature", "Thicken")
+                obj.Label = feat["name"]
+                obj.Shape = Part.Solid(Part.Shell(face.extrude(n * t).Faces))
+                self.solids.append(obj)
+                made += 1
+        self.doc.recompute()
+        return {"op": "new_body", "bodies": made}
+
+    def build_scale(self, feat):
+        """Scale: each selected body is replaced by a scaled copy of its shape about the center."""
+        d = feat["definition"]
+        f = d.get("factors") or {}
+        c = d.get("center") or {}
+        if c.get("kind") != "point":
+            raise NotImplementedError("scale center " + str(c.get("kind")))
+        center = vec(c["value"])
+        bodies = self.select_bodies(d["bodies"])
+        if f.get("kind") == "uniform":
+            fx = fy = fz = float(f["factor"])
+        elif f.get("kind") == "non_uniform":
+            fx, fy, fz = (float(f[k]) for k in ("x", "y", "z"))
+        else:
+            raise NotImplementedError("scale factors " + str(f.get("kind")))
+        for b in bodies:
+            shp = b.Shape.copy()
+            if fx == fy == fz:
+                shp.scale(fx, center)
+            else:
+                m = App.Matrix()
+                m.move(center * -1)
+                m.scale(fx, fy, fz)
+                m.move(center)
+                shp = shp.transformGeometry(m)
+            self.replace_with_shape(b, shp, feat)
+        self.doc.recompute()
+        return {"bodies": len(bodies)}
+
+    def datum_plane_of(self, ref):
+        """(origin, normal) of the datum plane feature a split tool names."""
+        for f in self.slim["features"]:
+            if f["id"] == ref.get("plane"):
+                fr = (f.get("definition") or {}).get("frame")
+                if fr:
+                    return vec(fr["origin"]), vec(fr["normal"])
+        raise NotImplementedError("split plane is not a resolved datum plane")
+
+    def build_split_body(self, feat):
+        d = feat["definition"]
+        tool = d.get("tool") or {}
+        if tool.get("kind") != "plane":
+            raise NotImplementedError("split tool " + str(tool.get("kind")) + " " + str((tool.get("value") or {}).get("kind")))
+        origin, normal = self.datum_plane_of(tool["value"])
+        normal.normalize()
+        bodies = self.select_bodies(d["targets"])
+        for b in bodies:
+            big = 4 * max(b.Shape.BoundBox.DiagonalLength, 1.0)
+            pl = Part.makePlane(2 * big, 2 * big, origin, normal)
+            pl.translate(-(pl.CenterOfMass - origin))
+            parts = b.Shape.generalFuse([pl])[0].Solids
+            if len(parts) < 2:
+                raise ValueError("the split plane does not cut the body")
+            comp = self.doc.addObject("Part::Feature", "Split")
+            comp.Label = feat["name"]
+            comp.Shape = Part.Compound(parts)
+            self.doc.recompute()
+            i = self.solids.index(b)
+            self.solids[i:i + 1] = self.split_solids(comp, feat["name"])
+        return {"bodies": len(bodies)}
+
+    def build_move_face(self, feat):
+        """Offset faces (press/pull) of planar faces whose neighbours are perpendicular to
+        them: the face is swept along its normal and fused (outward) or cut (inward)."""
+        d = feat["definition"]
+        m = d.get("motion") or {}
+        if m.get("kind") != "offset":
+            raise NotImplementedError("move face motion " + str(m.get("kind")))
+        dist = float(m["distance"])
+        per_body = self.selected_faces(d["faces"])
+        for body, faces in per_body.items():
+            shp = body.Shape
+            for k in faces:
+                face = shp.Faces[k]
+                if not isinstance(face.Surface, Part.Plane):
+                    raise NotImplementedError("offset of a non-planar face")
+                n = face.normalAt(*face.Surface.parameter(face.CenterOfMass))
+                for g in shp.Faces:
+                    if g.isSame(face) or not any(e.isSame(x) for e in face.Edges for x in g.Edges):
+                        continue
+                    if not isinstance(g.Surface, Part.Plane) or abs(g.normalAt(*g.Surface.parameter(g.CenterOfMass)).dot(n)) > 1e-6:
+                        raise NotImplementedError("offset face with a neighbour that is not perpendicular")
+                prism = face.extrude(n * dist)
+                shp = shp.fuse(prism).removeSplitter() if dist > 0 else shp.cut(prism).removeSplitter()
+            self.replace_with_shape(body, shp, feat)
+        self.doc.recompute()
+        return {"faces": sum(len(v) for v in per_body.values())}
 
     def require_uniform_corner_radii(self, body, edges):
         """Fillets of different radii that meet at a vertex get a corner blend that OCC builds
@@ -1881,6 +2043,32 @@ class Rebuilder:
         fuse.Label = label
         return fuse
 
+    @staticmethod
+    def sweep_twisted(section, wire, twist, taper):
+        """Sweep of a planar section along one straight path edge with a twist (radians, about
+        the path, right-handed) and/or a taper (radians; the section offset grows by
+        tan(taper) per unit length): a loft through sections placed along the path, exact for
+        a pure taper (two sections) and sampled finely for a twist."""
+        if len(wire.Edges) != 1 or not isinstance(wire.Edges[0].Curve, Part.Line):
+            raise NotImplementedError("sweep twist/taper along a curved path")
+        p0, p1 = wire.OrderedVertexes[0].Point, wire.OrderedVertexes[-1].Point
+        axis = p1 - p0
+        length = axis.Length
+        axis.normalize()
+        base = Part.Wire(Part.__sortEdges__(section.Edges))
+        n = 2 if not twist else max(8, int(math.ceil(abs(math.degrees(twist)) / 3.0)))
+        wires = []
+        for k in range(n + 1):
+            f = k / n
+            w = base.copy()
+            if taper:
+                w = w.makeOffset2D(math.tan(taper) * length * f, join=2, fill=False, openResult=False, intersection=False)
+            if twist:
+                w.rotate(p0, axis, math.degrees(twist) * f)
+            w.translate(axis * (length * f))
+            wires.append(w)
+        return Part.makeLoft(wires, True, not twist)
+
     def build_sweep(self, feat):
         d = feat["definition"]
         shape = d["shape"]
@@ -1888,9 +2076,10 @@ class Rebuilder:
             raise NotImplementedError("%s sweep" % shape.get("mode"))
         if shape.get("sections"):
             raise NotImplementedError("sweep with several sections")
-        for key in ("guide_rail", "twist", "taper", "scale"):
+        for key in ("guide_rail", "scale"):
             if d.get(key) not in (None, 0, 0.0, 1, 1.0):
                 raise NotImplementedError("sweep " + key)
+        twist, taper = float(d.get("twist") or 0.0), float(d.get("taper") or 0.0)
         if d.get("orientation") not in (None, "perpendicular"):
             raise NotImplementedError("sweep orientation " + str(d.get("orientation")))
         ext = d.get("path_extent") or {"along_fraction": 1.0, "against_fraction": 0.0}
@@ -1925,12 +2114,21 @@ class Rebuilder:
             groups = [(sections[0], sections[1:])]
             at_start = True
         elif sec.get("kind") == "profile":
-            sk, loops = self.profile_loops(sec["value"])
+            ref = sec["value"]
+            if ref.get("kind") == "sketch" and ref.get("value") in self.sketch_defs:
+                # a whole-sketch section selects every region of the sketch
+                n = len(self.sketch_defs[ref["value"]].get("profiles") or [])
+                ref = {"kind": "sketch_profiles", "value": {"sketch": ref["value"], "profiles": list(range(n))}}
+            sk, loops = self.profile_loops(ref)
             groups = [(self.loop_object(sk, o, name + " section"),
                        [self.loop_object(sk, h, name + " section hole") for h in holes]) for o, holes in loops]
             self.doc.recompute()
             section = groups[0][0].Shape
-            names, wire = self.chain(names, edges, section.CenterOfMass)
+            loop_wire = Part.Wire(Part.__sortEdges__(section.Edges)) if section.Edges else None
+            if section.Edges:
+                # the path may start inside the region (distance to the filled section)
+                section = Part.Face(Part.Wire(Part.__sortEdges__(section.Edges)))
+            names, wire = self.chain(names, edges, section.BoundBox.Center)
             at_start = section.distToShape(wire.OrderedVertexes[0])[0] < 1e-6
             if not at_start and section.distToShape(wire.OrderedVertexes[-1])[0] < 1e-6:
                 wire.reverse()
@@ -1947,6 +2145,12 @@ class Rebuilder:
         link = (owner, names)
         self.notes = {}
         solids = []
+        if twist or taper:
+            if sec.get("kind") != "profile" or len(groups) != 1 or groups[0][1] or not at_start:
+                raise NotImplementedError("sweep twist/taper of this section")
+            tool = self.static(self.sweep_twisted(groups[0][0].Shape, wire, twist, taper), name)
+            self.doc.recompute()
+            return dict(self.apply_op(shape["op"], tool, name), **self.notes)
         if self.path_corners(wire):
             if sec.get("kind") != "generated":
                 raise NotImplementedError("profile sweep along a path with corners")
@@ -1994,7 +2198,9 @@ class Rebuilder:
         loft = self.doc.addObject("Part::Loft", "Loft")
         loft.Sections = objs
         loft.Solid = True
-        loft.Ruled = bool(d.get("ruled"))
+        # two sections: the smooth and the ruled surface coincide; the ruled one stays exact
+        # (the smooth one approximates circles to ~0.03 mm)
+        loft.Ruled = bool(d.get("ruled")) or len(objs) == 2
         loft.Closed = bool(d.get("closed"))
         loft.Label = name
         self.doc.recompute()
