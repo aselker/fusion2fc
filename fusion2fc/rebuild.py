@@ -2225,7 +2225,17 @@ class Rebuilder:
                 wire.reverse()
                 at_start = section.distToShape(wire.OrderedVertexes[0])[0] < 1e-4
             if not at_start and min(ext["along_fraction"], ext["against_fraction"]) < 1.0 - 1e-9:
-                raise NotImplementedError("sweep profile away from the path ends")
+                # Off the path, Fusion carries the profile along the path's direction and length;
+                # a straight path is a translation (an extrusion of the profile).
+                if (len(wire.Edges) != 1 or not isinstance(wire.Edges[0].Curve, Part.Line)
+                        or twist or taper or ext["along_fraction"] != 1.0 or ext["against_fraction"] != 0.0
+                        or len(groups) != 1 or groups[0][1]):
+                    raise NotImplementedError("sweep profile away from the path ends")
+                vec_path = wire.OrderedVertexes[-1].Point - wire.OrderedVertexes[0].Point
+                self.notes = {}
+                tool = self.static(section.extrude(vec_path), name)
+                self.doc.recompute()
+                return dict(self.apply_op(shape["op"], tool, name), **self.notes)
         else:
             raise NotImplementedError("sweep section " + str(sec.get("kind")))
         # Fusion consumes a fraction of the path on each side of the profile; the whole
