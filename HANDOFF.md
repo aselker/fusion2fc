@@ -142,3 +142,4 @@ Left:
 - Metal_Post Extrude1, k_recik Hole1, kantoku BaseFeature: other areas/not traced.
 - sketch_selection `unresolved_region_operand` models (2BC, Cake_v2, hook_sogou, TimingPulleyBase) not touched this pass; bounded ellipses and ellipses in arrangements not handled.
 Gotchas: zipfile cannot read the .f3d (zstd); use `unzip -p`. Ellipse vs circle: 13th f64 of the payload.
+Result (final binary, cadmpeg 73d0578f2b / fusion d82e133+): corpus 141/233 models, 948/1560 steps (baseline 128/930); generated 123/160; supported 12/28; extended 6/45; run_cases 127/160; no model lost steps; cargo test -p cadmpeg-codec-f3d passes.
