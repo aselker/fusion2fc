@@ -80,7 +80,8 @@ still give the right shape and say what was lost, never quietly give wrong geome
 | +94 everyday cases, profiles/patterns round 3 | 128/233 | 930/1560 | generated 110/160 (535/593 steps), supported 12/28, extended 6/45; run_cases 114/160 |
 | round 4/5: scale, split, offset face, draft, shell, sweep taper/twist, tapped holes, copy body, whole-sketch revolve/sweep, ellipses) | 154/233 | 962/1560 | generated 136/160 (562/593 steps), supported 12/28, extended 6/45; run_cases 140/160 |
 | + split by tool body, off-path sweep, region operands with replaced curves, rosbot Move, honest cut/join refusals, 4 participant-cut cases) | 157/237 | 1025/1601 | generated 138/164 (601/634 steps), supported 12/28 (126/220), extended 7/45 (298/747); run_cases 143/164 |
-| **Current main** (+ participant cuts, symmetric/extent patterns, co2_box region refusal) | **164/237** | **1032/1601** | generated 144/164 (607/634 steps), supported 13/28 (127/220), extended 7/45 (298/747); run_cases 146/164; f3d 4225, IR 1938, creo 2646 lib tests pass |
+| + participant cuts, symmetric/extent patterns, co2_box region refusal) | 164/237 | 1032/1601 | generated 144/164 (607/634 steps), supported 13/28 (127/220), extended 7/45 (298/747); run_cases 146/164; f3d 4225, IR 1938, creo 2646 lib tests pass |
+| **Current main** (+ NEMA17 type-10 pattern directions) | **164/237** | **1052/1601** | extended 7/45 (318/747); others unchanged |
 
 ## What works now (merged on main)
 

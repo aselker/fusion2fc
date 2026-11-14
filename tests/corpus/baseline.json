@@ -920,7 +920,7 @@
   "steps": 6
  },
  "ravengraves_NEMA17StepperMotor": {
-  "match": 3,
+  "match": 23,
   "steps": 25
  },
  "ravengraves_TimingPulleyBase": {
