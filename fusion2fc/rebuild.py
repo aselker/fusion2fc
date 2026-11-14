@@ -731,7 +731,7 @@ class Rebuilder:
         except (KeyError, ValueError):
             return None
         pool = self.same_component(self.solids)
-        if not affected or len(centers) != len(pool) or len(affected) >= len(pool):
+        if not affected or len(centers) != len(pool) or len(affected) > len(pool):
             return None
         found = []
         for slot in affected:
