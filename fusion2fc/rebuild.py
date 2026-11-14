@@ -183,6 +183,8 @@ class Rebuilder:
                 geo = Part.ArcOfCircle(Part.Circle(uv(g["center"]), V(0, 0, 1), g["radius"]), a0, a1)
             elif k == "circle":
                 geo = Part.Circle(uv(g["center"]), V(0, 0, 1), g["radius"])
+            elif k == "ellipse" and g.get("bounds") is None:
+                geo = self.full_ellipse(g)
             elif k == "nurbs":
                 c = g["curve"]
                 form = c["poles"].get("form")
@@ -446,6 +448,8 @@ class Rebuilder:
                     edges.append(Part.LineSegment(a + (b - a) * t0, a + (b - a) * t1).toShape())
                 elif g["kind"] in ("circle", "arc"):
                     edges.append(Part.Circle(uv(g["center"]), V(0, 0, 1), g["radius"]).toShape(t0, t1))
+                elif g["kind"] == "ellipse" and g.get("bounds") is None:
+                    edges.append(self.full_ellipse(g).toShape())
                 else:
                     raise NotImplementedError("loop curve " + g["kind"])
             faces.append(Part.Face(Part.Wire(Part.__sortEdges__(edges))))
@@ -536,11 +540,19 @@ class Rebuilder:
         return shape
 
     @staticmethod
+    def full_ellipse(g):
+        """A full sketch ellipse (centre, major-axis angle, semi-axes) in sketch coordinates."""
+        c, a = uv(g["center"]), g["major_angle"]
+        ca, sa = math.cos(a), math.sin(a)
+        return Part.Ellipse(c + V(g["major_radius"] * ca, g["major_radius"] * sa, 0),
+                            c + V(-g["minor_radius"] * sa, g["minor_radius"] * ca, 0), c)
+
+    @staticmethod
     def full_range(e):
         g = e["geometry"]
         if g["kind"] == "line":
             return [0.0, 1.0]
-        if g["kind"] == "circle":
+        if g["kind"] in ("circle", "ellipse"):
             return [0.0, 2 * math.pi]
         if g["kind"] == "arc":
             a0, a1 = g["start_angle"], g["end_angle"]
@@ -571,6 +583,10 @@ class Rebuilder:
         sid = value.get("sketch") if isinstance(value, dict) else None
         if sid not in self.sketch_defs:
             raise NotImplementedError("profile kind " + prof["kind"])
+        if prof["kind"] == "sketch_selection" and any(
+                e["geometry"]["kind"] == "text" for e in self.entities.get(sid, [])):
+            raise NotImplementedError("profile selects sketch text: glyph outlines come from "
+                                      "the font and are not stored in the file")
         sk, geo_of, edge_of, normal = self.build_sketch(sid, self.sketch_label(sid))
         regions = value.get("regions") or []
         notes = {}

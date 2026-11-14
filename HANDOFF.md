@@ -130,3 +130,15 @@ whole curves cross (busra_kol/SCD41 showed `certified_pieces_separated` failing 
 - The scratchpad dir and `../edges/tests/out` are shared/live: compare against `tests/corpus/baseline.json`.
 - Debugging recipe: sed `eprintln!("DBGX {}", line!())` before each `break 'feature_edit` and in the arrangement
   builder's `return Ok(None)`/`geometric!`; ~4 min build via ../build-decoder.sh.
+
+# Fifth pass (profiles agent, Sonnet): revolve/sweep/ellipse/text
+Done:
+- rebuild.py `bare_sketch_profile`: a `sketch` profile (no selection) now serves revolve (`profile_base`) and sweep sections (`profile_loops`) through `bare_sketch_regions`. Sweep: a closed-loop binder (Compound of edges) becomes a face for the centre/at-start test; path-start tolerance 1e-4 mm (Fusion paths start 1.5e-5 mm off the profile plane). All 7 case_rev_* and case_sweep_{line,arc_path,line_arc_path,spline_path} pass; corpus busraakgun24_k_recik 1->4, Metal_Post 2->4.
+- cadmpeg `SketchCurveGeometry::Ellipse` (see FORK.md) + rebuild.py `full_ellipse`: case_sk_ellipse, case_sk_ellipse_rotated_cut pass.
+- case_sk_text_extrude: rebuilder now says "profile selects sketch text: glyph outlines come from the font and are not stored" (no outline data in file).
+Left:
+- case_sweep_cut_groove: Sweep path decodes as `historical_edges` (id suffix = the path sketch curve 115, resolves to a block edge) instead of `sketch_curves`; also the profile is off the path (Fusion sweeps along the path direction/length from the profile). features-b lane.
+- S_Hook: "profile sweep along a path with corners" (profile sections only mitred for generated pipes).
+- Metal_Post Extrude1, k_recik Hole1, kantoku BaseFeature: other areas/not traced.
+- sketch_selection `unresolved_region_operand` models (2BC, Cake_v2, hook_sogou, TimingPulleyBase) not touched this pass; bounded ellipses and ellipses in arrangements not handled.
+Gotchas: zipfile cannot read the .f3d (zstd); use `unzip -p`. Ellipse vs circle: 13th f64 of the payload.
