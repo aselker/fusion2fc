@@ -48,3 +48,11 @@ Findings (no code change; debug prints removed):
 **Not done (reasons):**
 - appleScreen Shell3: instrumented build showed `bind_scope_histories` is never reached for scope #65139 (`scope_candidates` empty: no history holds the pair 212/211 by the direct or chained relation), so no unambiguous binding exists without guessing. Needs the history layout of that model examined (probably the 211 state lives in another history).
 - thicken_face: truth `features.json` has no face data for the thicken (only result bodies); the face operand records active face 22 (y=0). Fusion's mesh thickens y=20..21.5. Unresolved without the VM.
+
+## Update (round 8)
+
+**Done:** Move with a native body selection (rosbot: 8 -> 26/26 steps): `bodies_by_recorded_centers` matches rebuilt bodies by the result `body_centers` source property minus the translation (every recorded body must match exactly one rebuilt body; otherwise the old skip stays). Rebuild-side only; the decoder cannot bind these bodies because the three body-recipe operands list candidate faces of three different `.smbh` BREP blobs with no `preceding_*` resolution.
+
+**Diagnosed, not done:**
+- case_cut_across_bodies_participants: Extrude4 stays `native` because `scope.extrude_prologue()` is None (first `None` return in `project_extrude`, found with a line-printing build). The scope carries nine `reference:N` records (participant bodies) that the prologue parser (`records/feature/extrude.rs`, `DesignExtrudePrologue`) does not accept. Needs the byte layout of an Extrude prologue with a participant list, then a participants field in the IR (`FeatureOperation::Extrude` has none) or a source property; the rebuilder already limits cuts by `participants` when it is given. `affected_bodies` (2,3) in the feature's source properties equals the participant set.
+- Derived Base Feature (Connector_Bracket 19 steps, Example_B 12): the snapshot body lives only in the history state transition (spec f3d.md: "result bodies form a stored snapshot"). Rebuilding it needs the BREP of a historical state, which means replaying the ASM delta states into a body (the decoder exports only the active BREP). That is a decoder project of its own; the rebuilder side (`build_base_feature`, `F2FC_BODIES`, `tools/stored_bodies.py`) already accepts one stored body per feature.
