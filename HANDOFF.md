@@ -4,3 +4,4 @@
 - tools/negative_controls.py (freecadcmd) -> all as expected required.
 - Fusion centroids do NOT lie within d of true surface on twisted/lofted faces (0.04-0.07mm, 0.25mm on loft_offset) so centroids can't be held to d.
 - TODO: full corpus by tier, tolerances.json, report.
+- DONE: full corpus 1055/1601 steps, 167/237 models (main out 1052/164); +3 steps (3 named cases, exact check), none lost, no labels needed.
