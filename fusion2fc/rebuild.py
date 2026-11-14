@@ -1706,10 +1706,38 @@ class Rebuilder:
             raise ValueError("empty revolution")
         return self.apply_op(d.get("op", "new_body"), rev, feat["name"])
 
+    def bodies_by_recorded_centers(self, feat):
+        """The bodies a Move moved, found by the body centers the decoder read from the result
+        (source property body_centers, after the move): each rebuilt body whose center, moved by
+        the feature's translation, equals exactly one recorded center. Every recorded body must
+        match and no rebuilt body may match two."""
+        d = feat["definition"]
+        if d.get("rotation") or d.get("copies"):
+            raise NotImplementedError("body selection native")
+        prop = (feat.get("source_properties") or {}).get("body_centers")
+        if not prop:
+            raise NotImplementedError("body selection native")
+        t = vec(d["translation"])
+        wanted = []
+        for item in prop.split(";"):
+            wanted.append(V(*[float(x) for x in item.split(":", 1)[1].split(",")]))
+        pool = self.same_component(self.solids)
+        found = []
+        for w in wanted:
+            hits = [b for b in pool
+                    if any((c + t - w).Length < 1e-4 for c in (b.Shape.CenterOfMass, b.Shape.BoundBox.Center))]
+            if len(hits) != 1 or hits[0] in found:
+                raise NotImplementedError("body selection native (recorded centers are not unique)")
+            found.append(hits[0])
+        return found
+
     def build_move_body(self, feat):
         """Move: each selected body is replaced by a placed compound of it (or copied)."""
         d = feat["definition"]
-        bodies = self.select_bodies(d["bodies"])
+        try:
+            bodies = self.select_bodies(d["bodies"])
+        except NotImplementedError:
+            bodies = self.bodies_by_recorded_centers(feat)
         m = App.Placement(vec(d["translation"]), App.Rotation())
         rot = d.get("rotation")
         if rot:
