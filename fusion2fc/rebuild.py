@@ -1075,9 +1075,35 @@ class Rebuilder:
                     return vec(fr["origin"]), vec(fr["normal"])
         raise NotImplementedError("split plane is not a resolved datum plane")
 
+    def build_split_by_body(self, feat, d, faces_ref):
+        """Split by a tool body (all its faces selected): each target becomes its part inside
+        the tool and its part outside; the tool body stays."""
+        per_body = self.selected_faces(faces_ref)
+        if len(per_body) != 1:
+            raise NotImplementedError("split tool faces of several bodies")
+        tool, faces = next(iter(per_body.items()))
+        if len(faces) != len(tool.Shape.Faces):
+            raise NotImplementedError("split by some faces of a body")
+        targets = [b for b in self.select_bodies(d["targets"]) if b is not tool]
+        for b in targets:
+            inside = b.Shape.common(tool.Shape)
+            outside = b.Shape.cut(tool.Shape)
+            parts = inside.Solids + outside.Solids
+            if not inside.Solids or not outside.Solids:
+                raise ValueError("the tool body does not split the target")
+            comp = self.doc.addObject("Part::Feature", "Split")
+            comp.Label = feat["name"]
+            comp.Shape = Part.Compound(parts)
+            self.doc.recompute()
+            i = self.solids.index(b)
+            self.solids[i:i + 1] = self.split_solids(comp, feat["name"])
+        return {"bodies": len(targets)}
+
     def build_split_body(self, feat):
         d = feat["definition"]
         tool = d.get("tool") or {}
+        if tool.get("kind") == "faces" and (tool.get("value") or {}).get("kind") == "historical":
+            return self.build_split_by_body(feat, d, tool["value"])
         if tool.get("kind") != "plane":
             raise NotImplementedError("split tool " + str(tool.get("kind")) + " " + str((tool.get("value") or {}).get("kind")))
         origin, normal = self.datum_plane_of(tool["value"])
