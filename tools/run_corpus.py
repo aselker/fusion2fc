@@ -147,6 +147,12 @@ def main(argv):
         match = sum(r["summary"]["match"] for r in rs)
         print("%-10s models %3d/%-3d all steps match   steps %5d/%-5d (%.1f%%)" % (
             t, sum(r["status"] == "PASS" for r in rs), len(rs), match, steps, 100.0 * match / max(steps, 1)))
+    for t in tiers + ["all"]:
+        rs = [r for r in results if (t == "all" or r["tier"] == t) and "summary" in r]
+        if rs:
+            print("%-10s of the matching steps: %d by the exact-surface check, %d only by a tolerance label" % (
+                t, sum(r["summary"].get("matched_by_exact", 0) for r in rs),
+                sum(r["summary"].get("matched_by_label", 0) for r in rs)))
     missing = [r["id"] for r in results if r["status"] == "no truth"]
     if missing:
         print("%d models have no Fusion ground truth yet (tools/corpus_truth.py)" % len(missing))

@@ -33,9 +33,28 @@ import Part
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np  # noqa: E402
 import mesh_compare as mc  # noqa: E402
+import exact_compare as ec  # noqa: E402
 
 VOL_TOL = 1e-6
 MESH_FACTOR = 1.25
+MAX_LABEL_FACTOR = 2.5
+COMPARATOR_VERSION = 2  # bump to invalidate cached results
+TOL_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        "tests", "corpus", "tolerances.json")
+
+
+def label_factor(case_id, step_name):
+    """Per-test loosened distance factor (None when the step has no label)."""
+    try:
+        tol = json.load(open(TOL_FILE)).get(case_id)
+    except (OSError, ValueError):
+        return None
+    if not tol or not tol.get("reason"):
+        return None
+    steps = tol.get("steps", "*")
+    if steps != "*" and step_name not in steps:
+        return None
+    return min(float(tol["mesh_factor"]), MAX_LABEL_FACTOR)
 
 
 def squash(n):
@@ -64,7 +83,7 @@ def fmt(vs):
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CODE_DIGEST = hashlib.sha1(b"".join(open(os.path.join(HERE, f), "rb").read()
-                                    for f in ("corpus_compare.py", "mesh_compare.py"))).hexdigest()
+                                    for f in ("corpus_compare.py", "mesh_compare.py", "exact_compare.py"))).hexdigest()
 
 
 class Cache:
@@ -115,17 +134,53 @@ class Cache:
         return self.tris[key]
 
 
-def compare_step(step, truth_dir, rebuild_path, dev, diag, cache):
+def geometry_check(out, problems, notes, ftris, rtris, rshape, dev, diag, factor=None):
+    """Mesh distance, then (only if that fails) the exact-surface check, then a label's factor.
+    Fills `out`, appends to `problems` (failures) and `notes` (how a match was reached)."""
+    limit = MESH_FACTOR * 2 * dev
+    if not (len(ftris) or len(rtris)):
+        out["hausdorff"] = 0.0
+        return
+    r = mc.compare(ftris, rtris, spacing=max(diag / 100.0, 4 * dev), cap=max(20 * limit, 1.0))
+    out["hausdorff"] = r["hausdorff"]
+    out["fusion_to_rebuilt"] = r["a_to_b"]
+    out["rebuilt_to_fusion"] = r["b_to_a"]
+    if r["hausdorff"] <= limit:
+        return
+    ex = None
+    if rshape is not None and len(ftris):
+        ex = ec.exact_check(rshape, ftris, dev, max(diag / 100.0, 4 * dev))
+        ex["limit"] = MESH_FACTOR * dev
+        out["exact_check"] = ex
+    if ex is not None and ex["max"] <= ex["limit"]:
+        out["matched_by"] = "exact-surface check"
+        notes.append("matched by exact-surface check (mesh distance %.4g > %.3g; exact excess %.4g <= %.3g)" % (
+            r["hausdorff"], limit, ex["max"], ex["limit"]))
+    elif factor and factor > MESH_FACTOR and ex is not None and ex["max"] <= factor * dev:
+        out["matched_by"] = "loosened tolerance"
+        out["loosened_factor"] = factor
+        notes.append("loosened tolerance x%.3g (exact excess %.4g <= %.3g)" % (factor, ex["max"], factor * dev))
+    else:
+        worst = max((r["a_to_b"], r["b_to_a"]), key=lambda x: x.get("max") or 0)
+        at = worst.get("at")
+        msg = "mesh distance %.4g mm > %.3g%s" % (
+            r["hausdorff"], limit, " at (%.2f, %.2f, %.2f)" % tuple(at) if at else "")
+        if ex is not None:
+            msg += "; exact-surface check %.4g mm > %.3g" % (ex["max"], ex["limit"])
+        problems.append(msg)
+
+
+def compare_step(step, truth_dir, rebuild_path, dev, diag, cache, factor=None):
     fusion_solids = [b for b in step.get("bodies", []) if b.get("solid")]
     fusion_vols = [b["volume"] for b in fusion_solids]
     mesh = step.get("mesh")
-    key = "%s|%s|%r" % (mesh, cache.digest(rebuild_path), dev)
+    key = "v%d|%s|%s|%r|%r" % (COMPARATOR_VERSION, mesh, cache.digest(rebuild_path), dev, factor)
     if key in cache.results:
         return dict(cache.results[key])
     _, rvols = cache.solids(rebuild_path)
     out = {"fusion_bodies": len(fusion_solids), "rebuilt_bodies": len(rvols),
            "fusion_surfaces": sum(1 for b in step.get("bodies", []) if not b.get("solid"))}
-    problems = []
+    problems, notes = [], []
     if len(fusion_solids) != len(rvols):
         problems.append("bodies %d vs %d" % (len(fusion_solids), len(rvols)))
     if not vols_match(fusion_vols, rvols):
@@ -138,20 +193,10 @@ def compare_step(step, truth_dir, rebuild_path, dev, diag, cache):
     else:
         ftris = cache.fusion_tris(os.path.join(truth_dir, mesh) if mesh else None)
         rtris = cache.rebuild_tris(rebuild_path, dev)
-        if len(ftris) or len(rtris):
-            r = mc.compare(ftris, rtris, spacing=max(diag / 100.0, 4 * dev), cap=max(20 * limit, 1.0))
-            out["hausdorff"] = r["hausdorff"]
-            out["fusion_to_rebuilt"] = r["a_to_b"]
-            out["rebuilt_to_fusion"] = r["b_to_a"]
-            if not r["hausdorff"] <= limit:
-                worst = max((r["a_to_b"], r["b_to_a"]), key=lambda x: x.get("max") or 0)
-                at = worst.get("at")
-                problems.append("mesh distance %.4g mm > %.3g%s" % (
-                    r["hausdorff"], limit, " at (%.2f, %.2f, %.2f)" % tuple(at) if at else ""))
-        else:
-            out["hausdorff"] = 0.0
+        fshape, _ = cache.solids(rebuild_path)
+        geometry_check(out, problems, notes, ftris, rtris, fshape, dev, diag, factor)
     out["status"] = "match" if not problems else "mismatch"
-    out["problems"] = problems
+    out["problems"] = problems + notes
     cache.results[key] = dict(out)
     return out
 
@@ -185,13 +230,17 @@ def main():
             if current is not None and feats[current].get("step_file"):
                 path = os.path.join(steps_dir, feats[current]["step_file"])
             try:
-                rec.update(compare_step(step, truth_dir, path, dev, diag, cache))
+                rec.update(compare_step(step, truth_dir, path, dev, diag, cache,
+                                        label_factor(os.path.basename(truth_dir), step["name"])))
             except Exception:
                 rec.update(status="error", problems=[traceback.format_exc()[-400:]])
         results.append(rec)
     n_match = sum(r["status"] == "match" for r in results)
     first = next((r for r in results if r["status"] != "match"), None)
-    summary = {"steps": len(results), "match": n_match, "all_match": n_match == len(results),
+    n_exact = sum(r.get("matched_by") == "exact-surface check" for r in results)
+    n_loose = sum(r.get("matched_by") == "loosened tolerance" for r in results)
+    summary = {"steps": len(results), "match": n_match, "matched_by_exact": n_exact,
+               "matched_by_label": n_loose, "all_match": n_match == len(results),
                "aligned": len(pairs), "rebuilt_features": len(feats),
                "first_mismatch": None if first is None else {
                    "index": first["index"], "name": first["name"], "type": first["type"],
@@ -202,8 +251,9 @@ def main():
     print("F2FC compare: %d/%d steps match" % (n_match, len(results)))
 
 
-try:
-    main()
-except Exception:
-    traceback.print_exc()
-sys.stdout.flush()
+if "F2FC_TRUTH" in os.environ:   # not when imported (tools/negative_controls.py)
+    try:
+        main()
+    except Exception:
+        traceback.print_exc()
+    sys.stdout.flush()
