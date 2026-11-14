@@ -240,7 +240,7 @@
   "steps": 4
  },
  "case_cut_across_bodies_participants": {
-  "match": 9,
+  "match": 10,
   "steps": 10
  },
  "case_cut_from_top_face": {
@@ -252,7 +252,7 @@
   "steps": 7
  },
  "case_cut_participants_all": {
-  "match": 9,
+  "match": 10,
   "steps": 10
  },
  "case_cut_participants_blind": {
@@ -264,11 +264,11 @@
   "steps": 10
  },
  "case_cut_participants_face_two": {
-  "match": 9,
+  "match": 10,
   "steps": 10
  },
  "case_cut_participants_from_object_two": {
-  "match": 9,
+  "match": 10,
   "steps": 10
  },
  "case_cut_participants_one": {

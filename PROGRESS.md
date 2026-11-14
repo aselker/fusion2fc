@@ -82,7 +82,8 @@ still give the right shape and say what was lost, never quietly give wrong geome
 | + split by tool body, off-path sweep, region operands with replaced curves, rosbot Move, honest cut/join refusals, 4 participant-cut cases) | 157/237 | 1025/1601 | generated 138/164 (601/634 steps), supported 12/28 (126/220), extended 7/45 (298/747); run_cases 143/164 |
 | + participant cuts, symmetric/extent patterns, co2_box region refusal) | 164/237 | 1032/1601 | generated 144/164 (607/634 steps), supported 13/28 (127/220), extended 7/45 (298/747); run_cases 146/164; f3d 4225, IR 1938, creo 2646 lib tests pass |
 | + NEMA17 type-10 pattern directions) | 164/237 | 1052/1601 | extended 7/45 (318/747); others unchanged |
-| **Current main** (+ thicken face, cornered sweeps, exact-surface comparator fallback, 3 more participant cases) | **169/240** | **1085/1631** | generated 148/167 (639/664), supported 13/28 (127/220), extended 8/45 (319/747); 3 steps matched by the exact-surface check, 0 by labels |
+| + thicken face, cornered sweeps, exact-surface comparator fallback, 3 more participant cases) | 169/240 | 1085/1631 | generated 148/167 (639/664), supported 13/28 (127/220), extended 8/45 (319/747); 3 steps matched by the exact-surface check, 0 by labels |
+| **Current main** (+ participant-extrude ordinal) | **173/240** | **1089/1631** | generated 152/167 (643/664) |
 
 ## What works now (merged on main)
 
@@ -206,6 +207,17 @@ in the agents' `HANDOFF.md` files.
 - Quick triage of the first failure per real model, reading `tests/out/corpus/*/result.json`:
   each file's `summary.first_mismatch` has `name`, `type`, `rebuild.status`/`reason` and
   `problems`. Sort by `steps - index`.
+
+## Dutchman comparison (2026-11-14)
+
+Dutchman 0.2.9 (github.com/dutchman-cad/dutchman, built on upstream cadmpeg) was run on the
+whole corpus. The harness and results are on branch `agent/dutchman` (not merged):
+`docs/dutchman-comparison.md` and `.csv`. Fully parametric with the correct final shape:
+fusion2fc 162/240, Dutchman to FreeCAD 7, Dutchman to SolidCraft 79 (about 85 counting near
+matches). Dutchman's FreeCAD macro passes parameter names (`"d1"`) to `App.Units.Quantity`, so
+any dimension driven by a named parameter falls back to STEP. That is a Dutchman bug, not
+reported upstream. Things Dutchman-to-SolidCraft gets that we don't: case_fillet_corner_setback
+and case_two_components.
 
 ## Comparator questions for the user
 
