@@ -673,6 +673,14 @@ class Rebuilder:
             raise NotImplementedError("extent " + ext["kind"])
         if offset:
             ex.Placement = App.Placement(normal * offset, App.Rotation())
+        try:
+            to_distance = float((feat.get("source_properties") or {}).get("extrude_to_distance"))
+        except (TypeError, ValueError):
+            to_distance = 0.0
+        if through and to_distance * normal.dot(direction) < 0:
+            # the decoder's signed distance from the profile plane to the target runs against
+            # the recorded direction: the extrusion travels the other way
+            ex.Dir = -direction
         self.doc.recompute()
         if ex.Shape.isNull() or ex.Shape.Volume <= 0:
             raise ValueError("empty extrusion")
@@ -704,9 +712,35 @@ class Rebuilder:
         participants = None
         if through and all(t.get("kind") == "historical" for t in through):
             participants = self.bodies_owning(through)
+        if d["op"] in ("cut", "intersect"):
+            participants = self.participants_from_centers(feat) or participants
         res = self.apply_op(d["op"], ex, feat["name"], participants)
         res.update(notes)
         return res
+
+    def participants_from_centers(self, feat):
+        """The bodies a cut was applied to (source properties affected_bodies, a participant
+        list or the bodies it hit): each affected slot's recorded body center is matched to
+        exactly one rebuilt body by its bounding-box center (a cut leaves it unchanged unless
+        it reaches the outside). None when any slot is missing or ambiguous."""
+        props = feat.get("source_properties") or {}
+        try:
+            affected = [int(x) for x in props["affected_bodies"].split(",")]
+            centers = {int(a): V(*[float(x) for x in b.split(",")])
+                       for a, b in (item.split(":", 1) for item in props["body_centers"].split(";"))}
+        except (KeyError, ValueError):
+            return None
+        pool = self.same_component(self.solids)
+        if not affected or len(centers) != len(pool) or len(affected) >= len(pool):
+            return None
+        found = []
+        for slot in affected:
+            c = centers.get(slot)
+            hits = [b for b in pool if c is not None and (b.Shape.BoundBox.Center - c).Length < 1e-3]
+            if len(hits) != 1 or hits[0] in found:
+                return None
+            found.append(hits[0])
+        return found
 
     def bodies_owning(self, face_refs):
         """Current bodies whose surface carries the boundary points of the given faces."""
