@@ -31,3 +31,12 @@
 **Left:** split by tool body (decoder: tool faces `native`); thicken_face: decoder's face id is the y=0 side but Fusion's mesh thickens y=20 (check decoder face selection on sheet bodies); sheet-only steps cannot match (comparator needs solids); sweep_twist and loft_two_rect_circle/offset_centers geometry is exact (mesh vertices within 1e-3 of our surface) but mesh distance exceeds 1.25*2*dev: tessellation limit of warped faces, report to coordinator; loft_three_profiles volume 4e-5 off (Fusion interpolation differs); loft rails unsupported (clear reason).
 
 **Gotchas:** run `../build-decoder.sh` before corpus runs (the binary can be older than HEAD after a merge). Never pkill -f run_corpus (other agents' runs match); kill by cwd-checked PID.
+
+## Update (round 6: decoder face-selection gaps; no Rust change)
+
+Findings (no code change; debug prints removed):
+- Draft face selections are no longer "native" (rebuild resolves origin/datum neutral planes from the recorded pull direction).
+- split_body_by_tool_body: the tool group has role 0x21 with an entity selection of a *body* (not a work plane). `SplitBodyTool` has only `Faces`/`Plane`, so a body tool needs either an IR variant (touches IR, schema, goldens) or the tool body's faces listed as a `FaceSelection::Historical` (like `list_thicken_whole_bodies`). Not done.
+- thicken_face: the face operand's own record says active face slot 22 (boundary at y=0, neighbours 14 and 32, identical for the y=20 face), yet Fusion's mesh thickens y=20..21.5. The decoder follows the file; a ground-truth check (VM) of which face `faces.item(0)` is would settle whether the file's slot or the case script is right. Candidate faces in the operand: entity 11, 14, 22, 32.
+- appleScreen Shell3: `face_selection_state` returns None because the scope is not in `scope_histories` and `unique_history_state_pair(212, 211)` is ambiguous across histories (printed from instrumented build). Needs scope-to-history binding for this scope (`bind_scope_histories`), not the shell wall logic.
+- Hook Thicken1 and digitalsputnik Draft2/3 fail on upstream rebuilt-body mismatches, not on selection.
