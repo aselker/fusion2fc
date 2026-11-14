@@ -184,6 +184,8 @@ class Rebuilder:
                 geo = Part.ArcOfCircle(Part.Circle(uv(g["center"]), V(0, 0, 1), g["radius"]), a0, a1)
             elif k == "circle":
                 geo = Part.Circle(uv(g["center"]), V(0, 0, 1), g["radius"])
+            elif k == "ellipse" and g.get("bounds") is None:
+                geo = self.full_ellipse(g)
             elif k == "nurbs":
                 c = g["curve"]
                 form = c["poles"].get("form")
@@ -447,6 +449,8 @@ class Rebuilder:
                     edges.append(Part.LineSegment(a + (b - a) * t0, a + (b - a) * t1).toShape())
                 elif g["kind"] in ("circle", "arc"):
                     edges.append(Part.Circle(uv(g["center"]), V(0, 0, 1), g["radius"]).toShape(t0, t1))
+                elif g["kind"] == "ellipse" and g.get("bounds") is None:
+                    edges.append(self.full_ellipse(g).toShape())
                 else:
                     raise NotImplementedError("loop curve " + g["kind"])
             faces.append(Part.Face(Part.Wire(Part.__sortEdges__(edges))))
@@ -537,11 +541,19 @@ class Rebuilder:
         return shape
 
     @staticmethod
+    def full_ellipse(g):
+        """A full sketch ellipse (centre, major-axis angle, semi-axes) in sketch coordinates."""
+        c, a = uv(g["center"]), g["major_angle"]
+        ca, sa = math.cos(a), math.sin(a)
+        return Part.Ellipse(c + V(g["major_radius"] * ca, g["major_radius"] * sa, 0),
+                            c + V(-g["minor_radius"] * sa, g["minor_radius"] * ca, 0), c)
+
+    @staticmethod
     def full_range(e):
         g = e["geometry"]
         if g["kind"] == "line":
             return [0.0, 1.0]
-        if g["kind"] == "circle":
+        if g["kind"] in ("circle", "ellipse"):
             return [0.0, 2 * math.pi]
         if g["kind"] == "arc":
             a0, a1 = g["start_angle"], g["end_angle"]
@@ -575,6 +587,10 @@ class Rebuilder:
         sid = value.get("sketch") if isinstance(value, dict) else None
         if sid not in self.sketch_defs:
             raise NotImplementedError("profile kind " + prof["kind"])
+        if prof["kind"] == "sketch_selection" and any(
+                e["geometry"]["kind"] == "text" for e in self.entities.get(sid, [])):
+            raise NotImplementedError("profile selects sketch text: glyph outlines come from "
+                                      "the font and are not stored in the file")
         sk, geo_of, edge_of, normal = self.build_sketch(sid, self.sketch_label(sid))
         regions = value.get("regions") or []
         notes = {}
@@ -1409,6 +1425,13 @@ class Rebuilder:
         self.doc.recompute()
         res = self.apply_op("cut", tool, feat["name"])
         res["holes"] = len(placements)
+        spec = (d.get("shape") or {}).get("construction", {}).get("specification") or {}
+        if spec.get("kind") == "threaded":
+            # The bore is the thread's minor diameter (cosmetic threads add no geometry).
+            if spec.get("modeled"):
+                res["approximation"] = "modeled thread built as its plain minor-diameter bore"
+            else:
+                res["thread"] = "cosmetic %s" % spec.get("designation")
         return res
 
     def pattern_copies(self, src, p, label):
@@ -1542,8 +1565,25 @@ class Rebuilder:
         in_state = self.state_bodies.get(next(iter(states))) if len(states) == 1 else None
         if in_state and set(in_state) == picked and len(in_state) == len(pool):
             return pool
+        if len(picked) < len(pool) and self.coincident_bodies(pool):
+            # Bodies that coincide exactly are interchangeable: any of them is the selection.
+            return pool[-len(picked):]
         raise NotImplementedError("selection of %d of %s bodies (%d rebuilt)" % (
             len(picked), len(in_state) if in_state else "?", len(pool)))
+
+    @staticmethod
+    def coincident_bodies(pool):
+        """Whether every body of `pool` is the same solid in the same place."""
+        sigs = set()
+        for b in pool:
+            sh = b.Shape
+            if not sh.Solids:
+                return False
+            c = sum((so.CenterOfMass * so.Volume for so in sh.Solids), App.Vector()) * (1 / sh.Volume)
+            bb = sh.BoundBox
+            sigs.add(tuple(round(v, 4) for v in (sh.Volume, sh.Area, c.x, c.y, c.z, bb.XMin, bb.YMin, bb.ZMin,
+                                                 bb.XMax, bb.YMax, bb.ZMax)))
+        return len(sigs) == 1
 
     def body_pattern(self, feat, seeds, p):
         """Copies of the seed bodies. A mirrored body that touches its seed is joined to it
@@ -1571,8 +1611,19 @@ class Rebuilder:
                 res["bodies"] += len(parts)
         return res
 
+    def bare_sketch_profile(self, prof):
+        """A profile naming a whole sketch (no selection record) as loop regions, like an
+        extrude of a bare sketch; unchanged when it is anything else."""
+        value = prof.get("value")
+        if prof.get("kind") == "sketch" and value in self.sketch_defs:
+            regions = self.bare_sketch_regions(value)
+            if regions:
+                return {"kind": "sketch_regions", "value": {"sketch": value, "regions": regions, "static": True}}
+        return prof
+
     def profile_base(self, feat, prof):
         """(face object, sketch record) for a planar sketch profile, as for an extrude."""
+        prof = self.bare_sketch_profile(prof)
         value = prof.get("value")
         sid = value.get("sketch") if isinstance(value, dict) else None
         if sid not in self.sketch_defs:
@@ -1580,7 +1631,8 @@ class Rebuilder:
         sk_rec = self.build_sketch(sid, self.sketch_label(sid))
         sk, geo_of, edge_of, normal = sk_rec
         regions = value.get("regions") or []
-        if any(r.get("region") == "trimmed" for r in regions) or self.crossing_loops(sid, regions):
+        if (value.get("static") or any(r.get("region") == "trimmed" for r in regions)
+                or self.crossing_loops(sid, regions)):
             base = self.doc.addObject("Part::Feature", "ProfileFace")
             base.Shape = self.trimmed_face(sid, regions, sk.Placement)
         else:
@@ -1641,7 +1693,18 @@ class Rebuilder:
                                          vec(rot["origin"])))
         copies = d.get("copies", 0)
         if copies:
-            raise NotImplementedError("move with %d copies" % copies)
+            # Create Copy / Copy-Paste Body: the originals stay; each copy is a placed compound of
+            # its source, appended after the existing bodies.
+            if copies != 1:
+                raise NotImplementedError("move with %d copies" % copies)
+            for b in bodies:
+                cp = self.doc.addObject("Part::Compound", "Copy")
+                cp.Label = "%s copy of %s" % (feat["name"], b.Label)
+                cp.Links = [b]
+                cp.Placement = m
+                self.solids.append(cp)
+            self.doc.recompute()
+            return {"bodies": len(bodies), "copies": copies}
         for b in bodies:
             mv = self.doc.addObject("Part::Compound", "Move")
             mv.Label = "%s of %s" % (feat["name"], b.Label)
@@ -1817,6 +1880,7 @@ class Rebuilder:
         """(sketch object, [(outer loop edge names, [hole loop edge names])]) of a resolved
         sketch profile. Nesting of `sketch_profiles` loops is found geometrically, as the
         extrude's face maker does."""
+        prof = self.bare_sketch_profile(prof)
         kind, val = prof.get("kind"), prof.get("value")
         sid = val.get("sketch") if isinstance(val, dict) else None
         if sid not in self.sketch_defs or kind not in ("sketch_profiles", "sketch_regions"):
@@ -2126,13 +2190,14 @@ class Rebuilder:
             section = groups[0][0].Shape
             loop_wire = Part.Wire(Part.__sortEdges__(section.Edges)) if section.Edges else None
             if section.Edges:
-                # the path may start inside the region (distance to the filled section)
+                # a binder holds one closed loop as a compound; the path may start inside
+                # the region, so measure distance to the filled section
                 section = Part.Face(Part.Wire(Part.__sortEdges__(section.Edges)))
-            names, wire = self.chain(names, edges, section.BoundBox.Center)
-            at_start = section.distToShape(wire.OrderedVertexes[0])[0] < 1e-6
-            if not at_start and section.distToShape(wire.OrderedVertexes[-1])[0] < 1e-6:
+            names, wire = self.chain(names, edges, section.CenterOfMass)
+            at_start = section.distToShape(wire.OrderedVertexes[0])[0] < 1e-4
+            if not at_start and section.distToShape(wire.OrderedVertexes[-1])[0] < 1e-4:
                 wire.reverse()
-                at_start = section.distToShape(wire.OrderedVertexes[0])[0] < 1e-6
+                at_start = section.distToShape(wire.OrderedVertexes[0])[0] < 1e-4
             if not at_start and min(ext["along_fraction"], ext["against_fraction"]) < 1.0 - 1e-9:
                 raise NotImplementedError("sweep profile away from the path ends")
         else:
