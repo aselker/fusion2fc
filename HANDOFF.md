@@ -143,3 +143,11 @@ Left:
 - sketch_selection `unresolved_region_operand` models (2BC, Cake_v2, hook_sogou, TimingPulleyBase) not touched this pass; bounded ellipses and ellipses in arrangements not handled.
 Gotchas: zipfile cannot read the .f3d (zstd); use `unzip -p`. Ellipse vs circle: 13th f64 of the payload.
 Result (final binary, cadmpeg 73d0578f2b / fusion d82e133+): corpus 141/233 models, 948/1560 steps (baseline 128/930); generated 123/160; supported 12/28; extended 6/45; run_cases 127/160; no model lost steps; cargo test -p cadmpeg-codec-f3d passes.
+
+# Sixth pass (profiles): unresolved region operands
+Done (cadmpeg 583bb921c1): a counted region operand whose members name curves a later sketch edit replaced (member primary id has no stored curve) made the history-transition candidate fail `planar_selection_agrees_with_region_operand`. Now agrees when >= half of the members survive and exactly one stored loop holds them all (same member count, or a >= loop when members were replaced). PacktPublishing_2BC 3->6 steps (next fail: Mirror body selection), onlinelei_hook_sogou_v1 1->4 (next: Fillet 715.09 vs 713.79).
+Diagnosis of the rest:
+- ravengraves_TimingPulleyBase Extrude2: operand has 11 members, ~6 replaced; stored loops are 3 single circles; transition candidate is a Loops region with a hole, which the agreement check never accepts (only hole-free Loops). Needs ring matching against the arrangement with wildcard members.
+- andyeske_Cake_v2 Extrude8: `transition_profile_selection` returns None; `curve_arrangement_faces` exit (geometry.rs `geometric!` at the arrangement call) also fires. Not traced further.
+- ulikoehler B10P/B2PS: not touched.
+Final binary numbers: corpus 154/233 models, 968/1560 steps (generated 136/160 steps 562/593; supported 12/28 steps 126/220; extended 6/45 steps 280/747); run_cases 140/160. No model lost steps vs tests/corpus/baseline.json (old baseline; main already had other agents' gains).
