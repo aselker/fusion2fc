@@ -1409,6 +1409,13 @@ class Rebuilder:
         self.doc.recompute()
         res = self.apply_op("cut", tool, feat["name"])
         res["holes"] = len(placements)
+        spec = (d.get("shape") or {}).get("construction", {}).get("specification") or {}
+        if spec.get("kind") == "threaded":
+            # The bore is the thread's minor diameter (cosmetic threads add no geometry).
+            if spec.get("modeled"):
+                res["approximation"] = "modeled thread built as its plain minor-diameter bore"
+            else:
+                res["thread"] = "cosmetic %s" % spec.get("designation")
         return res
 
     def pattern_copies(self, src, p, label):
@@ -1542,8 +1549,25 @@ class Rebuilder:
         in_state = self.state_bodies.get(next(iter(states))) if len(states) == 1 else None
         if in_state and set(in_state) == picked and len(in_state) == len(pool):
             return pool
+        if len(picked) < len(pool) and self.coincident_bodies(pool):
+            # Bodies that coincide exactly are interchangeable: any of them is the selection.
+            return pool[-len(picked):]
         raise NotImplementedError("selection of %d of %s bodies (%d rebuilt)" % (
             len(picked), len(in_state) if in_state else "?", len(pool)))
+
+    @staticmethod
+    def coincident_bodies(pool):
+        """Whether every body of `pool` is the same solid in the same place."""
+        sigs = set()
+        for b in pool:
+            sh = b.Shape
+            if not sh.Solids:
+                return False
+            c = sum((so.CenterOfMass * so.Volume for so in sh.Solids), App.Vector()) * (1 / sh.Volume)
+            bb = sh.BoundBox
+            sigs.add(tuple(round(v, 4) for v in (sh.Volume, sh.Area, c.x, c.y, c.z, bb.XMin, bb.YMin, bb.ZMin,
+                                                 bb.XMax, bb.YMax, bb.ZMax)))
+        return len(sigs) == 1
 
     def body_pattern(self, feat, seeds, p):
         """Copies of the seed bodies. A mirrored body that touches its seed is joined to it
@@ -1641,7 +1665,18 @@ class Rebuilder:
                                          vec(rot["origin"])))
         copies = d.get("copies", 0)
         if copies:
-            raise NotImplementedError("move with %d copies" % copies)
+            # Create Copy / Copy-Paste Body: the originals stay; each copy is a placed compound of
+            # its source, appended after the existing bodies.
+            if copies != 1:
+                raise NotImplementedError("move with %d copies" % copies)
+            for b in bodies:
+                cp = self.doc.addObject("Part::Compound", "Copy")
+                cp.Label = "%s copy of %s" % (feat["name"], b.Label)
+                cp.Links = [b]
+                cp.Placement = m
+                self.solids.append(cp)
+            self.doc.recompute()
+            return {"bodies": len(bodies), "copies": copies}
         for b in bodies:
             mv = self.doc.addObject("Part::Compound", "Move")
             mv.Label = "%s of %s" % (feat["name"], b.Label)
