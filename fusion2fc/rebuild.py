@@ -1506,7 +1506,39 @@ class Rebuilder:
             return self.feature_pattern(feat, seeds, p)
         if kinds == {"bodies"}:
             return self.body_pattern(feat, seeds, p)
+        if kinds == {"faces"}:
+            return self.face_pattern(feat, seeds, p)
         raise NotImplementedError("pattern of " + "/".join(sorted(map(str, kinds))))
+
+    def face_pattern(self, feat, seeds, p):
+        """Pattern of faces: the faces are the walls of an earlier feature's tool (a cut's hole, a
+        join's boss), so the pattern re-applies that tool at every instance. Refused unless every
+        selected face lies on the boundary of exactly one recorded tool."""
+        faces = []
+        for s in seeds:
+            for body, idx in self.selected_faces(s["value"]).items():
+                faces += [body.Shape.Faces[i] for i in idx]
+        if not faces:
+            raise NotImplementedError("pattern faces unresolved")
+        owners = []
+        for fid, used in self.feature_tools.items():
+            for t in used:
+                shape = t["tool"].Shape
+                if shape.isNull():
+                    continue
+                walls = Part.Compound(shape.Faces)  # distance to the boundary, not the solid
+                if all(walls.distToShape(Part.Vertex(f.CenterOfMass))[0] < self.EDGE_TOL
+                       and all(walls.distToShape(Part.Vertex(v.Point))[0] < self.EDGE_TOL for v in f.Vertexes)
+                       for f in faces):
+                    owners.append(t)
+        if len(owners) != 1:
+            raise NotImplementedError("pattern faces match %d feature tools" % len(owners))
+        t = owners[0]
+        if t["op"] == "new_body":
+            raise NotImplementedError("pattern faces lie on a new body's walls (face selection unproven)")
+        copies = self.pattern_copies(t["tool"], p, feat["name"] + " copies")
+        res = self.apply_op(t["op"], copies, feat["name"])
+        return {"faces": len(faces), "targets": res.get("targets", 0)}
 
     def feature_pattern(self, feat, seeds, p):
         """Re-apply each seed feature's boolean with its tool copied to every instance."""
