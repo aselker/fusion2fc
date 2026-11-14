@@ -12,7 +12,7 @@
   "steps": 6
  },
  "PacktPublishing_4_2_S_Hook_Sweep_Final": {
-  "match": 6,
+  "match": 7,
   "steps": 7
  },
  "PacktPublishing_Bicycle_Handlebars_final": {
@@ -259,6 +259,18 @@
   "match": 10,
   "steps": 10
  },
+ "case_cut_participants_face_one": {
+  "match": 10,
+  "steps": 10
+ },
+ "case_cut_participants_face_two": {
+  "match": 9,
+  "steps": 10
+ },
+ "case_cut_participants_from_object_two": {
+  "match": 9,
+  "steps": 10
+ },
  "case_cut_participants_one": {
   "match": 10,
   "steps": 10
@@ -464,7 +476,7 @@
   "steps": 4
  },
  "case_loft_offset_centers": {
-  "match": 3,
+  "match": 4,
   "steps": 4
  },
  "case_loft_three_profiles": {
@@ -472,7 +484,7 @@
   "steps": 6
  },
  "case_loft_two_rect_circle": {
-  "match": 3,
+  "match": 4,
   "steps": 4
  },
  "case_loft_with_rail": {
@@ -788,11 +800,11 @@
   "steps": 3
  },
  "case_sweep_twist": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_thicken_face": {
-  "match": 1,
+  "match": 2,
   "steps": 3
  },
  "case_two_components": {

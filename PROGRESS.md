@@ -81,7 +81,8 @@ still give the right shape and say what was lost, never quietly give wrong geome
 | round 4/5: scale, split, offset face, draft, shell, sweep taper/twist, tapped holes, copy body, whole-sketch revolve/sweep, ellipses) | 154/233 | 962/1560 | generated 136/160 (562/593 steps), supported 12/28, extended 6/45; run_cases 140/160 |
 | + split by tool body, off-path sweep, region operands with replaced curves, rosbot Move, honest cut/join refusals, 4 participant-cut cases) | 157/237 | 1025/1601 | generated 138/164 (601/634 steps), supported 12/28 (126/220), extended 7/45 (298/747); run_cases 143/164 |
 | + participant cuts, symmetric/extent patterns, co2_box region refusal) | 164/237 | 1032/1601 | generated 144/164 (607/634 steps), supported 13/28 (127/220), extended 7/45 (298/747); run_cases 146/164; f3d 4225, IR 1938, creo 2646 lib tests pass |
-| **Current main** (+ NEMA17 type-10 pattern directions) | **164/237** | **1052/1601** | extended 7/45 (318/747); others unchanged |
+| + NEMA17 type-10 pattern directions) | 164/237 | 1052/1601 | extended 7/45 (318/747); others unchanged |
+| **Current main** (+ thicken face, cornered sweeps, exact-surface comparator fallback, 3 more participant cases) | **169/240** | **1085/1631** | generated 148/167 (639/664), supported 13/28 (127/220), extended 8/45 (319/747); 3 steps matched by the exact-surface check, 0 by labels |
 
 ## What works now (merged on main)
 
@@ -215,7 +216,7 @@ These have not been changed; they are for the user to decide.
 - Surface-only steps never match (tealight, kantoku).
 - Localised datum-plane names (作業平面1) break alignment.
 - The Nupud models are about 1e-5 relative off in volume.
-- Warped faces (sweep_twist, loft_two_rect_circle, loft_offset_centers): volumes match and Fusion's mesh vertices lie within 1e-3 mm of our surface, but the mesh distance is 0.03–0.07 mm against a limit of about 0.015–0.02 mm. This looks like a tessellation limit in the comparator.
+- Warped faces: resolved by the exact-surface fallback (`tools/exact_compare.py`, user-approved 2026-11-14). The user also allowed per-test labels in `tests/corpus/tolerances.json` (up to 2.5 x, a written reason required); none are used yet. `freecadcmd tools/negative_controls.py` must keep reporting ALL AS EXPECTED.
 
 ## Gotchas
 
