@@ -132,7 +132,7 @@
   "steps": 3
  },
  "busraakgun24_k_recik": {
-  "match": 1,
+  "match": 4,
   "steps": 6
  },
  "busraakgun24_kol": {
@@ -236,7 +236,7 @@
   "steps": 3
  },
  "case_copy_body": {
-  "match": 2,
+  "match": 4,
   "steps": 4
  },
  "case_cut_across_bodies_participants": {
@@ -420,7 +420,7 @@
   "steps": 4
  },
  "case_hole_tapped_cosmetic": {
-  "match": 3,
+  "match": 4,
   "steps": 4
  },
  "case_hole_tapped_modeled": {
@@ -428,7 +428,7 @@
   "steps": 4
  },
  "case_hole_tapped_through": {
-  "match": 3,
+  "match": 4,
   "steps": 4
  },
  "case_hole_two_points_on_face": {
@@ -576,31 +576,31 @@
   "steps": 9
  },
  "case_rev_about_profile_edge": {
-  "match": 1,
+  "match": 2,
   "steps": 2
  },
  "case_rev_about_sketch_line": {
-  "match": 1,
+  "match": 2,
   "steps": 2
  },
  "case_rev_cut_groove": {
-  "match": 3,
+  "match": 4,
   "steps": 4
  },
  "case_rev_full_axis": {
-  "match": 1,
+  "match": 2,
   "steps": 2
  },
  "case_rev_join_flange": {
-  "match": 3,
+  "match": 4,
   "steps": 4
  },
  "case_rev_partial_angle": {
-  "match": 1,
+  "match": 2,
   "steps": 2
  },
  "case_rev_symmetric": {
-  "match": 1,
+  "match": 2,
   "steps": 2
  },
  "case_rolled_back_marker": {
@@ -660,11 +660,11 @@
   "steps": 2
  },
  "case_sk_ellipse": {
-  "match": 1,
+  "match": 2,
   "steps": 2
  },
  "case_sk_ellipse_rotated_cut": {
-  "match": 3,
+  "match": 4,
   "steps": 4
  },
  "case_sk_fillet_corners": {
@@ -760,7 +760,7 @@
   "steps": 3
  },
  "case_sweep_line_arc_path": {
-  "match": 2,
+  "match": 3,
   "steps": 3
  },
  "case_sweep_spline_path": {
