@@ -1,0 +1,695 @@
+{
+"source": "case_cut_participants_face_one.f3d",
+"fusion": "2706.1.17",
+"designType": 1,
+"marker": 10,
+"diag": 25.865034312755125,
+"deviation_mm": 0.005173006862551025,
+"steps_total": 10,
+"steps": [
+{
+"index": 0,
+"name": "Sketch1",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": null,
+"bodies": [],
+"seconds": 0.02
+},
+{
+"index": 1,
+"name": "Extrude1",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+1.5000000000000002
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+3.0000000000000004
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 2,
+"name": "Plane1",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+1.5000000000000002
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+3.0000000000000004
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.01
+},
+{
+"index": 3,
+"name": "Sketch2",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0001.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+1.5000000000000002
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+3.0000000000000004
+]
+],
+"tri": [
+0,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 4,
+"name": "Extrude2",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+1.5000000000000002
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+3.0000000000000004
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+6.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+5.0
+],
+[
+20.0,
+10.0,
+8.0
+]
+],
+"tri": [
+12,
+12
+]
+}
+],
+"seconds": 0.03
+},
+{
+"index": 5,
+"name": "Plane2",
+"group": null,
+"type": "ConstructionPlane",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": {
+"error": "'ConstructionPlane' object has no attribute 'parentComponent'"
+},
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+1.5000000000000002
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+3.0000000000000004
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+6.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+5.0
+],
+[
+20.0,
+10.0,
+8.0
+]
+],
+"tri": [
+12,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 6,
+"name": "Sketch3",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0004.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+1.5000000000000002
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+3.0000000000000004
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+6.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+5.0
+],
+[
+20.0,
+10.0,
+8.0
+]
+],
+"tri": [
+12,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 7,
+"name": "Extrude3",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0007.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+1.5000000000000002
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+3.0000000000000004
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+6.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+5.0
+],
+[
+20.0,
+10.0,
+8.0
+]
+],
+"tri": [
+12,
+12
+]
+},
+{
+"name": "Body3",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+11.500000000000002
+],
+"bbox": [
+[
+0.0,
+0.0,
+10.0
+],
+[
+20.0,
+10.0,
+13.0
+]
+],
+"tri": [
+24,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 8,
+"name": "Sketch4",
+"group": null,
+"type": "Sketch",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0007.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+1.5000000000000002
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+3.0000000000000004
+]
+],
+"tri": [
+0,
+12
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+6.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+5.0
+],
+[
+20.0,
+10.0,
+8.0
+]
+],
+"tri": [
+12,
+12
+]
+},
+{
+"name": "Body3",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+11.500000000000002
+],
+"bbox": [
+[
+0.0,
+0.0,
+10.0
+],
+[
+20.0,
+10.0,
+13.0
+]
+],
+"tri": [
+24,
+12
+]
+}
+],
+"seconds": 0.02
+},
+{
+"index": 9,
+"name": "Extrude4",
+"group": null,
+"type": "ExtrudeFeature",
+"suppressed": false,
+"health": 0,
+"message": null,
+"component": "Untitled",
+"mesh": "mesh_0009.stl.gz",
+"bodies": [
+{
+"name": "Body1",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 515.1769983530721,
+"area": 580.0,
+"centroid": [
+9.999999999948347,
+5.0,
+1.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+0.0
+],
+[
+20.0,
+10.0,
+3.0000000000000004
+]
+],
+"tri": [
+0,
+232
+]
+},
+{
+"name": "Body2",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+6.5
+],
+"bbox": [
+[
+0.0,
+0.0,
+5.0
+],
+[
+20.0,
+10.0,
+8.0
+]
+],
+"tri": [
+232,
+12
+]
+},
+{
+"name": "Body3",
+"component": "Untitled",
+"occurrence": null,
+"solid": true,
+"visible": true,
+"volume": 600.0000000000001,
+"area": 580.0000000000001,
+"centroid": [
+10.0,
+5.0,
+11.500000000000002
+],
+"bbox": [
+[
+0.0,
+0.0,
+10.0
+],
+[
+20.0,
+10.0,
+13.0
+]
+],
+"tri": [
+244,
+12
+]
+}
+],
+"seconds": 0.04
+}
+],
+"seconds": 2.0
+}

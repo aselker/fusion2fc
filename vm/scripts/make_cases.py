@@ -1850,6 +1850,46 @@ def cut_participants_reverse(design, root):
     extrude(root, sk.profiles.item(0), FO.CutFeatureOperation, setup)
 
 
+def _cut_on_face(root, participants_of):
+    """Sketch on the top body's top face, through-all cut downward with participants."""
+    bodies = _three_stacked(root)
+    sk = root.sketches.add(top_face(bodies[2]))
+    circle(sk, 1, 0.5, 0.3)
+    prof = min((sk.profiles.item(i) for i in range(sk.profiles.count)),
+               key=lambda p: p.areaProperties().area)
+
+    def setup(inp):
+        inp.setOneSideExtent(adsk.fusion.ThroughAllExtentDefinition.create(), NEG)
+        inp.participantBodies = participants_of(bodies)
+    extrude(root, prof, FO.CutFeatureOperation, setup)
+
+
+@case
+def cut_participants_face_one(design, root):
+    """Cut sketched on a body face, participant the bottom body."""
+    _cut_on_face(root, lambda b: [b[0]])
+
+
+@case
+def cut_participants_face_two(design, root):
+    """Cut sketched on a body face, participants the bottom and middle bodies."""
+    _cut_on_face(root, lambda b: [b[0], b[1]])
+
+
+@case
+def cut_participants_from_object_two(design, root):
+    """Through-all cut starting from a body face (from-object start), participants b2 and b3."""
+    b1, b2, b3 = _three_stacked(root)
+    sk = root.sketches.add(root.xYConstructionPlane)
+    circle(sk, 1, 0.5, 0.3)
+
+    def setup(inp):
+        inp.startExtent = adsk.fusion.FromEntityStartDefinition.create(top_face(b1), V("0 mm"))
+        inp.setOneSideExtent(adsk.fusion.ThroughAllExtentDefinition.create(), POS)
+        inp.participantBodies = [b2, b3]
+    extrude(root, sk.profiles.item(0), FO.CutFeatureOperation, setup)
+
+
 @case
 def multi_body_join_extrude(design, root):
     block(root, 0, 0, 2, 1, "3 mm")
