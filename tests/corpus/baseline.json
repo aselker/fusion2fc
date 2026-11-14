@@ -8,7 +8,7 @@
   "steps": 10
  },
  "PacktPublishing_3_1_Example": {
-  "match": 5,
+  "match": 6,
   "steps": 6
  },
  "PacktPublishing_4_2_S_Hook_Sweep_Final": {
@@ -256,15 +256,15 @@
   "steps": 10
  },
  "case_cut_participants_blind": {
-  "match": 9,
+  "match": 10,
   "steps": 10
  },
  "case_cut_participants_one": {
-  "match": 9,
+  "match": 10,
   "steps": 10
  },
  "case_cut_participants_reverse": {
-  "match": 10,
+  "match": 11,
   "steps": 11
  },
  "case_cut_through_all": {
@@ -528,7 +528,7 @@
   "steps": 5
  },
  "case_pat_circ_symmetric": {
-  "match": 4,
+  "match": 5,
   "steps": 5
  },
  "case_pat_path": {
@@ -544,7 +544,7 @@
   "steps": 5
  },
  "case_pat_rect_one_dir_extent": {
-  "match": 4,
+  "match": 5,
   "steps": 5
  },
  "case_pat_rect_one_dir_spacing": {
@@ -552,7 +552,7 @@
   "steps": 5
  },
  "case_pat_rect_symmetric": {
-  "match": 4,
+  "match": 5,
   "steps": 5
  },
  "case_pat_rect_two_dirs": {

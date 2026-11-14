@@ -79,7 +79,8 @@ still give the right shape and say what was lost, never quietly give wrong geome
 | After fillet rounds 1–2, loft | 76/139 | 585/1209 | |
 | +94 everyday cases, profiles/patterns round 3 | 128/233 | 930/1560 | generated 110/160 (535/593 steps), supported 12/28, extended 6/45; run_cases 114/160 |
 | round 4/5: scale, split, offset face, draft, shell, sweep taper/twist, tapped holes, copy body, whole-sketch revolve/sweep, ellipses) | 154/233 | 962/1560 | generated 136/160 (562/593 steps), supported 12/28, extended 6/45; run_cases 140/160 |
-| **Current main** (+ split by tool body, off-path sweep, region operands with replaced curves, rosbot Move, honest cut/join refusals, 4 participant-cut cases) | **157/237** | **1025/1601** | generated 138/164 (601/634 steps), supported 12/28 (126/220), extended 7/45 (298/747); run_cases 143/164 |
+| + split by tool body, off-path sweep, region operands with replaced curves, rosbot Move, honest cut/join refusals, 4 participant-cut cases) | 157/237 | 1025/1601 | generated 138/164 (601/634 steps), supported 12/28 (126/220), extended 7/45 (298/747); run_cases 143/164 |
+| **Current main** (+ participant cuts, symmetric/extent patterns, co2_box region refusal) | **164/237** | **1032/1601** | generated 144/164 (607/634 steps), supported 13/28 (127/220), extended 7/45 (298/747); run_cases 146/164; f3d 4225, IR 1938, creo 2646 lib tests pass |
 
 ## What works now (merged on main)
 
@@ -104,27 +105,19 @@ still give the right shape and say what was lost, never quietly give wrong geome
   - Base Feature stored bodies.
 - **Fail-safe:** conversion report, final-shape fallback, version warnings (`tools/convert.py`).
 
-## Agent work in progress (round 6, started 2026-11-13 evening)
+## Agent state (stopped 2026-11-13 ~21:00 PT at 80% session usage)
 
-Each agent has its own worktree under `.worktrees/<name>`, on branch `agent/<name>`, with a
-cadmpeg worktree on `f2fc-agent/<name>`. Every worktree has a `HANDOFF.md` with that agent's
-running notes. Everything from rounds 4 and 5 is merged into main. Work started after that
-is not merged until the coordinator verifies it.
+Everything the agents committed is merged into main. Each worktree's `HANDOFF.md` has its
+diagnoses and next steps (see "Findings from round 6" below).
 
-- **`profiles`:** sketch regions that don't resolve. The `unresolved_region_operand` models
-  (2BC, Cake_v2, hook_sogou, TimingPulleyBase), and the ulikoehler sketches that have no
-  closed loops.
-- **`features-a`:**
-  - First, fix the f3d lib test compile errors that its thread commit introduced
-    (`feature_project/tests/hole.rs`). **The tests on `fusion2fc` 877e68aa03 don't compile
-    until this lands.**
-  - Then patterns: symmetric and one-direction extent, pattern of faces, path pattern,
-    nick0451 R-Pattern6, and NEMA17 R-Pattern1.
-- **`features-b`:**
-  - split by tool body (list the tool's faces as Historical);
-  - appleScreen Shell3 (bind the scope to its history);
-  - case_sweep_cut_groove (the decoder resolves the path to a block edge);
-  - thicken face side.
+- **`features-a`:** next are `pat_rect_faces` (decoder face slot for the R-Pattern face group;
+  the rebuilder's `face_pattern` exists), `pat_path` (path pattern settings not parsed),
+  even-count symmetric patterns, nick0451 R-Pattern6 and NEMA17 R-Pattern1.
+- **`features-b`:** next is the participant-extrude prologue ordinal for
+  `case_cut_across_bodies_participants` and `case_cut_participants_all`. Two readings fit the
+  data. A case with a different number of references before the 0x5 group would settle it.
+- **`profiles`:** next are kol Extrude4 (1 of 2 regions), Claw Extrude1, and refusing when the
+  recorded region count differs from the resolved count.
 
 To resume, either send each agent a "continue" message (if the same session is still around),
 or start a new agent with that worktree and its `HANDOFF.md`. Tell it to finish, commit, run
