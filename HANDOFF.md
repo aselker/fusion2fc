@@ -151,3 +151,9 @@ Diagnosis of the rest:
 - andyeske_Cake_v2 Extrude8: `transition_profile_selection` returns None; `curve_arrangement_faces` exit (geometry.rs `geometric!` at the arrangement call) also fires. Not traced further.
 - ulikoehler B10P/B2PS: not touched.
 Final binary numbers: corpus 154/233 models, 968/1560 steps (generated 136/160 steps 562/593; supported 12/28 steps 126/220; extended 6/45 steps 280/747); run_cases 140/160. No model lost steps vs tests/corpus/baseline.json (old baseline; main already had other agents' gains).
+
+# Seventh pass (profiles): diagnosis only, no code change
+- ulikoehler_B10P_VH / B2PS_VH Extrusion3 (`profile kind sketch`): the sketch (842) holds many overlapping/duplicate collinear lines and construction copies, so no closed stored loop exists, the extrude has no counted group and no curve selection, and `transition_profile_selection_step` ends at the `unique_multi_face_deleted_carrier_family` exit (its cap-face path needs `sketch.profiles`). Fusion extruded one profile (area 11.96 mm2). Fix needs cap-face matching against arrangement regions (not loops) for sketches without loops.
+- andyeske_Cake_v2 Extrude8: `transition_profile_selection` exits at the chain walk (`chain.last() != previous_state_id`); raising the 8-step cap to 24 changed nothing (tried, reverted), so the previous state is not on the end state's transition chain (branching history).
+- TimingPulleyBase: needs wildcard ring matching against the arrangement (candidate has a hole region, agreement check accepts only hole-free loops).
+- sogou Fillet1 (715.09 vs 713.79 mm3): extrude passes, so not a profile problem; not traced.
