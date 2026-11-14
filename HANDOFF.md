@@ -157,3 +157,21 @@ Final binary numbers: corpus 154/233 models, 968/1560 steps (generated 136/160 s
 - andyeske_Cake_v2 Extrude8: `transition_profile_selection` exits at the chain walk (`chain.last() != previous_state_id`); raising the 8-step cap to 24 changed nothing (tried, reverted), so the previous state is not on the end state's transition chain (branching history).
 - TimingPulleyBase: needs wildcard ring matching against the arrangement (candidate has a hole region, agreement check accepts only hole-free loops).
 - sogou Fillet1 (715.09 vs 713.79 mm3): extrude passes, so not a profile problem; not traced.
+
+# Eighth pass (profiles): extrudes that build with the wrong shape
+Classification of first failures (Fusion volume vs rebuilt), from main's result.json:
+| model / step | class | note |
+|---|---|---|
+| bitbank2_co2_01space_box Extrude18 | wrong region | new body: Fusion extrudes 3 small pieces (0.085+0.086+1.94 cm2), rebuilt the big outer region |
+| busraakgun24_kol Extrude4 | wrong region | cut: Fusion 1.4+1.8 cm2 pieces, rebuilt only 1.4 (nested region operand resolves 1 of 2) |
+| 16mm_Claw Extrude1 | wrong region | Fusion 6 pieces (3.72 cm2), rebuilt 3.33 |
+| Controller_Cooler_P2 Extrude2 | wrong region / body count | join: Fusion fuses 4 small discs + 5.33 cm2 piece into 1 body; rebuilt leaves 4 loose discs |
+| Seven_LED_Insert Extrude1 | wrong region / body count | 6 pieces from overlapping loops, rebuilt 3 bodies |
+| gtgkartik_Industrial_Tool_2 Extrude2 | wrong region (stale loops) | cut volume differs 205548 vs 194232 |
+| Int_Corner_P2 Extrude4 | tolerance | 48994.7 vs 48994.2 (1e-5 relative), geometry equal |
+| Lock_B_Side Extrude2 | wrong region/participants | cut removed the whole body (0 vs 8256): now REFUSED |
+| Metal_Post Extrude1 | tool misses body | cut met no body (sketch at pipe end, reversed direction, profile 1 of two circles): now REFUSED; cause not traced |
+| T_bel_T2_v3 Extrude2 | tool adds nothing | join of a ring region (outer 5, hole 0) added no volume (Fusion +937 mm3): now REFUSED |
+Not looked at: administrativetrick, Tihend, bowenchristopher, 2278, Pizero (known region causes in earlier passes).
+Done: rebuild.py `apply_op` refuses (ValueError, bodies left as they were) a cut/intersect whose tool meets no body, a cut that removes a whole body, and a join that adds no volume, for extrude/revolve/sweep features only (patterns excluded). No matched step lost; it turns three silently wrong builds into reasoned refusals.
+Left: the wrong-region class needs the decoder to resolve the selection uniquely (see earlier passes); the rebuilder cannot tell a wrong region from a right one without the Fusion volume.
