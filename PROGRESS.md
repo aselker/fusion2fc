@@ -218,6 +218,8 @@ matches). Dutchman's FreeCAD macro passes parameter names (`"d1"`) to `App.Units
 any dimension driven by a named parameter falls back to STEP. That is a Dutchman bug, not
 reported upstream. Things Dutchman-to-SolidCraft gets that we don't: case_fillet_corner_setback
 and case_two_components.
+Write-up for the Dutchman maintainers: `docs/dutchman-notes.html`, also published as a private
+claude.ai artifact.
 
 ## Comparator questions for the user
 

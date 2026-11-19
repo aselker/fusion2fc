@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>fusion2fc and Dutchman</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap">
+<style>
+/* Layout: a single reading column of engineering notes, with wide tables scrolling in their own frames. */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --fg: #1c2330;
+  --muted: #5a6475;
+  --rule: #d9dee6;
+  --accent: #2557a7;
+  --accent-soft: #e6edf8;
+  --good: #1f7a4d;
+  --warn: #9a5b00;
+  --bad: #b03a2e;
+  --code-bg: #eef1f5;
+  --font-body: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-head: "IBM Plex Sans Condensed", "IBM Plex Sans", "Arial Narrow", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12161d; --surface: #191f28; --fg: #e3e8ef; --muted: #9aa5b5; --rule: #2c3542;
+    --accent: #7ea6e6; --accent-soft: #1d2a3d; --good: #5cc28e; --warn: #e0a64a; --bad: #ec7f73;
+    --code-bg: #1f2631; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12161d; --surface: #191f28; --fg: #e3e8ef; --muted: #9aa5b5; --rule: #2c3542;
+  --accent: #7ea6e6; --accent-soft: #1d2a3d; --good: #5cc28e; --warn: #e0a64a; --bad: #ec7f73;
+  --code-bg: #1f2631; color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font-body);
+  font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+}
+main { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px; }
+header { display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid var(--rule); padding-bottom: 28px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1, h2, h3 { font-family: var(--font-head); text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: 2.1rem; font-weight: 600; }
+h2 { font-size: 1.45rem; font-weight: 600; }
+h3 { font-size: 1.1rem; font-weight: 600; margin-top: 8px; }
+p, ul, ol { margin: 0; }
+section { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.lede { font-size: 1.08rem; color: var(--fg); }
+.meta { font-size: 14px; color: var(--muted); }
+ul, ol { padding-left: 1.3em; display: flex; flex-direction: column; gap: 6px; }
+code { font-family: var(--font-mono); font-size: .88em; background: var(--code-bg); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+pre { font-family: var(--font-mono); font-size: 13px; line-height: 1.5; background: var(--code-bg); padding: 14px 16px; border-radius: 6px; overflow-x: auto; margin: 0; }
+pre code { background: none; padding: 0; }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--font-head); font-weight: 600; font-size: 13px; color: var(--muted); white-space: nowrap; }
+tr:last-child td { border-bottom: none; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+tr.total td { font-weight: 600; }
+.callout { background: var(--accent-soft); border-radius: 6px; padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+.callout strong { font-family: var(--font-head); }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.stat { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; }
+.stat .v { font-family: var(--font-head); font-size: 1.6rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.stat .k { font-size: 13px; color: var(--muted); }
+.pill { font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; padding: 1px 7px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.pill.good { color: var(--good); } .pill.warn { color: var(--warn); } .pill.bad { color: var(--bad); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.two > div { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+@media (max-width: 640px) { .two { grid-template-columns: 1fr; } h1 { font-size: 1.7rem; } }
+footer { border-top: 1px solid var(--rule); padding-top: 20px; font-size: 14px; color: var(--muted); display: flex; flex-direction: column; gap: 6px; }
+</style>
+</head>
+<body>
+
+<main>
+<header>
+  <div class="eyebrow">Field notes · Fusion .f3d → FreeCAD · November 2026</div>
+  <h1>fusion2fc and Dutchman</h1>
+  <p class="lede">A hobby project, fusion2fc, converts Autodesk Fusion designs into FreeCAD documents that keep their feature timeline. It is built on a fork of cadmpeg, like Dutchman. We ran Dutchman 0.2.9 over our test corpus, both its FreeCAD output and its SolidCraft output. These notes cover what we built, what it can and can't do yet, what we saw from Dutchman, and one FreeCAD-output bug with a suggested fix.</p>
+  <p class="meta">Corpus: 240 designs, 1,631 timeline steps. Dutchman 0.2.9 and SolidCraft 0.41.0 ran on Linux, with FreeCAD 1.1.3.</p>
+</header>
+
+<section>
+  <h2>Short version</h2>
+  <ul>
+    <li><strong>Bug (FreeCAD macro):</strong> dimensions that reference a Fusion parameter reach <code>App.Units.Quantity</code> as the parameter's name (<code>"d1"</code>), so the macro fails with <code>ValueError: syntax error</code> and restores the STEP. This hit about 44 designs that were otherwise fully mapped. Details and a suggested fix are <a href="#bug">below</a>.</li>
+    <li><strong>Head to head:</strong> designs rebuilt fully parametrically, with the final shape matching Fusion:
+      <ul>
+        <li>fusion2fc: 162 of 240;</li>
+        <li>Dutchman → SolidCraft: 79, or about 85 counting near-matches;</li>
+        <li>Dutchman → FreeCAD: 7.</li>
+      </ul>
+    </li>
+    <li><strong>Where Dutchman → SolidCraft got it right and we didn't:</strong> a setback fillet corner, and an extrude inside a component.</li>
+    <li><strong>Why fillets block in Dutchman's FreeCAD path:</strong> it finds fillet and chamfer edges only on SolidCraft's replay. fusion2fc finds them on FreeCAD's own replay, and that approach could carry over (<a href="#suggestions">suggestions</a>).</li>
+    <li><strong>Verification:</strong> a few designs pass Dutchman's own verification but fail a per-step comparison against Fusion's API output (<a href="#verification">list</a>).</li>
+  </ul>
+</section>
+
+<section>
+  <h2>What fusion2fc is</h2>
+  <p>It is a four-stage pipeline:</p>
+  <ol>
+    <li><strong>Decoder:</strong> a fork of cadmpeg's f3d codec decodes the <code>.f3d</code> into CADIR JSON.</li>
+    <li><strong>Slimming:</strong> a small slimming pass keeps sketches, features, parameters and selections.</li>
+    <li><strong>Rebuild:</strong> a Python rebuilder runs inside <code>freecadcmd</code> and recreates the design feature by feature, as Part and PartDesign objects.</li>
+    <li><strong>Front end:</strong> a command, <code>convert.py DESIGN.f3d OUT.FCStd</code>, prints a report of what was built, skipped and refused. If anything is incomplete, it adds Fusion's stored final bodies as a separate, non-parametric "Fusion final shape". It also warns when a file's format, ASM or record versions are outside the range it has seen.</li>
+  </ol>
+  <p>One principle drives the rebuilder: when the decoded data can't pin a feature down uniquely, refuse with a reason rather than build a guess. A wrong shape that looks right is the worst outcome for a user.</p>
+
+  <h3>How it is measured</h3>
+  <ul>
+    <li><strong>Per-step truth:</strong> for every design in the corpus, a Fusion add-in rolls the timeline to each step. At each step it records:
+      <ul>
+        <li>solid body counts;</li>
+        <li>exact B-rep volumes, from Fusion's physical properties;</li>
+        <li>a tessellated mesh at a known chordal deviation <code>d</code>.</li>
+      </ul>
+      A Fusion API feature dump is kept too, as an oracle for debugging only.
+    </li>
+    <li><strong>A step matches</strong> when:
+      <ul>
+        <li>the solid body counts agree;</li>
+        <li>the sorted volumes agree to 1e-6 relative;</li>
+        <li>the two-sided mesh distance between Fusion's mesh and ours is at most <code>1.25 × 2d</code>. Two tessellations of the same exact surface, each within <code>d</code>, can be up to <code>2d</code> apart.</li>
+      </ul>
+    </li>
+    <li><strong>Exact-surface fallback,</strong> for warped faces (twisted sweeps, some lofts), where tessellators overshoot <code>d</code>:
+      <ul>
+        <li>every Fusion mesh vertex must lie within <code>1.25 d</code> of our exact B-rep;</li>
+        <li>points sampled on our exact faces must lie within <code>1.25 d</code> of Fusion's mesh, less a per-triangle sag allowance taken from the curvature of Fusion's own mesh.</li>
+      </ul>
+      A negative-control script keeps this honest. It shows that equal-volume wrong shapes are still rejected: a twisted sweep against the same sweep untwisted, a box shifted by 2.6 d, a hole moved 3 d, and a cylinder against a 24-gon prism.
+    </li>
+    <li><strong>Timeline steps are the unit.</strong> One early failure in a long real-world timeline makes every later step fail, so the small generated cases are the best guide to everyday features.</li>
+  </ul>
+
+  <h3>The corpus</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Tier</th><th class="num">Designs</th><th class="num">Steps</th><th>What it is</th></tr></thead>
+    <tbody>
+      <tr><td>generated</td><td class="num">167</td><td class="num">664</td><td>Small designs built by a Fusion API script, each isolating one feature or option: fillet variants, chamfers, holes, patterns, revolves, sweeps, lofts, shells, drafts, splits, participant cuts and so on.</td></tr>
+      <tr><td>supported</td><td class="num">28</td><td class="num">220</td><td>Real public designs that use mostly supported features.</td></tr>
+      <tr><td>extended</td><td class="num">45</td><td class="num">747</td><td>Real public designs with long timelines and harder features.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="meta">The real designs come from permissively licensed public repositories. Each one's licence is recorded with the corpus.</p>
+</section>
+
+<section>
+  <h2>What fusion2fc can and can't do</h2>
+  <div class="stats">
+    <div class="stat"><span class="v">173 / 240</span><span class="k">designs with every step matching</span></div>
+    <div class="stat"><span class="v">1,089 / 1,631</span><span class="k">timeline steps matching</span></div>
+    <div class="stat"><span class="v">152 / 167</span><span class="k">generated feature cases</span></div>
+  </div>
+  <div class="two">
+    <div>
+      <h3>Works</h3>
+      <ul>
+        <li><strong>Sketch profiles:</strong> region arrangement, nested and overlapping loops, unselected and whole-sketch profiles, ellipses.</li>
+        <li><strong>Extrude:</strong> blind, symmetric, two-sided, taper, offset start, to-face, through-all, join, cut and intersect, and participant bodies.</li>
+        <li><strong>Revolve and sweep</strong> from whole sketches, including sweep taper and twist, and sweeps along cornered paths with mitred corners.</li>
+        <li><strong>Constant-radius fillets:</strong> chains, corners, concave edges, G2, chord length.</li>
+        <li><strong>Chamfers:</strong> equal distance, two distances, distance and angle.</li>
+        <li><strong>Holes:</strong> simple, counterbore, countersink and tapped (bored at the thread's minor diameter).</li>
+        <li><strong>Patterns and mirrors:</strong> including symmetric patterns and extent patterns.</li>
+        <li><strong>Body operations:</strong> shell, draft, scale, split by plane or body, offset faces, thicken, move, copy body, combine, loft.</li>
+        <li>Base Feature stored bodies.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Doesn't yet</h3>
+      <ul>
+        <li><strong>Fillets beyond OpenCascade:</strong> setback corners, mixed-radius corners, asymmetric and variable radius. These are refused with a reason.</li>
+        <li>Rule fillets: no sample has been found yet.</li>
+        <li><strong>Patterns:</strong> pattern of faces, and path patterns.</li>
+        <li>Wrong sketch-region choice in about six real designs. These are being converted into refusals or unique matches.</li>
+        <li>Base features derived from an earlier body state.</li>
+        <li><strong>Other features:</strong> surface modelling (patch, trim, stitch), sheet metal, and modelled threads (approximated).</li>
+        <li><strong>Assemblies:</strong> joints are not converted; components keep their placements. Parameters arrive as numbers, not as FreeCAD expressions.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Decoder changes in the fork</h3>
+  <p>The cadmpeg fork has about 30 change entries. Most are in the f3d design decoder:</p>
+  <ul>
+    <li>sketch profile and region selection;</li>
+    <li>sketch names, construction flags and curve ownership;</li>
+    <li>ellipses;</li>
+    <li>face-recipe edge counts;</li>
+    <li>pattern direction and distribution records, including symmetric and extent patterns;</li>
+    <li>tapped holes;</li>
+    <li>mirror planes;</li>
+    <li>combine and split tool bodies;</li>
+    <li>thicken face selection;</li>
+    <li>the Extrude prologue with a participant-body list;</li>
+    <li>parameter suppression and rollback flags.</li>
+  </ul>
+  <div class="callout">
+    <strong>Provenance</strong>
+    <p>Upstream cadmpeg is a clean-room project. Our fork changes are not. They were developed against ground truth that includes Autodesk Fusion API output, such as feature definitions and body volumes from designs we made. They should not be offered upstream as clean-room contributions, so please keep that in mind before reusing any of them. The fork is not public.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Running Dutchman on the corpus</h2>
+  <p>We used the Linux release archive of Dutchman 0.2.9 and SolidCraft 0.41.0, after checking both against their published checksums. We ran only <code>dutchman convert</code> and <code>solidcraft-cli run</code>, on copies of the input files. Two paths were measured:</p>
+  <ul>
+    <li><strong>Dutchman → FreeCAD:</strong> <code>convert X.f3d --to fcstd -o X.FCStd --json</code>. We checked the rebuilt Body against Fusion's last timeline step, not the embedded STEP.</li>
+    <li><strong>Dutchman → SolidCraft:</strong> <code>convert X.f3d -o X.sc --solidcraft &lt;cli&gt; --json</code>, then <code>solidcraft-cli run --in X.sc --out X.step</code>. We checked the replayed STEP against Fusion's last step. This counts as parametric only in <code>history</code> mode with no blocked feature.</li>
+  </ul>
+  <p>The comparison ran when fusion2fc was at 169 of 240 designs. The fusion2fc column uses its own all-steps rule with every feature built, so suppressed features count against it.</p>
+
+  <h3>Fully parametric with the correct final shape</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Tier</th><th class="num">Designs</th><th class="num">fusion2fc</th><th class="num">Dutchman → FreeCAD</th><th class="num">Dutchman → SolidCraft</th></tr></thead>
+    <tbody>
+      <tr><td>generated</td><td class="num">167</td><td class="num">145</td><td class="num">7</td><td class="num">76</td></tr>
+      <tr><td>supported</td><td class="num">28</td><td class="num">13</td><td class="num">0</td><td class="num">3</td></tr>
+      <tr><td>extended</td><td class="num">45</td><td class="num">4</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr class="total"><td>all</td><td class="num">240</td><td class="num">162</td><td class="num">7</td><td class="num">79</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li><strong>SolidCraft near-matches:</strong> counting volume differences under 1e-3 as matches (likely STEP round-trip noise), the SolidCraft path reaches about 85.</li>
+    <li><strong>SolidCraft modes:</strong> 91 history, 111 partial history and 36 import. Two designs could not be decoded.</li>
+    <li><strong>FreeCAD fallback:</strong> its visible final shape was correct for 193 designs, almost entirely through the embedded STEP.</li>
+    <li><strong>Speed:</strong> Dutchman is fast. The FreeCAD path took 2.5 s per design on average. On the SolidCraft path, conversion took at most 16 s and replay at most 1.7 s per design.</li>
+  </ul>
+
+  <h3>Where Dutchman → SolidCraft beat fusion2fc</h3>
+  <ul>
+    <li><code>case_fillet_corner_setback</code>: we refuse a setback corner because OpenCascade's fillet can't produce it. SolidCraft's blend matched Fusion.</li>
+    <li><code>case_two_components</code>: an extrude inside a second component, which is a known gap for us.</li>
+  </ul>
+  <p>fusion2fc was fully parametric where the SolidCraft path was not on 87 designs. Most of them sit behind the blockers below.</p>
+
+  <h3>Most common first blockers</h3>
+  <div class="two">
+    <div>
+      <p class="meta">Dutchman → FreeCAD (designs)</p>
+      <div class="table-wrap"><table><tbody>
+        <tr><td class="num">23</td><td>fillet edges need SolidCraft's replay</td></tr>
+        <tr><td class="num">14</td><td>unresolved profile in a multi-profile sketch</td></tr>
+        <tr><td class="num">13</td><td>multi-body part imported as STEP</td></tr>
+        <tr><td class="num">11</td><td>to-shape extrude ends</td></tr>
+        <tr><td class="num">11</td><td>hole face has no resolved geometry</td></tr>
+        <tr><td class="num">8</td><td>chamfer edges need SolidCraft's replay</td></tr>
+        <tr><td class="num">7</td><td>asymmetric chamfer</td></tr>
+      </tbody></table></div>
+    </div>
+    <div>
+      <p class="meta">Dutchman → SolidCraft (designs)</p>
+      <div class="table-wrap"><table><tbody>
+        <tr><td class="num">13</td><td>hole face has no resolved geometry</td></tr>
+        <tr><td class="num">12</td><td>to-shape extrude ends</td></tr>
+        <tr><td class="num">12</td><td>unresolved profile</td></tr>
+        <tr><td class="num">9</td><td>native features</td></tr>
+        <tr><td class="num">8</td><td>whole-sketch profile not confirmed</td></tr>
+        <tr><td class="num">7</td><td>asymmetric chamfer</td></tr>
+        <tr><td class="num">6</td><td>fillet on closed edges</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+  <p>Several of these blockers (unresolved profiles, hole faces, closed-edge blends, patterns and combines of earlier-state bodies) are decoder gaps that our fork has worked on. The provenance note above applies.</p>
+</section>
+
+<section id="bug">
+  <h2>Bug: parameter names in the FreeCAD macro</h2>
+  <p><span class="pill bad">fails</span> In Dutchman 0.2.9 the <code>quantity()</code> helper in the <code>--to freecad</code> macro is unchanged, and it was still unchanged on <code>main</code> at <code>ad26944</code>.</p>
+  <h3>Reproduce</h3>
+  <p>Take any Fusion design whose extrude distance is the default named parameter <code>d1</code>. Our <code>sk_arc_center_start_end</code> case is one; nearly every Fusion design is like this, because Fusion names every dimension <code>d1</code>, <code>d2</code> and so on.</p>
+<pre><code>dutchman convert part.f3d --to freecad -o m.FCMacro
+freecadcmd m.FCMacro
+# Rebuild failed; original STEP restored: syntax error</code></pre>
+  <p>Printing the traceback inside the macro's <code>except</code> block shows:</p>
+<pre><code>tip = rebuild({"extent":{"direction":"positive","distance":"d1"}, "type":"extrude", ...})
+  obj.Length = quantity(extent['distance'])
+    return App.Units.Quantity(text).Value
+ValueError: syntax error</code></pre>
+  <p>The mapper emits the parameter's name as the extent distance. The macro's <code>parameter_table()</code> row for <code>d1</code> carries <code>"expression": "4 mm"</code> and the value 4.0, but <code>quantity()</code> never consults it.</p>
+  <h3>Suggested fix</h3>
+  <p>Either have the mapper emit evaluated quantities for the FreeCAD output, or let the macro resolve bare names through the parameter rows. A minimal macro-side version:</p>
+<pre><code>PARAMS = {}   # name -> "4 mm", filled in parameter_table()
+
+def parameter_table(rows):
+    ...
+    for i, row in enumerate(rows):
+        PARAMS[row['name']] = row.get('expression') or ''
+        ...
+
+def quantity(value):
+    text = str(value).strip().strip('()').strip()
+    if text in PARAMS and PARAMS[text]:
+        return quantity(PARAMS[text])
+    ...</code></pre>
+  <p>Binding <code>Length</code> to the parameter object with <code>setExpression</code> would also keep the dimension driven in FreeCAD, which is the point of a parametric conversion. Expressions that reference other parameters would need the same lookup, or the evaluated value.</p>
+  <p><strong>Impact on our corpus:</strong> about 44 designs were fully mapped on the FreeCAD path but fell back to STEP for this reason alone. That bug is the main reason the FreeCAD column shows 7 rather than something nearer the SolidCraft path's 79.</p>
+</section>
+
+<section id="verification">
+  <h2>Where verification and Fusion disagree</h2>
+  <p>Dutchman's check compares its rebuild with the design's embedded STEP: solid count, volume to 0.01%, and bounding box. Ours compares every timeline step with Fusion's own volumes and meshes. Most designs agree. These didn't:</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Design</th><th>Path</th><th>Dutchman says</th><th>Against Fusion</th></tr></thead>
+    <tbody>
+      <tr><td><code>case_pat_circ_symmetric</code></td><td>SolidCraft</td><td><span class="pill good">verified</span></td><td>geometry about 4 mm off: copies placed differently</td></tr>
+      <tr><td><code>case_loft_two_rect_circle</code></td><td>SolidCraft</td><td><span class="pill good">verified</span></td><td>volume about 0.1% off</td></tr>
+      <tr><td><code>case_loft_with_rail</code></td><td>SolidCraft</td><td><span class="pill good">verified</span></td><td>volume about 0.1% off</td></tr>
+      <tr><td><code>case_rolled_back_marker</code></td><td>SolidCraft</td><td><span class="pill good">verified</span></td><td>all features replayed, but the design is rolled back in Fusion, so Fusion's current state has fewer</td></tr>
+      <tr><td><code>Apollo_Yoke_Lock_B_Side</code></td><td>FreeCAD</td><td><span class="pill good">verified</span></td><td>volume about 0.25% off</td></tr>
+      <tr><td><code>case_sweep_twist</code></td><td>FreeCAD</td><td><span class="pill good">verified</span></td><td>volume about 0.1% off</td></tr>
+    </tbody>
+  </table></div>
+  <p class="meta">The loft and sweep volume differences exceed Dutchman's own 0.01% tolerance, so the embedded STEP and Fusion's API volumes may differ for those designs. Worth a look before tightening anything. In the other direction, Dutchman reported "differs" on 51 FreeCAD-path designs whose restored STEP was correct. Most of those are the parameter bug above.</p>
+</section>
+
+<section id="suggestions">
+  <h2>Suggestions for the FreeCAD path</h2>
+  <ul>
+    <li><strong>Fix the parameter bug.</strong> It is the single largest gain.</li>
+    <li><strong>Find blend edges on FreeCAD's own replay.</strong> fusion2fc samples each recorded fillet or chamfer edge from the decoded history and matches it against the rebuilt FreeCAD body before calling <code>makeFillet</code> or <code>makeChamfer</code>. It refuses when the match isn't unique. That is the same idea as Dutchman's SolidCraft replay, done in FreeCAD, and it would unblock the 31 fillet and chamfer designs without SolidCraft.</li>
+    <li><strong>Check against Fusion's own output.</strong> A per-step mesh-distance check catches same-volume errors that volume and bounding box miss, such as the misplaced pattern copies above. If useful, our corpus approach can be described in more detail: a Fusion add-in records per-step volumes and meshes, the comparator falls back to an exact-surface check, and negative controls guard the comparator.</li>
+  </ul>
+</section>
+
+<footer>
+  <p>The fusion2fc rebuilder, corpus tools and comparison harness are a private hobby project. The per-design comparison table (CSV) is available on request.</p>
+  <p>These notes were written with an AI coding assistant (Claude) from the project's notes and test outputs.</p>
+</footer>
+</main>
+</body>
+</html>
