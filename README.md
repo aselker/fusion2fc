@@ -81,3 +81,26 @@ reachable from the host at `http://127.0.0.1:27182/mcp`. Run a Fusion API script
 each timeline step: body counts, volumes, and Fusion's tessellation against the rebuilt
 bodies' tessellation (two-sided distance within tessellation error). See
 `tests/corpus/README.md`.
+
+## License and provenance
+
+- **fusion2fc code and docs** (everything outside `cadmpeg/` and `tests/`): MIT, see `LICENSE`.
+- **`cadmpeg/`**: a fork of [cadmpeg](https://github.com/cadmpeg/cadmpeg). Upstream code is
+  Apache-2.0 and upstream docs are CC-BY-4.0 (`cadmpeg/LICENSE`, `cadmpeg/LICENSE-docs`); the
+  fork's changes are under the same licenses. The fork is not affiliated with or endorsed by the
+  cadmpeg project.
+- **`tests/cases/`**: the generated cases (`.f3d` designs and their `.truth.json`) are MIT. The
+  `replica_*` cases are derived from the Burninator toolhead and are GPL-3.0; see
+  `tests/cases/README.md`.
+- **`tests/corpus/`**: third-party models under their own permissive licenses (MIT, Apache-2.0,
+  BSD-3-Clause, CC0, Unlicense), with the license texts in `tests/corpus/licenses/`.
+
+**Provenance.** Upstream cadmpeg is a clean-room project (`cadmpeg/LEGAL.md`). This project is
+not: the decoder changes in the fork and the rebuilder were developed against ground truth from
+the Autodesk Fusion API (feature definitions, body volumes and meshes dumped from designs the
+author made or is licensed to use). No Fusion binaries were decompiled or disassembled, and no
+Autodesk SDK code is included. Changes from this repository should not be submitted to cadmpeg
+as clean-room contributions.
+
+Autodesk and Fusion are trademarks of Autodesk, Inc., used here only to name the file format this
+tool reads. This project is not affiliated with or endorsed by Autodesk.
