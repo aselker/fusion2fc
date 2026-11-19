@@ -1,4 +1,4 @@
-# Dutchman evaluation (branch agent/dutchman)
+# Dutchman evaluation harness
 
 Results: `docs/dutchman-comparison.md` (summary + per-model table) and `docs/dutchman-comparison.csv`.
 Dutchman 0.2.9 (`convert` only) and SolidCraft 0.41.0 (`solidcraft-cli run` only). No investigate/report/diagnose/MCP/GUI.

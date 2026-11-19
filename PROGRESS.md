@@ -211,8 +211,8 @@ in the agents' `HANDOFF.md` files.
 ## Dutchman comparison (2026-11-14)
 
 Dutchman 0.2.9 (github.com/dutchman-cad/dutchman, built on upstream cadmpeg) was run on the
-whole corpus. The harness and results are on branch `agent/dutchman` (not merged):
-`docs/dutchman-comparison.md` and `.csv`. Fully parametric with the correct final shape:
+whole corpus. The harness (`tools/*dutchman*.py`, notes in `docs/dutchman-harness.md`) and results
+(`docs/dutchman-comparison.md` and `.csv`) are on main. Fully parametric with the correct final shape:
 fusion2fc 162/240, Dutchman to FreeCAD 7, Dutchman to SolidCraft 79 (about 85 counting near
 matches). Dutchman's FreeCAD macro passes parameter names (`"d1"`) to `App.Units.Quantity`, so
 any dimension driven by a named parameter falls back to STEP. That is a Dutchman bug, not
